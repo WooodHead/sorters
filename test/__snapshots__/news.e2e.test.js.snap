@@ -65,7 +65,7 @@ exports[`news displays 1`] = `
 `;
 
 exports[`news displays changes to user data 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"2063338524\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-1666184164\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -127,17 +127,17 @@ exports[`news displays changes to user data 1`] = `
                 <li data-reactid=\\"45\\">&#x1F464; Updated profile.</li>
                 <li data-reactid=\\"46\\">
                   <!-- react-text: 47 -->&#x25CE; Wants to achieve
-                  <!-- /react-text --><span data-reactid=\\"48\\"><!-- react-text: 49 --><!-- /react-text --><!-- react-text: 50 -->&#xA0;<!-- /react-text --><em data-reactid=\\"51\\">Goal - done</em></span><span data-reactid=\\"52\\"><!-- react-text: 53 -->,<!-- /react-text --><!-- react-text: 54 -->&#xA0;<!-- /react-text --><em data-reactid=\\"55\\">Goal</em></span>
+                  <!-- /react-text --><span data-reactid=\\"48\\"><!-- react-text: 49 --><!-- /react-text --><!-- react-text: 50 -->&#xA0;<!-- /react-text --><em data-reactid=\\"51\\">Goal</em></span><span data-reactid=\\"52\\"><!-- react-text: 53 -->,<!-- /react-text --><!-- react-text: 54 -->&#xA0;<!-- /react-text --><em data-reactid=\\"55\\">Goal - doing</em></span>
                   <span
                     data-reactid=\\"56\\">
                     <!-- react-text: 57 -->,
                     <!-- /react-text -->
                     <!-- react-text: 58 -->&#xA0;
-                    <!-- /react-text --><em data-reactid=\\"59\\">Goal - doing</em></span>
+                    <!-- /react-text --><em data-reactid=\\"59\\">Goal - done</em></span>
                 </li>
                 <li data-reactid=\\"60\\">
                   <!-- react-text: 61 -->&#x1F4D6; Added books to reading list:
-                  <!-- /react-text --><span data-reactid=\\"62\\"><!-- react-text: 63 --><!-- /react-text --><!-- react-text: 64 -->&#xA0;<!-- /react-text --><em data-reactid=\\"65\\">Read - read</em></span><span data-reactid=\\"66\\"><!-- react-text: 67 -->,<!-- /react-text --><!-- react-text: 68 -->&#xA0;<!-- /react-text --><em data-reactid=\\"69\\">Read</em></span>
+                  <!-- /react-text --><span data-reactid=\\"62\\"><!-- react-text: 63 --><!-- /react-text --><!-- react-text: 64 -->&#xA0;<!-- /react-text --><em data-reactid=\\"65\\">Read</em></span><span data-reactid=\\"66\\"><!-- react-text: 67 -->,<!-- /react-text --><!-- react-text: 68 -->&#xA0;<!-- /react-text --><em data-reactid=\\"69\\">Read - read</em></span>
                   <span
                     data-reactid=\\"70\\">
                     <!-- react-text: 71 -->,

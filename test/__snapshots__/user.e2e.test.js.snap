@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`user displays 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"1643638043\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"1405742363\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -111,17 +111,17 @@ exports[`user displays 1`] = `
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"70\\">
           <!-- react-text: 71 -->&#x25CE; Wants to achieve
           <!-- /react-text -->
-          <a href=\\"/u/test/goals\\" data-reactid=\\"72\\">Goal</a>
+          <a href=\\"/u/test/goals\\" data-reactid=\\"72\\">Goal - done</a>
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"73\\">
           <!-- react-text: 74 -->&#x25CE; Wants to achieve
           <!-- /react-text -->
-          <a href=\\"/u/test/goals\\" data-reactid=\\"75\\">Goal - doing</a>
+          <a href=\\"/u/test/goals\\" data-reactid=\\"75\\">Goal</a>
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"76\\">
           <!-- react-text: 77 -->&#x25CE; Wants to achieve
           <!-- /react-text -->
-          <a href=\\"/u/test/goals\\" data-reactid=\\"78\\">Goal - done</a>
+          <a href=\\"/u/test/goals\\" data-reactid=\\"78\\">Goal - doing</a>
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"79\\">
           <!-- react-text: 80 -->&#x1F464; Updated
