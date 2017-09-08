@@ -65,6 +65,11 @@ exports[`layout displays title and page 1`] = `
         "url": "/goals",
       },
       Object {
+        "label": "Journal",
+        "name": "journal",
+        "url": "/journal",
+      },
+      Object {
         "label": "Reading List",
         "name": "reads",
         "url": "/reads",
@@ -145,6 +150,11 @@ exports[`layout shallow-renders 1`] = `
         "label": "Goals",
         "name": "goals",
         "url": "/goals",
+      },
+      Object {
+        "label": "Journal",
+        "name": "journal",
+        "url": "/journal",
       },
       Object {
         "label": "Reading List",

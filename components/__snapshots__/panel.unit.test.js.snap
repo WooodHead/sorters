@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`panel shallow-renders 1`] = `
+<div
+  className="panel panel-default"
+>
+  <div
+    className="panel-heading"
+  >
+    <h3
+      className="panel-title"
+    >
+      <a
+        href="/foo"
+      >
+        Title
+      </a>
+    </h3>
+  </div>
+  <div
+    className="panel-body"
+  >
+    <p>
+      Hi
+    </p>
+    <a
+      className="btn btn-default"
+      href="/foo"
+      role="button"
+    >
+      Foo
+    </a>
+  </div>
+</div>
+`;

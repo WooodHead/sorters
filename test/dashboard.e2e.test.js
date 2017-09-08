@@ -5,13 +5,11 @@ import {setup, teardown} from './setup'
 import setCookie from 'set-cookie-parser'
 import {generateAndLogUser} from './fixtures'
 
-let app
 let db
 let browser
 
 beforeAll(async () => {
     const res = await setup()
-    app = res.app
     db = res.db
     browser = res.browser
 })
@@ -21,7 +19,7 @@ afterEach(async () => {
 })
 
 afterAll(async () => {
-    await teardown({db, app, browser})
+    await teardown({db, browser})
 })
 
 describe('dashboard', () => {
@@ -41,7 +39,7 @@ describe('dashboard', () => {
     it('displays when logged', async () => {
         const browserPage = await browser.createPage()
 
-        await generateAndLogUser(browserPage, db)
+        await generateAndLogUser(browserPage)
 
         const status = await browserPage.open(`http://localhost:3000/dashboard`)
         expect(status).toBe('success')

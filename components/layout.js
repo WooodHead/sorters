@@ -41,6 +41,11 @@ const userMenu = [
         label: 'Goals',
     },
     {
+        url: '/journal',
+        name: 'journal',
+        label: 'Journal',
+    },
+    {
         url: '/reads',
         name: 'reads',
         label: 'Reading List',

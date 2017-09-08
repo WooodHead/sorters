@@ -95,7 +95,13 @@ A build is necessary if you changed the website code (not if you changed test co
 yarn build
 ```
 
-Run tests:
+Start server
+
+```
+yarn start:test
+```
+
+In an other terminal, run tests:
 
 ```
 yarn run test:e2e

@@ -149,7 +149,7 @@ class ReadsComponent extends Component {
                                     }).then(() => {
                                         refetch();
                                     }).catch(e => {
-                                        console.log(e)
+                                        console.error(e)
                                     })
                                 }}
                                 updateRead={(key, read) => {
@@ -171,7 +171,7 @@ class ReadsComponent extends Component {
                                     }).then(() => {
                                         refetch();
                                     }).catch(e => {
-                                        console.log(e)
+                                        console.error(e)
                                     })
                                 }}
                             />
@@ -213,6 +213,7 @@ class ReadsComponent extends Component {
                                 ref={ref => {
                                     this.title = ref
                                 }}
+                                required
                             />
                         </div>
                     </Form>
@@ -364,14 +365,6 @@ class ReadComponent extends Component {
                 </Form>
             :
                 <span>
-                    <span>{title}</span>
-                    {readingStatus === 'read' && <span>&nbsp;✔</span>}
-                    {readingStatus === 'reading' && <span>&nbsp;👁</span>}
-                    {(articleUrl || videoUrl) && <span>&nbsp;(
-                        {articleUrl && <a href={articleUrl}>article</a>}
-                        {articleUrl && videoUrl && <span>,&nbsp;</span>}
-                        {videoUrl && <a href={videoUrl}>video</a>}
-                    )</span>}
                     <span style={{
                         display: 'block',
                         float: 'right'
@@ -379,7 +372,7 @@ class ReadComponent extends Component {
                         <DeleteModal
                             title="Delete book?"
                             message="A deleted book can't be recovered."
-                            Delete={remove}/>
+                            onDelete={remove}/>
                         &nbsp;
                         <ShyButton
                             onClick={() => {
@@ -389,6 +382,14 @@ class ReadComponent extends Component {
                             }}
                         >✎</ShyButton>
                     </span>
+                    <span>{title}</span>
+                    {readingStatus === 'read' && <span>&nbsp;✔</span>}
+                    {readingStatus === 'reading' && <span>&nbsp;👁</span>}
+                    {(articleUrl || videoUrl) && <span>&nbsp;(
+                        {articleUrl && <a href={articleUrl}>article</a>}
+                        {articleUrl && videoUrl && <span>,&nbsp;</span>}
+                        {videoUrl && <a href={videoUrl}>video</a>}
+                    )</span>}
                 </span>
             }
         </li>

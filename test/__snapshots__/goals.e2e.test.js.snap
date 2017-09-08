@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`goals displays 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-606402048\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"1019425402\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -72,26 +72,23 @@ exports[`goals displays 1`] = `
         <div data-reactid=\\"49\\">
           <h2 data-reactid=\\"50\\">Your Goals</h2>
           <ul data-reactid=\\"51\\">
-            <li style=\\"cursor:pointer;clear:both;\\" data-reactid=\\"52\\"><span data-reactid=\\"53\\"><span data-reactid=\\"54\\">Goal</span><span style=\\"display:block;float:right;\\" data-reactid=\\"55\\"><span data-reactid=\\"56\\"><a style=\\"font-size:140%;\\" data-reactid=\\"57\\">&#x1F5D1;</a><!-- react-empty: 58 --></span>
-              <!-- react-text: 59 -->&#xA0;
+            <li style=\\"cursor:pointer;clear:both;\\" data-reactid=\\"52\\"><span data-reactid=\\"53\\"><span style=\\"display:block;float:right;\\" data-reactid=\\"54\\"><span data-reactid=\\"55\\"><a style=\\"cursor:pointer;font-size:140%;\\" data-reactid=\\"56\\">&#x1F5D1;</a><!-- react-empty: 57 --></span>
+              <!-- react-text: 58 -->&#xA0;
               <!-- /react-text -->
-              <a style=\\"font-size:140%;\\" data-reactid=\\"60\\">&#x270E;</a>
-              </span>
-              </span>
+              <a style=\\"cursor:pointer;font-size:140%;\\" data-reactid=\\"59\\">&#x270E;</a>
+              </span><span data-reactid=\\"60\\">Goal</span></span>
             </li>
-            <li style=\\"cursor:pointer;clear:both;\\" data-reactid=\\"61\\"><span data-reactid=\\"62\\"><span data-reactid=\\"63\\">Goal - doing</span><span style=\\"display:block;float:right;\\" data-reactid=\\"64\\"><span data-reactid=\\"65\\"><a style=\\"font-size:140%;\\" data-reactid=\\"66\\">&#x1F5D1;</a><!-- react-empty: 67 --></span>
-              <!-- react-text: 68 -->&#xA0;
+            <li style=\\"cursor:pointer;clear:both;\\" data-reactid=\\"61\\"><span data-reactid=\\"62\\"><span style=\\"display:block;float:right;\\" data-reactid=\\"63\\"><span data-reactid=\\"64\\"><a style=\\"cursor:pointer;font-size:140%;\\" data-reactid=\\"65\\">&#x1F5D1;</a><!-- react-empty: 66 --></span>
+              <!-- react-text: 67 -->&#xA0;
               <!-- /react-text -->
-              <a style=\\"font-size:140%;\\" data-reactid=\\"69\\">&#x270E;</a>
-              </span>
-              </span>
+              <a style=\\"cursor:pointer;font-size:140%;\\" data-reactid=\\"68\\">&#x270E;</a>
+              </span><span data-reactid=\\"69\\">Goal - doing</span></span>
             </li>
-            <li style=\\"cursor:pointer;clear:both;\\" data-reactid=\\"70\\"><span data-reactid=\\"71\\"><span data-reactid=\\"72\\">Goal - done</span><span data-reactid=\\"73\\">&#xA0;&#x2714;</span><span style=\\"display:block;float:right;\\" data-reactid=\\"74\\"><span data-reactid=\\"75\\"><a style=\\"font-size:140%;\\" data-reactid=\\"76\\">&#x1F5D1;</a><!-- react-empty: 77 --></span>
-              <!-- react-text: 78 -->&#xA0;
+            <li style=\\"cursor:pointer;clear:both;\\" data-reactid=\\"70\\"><span data-reactid=\\"71\\"><span style=\\"display:block;float:right;\\" data-reactid=\\"72\\"><span data-reactid=\\"73\\"><a style=\\"cursor:pointer;font-size:140%;\\" data-reactid=\\"74\\">&#x1F5D1;</a><!-- react-empty: 75 --></span>
+              <!-- react-text: 76 -->&#xA0;
               <!-- /react-text -->
-              <a style=\\"font-size:140%;\\" data-reactid=\\"79\\">&#x270E;</a>
-              </span>
-              </span>
+              <a style=\\"cursor:pointer;font-size:140%;\\" data-reactid=\\"77\\">&#x270E;</a>
+              </span><span data-reactid=\\"78\\">Goal - done</span><span data-reactid=\\"79\\">&#xA0;&#x2714;</span></span>
             </li>
           </ul>
         </div>
@@ -99,7 +96,7 @@ exports[`goals displays 1`] = `
         <form data-reactid=\\"81\\">
           <div class=\\"form-group\\" data-reactid=\\"82\\">
             <label for=\\"title\\" data-reactid=\\"83\\">Title</label>
-            <input type=\\"text\\" class=\\"form-control\\" placeholder=\\"\\" data-reactid=\\"84\\">
+            <input type=\\"text\\" class=\\"form-control\\" placeholder=\\"\\" required data-reactid=\\"84\\">
           </div>
           <div class=\\"form-group\\" data-reactid=\\"85\\">
             <button type=\\"submit\\" class=\\"btn btn-primary btn-block\\" data-reactid=\\"86\\">New Goal</button>

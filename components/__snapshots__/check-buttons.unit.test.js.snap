@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`check-buttons shallow-renders 1`] = `
+<div
+  className="form-group"
+>
+  <label>
+    Buttons
+  </label>
+  <div
+    className="checkbox"
+  >
+    <label>
+      <input
+        id="buttons"
+        name="buttons"
+        type="checkbox"
+        value="foo"
+      />
+       
+      Foo
+    </label>
+  </div>
+  <div
+    className="checkbox"
+  >
+    <label>
+      <input
+        defaultChecked={true}
+        id="buttons"
+        name="buttons"
+        type="checkbox"
+        value="bar"
+      />
+       
+      Bar
+    </label>
+  </div>
+</div>
+`;

@@ -8,8 +8,6 @@ import withLoginRequired from 'staart/lib/hocs/login-required'
 import Form from 'staart/lib/components/form'
 import Markdown from '../components/markdown'
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc'
-import Modal from 'react-bootstrap/lib/Modal'
-import Button from 'react-bootstrap/lib/Button'
 import RadioButtons from '../components/radio-buttons'
 import ShyButton from '../components/shy-button'
 import DeleteModal from '../components/delete-modal'
@@ -148,7 +146,7 @@ class GoalsComponent extends Component {
                                     }).then(() => {
                                         refetch();
                                     }).catch(e => {
-                                        console.log(e)
+                                        console.error(e)
                                     })
                                 }}
                                 updateGoal={(key, goal) => {
@@ -170,7 +168,7 @@ class GoalsComponent extends Component {
                                     }).then(() => {
                                         refetch();
                                     }).catch(e => {
-                                        console.log(e)
+                                        console.error(e)
                                     })
                                 }}
                             />
@@ -193,7 +191,6 @@ class GoalsComponent extends Component {
                                     message: 'Goals updated!'
                                 }, refetch)
                             }).catch(e => {
-                                window.e = e
                                 this.setState({
                                     state: 'error',
                                     message: errorMessage(e)
@@ -213,6 +210,7 @@ class GoalsComponent extends Component {
                                 ref={ref => {
                                     this.title = ref
                                 }}
+                                required
                             />
                         </div>
                     </Form>
@@ -339,8 +337,6 @@ class GoalComponent extends Component {
                 </Form>
             :
                 <span>
-                    <span>{title}</span>
-                    {goalStatus === 'done' && <span>&nbsp;✔</span>}
                     <span style={{
                         display: 'block',
                         float: 'right'
@@ -358,6 +354,8 @@ class GoalComponent extends Component {
                             }}
                         >✎</ShyButton>
                     </span>
+                    <span>{title}</span>
+                    {goalStatus === 'done' && <span>&nbsp;✔</span>}
                 </span>
             }
         </li>

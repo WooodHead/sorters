@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`user-header shallow-renders 1`] = `
+<div>
+  <h1>
+    Nick Redmark
+  </h1>
+  <div
+    className="row"
+  >
+    <div
+      className="col-xs-6 col-sm-3 col-md-2"
+    >
+      <Gravatar
+        default="retro"
+        md5="foo"
+        protocol="//"
+        rating="g"
+        size={200}
+        style={
+          Object {
+            "display": "block",
+            "height": "auto",
+            "marginBottom": "24px",
+            "marginLeft": "auto",
+            "marginRight": "auto",
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+    <div
+      className="col-xs-12 col-sm-9 col-md-10"
+    >
+      <p>
+        <a
+          href="/u/nmaro"
+        >
+          /u/
+          nmaro
+        </a>
+      </p>
+      <div>
+        <Markdown
+          content="Hi there I'm Nick"
+        />
+      </div>
+    </div>
+  </div>
+  <ul
+    className="nav nav-tabs"
+  >
+    <li
+      className={false}
+      role="presentation"
+    >
+      <a
+        href="/u/nmaro"
+      >
+        Activity
+      </a>
+    </li>
+    <li
+      className={false}
+      role="presentation"
+    >
+      <a
+        href="/u/nmaro/profile"
+      >
+        Profile
+      </a>
+    </li>
+    <li
+      className={false}
+      role="presentation"
+    >
+      <a
+        href="/u/nmaro/goals"
+      >
+        Goals
+      </a>
+    </li>
+    <li
+      className="active"
+      role="presentation"
+    >
+      <a
+        href="/u/nmaro/journal"
+      >
+        Journal
+      </a>
+    </li>
+    <li
+      className={false}
+      role="presentation"
+    >
+      <a
+        href="/u/nmaro/reads"
+      >
+        Reads
+      </a>
+    </li>
+  </ul>
+</div>
+`;

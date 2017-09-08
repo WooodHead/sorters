@@ -4,6 +4,7 @@ exports[`shy-button shallow-renders 1`] = `
 <a
   style={
     Object {
+      "cursor": "pointer",
       "fontSize": "140%",
     }
   }

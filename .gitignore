@@ -2,5 +2,5 @@ settings.js
 public-settings.js
 .next
 node_modules
-npm-debug.log.*
+npm-debug.log*
 *.sh

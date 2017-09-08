@@ -2,15 +2,13 @@ import cheerio from 'cheerio'
 import pretty from 'pretty'
 import {ObjectID} from 'mongodb'
 import {setup, teardown} from './setup'
-import {generateAndLogUser} from './fixtures'
+import {generateAndLogUser, setUserData} from './fixtures'
 
-let app
 let db
 let browser
 
 beforeAll(async () => {
     const res = await setup()
-    app = res.app
     db = res.db
     browser = res.browser
 })
@@ -20,14 +18,15 @@ afterEach(async () => {
 })
 
 afterAll(async () => {
-    await teardown({db, app, browser})
+    await teardown({db, browser})
 })
 
 describe('reads', () => {
     it('displays', async () => {
         const browserPage = await browser.createPage()
 
-        await generateAndLogUser(browserPage, db)
+        await generateAndLogUser(browserPage)
+        await setUserData(browserPage)
         
         const status = await browserPage.open(`http://localhost:3000/reads`)
         expect(status).toBe('success')

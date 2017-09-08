@@ -3,41 +3,16 @@ import {spawn} from 'child_process'
 import phantom from 'phantom'
 
 export const setup = async () => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000
     const db = await MongoClient.connect('mongodb://localhost:27017/sorters_test')
-
-    let app
     
-    await new Promise((resolve, reject) => {
-        app = spawn('npm', ['run', 'start:test'], {detached: true})
-        app.stdout.on('data', (data) => {
-            if (/^Online at/.test(data)) {
-                console.log(data.toString())
-                resolve()
-            }
-        })
-        app.stderr.on('data', (data) => {
-            console.warn(data.toString())
-        })
-    })
-
     const browser = await phantom.create([], { logLevel: 'error' })
     
-    return {db, app, browser}
+    return {db, browser}
 }
 
-export const teardown = async ({db, app, browser}) => {
+export const teardown = async ({db, browser}) => {
     await db.close()
-    
-    await new Promise((resolve, reject) => {
-        app.on('close', () => {
-            resolve()
-        })
-        try {
-            process.kill(-app.pid)
-        } catch (e) {
-            console.log(e)
-        }
-    })
 
     await browser.exit()
 }
