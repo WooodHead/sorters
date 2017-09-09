@@ -37,12 +37,14 @@ const profileFields = [
     {
         name: 'about',
         label: 'About you',
-        type: 'text'
+        type: 'shortText',
+        placeholder: 'Write a short blurb about yourself.'
     },
     {
         name: 'bio',
         label: 'Bio',
         type: 'text',
+        placeholder: 'Tell us about yourself in more detail.'
     },
     {
         name: 'website',
@@ -162,7 +164,9 @@ class ProfileFormComponent extends Component {
                             message={this.state.message}
                             submitLabel="Save profile"
                         >
-                            {profileFields.map(({name, label, type}) => (
+                            {profileFields.map(({name, label, type, placeholder}) => (
+
+
                                 <div key={name} className="form-group">
                                     <label htmlFor={name}>{label}</label>
                                     {(() => {
@@ -175,6 +179,18 @@ class ProfileFormComponent extends Component {
                                                         this[name] = ref
                                                     }}
                                                     defaultValue={profile[name]}
+                                                    placeholder={placeholder}
+
+                                                />
+                                            case 'shortText':
+                                                return <textarea
+                                                    className="form-control"
+                                                    rows="2"
+                                                    ref={ref => {
+                                                        this[name] = ref
+                                                    }}
+                                                    defaultValue={profile[name]}
+                                                    placeholder={placeholder}
                                                 />
                                             default:
                                                 return <input
