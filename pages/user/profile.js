@@ -89,7 +89,9 @@ const UserComponent = (props) => {
     const emailHash = user.emailHash
     const profile = user.profile || {}
     const {name, about, bio} = profile
-    const {goals, entries, reads} = user
+    const goals = user.goals || []
+    const entries = user.entries || []
+    const reads = user.reads || []
 
     const urls = []
     urlFields.map(({name, label}) => {
