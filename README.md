@@ -62,10 +62,21 @@ Visit `http://localhost:3000` (or the url you set up in settings.js).
 
 ### Production
 
+If you have been running in development mode, clean:
+
+```
+yarn run clean
+```
+
 Build:
 
 ```
 yarn build
+```
+
+Start:
+
+```
 yarn start
 ```
 
@@ -92,6 +103,7 @@ WARNING: this assumes the existence and will overwrite data on database `mongodb
 A build is necessary if you changed the website code (not if you changed test code):
 
 ```
+yarn run clean
 yarn build
 ```
 

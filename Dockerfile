@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 
 COPY . .
 RUN npm install -g yarn
-RUN yarn --pure-lockfile
+RUN yarn --pure-lockfile --production
 RUN npm run build
 
 EXPOSE 3000

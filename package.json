@@ -9,7 +9,6 @@
     "test:e2e": "jest --testMatch '**/*.e2e.test.js' --runInBand",
     "dev": "node --harmony-async-await index.js",
     "clean": "del .next",
-    "prebuild": "npm run clean",
     "build": "next build",
     "start": "export NODE_ENV=prod && node --harmony-async-await index.js",
     "start:test": "export NODE_ENV=prod && export MONGO_URL=mongodb://localhost:27017/sorters_test && node --harmony-async-await index.js",
