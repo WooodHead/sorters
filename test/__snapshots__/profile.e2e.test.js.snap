@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`profile displays 1`] = `
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"324878792\\">
+  <div data-reactid=\\"2\\">
+    <!-- react-empty: 3 -->
+    <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
+      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\" data-reactid=\\"5\\">
+        <div class=\\"container\\" data-reactid=\\"6\\">
+          <div class=\\"navbar-header\\" data-reactid=\\"7\\">
+            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\" data-reactid=\\"8\\"><span class=\\"sr-only\\" data-reactid=\\"9\\">Toggle navigation</span><span class=\\"icon-bar\\" data-reactid=\\"10\\"></span><span class=\\"icon-bar\\" data-reactid=\\"11\\"></span><span class=\\"icon-bar\\" data-reactid=\\"12\\"></span></button>
+            <a class=\\"navbar-brand\\"
+              href=\\"/\\" data-reactid=\\"13\\">Sorters Club</a>
+          </div>
+          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\" data-reactid=\\"14\\">
+            <ul class=\\"nav navbar-nav navbar-right\\" data-reactid=\\"15\\">
+              <li class=\\"false\\" data-reactid=\\"16\\">
+                <a href=\\"/\\" data-reactid=\\"17\\">Home</a>
+              </li>
+              <li class=\\"false\\" data-reactid=\\"18\\">
+                <a href=\\"/about\\" data-reactid=\\"19\\">About</a>
+              </li>
+              <li class=\\"false\\" data-reactid=\\"20\\">
+                <a href=\\"/news\\" data-reactid=\\"21\\">News</a>
+              </li>
+              <li class=\\"false\\" data-reactid=\\"22\\">
+                <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
+              </li>
+              <li class=\\"false\\" data-reactid=\\"24\\">
+                <a href=\\"/dashboard\\" data-reactid=\\"25\\">Dashboard</a>
+              </li>
+              <li class=\\"dropdownfalse\\" data-reactid=\\"26\\">
+                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" data-reactid=\\"27\\">
+                  <!-- react-text: 28 -->Hello,
+                  <!-- /react-text -->
+                  <!-- react-text: 29 -->test
+                  <!-- /react-text -->
+                  <!-- react-text: 30 -->
+                  <!-- /react-text --><span class=\\"caret\\" data-reactid=\\"31\\"></span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div style=\\"max-width:400px;margin:auto;\\" data-reactid=\\"32\\">
+      <h1 data-reactid=\\"33\\">Profile</h1>
+      <div data-reactid=\\"34\\">
+        <div data-reactid=\\"35\\">
+          <p data-reactid=\\"36\\">
+            <!-- react-text: 37 -->Your profile is live at
+            <!-- /react-text -->
+            <a href=\\"/u/test\\" data-reactid=\\"38\\">
+              <!-- react-text: 39 -->/u/
+              <!-- /react-text -->
+              <!-- react-text: 40 -->test
+              <!-- /react-text -->
+            </a>
+            <!-- react-text: 41 -->.
+            <!-- /react-text -->
+          </p>
+          <div data-reactid=\\"42\\">
+            <h2 data-reactid=\\"43\\">Edit Profile</h2>
+            <form data-reactid=\\"44\\">
+              <div class=\\"form-group\\" data-reactid=\\"45\\">
+                <label for=\\"name\\" data-reactid=\\"46\\">Name</label>
+                <input type=\\"text\\" class=\\"form-control\\" id=\\"name\\" value=\\"Test User\\" data-reactid=\\"47\\">
+              </div>
+              <div class=\\"form-group\\" data-reactid=\\"48\\">
+                <label for=\\"about\\" data-reactid=\\"49\\">About you</label>
+                <textarea class=\\"form-control\\" rows=\\"2\\" placeholder=\\"Write a short blurb about yourself.\\" data-reactid=\\"50\\">Test user about</textarea>
+              </div>
+              <div class=\\"form-group\\" data-reactid=\\"51\\">
+                <label for=\\"bio\\" data-reactid=\\"52\\">Bio</label>
+                <textarea class=\\"form-control\\" rows=\\"4\\" placeholder=\\"Tell us about yourself in more detail.\\" data-reactid=\\"53\\">Test user bio</textarea>
+              </div>
+              <div class=\\"form-group\\" data-reactid=\\"54\\">
+                <label for=\\"website\\" data-reactid=\\"55\\">Website</label>
+                <input type=\\"text\\" class=\\"form-control\\" id=\\"website\\" value=\\"http://website\\" data-reactid=\\"56\\">
+              </div>
+              <div class=\\"form-group\\" data-reactid=\\"57\\">
+                <label for=\\"blog\\" data-reactid=\\"58\\">Blog</label>
+                <input type=\\"text\\" class=\\"form-control\\" id=\\"blog\\" value=\\"http://blog\\" data-reactid=\\"59\\">
+              </div>
+              <div class=\\"form-group\\" data-reactid=\\"60\\">
+                <label for=\\"youtube\\" data-reactid=\\"61\\">Youtube</label>
+                <input type=\\"text\\" class=\\"form-control\\" id=\\"youtube\\" value=\\"http://youtube\\" data-reactid=\\"62\\">
+              </div>
+              <div class=\\"form-group\\" data-reactid=\\"63\\">
+                <label for=\\"twitter\\" data-reactid=\\"64\\">Twitter</label>
+                <input type=\\"text\\" class=\\"form-control\\" id=\\"twitter\\" value=\\"http://twitter\\" data-reactid=\\"65\\">
+              </div>
+              <div class=\\"form-group\\" data-reactid=\\"66\\">
+                <label for=\\"reddit\\" data-reactid=\\"67\\">Reddit</label>
+                <input type=\\"text\\" class=\\"form-control\\" id=\\"reddit\\" value=\\"http://reddit\\" data-reactid=\\"68\\">
+              </div>
+              <div class=\\"form-group\\" data-reactid=\\"69\\">
+                <label for=\\"patreon\\" data-reactid=\\"70\\">Patreon</label>
+                <input type=\\"text\\" class=\\"form-control\\" id=\\"patreon\\" value=\\"http://patreon\\" data-reactid=\\"71\\">
+              </div>
+              <div class=\\"form-group\\" data-reactid=\\"72\\">
+                <button type=\\"submit\\" class=\\"btn btn-primary btn-block\\" data-reactid=\\"73\\">Save profile</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer data-reactid=\\"74\\">
+      <div class=\\"container\\" data-reactid=\\"75\\">
+        <hr data-reactid=\\"76\\">
+        <p data-reactid=\\"77\\">
+          <!-- react-text: 78 -->Brought to you with &#x2764; by
+          <!-- /react-text -->
+          <a href=\\"/about\\" data-reactid=\\"79\\">Nick Redmark</a>
+          <!-- react-text: 80 -->. Support and discuss the development of this platform on
+          <!-- /react-text -->
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"81\\">Patreon</a>
+          <!-- react-text: 82 -->.
+          <!-- /react-text -->
+        </p>
+      </div>
+    </footer>
+  </div>
+</div>"
+`;
