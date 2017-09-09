@@ -8,7 +8,7 @@ Support the development of this website on [patreon](https://www.patreon.com/nic
 
 ### Prerequisites
 
-* A running mongodb database.
+* A running mongodb database. Please follow [the instruction](https://docs.mongodb.com/manual/administration/install-community/) on setting up mongodb locally.
 
 ### Clone
 
@@ -18,7 +18,7 @@ Clone this repository.
 
 Copy `settings.dist.js` to `settings.js` and adapt to suit your needs.
 
-Copy `public-settings.dist.js` to `public-setting.js` and adapt to suit your need.
+Copy `public-settings.dist.js` to `public-settings.js` and adapt to suit your need.
 
 In principle, these settings file can be left as they are in development mode.
 
