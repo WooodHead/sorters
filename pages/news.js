@@ -87,7 +87,7 @@ const integrateEvent = (integrated, event) => {
     }
 }
 
-const LIMIT = 10
+const LIMIT = 5
 
 const NewsQuery = gql`
     query {
