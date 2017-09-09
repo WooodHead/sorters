@@ -39,7 +39,7 @@ const digestEvents = (events) => {
         .sort().reverse()
         .map(d => {
             const day = byDayUser[d]
-            return Object.keys(day).map(k => day[k]).sort((a, b) => a.date - b.date)
+            return Object.keys(day).map(k => day[k]).sort((a, b) => b.date - a.date)
         })
     return days
 }
