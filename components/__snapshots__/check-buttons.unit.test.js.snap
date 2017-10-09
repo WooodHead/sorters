@@ -17,7 +17,6 @@ exports[`check-buttons shallow-renders 1`] = `
         type="checkbox"
         value="foo"
       />
-       
       Foo
     </label>
   </div>
@@ -32,7 +31,6 @@ exports[`check-buttons shallow-renders 1`] = `
         type="checkbox"
         value="bar"
       />
-       
       Bar
     </label>
   </div>

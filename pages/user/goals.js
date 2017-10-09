@@ -68,8 +68,8 @@ const UserGoalsComponent = (props) => {
                     const goalStatus = done ? 'done' : (doing ? 'doing' : 'not')
                     return <li key={key}>
                         <span>{title}</span>
-                        {goalStatus === 'doing' && <span>&nbsp;⛏</span>}
-                        {goalStatus === 'done' && <span>&nbsp;✔</span>}
+                        {goalStatus === 'doing' && <span> ⛏</span>}
+                        {goalStatus === 'done' && <span> ✔</span>}
                     </li>
                 })}
             </ul>

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`profile displays 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"324878792\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-1958980762\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -47,76 +47,478 @@ exports[`profile displays 1`] = `
       <h1 data-reactid=\\"33\\">Profile</h1>
       <div data-reactid=\\"34\\">
         <div data-reactid=\\"35\\">
-          <p data-reactid=\\"36\\">
-            <!-- react-text: 37 -->Your profile is live at
-            <!-- /react-text -->
-            <a href=\\"/u/test\\" data-reactid=\\"38\\">
-              <!-- react-text: 39 -->/u/
+          <div data-reactid=\\"36\\">
+            <p data-reactid=\\"37\\">
+              <!-- react-text: 38 -->Your profile is live at
               <!-- /react-text -->
-              <!-- react-text: 40 -->test
+              <a href=\\"/u/test\\" data-reactid=\\"39\\">
+                <!-- react-text: 40 -->/u/
+                <!-- /react-text -->
+                <!-- react-text: 41 -->test
+                <!-- /react-text -->
+              </a>
+              <!-- react-text: 42 -->. Please only save information you feel comfortable sharing publicly.
               <!-- /react-text -->
-            </a>
-            <!-- react-text: 41 -->.
-            <!-- /react-text -->
-          </p>
-          <div data-reactid=\\"42\\">
+            </p>
             <h2 data-reactid=\\"43\\">Edit Profile</h2>
             <form data-reactid=\\"44\\">
-              <div class=\\"form-group\\" data-reactid=\\"45\\">
-                <label for=\\"name\\" data-reactid=\\"46\\">Name</label>
-                <input type=\\"text\\" class=\\"form-control\\" id=\\"name\\" value=\\"Test User\\" data-reactid=\\"47\\">
+              <div data-reactid=\\"45\\">
+                <h2 data-reactid=\\"46\\">Intro</h2>
+                <div class=\\"form-group\\" data-reactid=\\"47\\">
+                  <label for=\\"name\\" data-reactid=\\"48\\">Name</label>
+                  <input type=\\"text\\" class=\\"form-control\\" id=\\"name\\" value=\\"Test User\\" data-reactid=\\"49\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"50\\">
+                  <label for=\\"about\\" data-reactid=\\"51\\">About you</label>
+                  <textarea name=\\"about\\" class=\\"form-control\\" rows=\\"2\\" placeholder=\\"Write a short blurb about yourself.\\" data-reactid=\\"52\\">Test user about</textarea>
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"53\\">
+                  <label for=\\"bio\\" data-reactid=\\"54\\">Bio</label>
+                  <textarea class=\\"form-control\\" rows=\\"4\\" placeholder=\\"Tell us about yourself in more detail.\\" data-reactid=\\"55\\">Test user bio</textarea>
+                </div>
+                <div data-reactid=\\"56\\">
+                  <button type=\\"submit\\" class=\\"btn btn-primary btn-block\\" data-reactid=\\"57\\">Save profile</button>
+                </div>
               </div>
-              <div class=\\"form-group\\" data-reactid=\\"48\\">
-                <label for=\\"about\\" data-reactid=\\"49\\">About you</label>
-                <textarea class=\\"form-control\\" rows=\\"2\\" placeholder=\\"Write a short blurb about yourself.\\" data-reactid=\\"50\\">Test user about</textarea>
+              <div data-reactid=\\"58\\">
+                <h2 data-reactid=\\"59\\">Online Presence</h2>
+                <div class=\\"form-group\\" data-reactid=\\"60\\">
+                  <label for=\\"website\\" data-reactid=\\"61\\">Website</label>
+                  <input type=\\"url\\" class=\\"form-control\\" id=\\"website\\" value=\\"http://website\\" data-reactid=\\"62\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"63\\">
+                  <label for=\\"blog\\" data-reactid=\\"64\\">Blog</label>
+                  <input type=\\"url\\" class=\\"form-control\\" id=\\"blog\\" value=\\"http://blog\\" data-reactid=\\"65\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"66\\">
+                  <label for=\\"youtube\\" data-reactid=\\"67\\">Youtube</label>
+                  <input type=\\"url\\" class=\\"form-control\\" id=\\"youtube\\" value=\\"http://youtube\\" data-reactid=\\"68\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"69\\">
+                  <label for=\\"twitter\\" data-reactid=\\"70\\">Twitter Handle</label>
+                  <input type=\\"text\\" class=\\"form-control\\" id=\\"twitter\\" placeholder=\\"e.g. johnsmith\\" value=\\"http://twitter\\" data-reactid=\\"71\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"72\\">
+                  <label for=\\"reddit\\" data-reactid=\\"73\\">Reddit Username</label>
+                  <input type=\\"text\\" class=\\"form-control\\" id=\\"reddit\\" placeholder=\\"e.g. johnsmith\\" value=\\"http://reddit\\" data-reactid=\\"74\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"75\\">
+                  <label for=\\"patreon\\" data-reactid=\\"76\\">Patreon Username</label>
+                  <input type=\\"text\\" class=\\"form-control\\" id=\\"patreon\\" placeholder=\\"e.g. johnsmith\\" value=\\"http://patreon\\" data-reactid=\\"77\\">
+                </div>
+                <div data-reactid=\\"78\\">
+                  <button type=\\"submit\\" class=\\"btn btn-primary btn-block\\" data-reactid=\\"79\\">Save profile</button>
+                </div>
               </div>
-              <div class=\\"form-group\\" data-reactid=\\"51\\">
-                <label for=\\"bio\\" data-reactid=\\"52\\">Bio</label>
-                <textarea class=\\"form-control\\" rows=\\"4\\" placeholder=\\"Tell us about yourself in more detail.\\" data-reactid=\\"53\\">Test user bio</textarea>
+              <div data-reactid=\\"80\\">
+                <h2 data-reactid=\\"81\\">Personal Information</h2>
+                <div class=\\"form-group\\" data-reactid=\\"82\\">
+                  <label data-reactid=\\"83\\">Are you a man or a woman?</label>
+                  <div class=\\"radio\\" data-reactid=\\"84\\">
+                    <label data-reactid=\\"85\\">
+                      <input type=\\"radio\\" id=\\"gender\\" name=\\"gender\\" value=\\"male\\" checked data-reactid=\\"86\\">
+                      <!-- react-text: 87 -->I am a man
+                      <!-- /react-text -->
+                    </label>
+                  </div>
+                  <div class=\\"radio\\" data-reactid=\\"88\\">
+                    <label data-reactid=\\"89\\">
+                      <input type=\\"radio\\" id=\\"gender\\" name=\\"gender\\" value=\\"female\\" data-reactid=\\"90\\">
+                      <!-- react-text: 91 -->I am a woman
+                      <!-- /react-text -->
+                    </label>
+                  </div>
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"92\\">
+                  <label for=\\"birthDate\\" data-reactid=\\"93\\">Date of birth</label>
+                  <input type=\\"date\\" class=\\"form-control\\" id=\\"birthDate\\" value=\\"1970-01-01\\" data-reactid=\\"94\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"95\\">
+                  <label for=\\"city\\" data-reactid=\\"96\\">City</label>
+                  <input type=\\"text\\" class=\\"form-control\\" id=\\"city\\" value=\\"Zurich\\" data-reactid=\\"97\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"98\\">
+                  <label for=\\"country\\" data-reactid=\\"99\\">Country</label>
+                  <select class=\\"form-control\\" name=\\"country\\" data-reactid=\\"100\\">
+                    <option data-reactid=\\"101\\"></option>
+                    <option value=\\"af\\" data-reactid=\\"102\\">Afghanistan</option>
+                    <option value=\\"ax\\" data-reactid=\\"103\\">&#xC5;land Islands</option>
+                    <option value=\\"al\\" data-reactid=\\"104\\">Albania</option>
+                    <option value=\\"dz\\" data-reactid=\\"105\\">Algeria</option>
+                    <option value=\\"as\\" data-reactid=\\"106\\">American Samoa</option>
+                    <option value=\\"ad\\" data-reactid=\\"107\\">Andorra</option>
+                    <option value=\\"ao\\" data-reactid=\\"108\\">Angola</option>
+                    <option value=\\"ai\\" data-reactid=\\"109\\">Anguilla</option>
+                    <option value=\\"aq\\" data-reactid=\\"110\\">Antarctica</option>
+                    <option value=\\"ag\\" data-reactid=\\"111\\">Antigua and Barbuda</option>
+                    <option value=\\"ar\\" data-reactid=\\"112\\">Argentina</option>
+                    <option value=\\"am\\" data-reactid=\\"113\\">Armenia</option>
+                    <option value=\\"aw\\" data-reactid=\\"114\\">Aruba</option>
+                    <option value=\\"au\\" data-reactid=\\"115\\">Australia</option>
+                    <option value=\\"at\\" data-reactid=\\"116\\">Austria</option>
+                    <option value=\\"az\\" data-reactid=\\"117\\">Azerbaijan</option>
+                    <option value=\\"bs\\" data-reactid=\\"118\\">Bahamas</option>
+                    <option value=\\"bh\\" data-reactid=\\"119\\">Bahrain</option>
+                    <option value=\\"bd\\" data-reactid=\\"120\\">Bangladesh</option>
+                    <option value=\\"bb\\" data-reactid=\\"121\\">Barbados</option>
+                    <option value=\\"by\\" data-reactid=\\"122\\">Belarus</option>
+                    <option value=\\"be\\" data-reactid=\\"123\\">Belgium</option>
+                    <option value=\\"bz\\" data-reactid=\\"124\\">Belize</option>
+                    <option value=\\"bj\\" data-reactid=\\"125\\">Benin</option>
+                    <option value=\\"bm\\" data-reactid=\\"126\\">Bermuda</option>
+                    <option value=\\"bt\\" data-reactid=\\"127\\">Bhutan</option>
+                    <option value=\\"bo\\" data-reactid=\\"128\\">Bolivia, Plurinational State of</option>
+                    <option value=\\"bq\\" data-reactid=\\"129\\">Bonaire, Sint Eustatius and Saba</option>
+                    <option value=\\"ba\\" data-reactid=\\"130\\">Bosnia and Herzegovina</option>
+                    <option value=\\"bw\\" data-reactid=\\"131\\">Botswana</option>
+                    <option value=\\"bv\\" data-reactid=\\"132\\">Bouvet Island</option>
+                    <option value=\\"br\\" data-reactid=\\"133\\">Brazil</option>
+                    <option value=\\"io\\" data-reactid=\\"134\\">British Indian Ocean Territory</option>
+                    <option value=\\"bn\\" data-reactid=\\"135\\">Brunei Darussalam</option>
+                    <option value=\\"bg\\" data-reactid=\\"136\\">Bulgaria</option>
+                    <option value=\\"bf\\" data-reactid=\\"137\\">Burkina Faso</option>
+                    <option value=\\"bi\\" data-reactid=\\"138\\">Burundi</option>
+                    <option value=\\"kh\\" data-reactid=\\"139\\">Cambodia</option>
+                    <option value=\\"cm\\" data-reactid=\\"140\\">Cameroon</option>
+                    <option value=\\"ca\\" data-reactid=\\"141\\">Canada</option>
+                    <option value=\\"cv\\" data-reactid=\\"142\\">Cape Verde</option>
+                    <option value=\\"ky\\" data-reactid=\\"143\\">Cayman Islands</option>
+                    <option value=\\"cf\\" data-reactid=\\"144\\">Central African Republic</option>
+                    <option value=\\"td\\" data-reactid=\\"145\\">Chad</option>
+                    <option value=\\"cl\\" data-reactid=\\"146\\">Chile</option>
+                    <option value=\\"cn\\" data-reactid=\\"147\\">China</option>
+                    <option value=\\"cx\\" data-reactid=\\"148\\">Christmas Island</option>
+                    <option value=\\"cc\\" data-reactid=\\"149\\">Cocos (Keeling) Islands</option>
+                    <option value=\\"co\\" data-reactid=\\"150\\">Colombia</option>
+                    <option value=\\"km\\" data-reactid=\\"151\\">Comoros</option>
+                    <option value=\\"cg\\" data-reactid=\\"152\\">Congo</option>
+                    <option value=\\"cd\\" data-reactid=\\"153\\">Congo, the Democratic Republic of the</option>
+                    <option value=\\"ck\\" data-reactid=\\"154\\">Cook Islands</option>
+                    <option value=\\"cr\\" data-reactid=\\"155\\">Costa Rica</option>
+                    <option value=\\"ci\\" data-reactid=\\"156\\">C&#xF4;te d&apos;Ivoire</option>
+                    <option value=\\"hr\\" data-reactid=\\"157\\">Croatia</option>
+                    <option value=\\"cu\\" data-reactid=\\"158\\">Cuba</option>
+                    <option value=\\"cw\\" data-reactid=\\"159\\">Cura&#xE7;ao</option>
+                    <option value=\\"cy\\" data-reactid=\\"160\\">Cyprus</option>
+                    <option value=\\"cz\\" data-reactid=\\"161\\">Czech Republic</option>
+                    <option value=\\"dk\\" data-reactid=\\"162\\">Denmark</option>
+                    <option value=\\"dj\\" data-reactid=\\"163\\">Djibouti</option>
+                    <option value=\\"dm\\" data-reactid=\\"164\\">Dominica</option>
+                    <option value=\\"do\\" data-reactid=\\"165\\">Dominican Republic</option>
+                    <option value=\\"ec\\" data-reactid=\\"166\\">Ecuador</option>
+                    <option value=\\"eg\\" data-reactid=\\"167\\">Egypt</option>
+                    <option value=\\"sv\\" data-reactid=\\"168\\">El Salvador</option>
+                    <option value=\\"gq\\" data-reactid=\\"169\\">Equatorial Guinea</option>
+                    <option value=\\"er\\" data-reactid=\\"170\\">Eritrea</option>
+                    <option value=\\"ee\\" data-reactid=\\"171\\">Estonia</option>
+                    <option value=\\"et\\" data-reactid=\\"172\\">Ethiopia</option>
+                    <option value=\\"fk\\" data-reactid=\\"173\\">Falkland Islands (Malvinas)</option>
+                    <option value=\\"fo\\" data-reactid=\\"174\\">Faroe Islands</option>
+                    <option value=\\"fj\\" data-reactid=\\"175\\">Fiji</option>
+                    <option value=\\"fi\\" data-reactid=\\"176\\">Finland</option>
+                    <option value=\\"fr\\" data-reactid=\\"177\\">France</option>
+                    <option value=\\"gf\\" data-reactid=\\"178\\">French Guiana</option>
+                    <option value=\\"pf\\" data-reactid=\\"179\\">French Polynesia</option>
+                    <option value=\\"tf\\" data-reactid=\\"180\\">French Southern Territories</option>
+                    <option value=\\"ga\\" data-reactid=\\"181\\">Gabon</option>
+                    <option value=\\"gm\\" data-reactid=\\"182\\">Gambia</option>
+                    <option value=\\"ge\\" data-reactid=\\"183\\">Georgia</option>
+                    <option value=\\"de\\" data-reactid=\\"184\\">Germany</option>
+                    <option value=\\"gh\\" data-reactid=\\"185\\">Ghana</option>
+                    <option value=\\"gi\\" data-reactid=\\"186\\">Gibraltar</option>
+                    <option value=\\"gr\\" data-reactid=\\"187\\">Greece</option>
+                    <option value=\\"gl\\" data-reactid=\\"188\\">Greenland</option>
+                    <option value=\\"gd\\" data-reactid=\\"189\\">Grenada</option>
+                    <option value=\\"gp\\" data-reactid=\\"190\\">Guadeloupe</option>
+                    <option value=\\"gu\\" data-reactid=\\"191\\">Guam</option>
+                    <option value=\\"gt\\" data-reactid=\\"192\\">Guatemala</option>
+                    <option value=\\"gg\\" data-reactid=\\"193\\">Guernsey</option>
+                    <option value=\\"gn\\" data-reactid=\\"194\\">Guinea</option>
+                    <option value=\\"gw\\" data-reactid=\\"195\\">Guinea-Bissau</option>
+                    <option value=\\"gy\\" data-reactid=\\"196\\">Guyana</option>
+                    <option value=\\"ht\\" data-reactid=\\"197\\">Haiti</option>
+                    <option value=\\"hm\\" data-reactid=\\"198\\">Heard Island and McDonald Islands</option>
+                    <option value=\\"va\\" data-reactid=\\"199\\">Holy See (Vatican City State)</option>
+                    <option value=\\"hn\\" data-reactid=\\"200\\">Honduras</option>
+                    <option value=\\"hk\\" data-reactid=\\"201\\">Hong Kong</option>
+                    <option value=\\"hu\\" data-reactid=\\"202\\">Hungary</option>
+                    <option value=\\"is\\" data-reactid=\\"203\\">Iceland</option>
+                    <option value=\\"in\\" data-reactid=\\"204\\">India</option>
+                    <option value=\\"id\\" data-reactid=\\"205\\">Indonesia</option>
+                    <option value=\\"ir\\" data-reactid=\\"206\\">Iran, Islamic Republic of</option>
+                    <option value=\\"iq\\" data-reactid=\\"207\\">Iraq</option>
+                    <option value=\\"ie\\" data-reactid=\\"208\\">Ireland</option>
+                    <option value=\\"im\\" data-reactid=\\"209\\">Isle of Man</option>
+                    <option value=\\"il\\" data-reactid=\\"210\\">Israel</option>
+                    <option value=\\"it\\" data-reactid=\\"211\\">Italy</option>
+                    <option value=\\"jm\\" data-reactid=\\"212\\">Jamaica</option>
+                    <option value=\\"jp\\" data-reactid=\\"213\\">Japan</option>
+                    <option value=\\"je\\" data-reactid=\\"214\\">Jersey</option>
+                    <option value=\\"jo\\" data-reactid=\\"215\\">Jordan</option>
+                    <option value=\\"kz\\" data-reactid=\\"216\\">Kazakhstan</option>
+                    <option value=\\"ke\\" data-reactid=\\"217\\">Kenya</option>
+                    <option value=\\"ki\\" data-reactid=\\"218\\">Kiribati</option>
+                    <option value=\\"kp\\" data-reactid=\\"219\\">Korea, Democratic People&apos;s Republic of</option>
+                    <option value=\\"kr\\" data-reactid=\\"220\\">Korea, Republic of</option>
+                    <option value=\\"kw\\" data-reactid=\\"221\\">Kuwait</option>
+                    <option value=\\"kg\\" data-reactid=\\"222\\">Kyrgyzstan</option>
+                    <option value=\\"la\\" data-reactid=\\"223\\">Lao People&apos;s Democratic Republic</option>
+                    <option value=\\"lv\\" data-reactid=\\"224\\">Latvia</option>
+                    <option value=\\"lb\\" data-reactid=\\"225\\">Lebanon</option>
+                    <option value=\\"ls\\" data-reactid=\\"226\\">Lesotho</option>
+                    <option value=\\"lr\\" data-reactid=\\"227\\">Liberia</option>
+                    <option value=\\"ly\\" data-reactid=\\"228\\">Libya</option>
+                    <option value=\\"li\\" data-reactid=\\"229\\">Liechtenstein</option>
+                    <option value=\\"lt\\" data-reactid=\\"230\\">Lithuania</option>
+                    <option value=\\"lu\\" data-reactid=\\"231\\">Luxembourg</option>
+                    <option value=\\"mo\\" data-reactid=\\"232\\">Macao</option>
+                    <option value=\\"mk\\" data-reactid=\\"233\\">Macedonia, the Former Yugoslav Republic of</option>
+                    <option value=\\"mg\\" data-reactid=\\"234\\">Madagascar</option>
+                    <option value=\\"mw\\" data-reactid=\\"235\\">Malawi</option>
+                    <option value=\\"my\\" data-reactid=\\"236\\">Malaysia</option>
+                    <option value=\\"mv\\" data-reactid=\\"237\\">Maldives</option>
+                    <option value=\\"ml\\" data-reactid=\\"238\\">Mali</option>
+                    <option value=\\"mt\\" data-reactid=\\"239\\">Malta</option>
+                    <option value=\\"mh\\" data-reactid=\\"240\\">Marshall Islands</option>
+                    <option value=\\"mq\\" data-reactid=\\"241\\">Martinique</option>
+                    <option value=\\"mr\\" data-reactid=\\"242\\">Mauritania</option>
+                    <option value=\\"mu\\" data-reactid=\\"243\\">Mauritius</option>
+                    <option value=\\"yt\\" data-reactid=\\"244\\">Mayotte</option>
+                    <option value=\\"mx\\" data-reactid=\\"245\\">Mexico</option>
+                    <option value=\\"fm\\" data-reactid=\\"246\\">Micronesia, Federated States of</option>
+                    <option value=\\"md\\" data-reactid=\\"247\\">Moldova, Republic of</option>
+                    <option value=\\"mc\\" data-reactid=\\"248\\">Monaco</option>
+                    <option value=\\"mn\\" data-reactid=\\"249\\">Mongolia</option>
+                    <option value=\\"me\\" data-reactid=\\"250\\">Montenegro</option>
+                    <option value=\\"ms\\" data-reactid=\\"251\\">Montserrat</option>
+                    <option value=\\"ma\\" data-reactid=\\"252\\">Morocco</option>
+                    <option value=\\"mz\\" data-reactid=\\"253\\">Mozambique</option>
+                    <option value=\\"mm\\" data-reactid=\\"254\\">Myanmar</option>
+                    <option value=\\"na\\" data-reactid=\\"255\\">Namibia</option>
+                    <option value=\\"nr\\" data-reactid=\\"256\\">Nauru</option>
+                    <option value=\\"np\\" data-reactid=\\"257\\">Nepal</option>
+                    <option value=\\"nl\\" data-reactid=\\"258\\">Netherlands</option>
+                    <option value=\\"nc\\" data-reactid=\\"259\\">New Caledonia</option>
+                    <option value=\\"nz\\" data-reactid=\\"260\\">New Zealand</option>
+                    <option value=\\"ni\\" data-reactid=\\"261\\">Nicaragua</option>
+                    <option value=\\"ne\\" data-reactid=\\"262\\">Niger</option>
+                    <option value=\\"ng\\" data-reactid=\\"263\\">Nigeria</option>
+                    <option value=\\"nu\\" data-reactid=\\"264\\">Niue</option>
+                    <option value=\\"nf\\" data-reactid=\\"265\\">Norfolk Island</option>
+                    <option value=\\"mp\\" data-reactid=\\"266\\">Northern Mariana Islands</option>
+                    <option value=\\"no\\" data-reactid=\\"267\\">Norway</option>
+                    <option value=\\"om\\" data-reactid=\\"268\\">Oman</option>
+                    <option value=\\"pk\\" data-reactid=\\"269\\">Pakistan</option>
+                    <option value=\\"pw\\" data-reactid=\\"270\\">Palau</option>
+                    <option value=\\"ps\\" data-reactid=\\"271\\">Palestine, State of</option>
+                    <option value=\\"pa\\" data-reactid=\\"272\\">Panama</option>
+                    <option value=\\"pg\\" data-reactid=\\"273\\">Papua New Guinea</option>
+                    <option value=\\"py\\" data-reactid=\\"274\\">Paraguay</option>
+                    <option value=\\"pe\\" data-reactid=\\"275\\">Peru</option>
+                    <option value=\\"ph\\" data-reactid=\\"276\\">Philippines</option>
+                    <option value=\\"pn\\" data-reactid=\\"277\\">Pitcairn</option>
+                    <option value=\\"pl\\" data-reactid=\\"278\\">Poland</option>
+                    <option value=\\"pt\\" data-reactid=\\"279\\">Portugal</option>
+                    <option value=\\"pr\\" data-reactid=\\"280\\">Puerto Rico</option>
+                    <option value=\\"qa\\" data-reactid=\\"281\\">Qatar</option>
+                    <option value=\\"re\\" data-reactid=\\"282\\">R&#xE9;union</option>
+                    <option value=\\"ro\\" data-reactid=\\"283\\">Romania</option>
+                    <option value=\\"ru\\" data-reactid=\\"284\\">Russian Federation</option>
+                    <option value=\\"rw\\" data-reactid=\\"285\\">Rwanda</option>
+                    <option value=\\"bl\\" data-reactid=\\"286\\">Saint Barth&#xE9;lemy</option>
+                    <option value=\\"sh\\" data-reactid=\\"287\\">Saint Helena, Ascension and Tristan da Cunha</option>
+                    <option value=\\"kn\\" data-reactid=\\"288\\">Saint Kitts and Nevis</option>
+                    <option value=\\"lc\\" data-reactid=\\"289\\">Saint Lucia</option>
+                    <option value=\\"mf\\" data-reactid=\\"290\\">Saint Martin (French part)</option>
+                    <option value=\\"pm\\" data-reactid=\\"291\\">Saint Pierre and Miquelon</option>
+                    <option value=\\"vc\\" data-reactid=\\"292\\">Saint Vincent and the Grenadines</option>
+                    <option value=\\"ws\\" data-reactid=\\"293\\">Samoa</option>
+                    <option value=\\"sm\\" data-reactid=\\"294\\">San Marino</option>
+                    <option value=\\"st\\" data-reactid=\\"295\\">Sao Tome and Principe</option>
+                    <option value=\\"sa\\" data-reactid=\\"296\\">Saudi Arabia</option>
+                    <option value=\\"sn\\" data-reactid=\\"297\\">Senegal</option>
+                    <option value=\\"rs\\" data-reactid=\\"298\\">Serbia</option>
+                    <option value=\\"sc\\" data-reactid=\\"299\\">Seychelles</option>
+                    <option value=\\"sl\\" data-reactid=\\"300\\">Sierra Leone</option>
+                    <option value=\\"sg\\" data-reactid=\\"301\\">Singapore</option>
+                    <option value=\\"sx\\" data-reactid=\\"302\\">Sint Maarten (Dutch part)</option>
+                    <option value=\\"sk\\" data-reactid=\\"303\\">Slovakia</option>
+                    <option value=\\"si\\" data-reactid=\\"304\\">Slovenia</option>
+                    <option value=\\"sb\\" data-reactid=\\"305\\">Solomon Islands</option>
+                    <option value=\\"so\\" data-reactid=\\"306\\">Somalia</option>
+                    <option value=\\"za\\" data-reactid=\\"307\\">South Africa</option>
+                    <option value=\\"gs\\" data-reactid=\\"308\\">South Georgia and the South Sandwich Islands</option>
+                    <option value=\\"ss\\" data-reactid=\\"309\\">South Sudan</option>
+                    <option value=\\"es\\" data-reactid=\\"310\\">Spain</option>
+                    <option value=\\"lk\\" data-reactid=\\"311\\">Sri Lanka</option>
+                    <option value=\\"sd\\" data-reactid=\\"312\\">Sudan</option>
+                    <option value=\\"sr\\" data-reactid=\\"313\\">Suriname</option>
+                    <option value=\\"sj\\" data-reactid=\\"314\\">Svalbard and Jan Mayen</option>
+                    <option value=\\"sz\\" data-reactid=\\"315\\">Swaziland</option>
+                    <option value=\\"se\\" data-reactid=\\"316\\">Sweden</option>
+                    <option selected value=\\"ch\\" data-reactid=\\"317\\">Switzerland</option>
+                    <option value=\\"sy\\" data-reactid=\\"318\\">Syrian Arab Republic</option>
+                    <option value=\\"tw\\" data-reactid=\\"319\\">Taiwan, Province of China</option>
+                    <option value=\\"tj\\" data-reactid=\\"320\\">Tajikistan</option>
+                    <option value=\\"tz\\" data-reactid=\\"321\\">Tanzania, United Republic of</option>
+                    <option value=\\"th\\" data-reactid=\\"322\\">Thailand</option>
+                    <option value=\\"tl\\" data-reactid=\\"323\\">Timor-Leste</option>
+                    <option value=\\"tg\\" data-reactid=\\"324\\">Togo</option>
+                    <option value=\\"tk\\" data-reactid=\\"325\\">Tokelau</option>
+                    <option value=\\"to\\" data-reactid=\\"326\\">Tonga</option>
+                    <option value=\\"tt\\" data-reactid=\\"327\\">Trinidad and Tobago</option>
+                    <option value=\\"tn\\" data-reactid=\\"328\\">Tunisia</option>
+                    <option value=\\"tr\\" data-reactid=\\"329\\">Turkey</option>
+                    <option value=\\"tm\\" data-reactid=\\"330\\">Turkmenistan</option>
+                    <option value=\\"tc\\" data-reactid=\\"331\\">Turks and Caicos Islands</option>
+                    <option value=\\"tv\\" data-reactid=\\"332\\">Tuvalu</option>
+                    <option value=\\"ug\\" data-reactid=\\"333\\">Uganda</option>
+                    <option value=\\"ua\\" data-reactid=\\"334\\">Ukraine</option>
+                    <option value=\\"ae\\" data-reactid=\\"335\\">United Arab Emirates</option>
+                    <option value=\\"gb\\" data-reactid=\\"336\\">United Kingdom</option>
+                    <option value=\\"us\\" data-reactid=\\"337\\">United States</option>
+                    <option value=\\"um\\" data-reactid=\\"338\\">United States Minor Outlying Islands</option>
+                    <option value=\\"uy\\" data-reactid=\\"339\\">Uruguay</option>
+                    <option value=\\"uz\\" data-reactid=\\"340\\">Uzbekistan</option>
+                    <option value=\\"vu\\" data-reactid=\\"341\\">Vanuatu</option>
+                    <option value=\\"ve\\" data-reactid=\\"342\\">Venezuela, Bolivarian Republic of</option>
+                    <option value=\\"vn\\" data-reactid=\\"343\\">Viet Nam</option>
+                    <option value=\\"vg\\" data-reactid=\\"344\\">Virgin Islands, British</option>
+                    <option value=\\"vi\\" data-reactid=\\"345\\">Virgin Islands, U.S.</option>
+                    <option value=\\"wf\\" data-reactid=\\"346\\">Wallis and Futuna</option>
+                    <option value=\\"eh\\" data-reactid=\\"347\\">Western Sahara</option>
+                    <option value=\\"ye\\" data-reactid=\\"348\\">Yemen</option>
+                    <option value=\\"zm\\" data-reactid=\\"349\\">Zambia</option>
+                    <option value=\\"zw\\" data-reactid=\\"350\\">Zimbabwe</option>
+                  </select>
+                </div>
+                <div data-reactid=\\"351\\">
+                  <button type=\\"submit\\" class=\\"btn btn-primary btn-block\\" data-reactid=\\"352\\">Save profile</button>
+                </div>
               </div>
-              <div class=\\"form-group\\" data-reactid=\\"54\\">
-                <label for=\\"website\\" data-reactid=\\"55\\">Website</label>
-                <input type=\\"text\\" class=\\"form-control\\" id=\\"website\\" value=\\"http://website\\" data-reactid=\\"56\\">
+              <div data-reactid=\\"353\\">
+                <h2 data-reactid=\\"354\\">Self Authoring Suite</h2>
+                <div class=\\"checkbox\\" data-reactid=\\"355\\">
+                  <label data-reactid=\\"356\\">
+                    <input type=\\"checkbox\\" name=\\"selfAuthoringPast\\" checked data-reactid=\\"357\\">
+                    <!-- react-text: 358 -->Completed Past Authoring
+                    <!-- /react-text -->
+                  </label>
+                </div>
+                <div class=\\"checkbox\\" data-reactid=\\"359\\">
+                  <label data-reactid=\\"360\\">
+                    <input type=\\"checkbox\\" name=\\"selfAuthoringPresentVirtues\\" checked data-reactid=\\"361\\">
+                    <!-- react-text: 362 -->Completed Present Virtues
+                    <!-- /react-text -->
+                  </label>
+                </div>
+                <div class=\\"checkbox\\" data-reactid=\\"363\\">
+                  <label data-reactid=\\"364\\">
+                    <input type=\\"checkbox\\" name=\\"selfAuthoringPresentFaults\\" checked data-reactid=\\"365\\">
+                    <!-- react-text: 366 -->Completed Present Faults
+                    <!-- /react-text -->
+                  </label>
+                </div>
+                <div class=\\"checkbox\\" data-reactid=\\"367\\">
+                  <label data-reactid=\\"368\\">
+                    <input type=\\"checkbox\\" name=\\"selfAuthoringFuture\\" checked data-reactid=\\"369\\">
+                    <!-- react-text: 370 -->Completed Future Authoring
+                    <!-- /react-text -->
+                  </label>
+                </div>
+                <div data-reactid=\\"371\\">
+                  <button type=\\"submit\\" class=\\"btn btn-primary btn-block\\" data-reactid=\\"372\\">Save profile</button>
+                </div>
               </div>
-              <div class=\\"form-group\\" data-reactid=\\"57\\">
-                <label for=\\"blog\\" data-reactid=\\"58\\">Blog</label>
-                <input type=\\"text\\" class=\\"form-control\\" id=\\"blog\\" value=\\"http://blog\\" data-reactid=\\"59\\">
+              <div data-reactid=\\"373\\">
+                <h2 data-reactid=\\"374\\">Unterstand Myself</h2>
+                <div class=\\"checkbox\\" data-reactid=\\"375\\">
+                  <label data-reactid=\\"376\\">
+                    <input type=\\"checkbox\\" name=\\"understandMyself\\" checked data-reactid=\\"377\\">
+                    <!-- react-text: 378 -->Completed Understand Myself Program
+                    <!-- /react-text -->
+                  </label>
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"379\\">
+                  <label for=\\"agreeableness\\" data-reactid=\\"380\\">Agreeableness</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"agreeableness\\" placeholder=\\"percentile, e.g. 37\\" value=\\"50\\" data-reactid=\\"381\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"382\\">
+                  <label for=\\"compassion\\" data-reactid=\\"383\\">Compassion</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"compassion\\" value=\\"50\\" data-reactid=\\"384\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"385\\">
+                  <label for=\\"politeness\\" data-reactid=\\"386\\">Politeness</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"politeness\\" value=\\"50\\" data-reactid=\\"387\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"388\\">
+                  <label for=\\"conscientiousness\\" data-reactid=\\"389\\">Conscientiousness</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"conscientiousness\\" value=\\"50\\" data-reactid=\\"390\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"391\\">
+                  <label for=\\"industriousness\\" data-reactid=\\"392\\">Industriousness</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"industriousness\\" value=\\"50\\" data-reactid=\\"393\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"394\\">
+                  <label for=\\"orderliness\\" data-reactid=\\"395\\">Orderliness</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"orderliness\\" value=\\"50\\" data-reactid=\\"396\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"397\\">
+                  <label for=\\"extraversion\\" data-reactid=\\"398\\">Extraversion</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"extraversion\\" value=\\"50\\" data-reactid=\\"399\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"400\\">
+                  <label for=\\"enthusiasm\\" data-reactid=\\"401\\">Enthusiasm</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"enthusiasm\\" value=\\"50\\" data-reactid=\\"402\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"403\\">
+                  <label for=\\"assertiveness\\" data-reactid=\\"404\\">Assertiveness</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"assertiveness\\" value=\\"50\\" data-reactid=\\"405\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"406\\">
+                  <label for=\\"neuroticism\\" data-reactid=\\"407\\">Neuroticism</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"neuroticism\\" value=\\"50\\" data-reactid=\\"408\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"409\\">
+                  <label for=\\"withdrawal\\" data-reactid=\\"410\\">Withdrawal</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"withdrawal\\" value=\\"50\\" data-reactid=\\"411\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"412\\">
+                  <label for=\\"volatility\\" data-reactid=\\"413\\">Volatility</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"volatility\\" value=\\"50\\" data-reactid=\\"414\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"415\\">
+                  <label for=\\"opennessToExperience\\" data-reactid=\\"416\\">Openness to Experience</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"opennessToExperience\\" value=\\"50\\" data-reactid=\\"417\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"418\\">
+                  <label for=\\"intellect\\" data-reactid=\\"419\\">Intellect</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"intellect\\" value=\\"50\\" data-reactid=\\"420\\">
+                </div>
+                <div class=\\"form-group\\" data-reactid=\\"421\\">
+                  <label for=\\"openness\\" data-reactid=\\"422\\">Openness</label>
+                  <input type=\\"int\\" class=\\"form-control\\" id=\\"openness\\" value=\\"50\\" data-reactid=\\"423\\">
+                </div>
               </div>
-              <div class=\\"form-group\\" data-reactid=\\"60\\">
-                <label for=\\"youtube\\" data-reactid=\\"61\\">Youtube</label>
-                <input type=\\"text\\" class=\\"form-control\\" id=\\"youtube\\" value=\\"http://youtube\\" data-reactid=\\"62\\">
-              </div>
-              <div class=\\"form-group\\" data-reactid=\\"63\\">
-                <label for=\\"twitter\\" data-reactid=\\"64\\">Twitter</label>
-                <input type=\\"text\\" class=\\"form-control\\" id=\\"twitter\\" value=\\"http://twitter\\" data-reactid=\\"65\\">
-              </div>
-              <div class=\\"form-group\\" data-reactid=\\"66\\">
-                <label for=\\"reddit\\" data-reactid=\\"67\\">Reddit</label>
-                <input type=\\"text\\" class=\\"form-control\\" id=\\"reddit\\" value=\\"http://reddit\\" data-reactid=\\"68\\">
-              </div>
-              <div class=\\"form-group\\" data-reactid=\\"69\\">
-                <label for=\\"patreon\\" data-reactid=\\"70\\">Patreon</label>
-                <input type=\\"text\\" class=\\"form-control\\" id=\\"patreon\\" value=\\"http://patreon\\" data-reactid=\\"71\\">
-              </div>
-              <div class=\\"form-group\\" data-reactid=\\"72\\">
-                <button type=\\"submit\\" class=\\"btn btn-primary btn-block\\" data-reactid=\\"73\\">Save profile</button>
+              <div class=\\"form-group\\" data-reactid=\\"424\\">
+                <button type=\\"submit\\" class=\\"btn btn-primary btn-block\\" data-reactid=\\"425\\">Save profile</button>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-    <footer data-reactid=\\"74\\">
-      <div class=\\"container\\" data-reactid=\\"75\\">
-        <hr data-reactid=\\"76\\">
-        <p data-reactid=\\"77\\">
-          <!-- react-text: 78 -->Brought to you with &#x2764; by
+    <footer data-reactid=\\"426\\">
+      <div class=\\"container\\" data-reactid=\\"427\\">
+        <hr data-reactid=\\"428\\">
+        <p data-reactid=\\"429\\">
+          <!-- react-text: 430 -->Brought to you with &#x2764; by
           <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"79\\">Nick Redmark</a>
-          <!-- react-text: 80 -->. Support and discuss the development of this platform on
+          <a href=\\"/about\\" data-reactid=\\"431\\">Nick Redmark</a>
+          <!-- react-text: 432 -->. Support and discuss the development of this platform on
           <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"81\\">Patreon</a>
-          <!-- react-text: 82 -->.
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"433\\">Patreon</a>
+          <!-- react-text: 434 -->.
           <!-- /react-text -->
         </p>
       </div>

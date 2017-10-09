@@ -300,7 +300,7 @@ class GoalComponent extends Component {
                                     edit: false
                                 })
                             }}
-                        >✕</ShyButton>&nbsp;
+                        >✕</ShyButton>
                     </span>
                     <div className="form-group">
                         <label htmlFor='title'>Title</label>
@@ -345,7 +345,7 @@ class GoalComponent extends Component {
                             title="Delete goal?"
                             message="A deleted goal can't be recovered."
                             onDelete={remove}
-                        />&nbsp;
+                        />
                         <ShyButton
                             onClick={() => {
                                 this.setState({
@@ -355,7 +355,7 @@ class GoalComponent extends Component {
                         >✎</ShyButton>
                     </span>
                     <span>{title}</span>
-                    {goalStatus === 'done' && <span>&nbsp;✔</span>}
+                    {goalStatus === 'done' && <span> ✔</span>}
                 </span>
             }
         </li>

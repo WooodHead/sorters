@@ -22,7 +22,6 @@ class CheckButtons extends Component {
                                 this.checks[key] = ref
                             }}
                         />
-                        &nbsp;
                         {value.label}
                     </label>
                 </div>

@@ -4,7 +4,11 @@ import {graphql} from 'react-apollo'
 import gql from 'graphql-tag'
 import {compose} from 'recompose'
 import Markdown from '../../components/markdown'
+import CountryList from 'country-list'
 import UserHeader from '../../components/user-header'
+import {PROGRAMS} from '../../models/programs'
+
+const countries = new CountryList()
 
 export default withPage(({url: {query: {username}}}) => (
     <Layout title="Sorter" page="user-profile">
@@ -29,15 +33,18 @@ const urlFields = [
     },
     {
         name: 'twitter',
-        label: 'Twitter'
+        label: 'Twitter',
+        url: handle => `https://www.twitter.com/${handle}`,
     },
     {
         name: 'reddit',
-        label: 'Reddit'
+        label: 'Reddit',
+        url: handle => `https://reddit.com/user/${handle}`,
     },
     {
         name: 'patreon',
-        label: 'Patreon'
+        label: 'Patreon',
+        url: handle => `https://www.patreon.com/${handle}`,
     }
 ]
 
@@ -58,6 +65,30 @@ const UserQuery = gql`
                 twitter
                 reddit
                 patreon
+                gender
+                birthDate
+                city
+                country
+                selfAuthoringPast
+                selfAuthoringPresentVirtues
+                selfAuthoringPresentFaults
+                selfAuthoringFuture
+                understandMyself
+                agreeableness
+                compassion
+                politeness
+                conscientiousness
+                industriousness
+                orderliness
+                extraversion
+                enthusiasm
+                assertiveness
+                neuroticism
+                withdrawal
+                volatility
+                opennessToExperience
+                intellect
+                openness
             }
             reads {
                 title
@@ -88,18 +119,50 @@ const UserComponent = (props) => {
     const username = user.local.username
     const emailHash = user.emailHash
     const profile = user.profile || {}
-    const {name, about, bio} = profile
+    const {
+        name,
+        about,
+        bio,
+        gender,
+        birthDate,
+        city,
+        country,
+        selfAuthoringPast,
+        selfAuthoringPresentVirtues,
+        selfAuthoringPresentFaults,
+        selfAuthoringFuture,
+        understandMyself,
+        agreeableness,
+        compassion,
+        politeness,
+        conscientiousness,
+        industriousness,
+        orderliness,
+        extraversion,
+        enthusiasm,
+        assertiveness,
+        neuroticism,
+        withdrawal,
+        volatility,
+        opennessToExperience,
+        intellect,
+        openness,
+    } = profile
     const goals = user.goals || []
     const entries = user.entries || []
     const reads = user.reads || []
 
     const urls = []
-    urlFields.map(({name, label}) => {
-        if (profile[name]) {
+    urlFields.map(({name, label, url: urlMap}) => {
+        let url = profile[name]
+        if (url) {
+            if (urlMap && !/^http/.test(url)) {
+                url = urlMap(url)
+            }
             urls.push({
                 name,
                 label,
-                url: profile[name]
+                url,
             })
         }
     })
@@ -111,6 +174,18 @@ const UserComponent = (props) => {
             <li>{goals.length} <a href={`/u/${username}/goals`}>goals</a></li>
             <li>{entries.length} <a href={`/u/${username}/journal`}>journal entries</a></li>
             <li>{reads.length} <a href={`/u/${username}/reads`}>books in reading list</a></li>
+            {gender === 'male' && <li>A man</li>}
+            {gender === 'female' && <li>A woman</li>}
+            {city && country ? <li>
+                    City: {city}, {countries.getName(country)}
+                </li>
+            :
+                (city ?
+                    <li>City: {city}</li>
+                :
+                    country && <li>Country: {countries.getName(country)}</li>
+                )
+            }
         </ul>
         {urls.length > 0 && <div>
             <h2>Links</h2>
@@ -130,6 +205,99 @@ const UserComponent = (props) => {
             <div>
                 <h2>Bio</h2>
                 <Markdown content={bio}/>
+            </div>
+        }
+        {(selfAuthoringPast || selfAuthoringPresentFaults || selfAuthoringPresentVirtues || selfAuthoringFuture) &&
+            <div>  
+                <h2>Self Authoring suite</h2>
+                <ul>
+                    {selfAuthoringPast &&
+                        <li>Completed {PROGRAMS.selfAuthoringPast}</li>
+                    }
+                    {selfAuthoringPresentFaults &&
+                        <li>Completed {PROGRAMS.selfAuthoringPresentFaults}</li>
+                    }
+                    {selfAuthoringPresentVirtues &&
+                        <li>Completed {PROGRAMS.selfAuthoringPresentVirtues}</li>
+                    }
+                    {selfAuthoringFuture &&
+                        <li>Completed {PROGRAMS.selfAuthoringFuture}</li>
+                    }
+                </ul>
+            </div>
+        }
+        {(understandMyself
+            || agreeableness
+            || compassion
+            || politeness
+            || conscientiousness
+            || industriousness
+            || orderliness
+            || extraversion
+            || enthusiasm
+            || assertiveness
+            || neuroticism
+            || withdrawal
+            || volatility
+            || opennessToExperience
+            || intellect
+            || openness
+        ) &&
+            <div>
+                <h2>Big 5</h2>
+                {understandMyself &&
+                    <li>Completed {PROGRAMS.understandMyself}</li>
+                }
+                {(agreeableness || compassion || politeness) &&
+                    <li>Agreeableness: {agreeableness}
+                        {(compassion || politeness) &&
+                            <ul>
+                                {compassion && <li>Compassion: {compassion}</li>}
+                                {politeness && <li>Politeness: {politeness}</li>}
+                            </ul>
+                        }
+                    </li>
+                }
+                {(conscientiousness || industriousness || orderliness) &&
+                    <li>Conscientiousness: {conscientiousness}
+                        {(industriousness || orderliness) &&
+                            <ul>
+                                {industriousness && <li>Industriousness: {industriousness}</li>}
+                                {orderliness && <li>Orderliness: {orderliness}</li>}
+                            </ul>
+                        }
+                    </li>
+                }
+                {(extraversion || enthusiasm || assertiveness) &&
+                    <li>Extraversion: {extraversion}
+                        {(enthusiasm || assertiveness) &&
+                            <ul>
+                                {enthusiasm && <li>Enthusiasm: {enthusiasm}</li>}
+                                {assertiveness && <li>Orderliness: {assertiveness}</li>}
+                            </ul>
+                        }
+                    </li>
+                }
+                {(neuroticism || withdrawal || volatility) &&
+                    <li>Neuroticism: {neuroticism}
+                        {(withdrawal || volatility) &&
+                            <ul>
+                                {withdrawal && <li>Withdrawal: {withdrawal}</li>}
+                                {volatility && <li>Volatility: {volatility}</li>}
+                            </ul>
+                        }
+                    </li>
+                }
+                {(opennessToExperience || intellect || openness) &&
+                    <li>Openness to experience: {opennessToExperience}
+                        {(intellect || openness) &&
+                            <ul>
+                                {intellect && <li>Intellect: {intellect}</li>}
+                                {openness && <li>Openness: {openness}</li>}
+                            </ul>
+                        }
+                    </li>
+                }
             </div>
         }
     </div>

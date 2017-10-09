@@ -18,7 +18,6 @@ exports[`radio-buttons shallow-renders 1`] = `
         type="radio"
         value="foo"
       />
-       
       Foo
     </label>
   </div>
@@ -33,7 +32,6 @@ exports[`radio-buttons shallow-renders 1`] = `
         type="radio"
         value="bar"
       />
-       
       Bar
     </label>
   </div>

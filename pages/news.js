@@ -5,6 +5,7 @@ import gql from 'graphql-tag'
 import {compose} from 'recompose'
 import Gravatar from 'react-gravatar'
 import moment from 'moment'
+import {PROGRAMS} from '../models/programs'
 
 export default withPage(() => (
     <Layout title="News" page="news">
@@ -39,9 +40,44 @@ const digestEvents = (events) => {
         .sort().reverse()
         .map(d => {
             const day = byDayUser[d]
-            return Object.keys(day).map(k => day[k]).sort((a, b) => b.date - a.date)
+            return Object.keys(day)
+                .map(k => day[k])
+                .filter(event => Object.keys(event).length > 2)
+                .sort((a, b) => b.date - a.date)
         })
+        .filter(events => events.length)
     return days
+}
+
+const PROFILE_FIELDS = {
+    name: 'Name',
+    about: 'About',
+    bio: 'Bio',
+    website: 'Website',
+    blog: 'Blog',
+    youtube: 'Youtube',
+    twitter: 'Twitter',
+    reddit: 'Reddit',
+    patreon: 'Patreon',
+    gender: 'Gender',
+    birthDate: 'Date of birth',
+    city: 'City',
+    country: 'Country',
+    agreeableness: 'Agreeableness',
+    compassion: 'Compassion',
+    politeness: 'Politeness',
+    conscientiousness: 'Conscientiousness',
+    industriousness: 'Industriousness',
+    orderliness: 'Orderliness',
+    extraversion: 'Extraversion',
+    enthusiasm: 'Enthusiasm',
+    assertiveness: 'Assortiveness',
+    neuroticism: 'Neuroticism',
+    withdrawal: 'Withdrawal',
+    volatility: 'Volatility',
+    opennessToExperience: 'Openness to Experience',
+    intellect: 'Intellect',
+    openness: 'Openness',
 }
 
 const EVENTS_WITH_TITLE = {
@@ -58,7 +94,25 @@ const IGNORED_EVENTS = ['updated-entry', 'deleted-entry']
 
 const integrateEvent = (integrated, event) => {
     if (event.type === 'updated-profile') {
-        integrated.updatedProfile = true
+        if (!integrated.updatedProfile) {
+            integrated.updatedProfile = {}
+        }
+        if (event.values) {
+            for (const key of event.values) {
+                if (PROFILE_FIELDS[key]) {
+                    integrated.updatedProfile[key] = true
+                }
+            }
+        }
+    } else if (event.type === 'updated-reading') {
+        integrated.updatedReading = true
+    } else if (event.type === 'updated-goals') {
+        integrated.updatedGoals = true
+    } else if (event.type === 'completed-program') {
+        if (PROGRAMS[event.name]) {
+            integrated[event.name] = true
+        }
+        else throw new Error(`Unknown program type: ${event.name}`)
     } else if (IGNORED_EVENTS.indexOf(event.type) > -1) {
         return
     } else {
@@ -126,6 +180,12 @@ const NewsQuery = gql`
                     url
                 }
             }
+            ... on UpdatedValue {
+                name
+            }
+            ... on UpdatedProfile {
+                values
+            }
         }
     }
 `
@@ -164,13 +224,22 @@ const NewsComponent = ({data: {loading, events}}) => {
                                 paddingLeft: 0,
                                 listStylePosition: 'inside',
                             }}>
-                                {event.updatedProfile && <li>👤 Updated profile.</li>}
+                                {event.updatedProfile && <li>
+                                    👤 Updated <a href={`/u/${username}/profile`}>profile</a>
+                                    {Object.keys(event.updatedProfile).length > 0 && <span>: {Object.keys(event.updatedProfile).map((name, i) => <span key={i}>
+                                            {i ? ', ' : ''}
+                                            {PROFILE_FIELDS[name]}
+                                            </span>
+                                        )}
+                                    </span>}
+                                    .
+                                </li>}
                                 {event['created-entry'] && <li>
                                     ✎ Added to <a href={`/u/${username}/journal`}>journal</a>:
                                     {Object.keys(event['created-entry']).slice(0, LIMIT).sort().map((t, i) => {
                                         const {title, url} = event['created-entry'][t].entry
                                         return <span key={i}>
-                                            {i ? ',' : ''}&nbsp;
+                                            {i ? ', ' : ' '}
                                             {url ?
                                                 <a href={url}>{title}</a>
                                             :
@@ -178,63 +247,84 @@ const NewsComponent = ({data: {loading, events}}) => {
                                             }
                                         </span>
                                     })}
-                                    {Object.keys(event['created-entry']).length > LIMIT && <span>&nbsp;and {Object.keys(event['created-entry']).length - LIMIT} more</span>}
+                                    {Object.keys(event['created-entry']).length > LIMIT && <span> and {Object.keys(event['created-entry']).length - LIMIT} more</span>}
+                                </li>}
+                                {event.selfAuthoringPast && <li>
+                                    ✔ Completed {PROGRAMS.selfAuthoringPast}
+                                </li>}
+                                {event.selfAuthoringPresentFaults && <li>
+                                    ✔ Completed {PROGRAMS.selfAuthoringPresentFaults}
+                                </li>}
+                                {event.selfAuthoringPresentVirtues && <li>
+                                    ✔ Completed {PROGRAMS.selfAuthoringPresentVirtues}
+                                </li>}
+                                {event.selfAuthoringFuture && <li>
+                                    ✔ Completed {PROGRAMS.selfAuthoringFuture}
+                                </li>}
+                                {event.understandMyself && <li>
+                                    ✔ Completed {PROGRAMS.understandMyself}
                                 </li>}
                                 {event['done-goal'] && <li>
                                     ✔ Achieved
                                     {Object.keys(event['done-goal']).slice(0, LIMIT).sort().map((t, i) => <span key={i}>
-                                        {i ? ',' : ''}&nbsp;<em>{t}</em>
+                                        {i ? ', ' : ' '}<em>{t}</em>
                                         </span>)}
-                                    {Object.keys(event['done-goal']).length > LIMIT && <span>&nbsp;and {Object.keys(event['done-goal']).length - LIMIT} more</span>}
+                                    {Object.keys(event['done-goal']).length > LIMIT && <span> and {Object.keys(event['done-goal']).length - LIMIT} more</span>}
                                 </li>}
                                 {event['spoke-about-read'] && <li>
                                     👄 Spoke about 
                                     {Object.keys(event['spoke-about-read']).slice(0, LIMIT).sort().map((t, i) => <span key={t}>
-                                        {i ? ',' : ''}&nbsp;<a href={event['spoke-about-read'][t].read.videoUrl}>{t}</a>
+                                        {i ? ',' : ''} <a href={event['spoke-about-read'][t].read.videoUrl}>{t}</a>
                                     </span>)}
-                                    {Object.keys(event['spoke-about-read']).length > LIMIT && <span>&nbsp;and {Object.keys(event['spoke-about-read']).length - LIMIT} more</span>}
+                                    {Object.keys(event['spoke-about-read']).length > LIMIT && <span> and {Object.keys(event['spoke-about-read']).length - LIMIT} more</span>}
                                 </li>}
                                 {event['wrote-about-read'] && <li>
                                     ✎ Wrote about 
                                     {Object.keys(event['wrote-about-read']).slice(0, LIMIT).sort().map((t, i) => <span key={t}>
-                                        {i ? ',' : ''}&nbsp;<a href={event['wrote-about-read'][t].read.articleUrl}>{t}</a>
+                                        {i ? ', ' : ' '}<a href={event['wrote-about-read'][t].read.articleUrl}>{t}</a>
                                     </span>)}
-                                    {Object.keys(event['wrote-about-read']).length > LIMIT && <span>&nbsp;and {Object.keys(event['wrote-about-read']).length - LIMIT} more</span>}
+                                    {Object.keys(event['wrote-about-read']).length > LIMIT && <span> and {Object.keys(event['wrote-about-read']).length - LIMIT} more</span>}
                                 </li>}
                                 {event['read-read'] && <li>
                                     📖 Read
                                     {Object.keys(event['read-read']).slice(0, LIMIT).sort().map((t, i) => <span key={t}>
-                                        {i ? ',' : ''}&nbsp;<em>{t}</em>
+                                        {i ? ', ' : ' '}<em>{t}</em>
                                     </span>)}
-                                    {Object.keys(event['read-read']).length > LIMIT && <span>&nbsp;and {Object.keys(event['read-read']).length - LIMIT} more</span>}
+                                    {Object.keys(event['read-read']).length > LIMIT && <span> and {Object.keys(event['read-read']).length - LIMIT} more</span>}
                                 </li>}
                                 {event['doing-goal'] && <li>
                                     ⛏ Is working on
                                     {Object.keys(event['doing-goal']).slice(0, LIMIT).sort().map((t, i) => <span key={i}>
-                                        {i ? ',' : ''}&nbsp;<em>{t}</em>
+                                        {i ? ', ' : ' '}<em>{t}</em>
                                     </span>)}
-                                    {Object.keys(event['doing-goal']).length > LIMIT && <span>&nbsp;and {Object.keys(event['doing-goal']).length - LIMIT} more</span>}
+                                    {Object.keys(event['doing-goal']).length > LIMIT && <span> and {Object.keys(event['doing-goal']).length - LIMIT} more</span>}
                                 </li>}
                                 {event['reading-read'] && <li>
                                     👁 Started reading 
                                     {Object.keys(event['reading-read']).slice(0, LIMIT).sort().map((t, i) => <span key={t}>
-                                        {i ? ',' : ''}&nbsp;<em>{t}</em>
+                                        {i ? ', ' : ' '}<em>{t}</em>
                                     </span>)}
-                                    {Object.keys(event['reading-read']).length > LIMIT && <span>&nbsp;and {Object.keys(event['reading-read']).length - LIMIT} more</span>}
+                                    {Object.keys(event['reading-read']).length > LIMIT && <span> and {Object.keys(event['reading-read']).length - LIMIT} more</span>}
+                                </li>}
+                                {event.updatedReading && <li>
+                                    ◎ Updated <a href={`/u/${username}/goals`}>goals description</a>.
                                 </li>}
                                 {event['created-goal'] && <li>
                                     ◎ Wants to achieve
                                     {Object.keys(event['created-goal']).slice(0, LIMIT).sort().map((t, i) => <span key={i}>
-                                        {i ? ',' : ''}&nbsp;<em>{t}</em>
+                                        {i ? ', ' : ' '}<em>{t}</em>
                                     </span>)}
-                                    {Object.keys(event['created-goal']).length > LIMIT && <span>&nbsp;and {Object.keys(event['created-goal']).length - LIMIT} more</span>}
+                                    {Object.keys(event['created-goal']).length > LIMIT && <span> and {Object.keys(event['created-goal']).length - LIMIT} more</span>}
+                                </li>}
+                                {event.updatedReading && <li>
+                                    📖 Updated <a href={`/u/${username}/reads`}>reading list description</a>.
                                 </li>}
                                 {event['created-read'] && <li>
-                                    📖 Added books to reading list: 
+                                    📖 Added books to <a href={`/u/${username}/reads`}>reading list</a>: 
                                     {Object.keys(event['created-read']).slice(0, LIMIT).sort().map((t, i) => <span key={t}>
-                                        {i ? ',' : ''}&nbsp;<em>{t}</em>
+                                        {i ? ', ' : ' '}<em>{t}</em>
                                     </span>)}
-                                    {Object.keys(event['created-read']).length > LIMIT && <span>&nbsp;and {Object.keys(event['created-read']).length - LIMIT} more</span>}
+                                    {Object.keys(event['created-read']).length > LIMIT && <span> and {Object.keys(event['created-read']).length - LIMIT} more</span>}
                                 </li>}
                             </ul>
                         </div>

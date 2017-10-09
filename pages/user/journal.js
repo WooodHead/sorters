@@ -96,7 +96,7 @@ const Entry = ({entry: {url, title, description, goalTitles}}) => (
             <Markdown content={description}/>
         }
         Goals: {goalTitles.map((goal, i) => (
-            <span key={i}>{i ? ',' : ''}&nbsp;<em>{goal}</em></span>
+            <span key={i}>{i ? ', ' : ' '}<em>{goal}</em></span>
         ))}
         <hr/>
     </div>

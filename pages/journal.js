@@ -358,7 +358,6 @@ class Entry extends Component {
                             title="Delete entry?"
                             message="A deleted journal entry can't be recovered."
                             onDelete={onDelete}/>
-                        &nbsp;
                         <ShyButton
                             onClick={() => {
                                 this.setState({
@@ -380,7 +379,7 @@ class Entry extends Component {
                     {entryGoalTitles.length > 0 &&
                         <span>
                             Goals: {entryGoalTitles.map((goal, i) => (
-                                <span key={i}>{i ? ',' : ''}&nbsp;{goal}</span>
+                                <span key={i}>{i ? ', ' : ' '}{goal}</span>
                             ))}
                         </span>
                     }

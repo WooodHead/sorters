@@ -5,6 +5,7 @@ import gql from 'graphql-tag'
 import {compose} from 'recompose'
 import Markdown from '../../components/markdown'
 import UserHeader from '../../components/user-header'
+import {PROGRAMS} from '../../models/programs'
 
 export default withPage(({url: {query: {username}}}) => (
     <Layout title="Sorter" page="user">
@@ -84,7 +85,13 @@ const UserQuery = gql`
                         title
                         url
                     }
-                }    
+                }
+                ... on UpdatedValue {
+                    name
+                }
+                ... on UpdatedProfile {
+                    values
+                }
             }
         }
     }
@@ -142,6 +149,14 @@ const Event = ({event, username}) => {
             return <Block>
                 👤 Updated <a href={`/u/${username}/profile`}>profile</a>.
             </Block>
+        case 'completed-program':
+            return <Block>
+                ✔ Completed <a href={`/u/${username}/profile`}>{PROGRAMS[event.name]}</a>.
+            </Block>
+        case 'updated-reading':
+            return <Block>
+                📖 Updated <a href={`/u/${username}/reads`}>reading list description</a>.
+            </Block>
         case 'created-read':
             return <Block>
                 📖 Wants to read <a href={`/u/${username}/reads`}>{event.title}</a>.
@@ -167,6 +182,10 @@ const Event = ({event, username}) => {
             }
             return <Block>
                 ✎ Wrote about <a href={event.read.articleUrl}>{event.title}</a>
+            </Block>
+        case 'updated-goals':
+            return <Block>
+                📖 Updated <a href={`/u/${username}/goals`}>goals description</a>.
             </Block>
         case 'created-goal':
             return <Block>

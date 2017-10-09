@@ -10,6 +10,9 @@ const introspectionQueryResultData = {
                 "name": "Event",
                 "possibleTypes": [
                     {
+                        "name": "UpdatedValue",
+                    },
+                    {
                         "name": "UpdatedProfile",
                     },
                     {

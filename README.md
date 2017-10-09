@@ -100,7 +100,7 @@ yarn test -- --watch
 
 WARNING: this assumes the existence and will overwrite data on database `mongodb://localhost:27017/sorters_test`
 
-A build is necessary if you changed the website code (not if you changed test code):
+A build is necessary if you changed the website code (not if you only changed test code):
 
 ```
 yarn run clean

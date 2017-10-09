@@ -31,7 +31,7 @@ const DashboardComponent = ({user}) => (
       </div>
       <div className="row">
         <Panel title="👤 Profile" url="/profile" label="Manage profile">
-          <p>Edit your public profile that can be seen by others.</p>
+          <p>Edit your public profile.</p>
         </Panel>
         <Panel title="◎ Goals" url="/goals" label="Manage goals">
           <p>Share your goals and leave updates.</p>
@@ -47,7 +47,7 @@ const DashboardComponent = ({user}) => (
         <Panel title="👫 Sorters" url="/users" label="Sorters">
           <p>See what other sorters are doing.</p>
         </Panel>
-        <Panel title="🗩 Chat" url="https://discord.gg/6Q8v9Sm" label="Chat">
+        <Panel title="🗩 Chat" url="https://discord.gg/6Q8v9Sm" label="Chat" target="_blank">
           <p>Chat with other sorters (a Discord channel).</p>
         </Panel>
       </div>

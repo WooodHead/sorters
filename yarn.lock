@@ -1827,6 +1827,10 @@ cors@^2.8.3:
     object-assign "^4"
     vary "^1"
 
+country-list@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/country-list/-/country-list-1.1.0.tgz#3ea3608857e17458657d129e1d737e4c2f79775b"
+
 crc32-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/crc32-stream/-/crc32-stream-2.0.0.tgz#e3cdd3b4df3168dd74e3de3fbbcb7b297fe908f4"

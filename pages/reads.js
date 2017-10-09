@@ -304,7 +304,7 @@ class ReadComponent extends Component {
                                     edit: false,
                                 })
                             }}
-                        >✕</ShyButton>&nbsp;
+                        >✕</ShyButton>{' '}
                     </span>
                     <div className="form-group">
                         <label htmlFor='title'>Title</label>
@@ -373,7 +373,7 @@ class ReadComponent extends Component {
                             title="Delete book?"
                             message="A deleted book can't be recovered."
                             onDelete={remove}/>
-                        &nbsp;
+                        {' '}
                         <ShyButton
                             onClick={() => {
                                 this.setState({
@@ -383,11 +383,11 @@ class ReadComponent extends Component {
                         >✎</ShyButton>
                     </span>
                     <span>{title}</span>
-                    {readingStatus === 'read' && <span>&nbsp;✔</span>}
-                    {readingStatus === 'reading' && <span>&nbsp;👁</span>}
-                    {(articleUrl || videoUrl) && <span>&nbsp;(
+                    {readingStatus === 'read' && <span> ✔</span>}
+                    {readingStatus === 'reading' && <span> 👁</span>}
+                    {(articleUrl || videoUrl) && <span> (
                         {articleUrl && <a href={articleUrl}>article</a>}
-                        {articleUrl && videoUrl && <span>,&nbsp;</span>}
+                        {articleUrl && videoUrl && <span>, </span>}
                         {videoUrl && <a href={videoUrl}>video</a>}
                     )</span>}
                 </span>

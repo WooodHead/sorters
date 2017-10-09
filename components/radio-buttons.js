@@ -22,7 +22,6 @@ class RadioButtons extends Component {
                                 this.radios[key] = ref
                             }}
                         />
-                        &nbsp;
                         {value.label}
                     </label>
                 </div>

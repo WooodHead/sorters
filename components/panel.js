@@ -1,6 +1,6 @@
 import ShyButton from './shy-button'
 
-const Panel = ({title, children, url, label, onClose}) => (
+const Panel = ({title, children, url, target, label, onClose}) => (
     <div className="panel panel-default">
         <div className="panel-heading">
             {onClose &&
@@ -19,7 +19,7 @@ const Panel = ({title, children, url, label, onClose}) => (
         <div className="panel-body">
             {children}
             {label &&
-            <a className="btn btn-default" href={url} role="button">{label}</a>
+            <a className="btn btn-default" href={url} target={target} role="button">{label}</a>
             }
         </div>
     </div>

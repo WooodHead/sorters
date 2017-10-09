@@ -11,6 +11,7 @@ const nodeify = require('nodeify')
 const ooth = require('./ooth')
 const crypto = require('crypto-browserify')
 const {GraphQLScalarType} = require('graphql')
+const {objectMap} = require('../utils/objects')
 
 const prepare = (o) => {
     if (o && o._id) {
@@ -60,6 +61,30 @@ const start = async (app, settings) => {
             reddit: String
             patreon: String
             reading: String
+            gender: String
+            birthDate: Date
+            city: String
+            country: String
+            selfAuthoringPast: Boolean
+            selfAuthoringPresentVirtues: Boolean
+            selfAuthoringPresentFaults: Boolean
+            selfAuthoringFuture: Boolean
+            understandMyself: Boolean
+            agreeableness: Int
+            compassion: Int
+            politeness: Int
+            conscientiousness: Int
+            industriousness: Int
+            orderliness: Int
+            extraversion: Int
+            enthusiasm: Int
+            assertiveness: Int
+            neuroticism: Int
+            withdrawal: Int
+            volatility: Int
+            opennessToExperience: Int
+            intellect: Int
+            openness: Int
         }
         type Read {
             title: String!
@@ -91,12 +116,21 @@ const start = async (app, settings) => {
             type: String!
             date: Date!
         }
+        type UpdatedValue implements Event {
+            _id: ID!
+            userId: ID!
+            user: User!
+            type: String!
+            date: Date!
+            name: String
+        }
         type UpdatedProfile implements Event {
             _id: ID!
             userId: ID!
             user: User!
             type: String!
             date: Date!
+            values: [String]
         }
         type UpdatedRead implements Event {
             _id: ID!
@@ -136,6 +170,30 @@ const start = async (app, settings) => {
             twitter: String
             reddit: String
             patreon: String
+            gender: String
+            birthDate: Date
+            city: String
+            country: String
+            selfAuthoringPast: Boolean
+            selfAuthoringPresentVirtues: Boolean
+            selfAuthoringPresentFaults: Boolean
+            selfAuthoringFuture: Boolean
+            understandMyself: Boolean
+            agreeableness: Int
+            compassion: Int
+            politeness: Int
+            conscientiousness: Int
+            industriousness: Int
+            orderliness: Int
+            extraversion: Int
+            enthusiasm: Int
+            assertiveness: Int
+            neuroticism: Int
+            withdrawal: Int
+            volatility: Int
+            opennessToExperience: Int
+            intellect: Int
+            openness: Int
         }
         input ReadInput {
             title: String!
@@ -277,8 +335,11 @@ const start = async (app, settings) => {
         },
         Event: {
             __resolveType({type}, context, info) {
-                return {
+                const eventType = {
                     'updated-profile': 'UpdatedProfile',
+                    'updated-reading': 'UpdatedValue',
+                    'updated-goals': 'UpdatedValue',
+                    'completed-program': 'UpdatedValue',
                     'created-read': 'UpdatedRead',
                     'reading-read': 'UpdatedRead',
                     'read-read': 'UpdatedRead',
@@ -291,6 +352,15 @@ const start = async (app, settings) => {
                     'updated-entry': 'UpdatedEntry',
                     'deleted-entry': 'UpdatedEntry',
                 }[type]
+                if (!eventType) {
+                    throw new Error(`Unknown event type: ${type}`)
+                }
+                return eventType
+            },
+        },
+        UpdatedValue: {
+            user: async ({userId}) => {
+                return prepare(await Users.findOne(ObjectId(userId)))
             },
         },
         UpdatedProfile: {
@@ -333,18 +403,41 @@ const start = async (app, settings) => {
                 if (!userId) {
                     throw new Error('User not logged in.')
                 }
+                const user = await Users.findOne(ObjectId(userId))
                 await Users.update({
                     _id: ObjectId(userId)
                 }, {
-                    $set: {
-                        profile
-                    }
+                    $set: objectMap(profile, key => `profile.${key}`),
                 });
+
+                const oldProfile = user.profile || {}
+                const updated = Object.keys(profile).filter(key => !(
+                    profile[key] === oldProfile[key]
+                    || profile[key] instanceof Date && oldProfile[key] instanceof Date && profile[key].getTime() === oldProfile[key].getTime()
+                ))
+                const date = new Date() 
                 await Events.insert({
                     userId,
                     type: 'updated-profile',
-                    date: new Date(),
+                    values: updated,
+                    date,
                 })
+                for (const name of updated) {
+                    if ([
+                        'selfAuthoringPast',
+                        'selfAuthoringPresentVirtues',
+                        'selfAuthoringPresentFaults',
+                        'selfAuthoringFuture',
+                        'understandMyself',
+                    ].indexOf(name) > -1 && profile[name]) {
+                        await Events.insert({
+                            userId,
+                            type: `completed-program`,
+                            name,
+                            date,
+                        })
+                    }
+                }
                 return prepare(await Users.findOne(ObjectId(userId)));
             },
             updateReading: async (root, {reading}, {userId}, info) => {
@@ -360,7 +453,7 @@ const start = async (app, settings) => {
                 });
                 await Events.insert({
                     userId,
-                    type: 'updated-profile',
+                    type: 'updated-reading',
                     date: new Date(),
                 })
                 return prepare(await Users.findOne(ObjectId(userId)));
@@ -463,7 +556,7 @@ const start = async (app, settings) => {
                 }));
                 await Events.insert({
                     userId,
-                    type: 'updated-profile',
+                    type: 'updated-goals',
                     date: new Date(),
                 })
                 return prepare(await Users.findOne(ObjectId(userId)));

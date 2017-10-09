@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`goals displays 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-722723539\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-1946159306\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -72,43 +72,32 @@ exports[`goals displays 1`] = `
           <h2 data-reactid=\\"48\\">Entries</h2>
           <div style=\\"margin-bottom:24px;\\" data-reactid=\\"49\\">
             <div style=\\"margin-top:24px;margin-bottom:24px;\\" data-reactid=\\"50\\"><span style=\\"display:block;float:right;\\" data-reactid=\\"51\\"><span data-reactid=\\"52\\"><a style=\\"cursor:pointer;font-size:140%;\\" data-reactid=\\"53\\">&#x1F5D1;</a><!-- react-empty: 54 --></span>
-              <!-- react-text: 55 -->&#xA0;
-              <!-- /react-text -->
-              <a style=\\"cursor:pointer;font-size:140%;\\" data-reactid=\\"56\\">&#x270E;</a>
+              <a style=\\"cursor:pointer;font-size:140%;\\" data-reactid=\\"55\\">&#x270E;</a>
               </span>
-              <h3 data-reactid=\\"57\\">
-                <a href=\\"http://www.example.com\\" data-reactid=\\"58\\">Hello World</a>
+              <h3 data-reactid=\\"56\\">
+                <a href=\\"http://www.example.com\\" data-reactid=\\"57\\">Hello World</a>
               </h3>
-              <div class=\\"markdown\\" data-reactid=\\"59\\">
+              <div class=\\"markdown\\" data-reactid=\\"58\\">
                 <p>Lorem ipsum</p>
-              </div><span data-reactid=\\"60\\"><!-- react-text: 61 -->Goals: <!-- /react-text --><span data-reactid=\\"62\\"><!-- react-text: 63 --><!-- /react-text --><!-- react-text: 64 -->&#xA0;<!-- /react-text --><!-- react-text: 65 -->Goal<!-- /react-text --></span>
-              <span
-                data-reactid=\\"66\\">
-                <!-- react-text: 67 -->,
-                <!-- /react-text -->
-                <!-- react-text: 68 -->&#xA0;
-                <!-- /react-text -->
-                <!-- react-text: 69 -->Goal - doing
-                <!-- /react-text -->
-                </span>
-                </span>
-                <hr data-reactid=\\"70\\">
+              </div><span data-reactid=\\"59\\"><!-- react-text: 60 -->Goals: <!-- /react-text --><span data-reactid=\\"61\\"><!-- react-text: 62 --> <!-- /react-text --><!-- react-text: 63 -->Goal<!-- /react-text --></span><span data-reactid=\\"64\\"><!-- react-text: 65 -->, <!-- /react-text --><!-- react-text: 66 -->Goal - doing<!-- /react-text --></span></span>
+              <hr
+                data-reactid=\\"67\\">
             </div>
           </div>
         </div>
       </div>
     </div>
-    <footer data-reactid=\\"71\\">
-      <div class=\\"container\\" data-reactid=\\"72\\">
-        <hr data-reactid=\\"73\\">
-        <p data-reactid=\\"74\\">
-          <!-- react-text: 75 -->Brought to you with &#x2764; by
+    <footer data-reactid=\\"68\\">
+      <div class=\\"container\\" data-reactid=\\"69\\">
+        <hr data-reactid=\\"70\\">
+        <p data-reactid=\\"71\\">
+          <!-- react-text: 72 -->Brought to you with &#x2764; by
           <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"76\\">Nick Redmark</a>
-          <!-- react-text: 77 -->. Support and discuss the development of this platform on
+          <a href=\\"/about\\" data-reactid=\\"73\\">Nick Redmark</a>
+          <!-- react-text: 74 -->. Support and discuss the development of this platform on
           <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"78\\">Patreon</a>
-          <!-- react-text: 79 -->.
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"75\\">Patreon</a>
+          <!-- react-text: 76 -->.
           <!-- /react-text -->
         </p>
       </div>
