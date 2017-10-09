@@ -28,6 +28,16 @@ const UsersQuery = gql`
                 name
                 about
             }
+            goals {
+                title
+                doing
+                done
+            }
+            reads {
+                title
+                reading
+                read
+            }
         }
     }
 `
@@ -36,10 +46,14 @@ const UsersComponent = ({data: {loading, users}}) => (
         <p>Loading...</p>
     :
         <div className="row">
-            {users.map(({local: {username}, emailHash, profile}, key) => {
+            {users.map(({local: {username}, emailHash, profile, reads, goals}, key) => {
                 const {name, about} = profile || {}
                 const {teaser, cut} = teaserAndInfo(about, 140, 150, 160)
                 const even = key % 2 === 0
+                const readsCount = reads ? reads.length : 0
+                const currentlyReading = readsCount && reads.find(read => read.reading && !read.read)
+                const goalsCount = goals ? goals.length : 0
+                const currentGoal = goalsCount && goals.find(goal => goal.doing && !goal.done)
                 
                 return <div key={username} className="col-xs-12 col-md-6" style={{
                     display: 'flex',
@@ -67,6 +81,18 @@ const UsersComponent = ({data: {loading, users}}) => (
                         <div>
                             <Markdown content={`${teaser}${cut ? ` [more](/u/${username})` : ''}`}/>
                         </div>
+                        {readsCount > 0 &&
+                            <div>
+                                📖 {readsCount} <a href={`/u/${username}/reads`}>books</a>
+                                {currentlyReading && <span>, reading <em>{currentlyReading.title}</em></span>}
+                            </div>
+                        }
+                        {goalsCount > 0 &&
+                            <div>
+                                ◎ {goalsCount} <a href={`/u/${username}/goals`}>goals</a>
+                                {currentGoal && <span>, working on <em>{currentGoal.title}</em></span>}
+                            </div>
+                        }
                     </div>
                 </div>
             })}
