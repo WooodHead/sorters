@@ -56,7 +56,7 @@ export default withPage((props) => {
           <div className="row">
             <div className="col-xs-12">
               <h2>Latest news</h2>
-              <News limit={100}/>
+              <News limit={50}/>
               <p><a href="/news">More news</a></p>
             </div>
           </div>

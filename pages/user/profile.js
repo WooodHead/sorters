@@ -196,7 +196,7 @@ const UserComponent = (props) => {
                             width: '100px',
                             marginRight: '24px'
                         }}>{label}</label>
-                        <a href={profile[name]}>{profile[name]}</a>
+                        <a href={url}>{url}</a>
                     </li>
                 ))}
             </ul>
@@ -245,59 +245,61 @@ const UserComponent = (props) => {
         ) &&
             <div>
                 <h2>Big 5</h2>
-                {understandMyself &&
-                    <li>Completed {PROGRAMS.understandMyself}</li>
-                }
-                {(agreeableness || compassion || politeness) &&
-                    <li>Agreeableness: {agreeableness}
-                        {(compassion || politeness) &&
-                            <ul>
-                                {compassion && <li>Compassion: {compassion}</li>}
-                                {politeness && <li>Politeness: {politeness}</li>}
-                            </ul>
-                        }
-                    </li>
-                }
-                {(conscientiousness || industriousness || orderliness) &&
-                    <li>Conscientiousness: {conscientiousness}
-                        {(industriousness || orderliness) &&
-                            <ul>
-                                {industriousness && <li>Industriousness: {industriousness}</li>}
-                                {orderliness && <li>Orderliness: {orderliness}</li>}
-                            </ul>
-                        }
-                    </li>
-                }
-                {(extraversion || enthusiasm || assertiveness) &&
-                    <li>Extraversion: {extraversion}
-                        {(enthusiasm || assertiveness) &&
-                            <ul>
-                                {enthusiasm && <li>Enthusiasm: {enthusiasm}</li>}
-                                {assertiveness && <li>Orderliness: {assertiveness}</li>}
-                            </ul>
-                        }
-                    </li>
-                }
-                {(neuroticism || withdrawal || volatility) &&
-                    <li>Neuroticism: {neuroticism}
-                        {(withdrawal || volatility) &&
-                            <ul>
-                                {withdrawal && <li>Withdrawal: {withdrawal}</li>}
-                                {volatility && <li>Volatility: {volatility}</li>}
-                            </ul>
-                        }
-                    </li>
-                }
-                {(opennessToExperience || intellect || openness) &&
-                    <li>Openness to experience: {opennessToExperience}
-                        {(intellect || openness) &&
-                            <ul>
-                                {intellect && <li>Intellect: {intellect}</li>}
-                                {openness && <li>Openness: {openness}</li>}
-                            </ul>
-                        }
-                    </li>
-                }
+                <ul>
+                    {understandMyself &&
+                        <li>Completed {PROGRAMS.understandMyself}</li>
+                    }
+                    {(agreeableness || compassion || politeness) &&
+                        <li>Agreeableness: {agreeableness}
+                            {(compassion || politeness) &&
+                                <ul>
+                                    {compassion && <li>Compassion: {compassion}</li>}
+                                    {politeness && <li>Politeness: {politeness}</li>}
+                                </ul>
+                            }
+                        </li>
+                    }
+                    {(conscientiousness || industriousness || orderliness) &&
+                        <li>Conscientiousness: {conscientiousness}
+                            {(industriousness || orderliness) &&
+                                <ul>
+                                    {industriousness && <li>Industriousness: {industriousness}</li>}
+                                    {orderliness && <li>Orderliness: {orderliness}</li>}
+                                </ul>
+                            }
+                        </li>
+                    }
+                    {(extraversion || enthusiasm || assertiveness) &&
+                        <li>Extraversion: {extraversion}
+                            {(enthusiasm || assertiveness) &&
+                                <ul>
+                                    {enthusiasm && <li>Enthusiasm: {enthusiasm}</li>}
+                                    {assertiveness && <li>Orderliness: {assertiveness}</li>}
+                                </ul>
+                            }
+                        </li>
+                    }
+                    {(neuroticism || withdrawal || volatility) &&
+                        <li>Neuroticism: {neuroticism}
+                            {(withdrawal || volatility) &&
+                                <ul>
+                                    {withdrawal && <li>Withdrawal: {withdrawal}</li>}
+                                    {volatility && <li>Volatility: {volatility}</li>}
+                                </ul>
+                            }
+                        </li>
+                    }
+                    {(opennessToExperience || intellect || openness) &&
+                        <li>Openness to experience: {opennessToExperience}
+                            {(intellect || openness) &&
+                                <ul>
+                                    {intellect && <li>Intellect: {intellect}</li>}
+                                    {openness && <li>Openness: {openness}</li>}
+                                </ul>
+                            }
+                        </li>
+                    }
+                </ul>
             </div>
         }
     </div>
