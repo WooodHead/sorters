@@ -2,6 +2,7 @@ import cheerio from 'cheerio'
 import pretty from 'pretty'
 import {MongoClient, ObjectID} from 'mongodb'
 import {setup, teardown} from './setup'
+import {generateAndLogUser, setUserData} from './fixtures'
 
 let db
 let browser
@@ -51,4 +52,21 @@ describe('users', () => {
         const html = pretty(page.html())
         expect(html).toMatchSnapshot()
     })
+
+    it('displays a user with data', async () => {        
+        const browserPage = await browser.createPage()
+
+        await generateAndLogUser(browserPage)
+        await setUserData(browserPage)
+
+        const status = await browserPage.open(`http://localhost:3000/users`)
+        expect(status).toBe('success')
+
+        const text = await browserPage.property('content')
+        const $ = cheerio.load(text)
+        const page = $('#__next')
+        const html = pretty(page.html())
+        expect(html).toMatchSnapshot()
+    })
+
 })

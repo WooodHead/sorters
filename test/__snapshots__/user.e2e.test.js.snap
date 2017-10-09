@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`user displays 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-901505404\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"1669013124\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -90,38 +90,38 @@ exports[`user displays 1`] = `
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"58\\">
           <!-- react-text: 59 -->&#x1F4D6; Wants to read
           <!-- /react-text -->
-          <a href=\\"/u/test/reads\\" data-reactid=\\"60\\">Read - reading</a>
+          <a href=\\"/u/test/reads\\" data-reactid=\\"60\\">Read</a>
           <!-- react-text: 61 -->.
           <!-- /react-text -->
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"62\\">
           <!-- react-text: 63 -->&#x1F4D6; Wants to read
           <!-- /react-text -->
-          <a href=\\"/u/test/reads\\" data-reactid=\\"64\\">Read - read</a>
+          <a href=\\"/u/test/reads\\" data-reactid=\\"64\\">Read - reading</a>
           <!-- react-text: 65 -->.
           <!-- /react-text -->
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"66\\">
           <!-- react-text: 67 -->&#x1F4D6; Wants to read
           <!-- /react-text -->
-          <a href=\\"/u/test/reads\\" data-reactid=\\"68\\">Read</a>
+          <a href=\\"/u/test/reads\\" data-reactid=\\"68\\">Read - read</a>
           <!-- react-text: 69 -->.
           <!-- /react-text -->
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"70\\">
           <!-- react-text: 71 -->&#x25CE; Wants to achieve
           <!-- /react-text -->
-          <a href=\\"/u/test/goals\\" data-reactid=\\"72\\">Goal</a>
+          <a href=\\"/u/test/goals\\" data-reactid=\\"72\\">Goal - doing</a>
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"73\\">
           <!-- react-text: 74 -->&#x25CE; Wants to achieve
           <!-- /react-text -->
-          <a href=\\"/u/test/goals\\" data-reactid=\\"75\\">Goal - doing</a>
+          <a href=\\"/u/test/goals\\" data-reactid=\\"75\\">Goal - done</a>
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"76\\">
           <!-- react-text: 77 -->&#x25CE; Wants to achieve
           <!-- /react-text -->
-          <a href=\\"/u/test/goals\\" data-reactid=\\"78\\">Goal - done</a>
+          <a href=\\"/u/test/goals\\" data-reactid=\\"78\\">Goal</a>
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"79\\">
           <!-- react-text: 80 -->&#x1F4D6; Updated
