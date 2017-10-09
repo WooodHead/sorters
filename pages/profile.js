@@ -9,6 +9,7 @@ import Form from 'staart/lib/components/form'
 import {errorMessage} from '../utils/errors'
 import CountryList from 'country-list'
 import RadioButtons from '../components/radio-buttons'
+import Gravatar from 'react-gravatar'
 
 const countries = new CountryList()
 
@@ -242,6 +243,7 @@ const ProfileQuery = gql`
             local {
                 username
             }
+            emailHash
             profile {
                 name
                 about
@@ -295,6 +297,7 @@ class ProfileFormComponent extends Component {
     render() {
         const {profile: {loading, me, refetch}, updateProfile} = this.props
         const username = me && me.local && me.local.username
+        const emailHash = me && me.emailHash
         const profile = (me && me.profile) || {}
         return <div>
             {loading ?
@@ -303,8 +306,22 @@ class ProfileFormComponent extends Component {
                 <div>
                     {username ?
                         <div>
-                            <p>Your profile is live at <a href={`/u/${username}`}>/u/{username}</a>. Please only save information you feel comfortable sharing publicly.</p>
-                            <h2>Edit Profile</h2>
+                            <p>Your profile is live at <a href={`/u/${username}`}>/u/{username}</a>.</p>
+                            <p>Please only save information you feel comfortable sharing publicly.</p>
+                            <h2>Profile picture</h2>
+                            <div className="row">
+                                <div className="col-xs-6">
+                                    <Gravatar md5={emailHash || username} size={200} style={{
+                                        marginBottom: '24px',
+                                        width: '100%',
+                                        height: 'auto',
+                                        marginLeft: 'auto',
+                                        marginRight: 'auto',
+                                        display: 'block'
+                                    }}/>
+                                </div>
+                            </div>
+                            <p>Set your public profile image over at <a href="https://www.gravatar.com" target="_blank">Gravatar</a>.</p>
                             <Form
                                 onSubmit={() => {
                                     const profile = {}
