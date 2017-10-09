@@ -1,6 +1,7 @@
 import Layout from '../components/layout'
 import withPage from '../providers/page'
 import ResponsiveEmbed from 'react-responsive-embed'
+import News from '../components/news'
 
 export default withPage((props) => {
   return <Layout title="Sort yourself out!" page="home">
@@ -50,6 +51,13 @@ export default withPage((props) => {
               <h2>Support on Patreon</h2>
               <p>Become a supporter and discuss the development of Sorters Club on Patreon.</p>
               <p><a className="btn btn-default" href="https://www.patreon.com/nickredmark" role="button" target="_blank">Support &raquo;</a></p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xs-12">
+              <h2>Latest news</h2>
+              <News limit={100}/>
+              <p><a href="/news">More news</a></p>
             </div>
           </div>
         </div>

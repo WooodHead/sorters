@@ -233,7 +233,7 @@ const start = async (app, settings) => {
             user(_id: ID!): User
             userByUsername(username: String!): User
             users: [User!]!
-            events: [Event!]!
+            events(limit: Int): [Event!]!
         }
         type Mutation {
             updateProfile(profile: ProfileInput): User
@@ -297,12 +297,12 @@ const start = async (app, settings) => {
                     'local.username': username
                 }))
             },
-            events: async (root, params, context) => {
+            events: async (root, {limit}, context) => {
                 return (await Events.find({}, {
                     sort: {
                         date: -1
                     },
-                    limit: 400,
+                    limit: limit || 400,
                 }).toArray()).map(prepare)
             },
         },

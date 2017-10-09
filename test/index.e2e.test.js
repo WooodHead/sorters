@@ -2,6 +2,7 @@ import cheerio from 'cheerio'
 import pretty from 'pretty'
 import {ObjectID} from 'mongodb'
 import {setup, teardown} from './setup'
+import {generateAndLogUser, setUserData} from './fixtures'
 
 let db
 let browser
@@ -23,6 +24,10 @@ afterAll(async () => {
 describe('index', () => {
     it('displays', async () => {
         const browserPage = await browser.createPage()
+
+        await generateAndLogUser(browserPage)
+        await setUserData(browserPage)        
+
         const status = await browserPage.open(`http://localhost:3000`)
         expect(status).toBe('success')
 
