@@ -30,10 +30,19 @@ query($username: String!) {
             title
             reading
             read
-            articleUrl
-            videoUrl
+            essays {
+                title
+                url
+            }
+            speeches {
+                title
+                url
+            }
+            conversations {
+                title
+            }
         }
-}
+    }
 }
 `
 const UserReadsComponent = (props) => {
@@ -56,6 +65,8 @@ const UserReadsComponent = (props) => {
     const emailHash = user.emailHash
     const {name, about, reading} = profile
     const reads = user.reads || []
+
+    console.log(reads.map(read => [read.essays, read.speeches, read.conversations]))
     
     return <div>
         <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="reads"/>
@@ -63,18 +74,39 @@ const UserReadsComponent = (props) => {
         {reading && <Markdown content={reading}/>}
         {reads.length > 0 ?
             <ul>
-                {reads.map(({title, reading, read, articleUrl, videoUrl}, key) => {
+                {reads.map(({title, reading, read, essays, speeches, conversations}, key) => {
                     const readingStatus = read ? 'read' : (reading ? 'reading' : 'not')
                     return <li key={key}>
                         <span>{title}</span>
                         {readingStatus === 'read' && <span>&nbsp;✔</span>}
                         {readingStatus === 'reading' && <span>&nbsp;👁</span>}
-                            {(articleUrl || videoUrl) && <span>&nbsp;(
-                            {articleUrl && <a href={articleUrl}>article</a>}
-                            {articleUrl && videoUrl && <span>,&nbsp;</span>}
-                            {videoUrl && <a href={videoUrl}>video</a>}
-                        )</span>}
-                    </li>                   
+                        <ul>
+                            {essays.length > 0 &&
+                                <li>✎ Essays: 
+                                    {essays.map((essay, i) => (<span key={i}>
+                                        {i ? ', ' : ' '}
+                                        <a href={essay.url || `/essay/${essay._id}`}>{essay.title}</a>
+                                    </span>))}
+                                </li>
+                            }
+                            {speeches.length > 0 &&
+                                <li>👄 Speeches: 
+                                    {speeches.map((speech, i) => (<span key={i}>
+                                        {i ? ', ' : ' '}
+                                        <a href={speech.url || `/speech/${speech._id}`}>{speech.title}</a>
+                                    </span>))}
+                                </li>
+                            }
+                            {conversations.length > 0 &&
+                                <li>🗩 Conversations: 
+                                    {conversations.map((conversation, i) => (<span key={i}>
+                                        {i ? ', ' : ' '}
+                                        <a href={conversation.url || `/conversation/${conversation._id}`}>{conversation.title}</a>
+                                    </span>))}
+                                </li>
+                            }
+                        </ul>
+                    </li>
                 })}
             </ul>
         :

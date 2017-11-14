@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`goals displays 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-1946159306\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"158723597\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -27,7 +27,7 @@ exports[`goals displays 1`] = `
                 <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
               </li>
               <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/dashboard\\" data-reactid=\\"25\\">Dashboard</a>
+                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
               </li>
               <li class=\\"dropdownfalse\\" data-reactid=\\"26\\">
                 <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" data-reactid=\\"27\\">
@@ -48,7 +48,7 @@ exports[`goals displays 1`] = `
       <p data-reactid=\\"34\\">
         <!-- react-text: 35 -->Here you can write regular updates about your
         <!-- /react-text -->
-        <a href=\\"/goals\\" data-reactid=\\"36\\">goals</a>
+        <a href=\\"/account/goals\\" data-reactid=\\"36\\">goals</a>
         <!-- react-text: 37 -->.
         <!-- /react-text -->
       </p>
@@ -94,7 +94,7 @@ exports[`goals displays 1`] = `
           <!-- react-text: 72 -->Brought to you with &#x2764; by
           <!-- /react-text -->
           <a href=\\"/about\\" data-reactid=\\"73\\">Nick Redmark</a>
-          <!-- react-text: 74 -->. Support and discuss the development of this platform on
+          <!-- react-text: 74 -->. Support this platform on
           <!-- /react-text -->
           <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"75\\">Patreon</a>
           <!-- react-text: 76 -->.

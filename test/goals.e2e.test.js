@@ -28,7 +28,7 @@ describe('goals', () => {
         await generateAndLogUser(browserPage)
         await setUserData(browserPage)
         
-        const status = await browserPage.open(`http://localhost:3000/goals`)
+        const status = await browserPage.open(`http://localhost:3000/account/goals`)
         expect(status).toBe('success')
 
         const text = await browserPage.property('content')

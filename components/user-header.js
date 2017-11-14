@@ -5,27 +5,47 @@ const MENU = [
     {
         url: '',
         name: 'activity',
-        label: 'Activity',
+        label: '⛏ Activity',
     },
     {
         url: '/profile',
         name: 'profile',
-        label: 'Profile',
+        label: '👤 Profile',
     },
     {
         url: '/goals',
         name: 'goals',
-        label: 'Goals',
+        label: '◎ Goals',
     },
     {
         url: '/journal',
         name: 'journal',
-        label: 'Journal',
+        label: '✎ Journal',
     },
     {
         url: '/reads',
         name: 'reads',
-        label: 'Reads',
+        label: '📖 Books',
+    },
+    {
+        url: '/topics',
+        name: 'topics',
+        label: '💡 Topics',
+    },
+    {
+        url: '/essays',
+        name: 'essays',
+        label: '✎ Essays',
+    },
+    {
+        url: '/speeches',
+        name: 'speeches',
+        label: '👄 Speeches',
+    },
+    {
+        url: '/conversations',
+        name: 'conversations',
+        label: '🗩 Conversations',
     },
 ]
 

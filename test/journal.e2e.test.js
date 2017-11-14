@@ -46,7 +46,7 @@ describe('goals', () => {
             },
         })
 
-        const status = await browserPage.open(`http://localhost:3000/journal`)
+        const status = await browserPage.open(`http://localhost:3000/account/journal`)
         expect(status).toBe('success')
 
         const text = await browserPage.property('content')

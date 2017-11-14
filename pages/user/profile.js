@@ -96,7 +96,19 @@ const UserQuery = gql`
             goals {
                 title
             }
+            topics {
+                title
+            }
             entries {
+                _id
+            }
+            essays {
+                _id
+            }
+            speeches {
+                _id
+            }
+            conversations {
                 _id
             }
         }
@@ -149,8 +161,9 @@ const UserComponent = (props) => {
         openness,
     } = profile
     const goals = user.goals || []
-    const entries = user.entries || []
     const reads = user.reads || []
+    const topics = user.topics || []
+    const {entries, essays, speeches, conversations} = user
 
     const urls = []
     urlFields.map(({name, label, url: urlMap}) => {
@@ -171,9 +184,13 @@ const UserComponent = (props) => {
         <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="profile"/>
         <h2>Summary</h2>
         <ul>
-            <li>{goals.length} <a href={`/u/${username}/goals`}>goals</a></li>
-            <li>{entries.length} <a href={`/u/${username}/journal`}>journal entries</a></li>
-            <li>{reads.length} <a href={`/u/${username}/reads`}>books in reading list</a></li>
+            {goals.length > 0 && <li>◎ {goals.length} <a href={`/u/${username}/goals`}>goals</a></li>}
+            {entries.length > 0 && <li>✎ {entries.length} <a href={`/u/${username}/journal`}>journal entries</a></li>}
+            {essays.length > 0 && <li>✎ {essays.length} <a href={`/u/${username}/essays`}>essays</a></li>}
+            {speeches.length > 0 && <li>👄 {speeches.length} <a href={`/u/${username}/speeches`}>speeches</a></li>}
+            {conversations.length > 0 && <li>🗩 {conversations.length} <a href={`/u/${username}/conversations`}>conversations</a></li>}
+            {reads.length > 0 && <li>📖 {reads.length} <a href={`/u/${username}/reads`}>books in reading list</a></li>}
+            {topics.length > 0 && <li>💡 {topics.length} <a href={`/u/${username}/topics`}>topics</a></li>}
             {gender === 'male' && <li>A man</li>}
             {gender === 'female' && <li>A woman</li>}
             {city && country ? <li>

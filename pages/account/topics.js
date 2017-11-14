@@ -1,147 +1,142 @@
 import {Component} from 'react'
-import Layout from '../components/layout'
-import withPage from '../providers/page'
 import {compose} from 'recompose'
 import {graphql} from 'react-apollo'
 import gql from 'graphql-tag'
 import withLoginRequired from 'staart/lib/hocs/login-required'
 import Form from 'staart/lib/components/form'
-import Markdown from '../components/markdown'
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc'
-import RadioButtons from '../components/radio-buttons'
-import ShyButton from '../components/shy-button'
-import DeleteModal from '../components/delete-modal'
-import {errorMessage} from '../utils/errors'
+
+import Layout from '../../components/layout'
+import withPage from '../../providers/page'
+import Markdown from '../../components/markdown'
+import RadioButtons from '../../components/radio-buttons'
+import ShyButton from '../../components/shy-button'
+import DeleteModal from '../../components/delete-modal'
+import {errorMessage} from '../../utils/errors'
 
 export default withPage(() => (
-    <Layout title="Goals" page="goals">
-        <Goals/>
+    <Layout title="Topics" page="topics">
+        <Topics/>
     </Layout>
 ))
 
-const GoalsQuery = gql`
+const TopicsQuery = gql`
     query {
         me {
             local {
                 username
             }
-            goals {
+            topics {
                 title
                 description
-                doing
-                done
             }
             profile {
-                goals
+                topics
             }
         }
     }
 `
-const UpdateGoalsQuery = gql`
-    mutation($goals: [GoalInput]!) {
-        updateGoals(goals: $goals) {
+const UpdateTopicsQuery = gql`
+    mutation($topics: [TopicInput]!) {
+        updateTopics(topics: $topics) {
             _id
         }
     }
 `
-const CreateGoalQuery = gql`
-    mutation($goal: NewGoalInput!) {
-        createGoal(goal: $goal) {
+const CreateTopicQuery = gql`
+    mutation($topic: NewTopicInput!) {
+        createTopic(topic: $topic) {
             _id
         }
     }
 `
-const UpdateGoalsDescriptionQuery = gql`
-    mutation($goals: String) {
-        updateGoalsDescription(goals: $goals) {
+const UpdateTopicsDescriptionQuery = gql`
+    mutation($topics: String) {
+        updateTopicsDescription(topics: $topics) {
             _id
         }
     }
 `
-class GoalsComponent extends Component {
+class TopicsComponent extends Component {
     constructor() {
         super()
         this.state = {}
     }
     render() {
         const {
-            goals: {loading, me, refetch},
-            updateGoals,
-            createGoal,
-            updateGoalsDescription,
+            topics: {loading, me, refetch},
+            updateTopics,
+            createTopic,
+            updateTopicsDescription,
         } = this.props
         const username = me && me.local && me.local.username
-        const {goals: goalsDescription} = (me && me.profile) || {}
-        const goals = (me && me.goals && me.goals.map(({
+        const {topics: topicsDescription} = (me && me.profile) || {}
+        const topics = (me && me.topics && me.topics.map(({
             title,
             description,
-            doing,
-            done,
         }) => ({
             title,
             description,
-            doing,
-            done,
         }))) || []
 
         return <div style={{
             maxWidth: '400px',
             margin: 'auto'
         }}>
-            <h1>Goals</h1>
+            <h1>Topics</h1>
             {loading ?
                 <span>Loading...</span>
             :
                 <div>
-                    {username && goals.length > 0 &&
-                        <p>Your public goal list can be found at <a href={`/u/${username}`}>/u/{username}</a>.</p>
+                    {username && topics.length > 0 &&
+                        <p>Your public topics list can be found at <a href={`/u/${username}/topics`}>/u/{username}/topics</a>.</p>
                     }
                     <h2>Description</h2>
-                    <p>Here you can describe how you chose your goals.</p>
+                    <p>Here you can provide a general description of your interests.</p>
                     <Form
                         onSubmit={() => {
-                            const goalsDescription = this.goalsDescription.value
-                            updateGoalsDescription({
+                            const topicsDescription = this.topicsDescription.value
+                            updateTopicsDescription({
                                 variables: {
-                                    goals: goalsDescription
+                                    topics: topicsDescription
                                 }
                             }).then(() => {
                                 this.setState({
-                                    goalsDescriptionState: 'success',
-                                    goalsDescriptionMessage: 'Goals description saved.'
+                                    topicsDescriptionState: 'success',
+                                    topicsDescriptionMessage: 'Topics description saved.'
                                 })
                             }).catch(e => {
                                 this.setState({
-                                    goalsDescriptionState: 'error',
-                                    goalsDescriptionMessage: errorMessage(e)
+                                    topicsDescriptionState: 'error',
+                                    topicsDescriptionMessage: errorMessage(e)
                                 })
                             })
                         }}
-                        state={this.state.goalsDescriptionState}
-                        message={this.state.goalsDescriptionMessage}
+                        state={this.state.topicsDescriptionState}
+                        message={this.state.topicsDescriptionMessage}
                         submitLabel="Save"
                     >
                         <div className="form-group">
-                            <label htmlFor="goals-description">Description</label>
+                            <label htmlFor="topics-description">Description</label>
                             <textarea
                                 className="form-control"
                                 rows="4"
-                                ref={ref => this.goalsDescription = ref}
-                                defaultValue={goalsDescription}
+                                ref={ref => this.topicsDescription = ref}
+                                defaultValue={topicsDescription}
                             />
                         </div>
                     </Form>
-                    {goals.length > 0 &&
+                    {topics.length > 0 &&
                         <div>
-                            <h2>Your Goals</h2>
-                            <GoalsList
-                                goals={goals}
+                            <h2>Your Topics</h2>
+                            <TopicsList
+                                topics={topics}
                                 distance={1}
                                 onSortEnd={({oldIndex, newIndex}) => {
-                                    const newGoals = arrayMove(goals, oldIndex, newIndex)
-                                    updateGoals({
+                                    const newTopics = arrayMove(topics, oldIndex, newIndex)
+                                    updateTopics({
                                         variables: {
-                                            goals: newGoals
+                                            topics: newTopics
                                         }
                                     }).then(() => {
                                         refetch();
@@ -149,21 +144,21 @@ class GoalsComponent extends Component {
                                         console.error(e)
                                     })
                                 }}
-                                updateGoal={(key, goal) => {
-                                    goals[key] = goal;
-                                    return updateGoals({
+                                updateTopic={(key, topic) => {
+                                    topics[key] = topic;
+                                    return updateTopics({
                                         variables: {
-                                            goals
+                                            topics
                                         }
                                     }).then(() => {
                                         refetch();
                                     })
                                 }}
-                                removeGoal={(key) => {
-                                    goals.splice(key, 1)
-                                    return updateGoals({
+                                removeTopic={(key) => {
+                                    topics.splice(key, 1)
+                                    return updateTopics({
                                         variables: {
-                                            goals
+                                            topics
                                         }
                                     }).then(() => {
                                         refetch();
@@ -174,21 +169,21 @@ class GoalsComponent extends Component {
                             />
                         </div>
                     }
-                    <h3>New Goal</h3>
+                    <h3>New Topic</h3>
                     <Form
                         onSubmit={() => {
-                            const goal = {
+                            const topic = {
                                 title: this.title.value
                             }
-                            createGoal({
+                            createTopic({
                                 variables: {
-                                    goal
+                                    topic
                                 }
                             }).then(() => {
                                 this.title.value = ''
                                 this.setState({
                                     state: 'success',
-                                    message: 'Goals updated!'
+                                    message: 'Topics updated!'
                                 }, refetch)
                             }).catch(e => {
                                 this.setState({
@@ -199,14 +194,14 @@ class GoalsComponent extends Component {
                         }}
                         state={this.state.state}
                         message={this.state.message}
-                        submitLabel="New Goal"
+                        submitLabel="New Topic"
                     >
                         <div className="form-group">
                             <label htmlFor="title">Title</label>
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder={goals.length === 0 ? 'Clean my room' : ''}
+                                placeholder={topics.length === 0 ? 'Jungian archetypes' : ''}
                                 ref={ref => {
                                     this.title = ref
                                 }}
@@ -219,47 +214,46 @@ class GoalsComponent extends Component {
         </div>
     }
 }
-const Goals = compose(
-    withLoginRequired('/reads'),
-    graphql(GoalsQuery, {
-        name: 'goals'
+const Topics = compose(
+    withLoginRequired('/account/topics'),
+    graphql(TopicsQuery, {
+        name: 'topics'
     }),
-    graphql(UpdateGoalsQuery, {
-        name: 'updateGoals'
+    graphql(UpdateTopicsQuery, {
+        name: 'updateTopics'
     }),
-    graphql(CreateGoalQuery, {
-        name: 'createGoal'
+    graphql(CreateTopicQuery, {
+        name: 'createTopic'
     }),
-    graphql(UpdateGoalsDescriptionQuery, {
-        name: 'updateGoalsDescription'
+    graphql(UpdateTopicsDescriptionQuery, {
+        name: 'updateTopicsDescription'
     })
-)(GoalsComponent)
+)(TopicsComponent)
 
-const GoalsListComponent = ({goals, updateGoal, removeGoal}) => (
+const TopicsListComponent = ({topics, updateTopic, removeTopic}) => (
     <ul>
-        {goals.map((goal, key) => (
-            <Goal
+        {topics.map((topic, key) => (
+            <Topic
                 key={key}
                 index={key}
-                goal={goal}
-                update={goal => updateGoal(key, goal)}
-                remove={() => removeGoal(key)}
+                topic={topic}
+                update={topic => updateTopic(key, topic)}
+                remove={() => removeTopic(key)}
             />
         ))}
     </ul>
 )
-const GoalsList = compose(
+const TopicsList = compose(
     SortableContainer
-)(GoalsListComponent)
+)(TopicsListComponent)
 
-class GoalComponent extends Component {
+class TopicComponent extends Component {
     constructor() {
         super()
         this.state = {}
     }
     render() {
-        const {goal: {title, description, doing, done}, update, remove} = this.props
-        const goalStatus = done ? 'done' : (doing ? 'doing' : 'not')
+        const {topic: {title, description}, update, remove} = this.props
         return <li style={{
             cursor: 'pointer',
             clear: 'both',
@@ -267,14 +261,10 @@ class GoalComponent extends Component {
             {this.state.edit ?
                 <Form
                     onSubmit={() => {
-                        let readingStatus = ['done', 'doing', 'not']
-                            .find(value => this.goalStatus.radios[value].checked) || 'not'
-                        const goal = {
+                        const topic = {
                             title: this.title.value,
-                            doing: readingStatus === 'doing',
-                            done: readingStatus === 'done',
                         }
-                        update(goal)
+                        update(topic)
                             .then(() => {
                                 this.setState({
                                     edit: false
@@ -300,7 +290,7 @@ class GoalComponent extends Component {
                                     edit: false
                                 })
                             }}
-                        >✕</ShyButton>
+                        >✕</ShyButton>&nbsp;
                     </span>
                     <div className="form-group">
                         <label htmlFor='title'>Title</label>
@@ -315,25 +305,6 @@ class GoalComponent extends Component {
                             readOnly
                         />
                     </div>
-                    <RadioButtons
-                        ref={ref => {
-                            this.goalStatus = ref
-                        }}
-                        id="goal-status"
-                        label="Goal status"
-                        defaultValue={goalStatus}
-                        values={{
-                            not: {
-                                label: 'Not started',
-                            },
-                            doing: {
-                                label: 'Working on it',
-                            },
-                            done: {
-                                label: 'Achieved!',
-                            },
-                        }}
-                    />
                 </Form>
             :
                 <span>
@@ -342,10 +313,10 @@ class GoalComponent extends Component {
                         float: 'right'
                     }}>
                         <DeleteModal
-                            title="Delete goal?"
-                            message="A deleted goal can't be recovered."
+                            title="Delete topic?"
+                            message="A deleted topic can't be recovered."
                             onDelete={remove}
-                        />
+                        />&nbsp;
                         <ShyButton
                             onClick={() => {
                                 this.setState({
@@ -355,13 +326,11 @@ class GoalComponent extends Component {
                         >✎</ShyButton>
                     </span>
                     <span>{title}</span>
-                    {goalStatus === 'done' && <span> ✔</span>}
                 </span>
             }
         </li>
     }
 }
-const Goal = compose(
+const Topic = compose(
     SortableElement
-)(GoalComponent)
-
+)(TopicComponent)

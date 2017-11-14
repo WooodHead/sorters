@@ -28,7 +28,7 @@ describe('profile', () => {
         await generateAndLogUser(browserPage)
         await setUserData(browserPage)
         
-        const status = await browserPage.open(`http://localhost:3000/profile`)
+        const status = await browserPage.open(`http://localhost:3000/account/profile`)
         expect(status).toBe('success')
 
         const text = await browserPage.property('content')

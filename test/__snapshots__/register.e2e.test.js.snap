@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`register displays 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"1688599093\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-1911689744\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -27,7 +27,7 @@ exports[`register displays 1`] = `
                 <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
               </li>
               <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/dashboard\\" data-reactid=\\"25\\">Dashboard</a>
+                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
               </li>
               <li class=\\"false\\" data-reactid=\\"26\\">
                 <a href=\\"/login\\" data-reactid=\\"27\\">Log in</a>
@@ -73,7 +73,7 @@ exports[`register displays 1`] = `
           <!-- react-text: 52 -->Brought to you with &#x2764; by
           <!-- /react-text -->
           <a href=\\"/about\\" data-reactid=\\"53\\">Nick Redmark</a>
-          <!-- react-text: 54 -->. Support and discuss the development of this platform on
+          <!-- react-text: 54 -->. Support this platform on
           <!-- /react-text -->
           <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"55\\">Patreon</a>
           <!-- react-text: 56 -->.

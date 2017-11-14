@@ -87,13 +87,13 @@ We test using the jest testing suite.
 ### Unit tests
 
 ```
-yarn test
+yarn test:unit
 ```
 
 To run in watch mode:
 
 ```
-yarn test -- --watch
+yarn test:unit --watch
 ```
 
 ### End-to-end tests
@@ -103,7 +103,7 @@ WARNING: this assumes the existence and will overwrite data on database `mongodb
 A build is necessary if you changed the website code (not if you only changed test code):
 
 ```
-yarn run clean
+yarn clean
 yarn build
 ```
 
@@ -122,5 +122,5 @@ yarn run test:e2e
 To run in watch mode:
 
 ```
-yarn run test:e2e -- --watch
+yarn run test:e2e --watch
 ```

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`user displays 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-901505404\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-598222345\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -27,7 +27,7 @@ exports[`user displays 1`] = `
                 <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
               </li>
               <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/dashboard\\" data-reactid=\\"25\\">Dashboard</a>
+                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
               </li>
               <li class=\\"dropdownfalse\\" data-reactid=\\"26\\">
                 <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" data-reactid=\\"27\\">
@@ -70,128 +70,140 @@ exports[`user displays 1`] = `
           </div>
           <ul class=\\"nav nav-tabs\\" data-reactid=\\"46\\">
             <li role=\\"presentation\\" class=\\"active\\" data-reactid=\\"47\\">
-              <a href=\\"/u/test\\" data-reactid=\\"48\\">Activity</a>
+              <a href=\\"/u/test\\" data-reactid=\\"48\\">&#x26CF; Activity</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"49\\">
-              <a href=\\"/u/test/profile\\" data-reactid=\\"50\\">Profile</a>
+              <a href=\\"/u/test/profile\\" data-reactid=\\"50\\">&#x1F464; Profile</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"51\\">
-              <a href=\\"/u/test/goals\\" data-reactid=\\"52\\">Goals</a>
+              <a href=\\"/u/test/goals\\" data-reactid=\\"52\\">&#x25CE; Goals</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"53\\">
-              <a href=\\"/u/test/journal\\" data-reactid=\\"54\\">Journal</a>
+              <a href=\\"/u/test/journal\\" data-reactid=\\"54\\">&#x270E; Journal</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"55\\">
-              <a href=\\"/u/test/reads\\" data-reactid=\\"56\\">Reads</a>
+              <a href=\\"/u/test/reads\\" data-reactid=\\"56\\">&#x1F4D6; Books</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"57\\">
+              <a href=\\"/u/test/topics\\" data-reactid=\\"58\\">&#x1F4A1; Topics</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"59\\">
+              <a href=\\"/u/test/essays\\" data-reactid=\\"60\\">&#x270E; Essays</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"61\\">
+              <a href=\\"/u/test/speeches\\" data-reactid=\\"62\\">&#x1F444; Speeches</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"63\\">
+              <a href=\\"/u/test/conversations\\" data-reactid=\\"64\\">&#x1F5E9; Conversations</a>
             </li>
           </ul>
         </div>
-        <h2 data-reactid=\\"57\\">Activity</h2>
-        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"58\\">
-          <!-- react-text: 59 -->&#x1F4D6; Wants to read
-          <!-- /react-text -->
-          <a href=\\"/u/test/reads\\" data-reactid=\\"60\\">Read - reading</a>
-          <!-- react-text: 61 -->.
-          <!-- /react-text -->
-        </div>
-        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"62\\">
-          <!-- react-text: 63 -->&#x1F4D6; Wants to read
-          <!-- /react-text -->
-          <a href=\\"/u/test/reads\\" data-reactid=\\"64\\">Read - read</a>
-          <!-- react-text: 65 -->.
-          <!-- /react-text -->
-        </div>
+        <h2 data-reactid=\\"65\\">Activity</h2>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"66\\">
           <!-- react-text: 67 -->&#x1F4D6; Wants to read
           <!-- /react-text -->
-          <a href=\\"/u/test/reads\\" data-reactid=\\"68\\">Read</a>
+          <a href=\\"/u/test/reads\\" data-reactid=\\"68\\">Read - read</a>
           <!-- react-text: 69 -->.
           <!-- /react-text -->
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"70\\">
-          <!-- react-text: 71 -->&#x25CE; Wants to achieve
+          <!-- react-text: 71 -->&#x1F4D6; Wants to read
           <!-- /react-text -->
-          <a href=\\"/u/test/goals\\" data-reactid=\\"72\\">Goal</a>
-        </div>
-        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"73\\">
-          <!-- react-text: 74 -->&#x25CE; Wants to achieve
-          <!-- /react-text -->
-          <a href=\\"/u/test/goals\\" data-reactid=\\"75\\">Goal - doing</a>
-        </div>
-        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"76\\">
-          <!-- react-text: 77 -->&#x25CE; Wants to achieve
-          <!-- /react-text -->
-          <a href=\\"/u/test/goals\\" data-reactid=\\"78\\">Goal - done</a>
-        </div>
-        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"79\\">
-          <!-- react-text: 80 -->&#x1F4D6; Updated
-          <!-- /react-text -->
-          <a href=\\"/u/test/goals\\" data-reactid=\\"81\\">goals description</a>
-          <!-- react-text: 82 -->.
+          <a href=\\"/u/test/reads\\" data-reactid=\\"72\\">Read</a>
+          <!-- react-text: 73 -->.
           <!-- /react-text -->
         </div>
-        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"83\\">
-          <!-- react-text: 84 -->&#x1F4D6; Updated
+        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"74\\">
+          <!-- react-text: 75 -->&#x1F4D6; Wants to read
           <!-- /react-text -->
-          <a href=\\"/u/test/reads\\" data-reactid=\\"85\\">reading list description</a>
-          <!-- react-text: 86 -->.
+          <a href=\\"/u/test/reads\\" data-reactid=\\"76\\">Read - reading</a>
+          <!-- react-text: 77 -->.
           <!-- /react-text -->
+        </div>
+        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"78\\">
+          <!-- react-text: 79 -->&#x25CE; Wants to achieve
+          <!-- /react-text -->
+          <a href=\\"/u/test/goals\\" data-reactid=\\"80\\">Goal - doing</a>
+        </div>
+        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"81\\">
+          <!-- react-text: 82 -->&#x25CE; Wants to achieve
+          <!-- /react-text -->
+          <a href=\\"/u/test/goals\\" data-reactid=\\"83\\">Goal - done</a>
+        </div>
+        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"84\\">
+          <!-- react-text: 85 -->&#x25CE; Wants to achieve
+          <!-- /react-text -->
+          <a href=\\"/u/test/goals\\" data-reactid=\\"86\\">Goal</a>
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"87\\">
-          <!-- react-text: 88 -->&#x1F464; Updated
+          <!-- react-text: 88 -->&#x1F4D6; Updated
           <!-- /react-text -->
-          <a href=\\"/u/test/profile\\" data-reactid=\\"89\\">profile</a>
+          <a href=\\"/u/test/goals\\" data-reactid=\\"89\\">goals description</a>
           <!-- react-text: 90 -->.
           <!-- /react-text -->
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"91\\">
-          <!-- react-text: 92 -->&#x2714; Completed
+          <!-- react-text: 92 -->&#x1F4D6; Updated
           <!-- /react-text -->
-          <a href=\\"/u/test/profile\\" data-reactid=\\"93\\">Past authoring</a>
+          <a href=\\"/u/test/reads\\" data-reactid=\\"93\\">reading list description</a>
           <!-- react-text: 94 -->.
           <!-- /react-text -->
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"95\\">
-          <!-- react-text: 96 -->&#x2714; Completed
+          <!-- react-text: 96 -->&#x1F464; Updated
           <!-- /react-text -->
-          <a href=\\"/u/test/profile\\" data-reactid=\\"97\\">Present virtues authoring</a>
+          <a href=\\"/u/test/profile\\" data-reactid=\\"97\\">profile</a>
           <!-- react-text: 98 -->.
           <!-- /react-text -->
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"99\\">
           <!-- react-text: 100 -->&#x2714; Completed
           <!-- /react-text -->
-          <a href=\\"/u/test/profile\\" data-reactid=\\"101\\">Present faults authoring</a>
+          <a href=\\"/u/test/profile\\" data-reactid=\\"101\\">Past authoring</a>
           <!-- react-text: 102 -->.
           <!-- /react-text -->
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"103\\">
           <!-- react-text: 104 -->&#x2714; Completed
           <!-- /react-text -->
-          <a href=\\"/u/test/profile\\" data-reactid=\\"105\\">Future authoring</a>
+          <a href=\\"/u/test/profile\\" data-reactid=\\"105\\">Present virtues authoring</a>
           <!-- react-text: 106 -->.
           <!-- /react-text -->
         </div>
         <div style=\\"margin-bottom:24px;\\" data-reactid=\\"107\\">
           <!-- react-text: 108 -->&#x2714; Completed
           <!-- /react-text -->
-          <a href=\\"/u/test/profile\\" data-reactid=\\"109\\">Understand myself</a>
+          <a href=\\"/u/test/profile\\" data-reactid=\\"109\\">Present faults authoring</a>
           <!-- react-text: 110 -->.
+          <!-- /react-text -->
+        </div>
+        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"111\\">
+          <!-- react-text: 112 -->&#x2714; Completed
+          <!-- /react-text -->
+          <a href=\\"/u/test/profile\\" data-reactid=\\"113\\">Future authoring</a>
+          <!-- react-text: 114 -->.
+          <!-- /react-text -->
+        </div>
+        <div style=\\"margin-bottom:24px;\\" data-reactid=\\"115\\">
+          <!-- react-text: 116 -->&#x2714; Completed
+          <!-- /react-text -->
+          <a href=\\"/u/test/profile\\" data-reactid=\\"117\\">Understand myself</a>
+          <!-- react-text: 118 -->.
           <!-- /react-text -->
         </div>
       </div>
     </div>
-    <footer data-reactid=\\"111\\">
-      <div class=\\"container\\" data-reactid=\\"112\\">
-        <hr data-reactid=\\"113\\">
-        <p data-reactid=\\"114\\">
-          <!-- react-text: 115 -->Brought to you with &#x2764; by
+    <footer data-reactid=\\"119\\">
+      <div class=\\"container\\" data-reactid=\\"120\\">
+        <hr data-reactid=\\"121\\">
+        <p data-reactid=\\"122\\">
+          <!-- react-text: 123 -->Brought to you with &#x2764; by
           <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"116\\">Nick Redmark</a>
-          <!-- react-text: 117 -->. Support and discuss the development of this platform on
+          <a href=\\"/about\\" data-reactid=\\"124\\">Nick Redmark</a>
+          <!-- react-text: 125 -->. Support this platform on
           <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"118\\">Patreon</a>
-          <!-- react-text: 119 -->.
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"126\\">Patreon</a>
+          <!-- react-text: 127 -->.
           <!-- /react-text -->
         </p>
       </div>
@@ -201,7 +213,7 @@ exports[`user displays 1`] = `
 `;
 
 exports[`user displays goals 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-1864577135\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-1275092093\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -227,7 +239,7 @@ exports[`user displays goals 1`] = `
                 <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
               </li>
               <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/dashboard\\" data-reactid=\\"25\\">Dashboard</a>
+                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
               </li>
               <li class=\\"dropdownfalse\\" data-reactid=\\"26\\">
                 <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" data-reactid=\\"27\\">
@@ -270,44 +282,62 @@ exports[`user displays goals 1`] = `
           </div>
           <ul class=\\"nav nav-tabs\\" data-reactid=\\"46\\">
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"47\\">
-              <a href=\\"/u/test\\" data-reactid=\\"48\\">Activity</a>
+              <a href=\\"/u/test\\" data-reactid=\\"48\\">&#x26CF; Activity</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"49\\">
-              <a href=\\"/u/test/profile\\" data-reactid=\\"50\\">Profile</a>
+              <a href=\\"/u/test/profile\\" data-reactid=\\"50\\">&#x1F464; Profile</a>
             </li>
             <li role=\\"presentation\\" class=\\"active\\" data-reactid=\\"51\\">
-              <a href=\\"/u/test/goals\\" data-reactid=\\"52\\">Goals</a>
+              <a href=\\"/u/test/goals\\" data-reactid=\\"52\\">&#x25CE; Goals</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"53\\">
-              <a href=\\"/u/test/journal\\" data-reactid=\\"54\\">Journal</a>
+              <a href=\\"/u/test/journal\\" data-reactid=\\"54\\">&#x270E; Journal</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"55\\">
-              <a href=\\"/u/test/reads\\" data-reactid=\\"56\\">Reads</a>
+              <a href=\\"/u/test/reads\\" data-reactid=\\"56\\">&#x1F4D6; Books</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"57\\">
+              <a href=\\"/u/test/topics\\" data-reactid=\\"58\\">&#x1F4A1; Topics</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"59\\">
+              <a href=\\"/u/test/essays\\" data-reactid=\\"60\\">&#x270E; Essays</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"61\\">
+              <a href=\\"/u/test/speeches\\" data-reactid=\\"62\\">&#x1F444; Speeches</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"63\\">
+              <a href=\\"/u/test/conversations\\" data-reactid=\\"64\\">&#x1F5E9; Conversations</a>
             </li>
           </ul>
         </div>
-        <h2 data-reactid=\\"57\\">Goals</h2>
-        <div class=\\"markdown\\" data-reactid=\\"58\\">
+        <h2 data-reactid=\\"65\\">Goals</h2>
+        <div class=\\"markdown\\" data-reactid=\\"66\\">
           <p>Test user goals</p>
         </div>
-        <ul data-reactid=\\"59\\">
-          <li data-reactid=\\"60\\"><span data-reactid=\\"61\\">Goal</span></li>
-          <li data-reactid=\\"62\\"><span data-reactid=\\"63\\">Goal - doing</span><span data-reactid=\\"64\\"> &#x26CF;</span></li>
-          <li data-reactid=\\"65\\"><span data-reactid=\\"66\\">Goal - done</span><span data-reactid=\\"67\\"> &#x2714;</span></li>
+        <ul data-reactid=\\"67\\">
+          <li data-reactid=\\"68\\"><span data-reactid=\\"69\\">Goal</span>
+            <ul data-reactid=\\"70\\"></ul>
+          </li>
+          <li data-reactid=\\"71\\"><span data-reactid=\\"72\\">Goal - doing</span><span data-reactid=\\"73\\"> &#x26CF;</span>
+            <ul data-reactid=\\"74\\"></ul>
+          </li>
+          <li data-reactid=\\"75\\"><span data-reactid=\\"76\\">Goal - done</span><span data-reactid=\\"77\\"> &#x2714;</span>
+            <ul data-reactid=\\"78\\"></ul>
+          </li>
         </ul>
       </div>
     </div>
-    <footer data-reactid=\\"68\\">
-      <div class=\\"container\\" data-reactid=\\"69\\">
-        <hr data-reactid=\\"70\\">
-        <p data-reactid=\\"71\\">
-          <!-- react-text: 72 -->Brought to you with &#x2764; by
+    <footer data-reactid=\\"79\\">
+      <div class=\\"container\\" data-reactid=\\"80\\">
+        <hr data-reactid=\\"81\\">
+        <p data-reactid=\\"82\\">
+          <!-- react-text: 83 -->Brought to you with &#x2764; by
           <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"73\\">Nick Redmark</a>
-          <!-- react-text: 74 -->. Support and discuss the development of this platform on
+          <a href=\\"/about\\" data-reactid=\\"84\\">Nick Redmark</a>
+          <!-- react-text: 85 -->. Support this platform on
           <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"75\\">Patreon</a>
-          <!-- react-text: 76 -->.
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"86\\">Patreon</a>
+          <!-- react-text: 87 -->.
           <!-- /react-text -->
         </p>
       </div>
@@ -317,7 +347,7 @@ exports[`user displays goals 1`] = `
 `;
 
 exports[`user displays journal 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-160124168\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-830182109\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -343,7 +373,7 @@ exports[`user displays journal 1`] = `
                 <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
               </li>
               <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/dashboard\\" data-reactid=\\"25\\">Dashboard</a>
+                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
               </li>
               <li class=\\"dropdownfalse\\" data-reactid=\\"26\\">
                 <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" data-reactid=\\"27\\">
@@ -386,47 +416,59 @@ exports[`user displays journal 1`] = `
           </div>
           <ul class=\\"nav nav-tabs\\" data-reactid=\\"46\\">
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"47\\">
-              <a href=\\"/u/test\\" data-reactid=\\"48\\">Activity</a>
+              <a href=\\"/u/test\\" data-reactid=\\"48\\">&#x26CF; Activity</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"49\\">
-              <a href=\\"/u/test/profile\\" data-reactid=\\"50\\">Profile</a>
+              <a href=\\"/u/test/profile\\" data-reactid=\\"50\\">&#x1F464; Profile</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"51\\">
-              <a href=\\"/u/test/goals\\" data-reactid=\\"52\\">Goals</a>
+              <a href=\\"/u/test/goals\\" data-reactid=\\"52\\">&#x25CE; Goals</a>
             </li>
             <li role=\\"presentation\\" class=\\"active\\" data-reactid=\\"53\\">
-              <a href=\\"/u/test/journal\\" data-reactid=\\"54\\">Journal</a>
+              <a href=\\"/u/test/journal\\" data-reactid=\\"54\\">&#x270E; Journal</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"55\\">
-              <a href=\\"/u/test/reads\\" data-reactid=\\"56\\">Reads</a>
+              <a href=\\"/u/test/reads\\" data-reactid=\\"56\\">&#x1F4D6; Books</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"57\\">
+              <a href=\\"/u/test/topics\\" data-reactid=\\"58\\">&#x1F4A1; Topics</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"59\\">
+              <a href=\\"/u/test/essays\\" data-reactid=\\"60\\">&#x270E; Essays</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"61\\">
+              <a href=\\"/u/test/speeches\\" data-reactid=\\"62\\">&#x1F444; Speeches</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"63\\">
+              <a href=\\"/u/test/conversations\\" data-reactid=\\"64\\">&#x1F5E9; Conversations</a>
             </li>
           </ul>
         </div>
-        <h2 data-reactid=\\"57\\">Journal</h2>
-        <div style=\\"margin-top:24px;margin-bottom:24px;\\" data-reactid=\\"58\\">
-          <h3 data-reactid=\\"59\\">
-            <a href=\\"http://www.example.com\\" data-reactid=\\"60\\">Hello World</a>
+        <h2 data-reactid=\\"65\\">Journal</h2>
+        <div style=\\"margin-top:24px;margin-bottom:24px;\\" data-reactid=\\"66\\">
+          <h3 data-reactid=\\"67\\">
+            <a href=\\"http://www.example.com\\" data-reactid=\\"68\\">Hello World</a>
           </h3>
-          <div class=\\"markdown\\" data-reactid=\\"61\\">
+          <div class=\\"markdown\\" data-reactid=\\"69\\">
             <p>Lorem ipsum</p>
           </div>
-          <!-- react-text: 62 -->Goals:
-          <!-- /react-text --><span data-reactid=\\"63\\"><!-- react-text: 64 --> <!-- /react-text --><em data-reactid=\\"65\\">Goal</em></span><span data-reactid=\\"66\\"><!-- react-text: 67 -->, <!-- /react-text --><em data-reactid=\\"68\\">Goal - doing</em></span>
-          <hr data-reactid=\\"69\\">
+          <!-- react-text: 70 -->Goals:
+          <!-- /react-text --><span data-reactid=\\"71\\"><!-- react-text: 72 --> <!-- /react-text --><em data-reactid=\\"73\\">Goal</em></span><span data-reactid=\\"74\\"><!-- react-text: 75 -->, <!-- /react-text --><em data-reactid=\\"76\\">Goal - doing</em></span>
+          <hr data-reactid=\\"77\\">
         </div>
       </div>
     </div>
-    <footer data-reactid=\\"70\\">
-      <div class=\\"container\\" data-reactid=\\"71\\">
-        <hr data-reactid=\\"72\\">
-        <p data-reactid=\\"73\\">
-          <!-- react-text: 74 -->Brought to you with &#x2764; by
+    <footer data-reactid=\\"78\\">
+      <div class=\\"container\\" data-reactid=\\"79\\">
+        <hr data-reactid=\\"80\\">
+        <p data-reactid=\\"81\\">
+          <!-- react-text: 82 -->Brought to you with &#x2764; by
           <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"75\\">Nick Redmark</a>
-          <!-- react-text: 76 -->. Support and discuss the development of this platform on
+          <a href=\\"/about\\" data-reactid=\\"83\\">Nick Redmark</a>
+          <!-- react-text: 84 -->. Support this platform on
           <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"77\\">Patreon</a>
-          <!-- react-text: 78 -->.
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"85\\">Patreon</a>
+          <!-- react-text: 86 -->.
           <!-- /react-text -->
         </p>
       </div>
@@ -436,7 +478,7 @@ exports[`user displays journal 1`] = `
 `;
 
 exports[`user displays profile 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"884939397\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"66952014\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -462,7 +504,7 @@ exports[`user displays profile 1`] = `
                 <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
               </li>
               <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/dashboard\\" data-reactid=\\"25\\">Dashboard</a>
+                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
               </li>
               <li class=\\"dropdownfalse\\" data-reactid=\\"26\\">
                 <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" data-reactid=\\"27\\">
@@ -505,243 +547,254 @@ exports[`user displays profile 1`] = `
           </div>
           <ul class=\\"nav nav-tabs\\" data-reactid=\\"46\\">
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"47\\">
-              <a href=\\"/u/test\\" data-reactid=\\"48\\">Activity</a>
+              <a href=\\"/u/test\\" data-reactid=\\"48\\">&#x26CF; Activity</a>
             </li>
             <li role=\\"presentation\\" class=\\"active\\" data-reactid=\\"49\\">
-              <a href=\\"/u/test/profile\\" data-reactid=\\"50\\">Profile</a>
+              <a href=\\"/u/test/profile\\" data-reactid=\\"50\\">&#x1F464; Profile</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"51\\">
-              <a href=\\"/u/test/goals\\" data-reactid=\\"52\\">Goals</a>
+              <a href=\\"/u/test/goals\\" data-reactid=\\"52\\">&#x25CE; Goals</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"53\\">
-              <a href=\\"/u/test/journal\\" data-reactid=\\"54\\">Journal</a>
+              <a href=\\"/u/test/journal\\" data-reactid=\\"54\\">&#x270E; Journal</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"55\\">
-              <a href=\\"/u/test/reads\\" data-reactid=\\"56\\">Reads</a>
+              <a href=\\"/u/test/reads\\" data-reactid=\\"56\\">&#x1F4D6; Books</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"57\\">
+              <a href=\\"/u/test/topics\\" data-reactid=\\"58\\">&#x1F4A1; Topics</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"59\\">
+              <a href=\\"/u/test/essays\\" data-reactid=\\"60\\">&#x270E; Essays</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"61\\">
+              <a href=\\"/u/test/speeches\\" data-reactid=\\"62\\">&#x1F444; Speeches</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"63\\">
+              <a href=\\"/u/test/conversations\\" data-reactid=\\"64\\">&#x1F5E9; Conversations</a>
             </li>
           </ul>
         </div>
-        <h2 data-reactid=\\"57\\">Summary</h2>
-        <ul data-reactid=\\"58\\">
-          <li data-reactid=\\"59\\">
-            <!-- react-text: 60 -->3
-            <!-- /react-text -->
-            <!-- react-text: 61 -->
-            <!-- /react-text -->
-            <a href=\\"/u/test/goals\\" data-reactid=\\"62\\">goals</a>
-          </li>
-          <li data-reactid=\\"63\\">
-            <!-- react-text: 64 -->0
-            <!-- /react-text -->
-            <!-- react-text: 65 -->
-            <!-- /react-text -->
-            <a href=\\"/u/test/journal\\" data-reactid=\\"66\\">journal entries</a>
-          </li>
+        <h2 data-reactid=\\"65\\">Summary</h2>
+        <ul data-reactid=\\"66\\">
           <li data-reactid=\\"67\\">
-            <!-- react-text: 68 -->3
+            <!-- react-text: 68 -->&#x25CE;
             <!-- /react-text -->
-            <!-- react-text: 69 -->
+            <!-- react-text: 69 -->3
             <!-- /react-text -->
-            <a href=\\"/u/test/reads\\" data-reactid=\\"70\\">books in reading list</a>
+            <!-- react-text: 70 -->
+            <!-- /react-text -->
+            <a href=\\"/u/test/goals\\" data-reactid=\\"71\\">goals</a>
           </li>
-          <li data-reactid=\\"71\\">A man</li>
           <li data-reactid=\\"72\\">
-            <!-- react-text: 73 -->City:
+            <!-- react-text: 73 -->&#x1F4D6;
             <!-- /react-text -->
-            <!-- react-text: 74 -->Zurich
+            <!-- react-text: 74 -->3
             <!-- /react-text -->
-            <!-- react-text: 75 -->,
+            <!-- react-text: 75 -->
             <!-- /react-text -->
-            <!-- react-text: 76 -->Switzerland
+            <a href=\\"/u/test/reads\\" data-reactid=\\"76\\">books in reading list</a>
+          </li>
+          <li data-reactid=\\"77\\">A man</li>
+          <li data-reactid=\\"78\\">
+            <!-- react-text: 79 -->City:
+            <!-- /react-text -->
+            <!-- react-text: 80 -->Zurich
+            <!-- /react-text -->
+            <!-- react-text: 81 -->,
+            <!-- /react-text -->
+            <!-- react-text: 82 -->Switzerland
             <!-- /react-text -->
           </li>
         </ul>
-        <div data-reactid=\\"77\\">
-          <h2 data-reactid=\\"78\\">Links</h2>
-          <ul data-reactid=\\"79\\">
-            <li data-reactid=\\"80\\">
-              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"81\\">Website</label>
-              <a href=\\"http://website\\" data-reactid=\\"82\\">http://website</a>
-            </li>
-            <li data-reactid=\\"83\\">
-              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"84\\">Blog</label>
-              <a href=\\"http://blog\\" data-reactid=\\"85\\">http://blog</a>
-            </li>
+        <div data-reactid=\\"83\\">
+          <h2 data-reactid=\\"84\\">Links</h2>
+          <ul data-reactid=\\"85\\">
             <li data-reactid=\\"86\\">
-              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"87\\">Youtube</label>
-              <a href=\\"http://youtube\\" data-reactid=\\"88\\">http://youtube</a>
+              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"87\\">Website</label>
+              <a href=\\"http://website\\" data-reactid=\\"88\\">http://website</a>
             </li>
             <li data-reactid=\\"89\\">
-              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"90\\">Twitter</label>
-              <a href=\\"http://twitter\\" data-reactid=\\"91\\">http://twitter</a>
+              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"90\\">Blog</label>
+              <a href=\\"http://blog\\" data-reactid=\\"91\\">http://blog</a>
             </li>
             <li data-reactid=\\"92\\">
-              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"93\\">Reddit</label>
-              <a href=\\"http://reddit\\" data-reactid=\\"94\\">http://reddit</a>
+              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"93\\">Youtube</label>
+              <a href=\\"http://youtube\\" data-reactid=\\"94\\">http://youtube</a>
             </li>
             <li data-reactid=\\"95\\">
-              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"96\\">Patreon</label>
-              <a href=\\"http://patreon\\" data-reactid=\\"97\\">http://patreon</a>
+              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"96\\">Twitter</label>
+              <a href=\\"http://twitter\\" data-reactid=\\"97\\">http://twitter</a>
+            </li>
+            <li data-reactid=\\"98\\">
+              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"99\\">Reddit</label>
+              <a href=\\"http://reddit\\" data-reactid=\\"100\\">http://reddit</a>
+            </li>
+            <li data-reactid=\\"101\\">
+              <label style=\\"width:100px;margin-right:24px;\\" data-reactid=\\"102\\">Patreon</label>
+              <a href=\\"http://patreon\\" data-reactid=\\"103\\">http://patreon</a>
             </li>
           </ul>
         </div>
-        <div data-reactid=\\"98\\">
-          <h2 data-reactid=\\"99\\">Bio</h2>
-          <div class=\\"markdown\\" data-reactid=\\"100\\">
+        <div data-reactid=\\"104\\">
+          <h2 data-reactid=\\"105\\">Bio</h2>
+          <div class=\\"markdown\\" data-reactid=\\"106\\">
             <p>Test user bio</p>
           </div>
         </div>
-        <div data-reactid=\\"101\\">
-          <h2 data-reactid=\\"102\\">Self Authoring suite</h2>
-          <ul data-reactid=\\"103\\">
-            <li data-reactid=\\"104\\">
-              <!-- react-text: 105 -->Completed
-              <!-- /react-text -->
-              <!-- react-text: 106 -->Past authoring
-              <!-- /react-text -->
-            </li>
-            <li data-reactid=\\"107\\">
-              <!-- react-text: 108 -->Completed
-              <!-- /react-text -->
-              <!-- react-text: 109 -->Present faults authoring
-              <!-- /react-text -->
-            </li>
+        <div data-reactid=\\"107\\">
+          <h2 data-reactid=\\"108\\">Self Authoring suite</h2>
+          <ul data-reactid=\\"109\\">
             <li data-reactid=\\"110\\">
               <!-- react-text: 111 -->Completed
               <!-- /react-text -->
-              <!-- react-text: 112 -->Present virtues authoring
+              <!-- react-text: 112 -->Past authoring
               <!-- /react-text -->
             </li>
             <li data-reactid=\\"113\\">
               <!-- react-text: 114 -->Completed
               <!-- /react-text -->
-              <!-- react-text: 115 -->Future authoring
+              <!-- react-text: 115 -->Present faults authoring
+              <!-- /react-text -->
+            </li>
+            <li data-reactid=\\"116\\">
+              <!-- react-text: 117 -->Completed
+              <!-- /react-text -->
+              <!-- react-text: 118 -->Present virtues authoring
+              <!-- /react-text -->
+            </li>
+            <li data-reactid=\\"119\\">
+              <!-- react-text: 120 -->Completed
+              <!-- /react-text -->
+              <!-- react-text: 121 -->Future authoring
               <!-- /react-text -->
             </li>
           </ul>
         </div>
-        <div data-reactid=\\"116\\">
-          <h2 data-reactid=\\"117\\">Big 5</h2>
-          <li data-reactid=\\"118\\">
-            <!-- react-text: 119 -->Completed
-            <!-- /react-text -->
-            <!-- react-text: 120 -->Understand myself
-            <!-- /react-text -->
-          </li>
-          <li data-reactid=\\"121\\">
-            <!-- react-text: 122 -->Agreeableness:
-            <!-- /react-text -->
-            <!-- react-text: 123 -->50
-            <!-- /react-text -->
-            <ul data-reactid=\\"124\\">
-              <li data-reactid=\\"125\\">
-                <!-- react-text: 126 -->Compassion:
-                <!-- /react-text -->
-                <!-- react-text: 127 -->50
-                <!-- /react-text -->
-              </li>
-              <li data-reactid=\\"128\\">
-                <!-- react-text: 129 -->Politeness:
-                <!-- /react-text -->
-                <!-- react-text: 130 -->50
-                <!-- /react-text -->
-              </li>
-            </ul>
-          </li>
-          <li data-reactid=\\"131\\">
-            <!-- react-text: 132 -->Conscientiousness:
-            <!-- /react-text -->
-            <!-- react-text: 133 -->50
-            <!-- /react-text -->
-            <ul data-reactid=\\"134\\">
-              <li data-reactid=\\"135\\">
-                <!-- react-text: 136 -->Industriousness:
-                <!-- /react-text -->
-                <!-- react-text: 137 -->50
-                <!-- /react-text -->
-              </li>
-              <li data-reactid=\\"138\\">
-                <!-- react-text: 139 -->Orderliness:
-                <!-- /react-text -->
-                <!-- react-text: 140 -->50
-                <!-- /react-text -->
-              </li>
-            </ul>
-          </li>
-          <li data-reactid=\\"141\\">
-            <!-- react-text: 142 -->Extraversion:
-            <!-- /react-text -->
-            <!-- react-text: 143 -->50
-            <!-- /react-text -->
-            <ul data-reactid=\\"144\\">
-              <li data-reactid=\\"145\\">
-                <!-- react-text: 146 -->Enthusiasm:
-                <!-- /react-text -->
-                <!-- react-text: 147 -->50
-                <!-- /react-text -->
-              </li>
-              <li data-reactid=\\"148\\">
-                <!-- react-text: 149 -->Orderliness:
-                <!-- /react-text -->
-                <!-- react-text: 150 -->50
-                <!-- /react-text -->
-              </li>
-            </ul>
-          </li>
-          <li data-reactid=\\"151\\">
-            <!-- react-text: 152 -->Neuroticism:
-            <!-- /react-text -->
-            <!-- react-text: 153 -->50
-            <!-- /react-text -->
-            <ul data-reactid=\\"154\\">
-              <li data-reactid=\\"155\\">
-                <!-- react-text: 156 -->Withdrawal:
-                <!-- /react-text -->
-                <!-- react-text: 157 -->50
-                <!-- /react-text -->
-              </li>
-              <li data-reactid=\\"158\\">
-                <!-- react-text: 159 -->Volatility:
-                <!-- /react-text -->
-                <!-- react-text: 160 -->50
-                <!-- /react-text -->
-              </li>
-            </ul>
-          </li>
-          <li data-reactid=\\"161\\">
-            <!-- react-text: 162 -->Openness to experience:
-            <!-- /react-text -->
-            <!-- react-text: 163 -->50
-            <!-- /react-text -->
-            <ul data-reactid=\\"164\\">
-              <li data-reactid=\\"165\\">
-                <!-- react-text: 166 -->Intellect:
-                <!-- /react-text -->
-                <!-- react-text: 167 -->50
-                <!-- /react-text -->
-              </li>
-              <li data-reactid=\\"168\\">
-                <!-- react-text: 169 -->Openness:
-                <!-- /react-text -->
-                <!-- react-text: 170 -->50
-                <!-- /react-text -->
-              </li>
-            </ul>
-          </li>
+        <div data-reactid=\\"122\\">
+          <h2 data-reactid=\\"123\\">Big 5</h2>
+          <ul data-reactid=\\"124\\">
+            <li data-reactid=\\"125\\">
+              <!-- react-text: 126 -->Completed
+              <!-- /react-text -->
+              <!-- react-text: 127 -->Understand myself
+              <!-- /react-text -->
+            </li>
+            <li data-reactid=\\"128\\">
+              <!-- react-text: 129 -->Agreeableness:
+              <!-- /react-text -->
+              <!-- react-text: 130 -->50
+              <!-- /react-text -->
+              <ul data-reactid=\\"131\\">
+                <li data-reactid=\\"132\\">
+                  <!-- react-text: 133 -->Compassion:
+                  <!-- /react-text -->
+                  <!-- react-text: 134 -->50
+                  <!-- /react-text -->
+                </li>
+                <li data-reactid=\\"135\\">
+                  <!-- react-text: 136 -->Politeness:
+                  <!-- /react-text -->
+                  <!-- react-text: 137 -->50
+                  <!-- /react-text -->
+                </li>
+              </ul>
+            </li>
+            <li data-reactid=\\"138\\">
+              <!-- react-text: 139 -->Conscientiousness:
+              <!-- /react-text -->
+              <!-- react-text: 140 -->50
+              <!-- /react-text -->
+              <ul data-reactid=\\"141\\">
+                <li data-reactid=\\"142\\">
+                  <!-- react-text: 143 -->Industriousness:
+                  <!-- /react-text -->
+                  <!-- react-text: 144 -->50
+                  <!-- /react-text -->
+                </li>
+                <li data-reactid=\\"145\\">
+                  <!-- react-text: 146 -->Orderliness:
+                  <!-- /react-text -->
+                  <!-- react-text: 147 -->50
+                  <!-- /react-text -->
+                </li>
+              </ul>
+            </li>
+            <li data-reactid=\\"148\\">
+              <!-- react-text: 149 -->Extraversion:
+              <!-- /react-text -->
+              <!-- react-text: 150 -->50
+              <!-- /react-text -->
+              <ul data-reactid=\\"151\\">
+                <li data-reactid=\\"152\\">
+                  <!-- react-text: 153 -->Enthusiasm:
+                  <!-- /react-text -->
+                  <!-- react-text: 154 -->50
+                  <!-- /react-text -->
+                </li>
+                <li data-reactid=\\"155\\">
+                  <!-- react-text: 156 -->Orderliness:
+                  <!-- /react-text -->
+                  <!-- react-text: 157 -->50
+                  <!-- /react-text -->
+                </li>
+              </ul>
+            </li>
+            <li data-reactid=\\"158\\">
+              <!-- react-text: 159 -->Neuroticism:
+              <!-- /react-text -->
+              <!-- react-text: 160 -->50
+              <!-- /react-text -->
+              <ul data-reactid=\\"161\\">
+                <li data-reactid=\\"162\\">
+                  <!-- react-text: 163 -->Withdrawal:
+                  <!-- /react-text -->
+                  <!-- react-text: 164 -->50
+                  <!-- /react-text -->
+                </li>
+                <li data-reactid=\\"165\\">
+                  <!-- react-text: 166 -->Volatility:
+                  <!-- /react-text -->
+                  <!-- react-text: 167 -->50
+                  <!-- /react-text -->
+                </li>
+              </ul>
+            </li>
+            <li data-reactid=\\"168\\">
+              <!-- react-text: 169 -->Openness to experience:
+              <!-- /react-text -->
+              <!-- react-text: 170 -->50
+              <!-- /react-text -->
+              <ul data-reactid=\\"171\\">
+                <li data-reactid=\\"172\\">
+                  <!-- react-text: 173 -->Intellect:
+                  <!-- /react-text -->
+                  <!-- react-text: 174 -->50
+                  <!-- /react-text -->
+                </li>
+                <li data-reactid=\\"175\\">
+                  <!-- react-text: 176 -->Openness:
+                  <!-- /react-text -->
+                  <!-- react-text: 177 -->50
+                  <!-- /react-text -->
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-    <footer data-reactid=\\"171\\">
-      <div class=\\"container\\" data-reactid=\\"172\\">
-        <hr data-reactid=\\"173\\">
-        <p data-reactid=\\"174\\">
-          <!-- react-text: 175 -->Brought to you with &#x2764; by
+    <footer data-reactid=\\"178\\">
+      <div class=\\"container\\" data-reactid=\\"179\\">
+        <hr data-reactid=\\"180\\">
+        <p data-reactid=\\"181\\">
+          <!-- react-text: 182 -->Brought to you with &#x2764; by
           <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"176\\">Nick Redmark</a>
-          <!-- react-text: 177 -->. Support and discuss the development of this platform on
+          <a href=\\"/about\\" data-reactid=\\"183\\">Nick Redmark</a>
+          <!-- react-text: 184 -->. Support this platform on
           <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"178\\">Patreon</a>
-          <!-- react-text: 179 -->.
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"185\\">Patreon</a>
+          <!-- react-text: 186 -->.
           <!-- /react-text -->
         </p>
       </div>
@@ -751,7 +804,7 @@ exports[`user displays profile 1`] = `
 `;
 
 exports[`user displays reads 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"2131278214\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-1503382601\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -777,7 +830,7 @@ exports[`user displays reads 1`] = `
                 <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
               </li>
               <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/dashboard\\" data-reactid=\\"25\\">Dashboard</a>
+                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
               </li>
               <li class=\\"dropdownfalse\\" data-reactid=\\"26\\">
                 <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" data-reactid=\\"27\\">
@@ -820,50 +873,62 @@ exports[`user displays reads 1`] = `
           </div>
           <ul class=\\"nav nav-tabs\\" data-reactid=\\"46\\">
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"47\\">
-              <a href=\\"/u/test\\" data-reactid=\\"48\\">Activity</a>
+              <a href=\\"/u/test\\" data-reactid=\\"48\\">&#x26CF; Activity</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"49\\">
-              <a href=\\"/u/test/profile\\" data-reactid=\\"50\\">Profile</a>
+              <a href=\\"/u/test/profile\\" data-reactid=\\"50\\">&#x1F464; Profile</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"51\\">
-              <a href=\\"/u/test/goals\\" data-reactid=\\"52\\">Goals</a>
+              <a href=\\"/u/test/goals\\" data-reactid=\\"52\\">&#x25CE; Goals</a>
             </li>
             <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"53\\">
-              <a href=\\"/u/test/journal\\" data-reactid=\\"54\\">Journal</a>
+              <a href=\\"/u/test/journal\\" data-reactid=\\"54\\">&#x270E; Journal</a>
             </li>
             <li role=\\"presentation\\" class=\\"active\\" data-reactid=\\"55\\">
-              <a href=\\"/u/test/reads\\" data-reactid=\\"56\\">Reads</a>
+              <a href=\\"/u/test/reads\\" data-reactid=\\"56\\">&#x1F4D6; Books</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"57\\">
+              <a href=\\"/u/test/topics\\" data-reactid=\\"58\\">&#x1F4A1; Topics</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"59\\">
+              <a href=\\"/u/test/essays\\" data-reactid=\\"60\\">&#x270E; Essays</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"61\\">
+              <a href=\\"/u/test/speeches\\" data-reactid=\\"62\\">&#x1F444; Speeches</a>
+            </li>
+            <li role=\\"presentation\\" class=\\"false\\" data-reactid=\\"63\\">
+              <a href=\\"/u/test/conversations\\" data-reactid=\\"64\\">&#x1F5E9; Conversations</a>
             </li>
           </ul>
         </div>
-        <h2 data-reactid=\\"57\\">Reads</h2>
-        <div class=\\"markdown\\" data-reactid=\\"58\\">
+        <h2 data-reactid=\\"65\\">Reads</h2>
+        <div class=\\"markdown\\" data-reactid=\\"66\\">
           <p>Test user reading</p>
         </div>
-        <ul data-reactid=\\"59\\">
-          <li data-reactid=\\"60\\"><span data-reactid=\\"61\\">Read</span><span data-reactid=\\"62\\"><!-- react-text: 63 -->&#xA0;(<!-- /react-text --><a href=\\"http://example.com/article\\" data-reactid=\\"64\\">article</a><span data-reactid=\\"65\\">,&#xA0;</span>
-            <a href=\\"http://example.com/video\\"
-              data-reactid=\\"66\\">video</a>
-            <!-- react-text: 67 -->)
-            <!-- /react-text -->
-            </span>
+        <ul data-reactid=\\"67\\">
+          <li data-reactid=\\"68\\"><span data-reactid=\\"69\\">Read</span>
+            <ul data-reactid=\\"70\\"></ul>
           </li>
-          <li data-reactid=\\"68\\"><span data-reactid=\\"69\\">Read - reading</span><span data-reactid=\\"70\\">&#xA0;&#x1F441;</span></li>
-          <li data-reactid=\\"71\\"><span data-reactid=\\"72\\">Read - read</span><span data-reactid=\\"73\\">&#xA0;&#x2714;</span></li>
+          <li data-reactid=\\"71\\"><span data-reactid=\\"72\\">Read - reading</span><span data-reactid=\\"73\\">&#xA0;&#x1F441;</span>
+            <ul data-reactid=\\"74\\"></ul>
+          </li>
+          <li data-reactid=\\"75\\"><span data-reactid=\\"76\\">Read - read</span><span data-reactid=\\"77\\">&#xA0;&#x2714;</span>
+            <ul data-reactid=\\"78\\"></ul>
+          </li>
         </ul>
       </div>
     </div>
-    <footer data-reactid=\\"74\\">
-      <div class=\\"container\\" data-reactid=\\"75\\">
-        <hr data-reactid=\\"76\\">
-        <p data-reactid=\\"77\\">
-          <!-- react-text: 78 -->Brought to you with &#x2764; by
+    <footer data-reactid=\\"79\\">
+      <div class=\\"container\\" data-reactid=\\"80\\">
+        <hr data-reactid=\\"81\\">
+        <p data-reactid=\\"82\\">
+          <!-- react-text: 83 -->Brought to you with &#x2764; by
           <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"79\\">Nick Redmark</a>
-          <!-- react-text: 80 -->. Support and discuss the development of this platform on
+          <a href=\\"/about\\" data-reactid=\\"84\\">Nick Redmark</a>
+          <!-- react-text: 85 -->. Support this platform on
           <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"81\\">Patreon</a>
-          <!-- react-text: 82 -->.
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"86\\">Patreon</a>
+          <!-- react-text: 87 -->.
           <!-- /react-text -->
         </p>
       </div>

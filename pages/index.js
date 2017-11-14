@@ -49,7 +49,7 @@ export default withPage((props) => {
             </div>
             <div className="col-md-4">
               <h2>Support on Patreon</h2>
-              <p>Become a supporter and discuss the development of Sorters Club on Patreon.</p>
+              <p>Become a supporter of Sorters Club on Patreon.</p>
               <p><a className="btn btn-default" href="https://www.patreon.com/nickredmark" role="button" target="_blank">Support &raquo;</a></p>
             </div>
           </div>

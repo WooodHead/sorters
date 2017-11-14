@@ -1,6 +1,4 @@
 import {Component} from 'react'
-import Layout from '../components/layout'
-import withPage from '../providers/page'
 import {compose} from 'recompose'
 import {graphql} from 'react-apollo'
 import gql from 'graphql-tag'
@@ -8,10 +6,13 @@ import withLoginRequired from 'staart/lib/hocs/login-required'
 import Form from 'staart/lib/components/form'
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc'
 import Button from 'react-bootstrap/lib/Button'
-import RadioButtons from '../components/radio-buttons'
-import ShyButton from '../components/shy-button'
-import DeleteModal from '../components/delete-modal'
-import {errorMessage} from '../utils/errors'
+
+import Layout from '../../components/layout'
+import withPage from '../../providers/page'
+import RadioButtons from '../../components/radio-buttons'
+import ShyButton from '../../components/shy-button'
+import DeleteModal from '../../components/delete-modal'
+import {errorMessage} from '../../utils/errors'
 
 export default withPage(() => (
     <Layout title="Reading list" page="reads">
@@ -29,8 +30,6 @@ const ReadsQuery = gql`
                 title
                 reading
                 read
-                articleUrl
-                videoUrl
             }
             profile {
                 reading
@@ -77,14 +76,10 @@ class ReadsComponent extends Component {
                 title,
                 reading,
                 read,
-                articleUrl,
-                videoUrl,
             }) => ({
                 title,
                 reading,
                 read,
-                articleUrl,
-                videoUrl,
             }))) || []
 
         return <div style={{
@@ -97,7 +92,7 @@ class ReadsComponent extends Component {
             :
                 <div>
                     {username && reads.length > 0 &&
-                        <p>Your public reading list can be found at <a href={`/u/${username}`}>/u/{username}</a>.</p>
+                        <p>Your public reading list can be found at <a href={`/u/${username}/reads`}>/u/{username}/reads</a>.</p>
                     }
                     <h2>Description</h2>
                     <p>Here you can describe how you put together your reading list.</p>
@@ -223,7 +218,7 @@ class ReadsComponent extends Component {
     }
 }
 const Reads = compose(
-    withLoginRequired('/reads'),
+    withLoginRequired('/account/reads'),
     graphql(ReadsQuery, {
         name: 'reads'
     }),
@@ -261,7 +256,7 @@ class ReadComponent extends Component {
         this.state = {}
     }
     render() {
-        const {read: {title, reading, read, articleUrl, videoUrl}, update, remove} = this.props
+        const {read: {title, reading, read}, update, remove} = this.props
         const readingStatus = read ? 'read' : (reading ? 'reading' : 'not')
         return <li style={{
             cursor: 'pointer',
@@ -275,8 +270,6 @@ class ReadComponent extends Component {
                             title: this.title.value,
                             reading: readingStatus === 'reading',
                             read: readingStatus === 'read',
-                            articleUrl: this.articleUrl.value,
-                            videoUrl: this.videoUrl.value,
                         }
                         update(read)
                             .then(() => {
@@ -338,30 +331,6 @@ class ReadComponent extends Component {
                             },
                         }}
                     />
-                    <div className="form-group">
-                        <label htmlFor="article-url">Article URL</label>
-                        <input
-                            id="article-url"
-                            type="text"
-                            className="form-control"
-                            defaultValue={articleUrl}
-                            ref={ref => {
-                                this.articleUrl = ref
-                            }}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor='video-url'>Video URL</label>
-                        <input
-                            id="video-url"
-                            type="text"
-                            className="form-control"
-                            defaultValue={videoUrl}
-                            ref={ref => {
-                                this.videoUrl = ref
-                            }}
-                        />
-                    </div>
                 </Form>
             :
                 <span>
@@ -385,11 +354,6 @@ class ReadComponent extends Component {
                     <span>{title}</span>
                     {readingStatus === 'read' && <span> ✔</span>}
                     {readingStatus === 'reading' && <span> 👁</span>}
-                    {(articleUrl || videoUrl) && <span> (
-                        {articleUrl && <a href={articleUrl}>article</a>}
-                        {articleUrl && videoUrl && <span>, </span>}
-                        {videoUrl && <a href={videoUrl}>video</a>}
-                    )</span>}
                 </span>
             }
         </li>

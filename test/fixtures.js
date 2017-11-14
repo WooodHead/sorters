@@ -89,8 +89,6 @@ export const setUserData = async (page) => {
             reads: [
                 {
                     title: 'Read',
-                    articleUrl: 'http://example.com/article',
-                    videoUrl: 'http://example.com/video',
                 },
                 {
                     title: 'Read - reading',

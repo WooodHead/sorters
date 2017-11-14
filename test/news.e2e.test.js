@@ -45,8 +45,6 @@ describe('news', () => {
             reads: [
                 {
                     title: 'Test',
-                    articleUrl: 'http://example.com/article',
-                    videoUrl: 'http://example.com/video',
                 }
             ],
             goals: [
@@ -74,24 +72,6 @@ describe('news', () => {
             type: 'read-read',
             date,
             title: 'Test',
-        })
-        await Events.insertOne({
-            userId: ObjectID(insertedId),
-            type: 'spoke-about-read',
-            date,
-            title: 'Test',
-        })
-        await Events.insertOne({
-            userId: ObjectID(insertedId),
-            type: 'wrote-about-read',
-            date,
-            title: 'Test',
-        })
-        await Events.insertOne({
-            userId: ObjectID(insertedId),
-            type: 'wrote-about-read',
-            date,
-            title: 'DeletedRead',
         })
         await Events.insertOne({
             userId: ObjectID(insertedId),

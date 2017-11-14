@@ -7,9 +7,9 @@ import Markdown from '../../components/markdown'
 import UserHeader from '../../components/user-header'
 
 export default withPage(({url: {query: {username}}}) => (
-    <Layout title="Sorter" page="user-goals">
+    <Layout title="Sorter" page="user-topics">
         <div className="container">
-            <UserGoals username={username}/>
+            <UserTopics username={username}/>
         </div>
     </Layout>
 ))
@@ -24,14 +24,16 @@ query($username: String!) {
         profile {
             name
             about
-            goals
+            topics
         }
-        goals {
+        topics {
             title
             description
-            doing
-            done
-            entries {
+            essays {
+                title
+                url
+            }
+            speeches {
                 title
                 url
             }
@@ -42,7 +44,7 @@ query($username: String!) {
     }
 }
 `
-const UserGoalsComponent = (props) => {
+const UserTopicsComponent = (props) => {
     const {data: {loading, userByUsername: user, error}} = props
     
     if (loading) {
@@ -59,30 +61,35 @@ const UserGoalsComponent = (props) => {
     
     const username = user.local.username
     const profile = user.profile || {}
-    const {about, name, goals} = profile
+    const {about, name, topics} = profile
     const emailHash = user.emailHash
-    const goalsList = user.goals || []
+    const topicsList = user.topics || []
 
     return <div>
-        <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="goals"/>
-        <h2>Goals</h2>
-        {goals &&
-            <Markdown content={goals}/>
+        <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="topics"/>
+        <h2>Topics</h2>
+        {topics &&
+            <Markdown content={topics}/>
         }
-        {goalsList.length > 0 ?
+        {topicsList.length > 0 ?
             <ul>
-                {goalsList.map(({title, description, doing, done, entries, conversations}, key) => {
-                    const goalStatus = done ? 'done' : (doing ? 'doing' : 'not')
+                {topicsList.map(({title, description, essays, speeches, conversations}, key) => {
                     return <li key={key}>
                         <span>{title}</span>
-                        {goalStatus === 'doing' && <span> ⛏</span>}
-                        {goalStatus === 'done' && <span> ✔</span>}
                         <ul>
-                            {entries.length > 0 &&
-                                <li>✎ Journal entries: 
-                                    {entries.map((entry, i) => (<span key={i}>
+                            {essays.length > 0 &&
+                                <li>✎ Essays: 
+                                    {essays.map((essay, i) => (<span key={i}>
                                         {i ? ', ' : ' '}
-                                        <a href={entry.url || `/speech/${entry._id}`}>{entry.title}</a>
+                                        <a href={essay.url || `/essay/${essay._id}`}>{essay.title}</a>
+                                    </span>))}
+                                </li>
+                            }
+                            {speeches.length > 0 &&
+                                <li>👄 Speeches: 
+                                    {speeches.map((speech, i) => (<span key={i}>
+                                        {i ? ', ' : ' '}
+                                        <a href={speech.url || `/speech/${speech._id}`}>{speech.title}</a>
                                     </span>))}
                                 </li>
                             }
@@ -99,11 +106,11 @@ const UserGoalsComponent = (props) => {
                 })}
             </ul>
         :
-            <p>No goals</p>
+            <p>No topics</p>
         }
     </div>   
 }
-const UserGoals = compose(
+const UserTopics = compose(
     graphql(UserQuery, {
         options: ({username}) => ({
             variables: {
@@ -111,4 +118,4 @@ const UserGoals = compose(
             }
         })
     })
-)(UserGoalsComponent)
+)(UserTopicsComponent)

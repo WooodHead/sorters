@@ -25,7 +25,7 @@ afterAll(async () => {
 describe('dashboard', () => {
     it('redirects when unlogged', async () => {
         const browserPage = await browser.createPage()
-        const status = await browserPage.open(`http://localhost:3000/dashboard`)
+        const status = await browserPage.open(`http://localhost:3000/account`)
         expect(status).toBe('success')
 
         const text = await browserPage.property('content')
@@ -41,7 +41,7 @@ describe('dashboard', () => {
 
         await generateAndLogUser(browserPage)
 
-        const status = await browserPage.open(`http://localhost:3000/dashboard`)
+        const status = await browserPage.open(`http://localhost:3000/account`)
         expect(status).toBe('success')
         const text = await browserPage.property('content')
         const $ = cheerio.load(text)

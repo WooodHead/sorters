@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`dashboard displays when logged 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"566899160\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"1778777711\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -27,7 +27,7 @@ exports[`dashboard displays when logged 1`] = `
                 <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
               </li>
               <li class=\\"active\\" data-reactid=\\"24\\">
-                <a href=\\"/dashboard\\" data-reactid=\\"25\\">Dashboard</a>
+                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
               </li>
               <li class=\\"dropdownfalse\\" data-reactid=\\"26\\">
                 <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" data-reactid=\\"27\\">
@@ -60,12 +60,12 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\" data-reactid=\\"42\\">
             <div class=\\"panel-heading\\" data-reactid=\\"43\\">
               <h3 class=\\"panel-title\\" data-reactid=\\"44\\">
-                <a href=\\"/profile\\" data-reactid=\\"45\\">&#x1F464; Profile</a>
+                <a href=\\"/account/profile\\" data-reactid=\\"45\\">&#x1F464; Profile</a>
               </h3>
             </div>
             <div class=\\"panel-body\\" data-reactid=\\"46\\">
               <p data-reactid=\\"47\\">Edit your public profile.</p>
-              <a class=\\"btn btn-default\\" href=\\"/profile\\" role=\\"button\\" data-reactid=\\"48\\">Manage profile</a>
+              <a class=\\"btn btn-default\\" href=\\"/account/profile\\" role=\\"button\\" data-reactid=\\"48\\">Manage profile</a>
             </div>
           </div>
         </div>
@@ -73,12 +73,12 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\" data-reactid=\\"50\\">
             <div class=\\"panel-heading\\" data-reactid=\\"51\\">
               <h3 class=\\"panel-title\\" data-reactid=\\"52\\">
-                <a href=\\"/goals\\" data-reactid=\\"53\\">&#x25CE; Goals</a>
+                <a href=\\"/account/goals\\" data-reactid=\\"53\\">&#x25CE; Goals</a>
               </h3>
             </div>
             <div class=\\"panel-body\\" data-reactid=\\"54\\">
               <p data-reactid=\\"55\\">Share your goals and leave updates.</p>
-              <a class=\\"btn btn-default\\" href=\\"/goals\\" role=\\"button\\" data-reactid=\\"56\\">Manage goals</a>
+              <a class=\\"btn btn-default\\" href=\\"/account/goals\\" role=\\"button\\" data-reactid=\\"56\\">Manage goals</a>
             </div>
           </div>
         </div>
@@ -86,12 +86,12 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\" data-reactid=\\"58\\">
             <div class=\\"panel-heading\\" data-reactid=\\"59\\">
               <h3 class=\\"panel-title\\" data-reactid=\\"60\\">
-                <a href=\\"/journal\\" data-reactid=\\"61\\">&#x270E; Journal</a>
+                <a href=\\"/account/journal\\" data-reactid=\\"61\\">&#x270E; Journal</a>
               </h3>
             </div>
             <div class=\\"panel-body\\" data-reactid=\\"62\\">
               <p data-reactid=\\"63\\">Write updates about your goals.</p>
-              <a class=\\"btn btn-default\\" href=\\"/journal\\" role=\\"button\\" data-reactid=\\"64\\">Manage Journal</a>
+              <a class=\\"btn btn-default\\" href=\\"/account/journal\\" role=\\"button\\" data-reactid=\\"64\\">Manage Journal</a>
             </div>
           </div>
         </div>
@@ -101,69 +101,127 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\" data-reactid=\\"67\\">
             <div class=\\"panel-heading\\" data-reactid=\\"68\\">
               <h3 class=\\"panel-title\\" data-reactid=\\"69\\">
-                <a href=\\"/reads\\" data-reactid=\\"70\\">&#x1F4D6; Reading list</a>
+                <a href=\\"/account/topics\\" data-reactid=\\"70\\"><span data-reactid=\\"71\\"><!-- react-text: 72 -->&#x1F4A1; Topics <!-- /react-text --><span class=\\"badge pull-right\\" data-reactid=\\"73\\">new</span></span>
+                </a>
               </h3>
             </div>
-            <div class=\\"panel-body\\" data-reactid=\\"71\\">
-              <p data-reactid=\\"72\\">Create a list of things you read and intend to read.</p>
-              <a class=\\"btn btn-default\\" href=\\"/reads\\" role=\\"button\\" data-reactid=\\"73\\">Manage Reading List</a>
+            <div class=\\"panel-body\\" data-reactid=\\"74\\">
+              <p data-reactid=\\"75\\">Share what topics you are interested in.</p>
+              <a class=\\"btn btn-default\\" href=\\"/account/topics\\" role=\\"button\\" data-reactid=\\"76\\">Manage Topics</a>
             </div>
           </div>
         </div>
-        <div class=\\"col-md-4\\" data-reactid=\\"74\\">
-          <div class=\\"panel panel-default\\" data-reactid=\\"75\\">
-            <div class=\\"panel-heading\\" data-reactid=\\"76\\">
-              <h3 class=\\"panel-title\\" data-reactid=\\"77\\">
-                <a href=\\"/users\\" data-reactid=\\"78\\">&#x1F46B; Sorters</a>
+        <div class=\\"col-md-4\\" data-reactid=\\"77\\">
+          <div class=\\"panel panel-default\\" data-reactid=\\"78\\">
+            <div class=\\"panel-heading\\" data-reactid=\\"79\\">
+              <h3 class=\\"panel-title\\" data-reactid=\\"80\\">
+                <a href=\\"/account/essays\\" data-reactid=\\"81\\"><span data-reactid=\\"82\\"><!-- react-text: 83 -->&#x270E; Essays <!-- /react-text --><span class=\\"badge pull-right\\" data-reactid=\\"84\\">new</span></span>
+                </a>
               </h3>
             </div>
-            <div class=\\"panel-body\\" data-reactid=\\"79\\">
-              <p data-reactid=\\"80\\">See what other sorters are doing.</p>
-              <a class=\\"btn btn-default\\" href=\\"/users\\" role=\\"button\\" data-reactid=\\"81\\">Sorters</a>
+            <div class=\\"panel-body\\" data-reactid=\\"85\\">
+              <p data-reactid=\\"86\\">Write essays about the topics you are interested in or about the books you read.</p>
+              <a class=\\"btn btn-default\\" href=\\"/account/essays\\" role=\\"button\\" data-reactid=\\"87\\">Manage Essays</a>
             </div>
           </div>
         </div>
-        <div class=\\"col-md-4\\" data-reactid=\\"82\\">
-          <div class=\\"panel panel-default\\" data-reactid=\\"83\\">
-            <div class=\\"panel-heading\\" data-reactid=\\"84\\">
-              <h3 class=\\"panel-title\\" data-reactid=\\"85\\">
-                <a href=\\"https://discord.gg/6Q8v9Sm\\" data-reactid=\\"86\\">&#x1F5E9; Chat</a>
+        <div class=\\"col-md-4\\" data-reactid=\\"88\\">
+          <div class=\\"panel panel-default\\" data-reactid=\\"89\\">
+            <div class=\\"panel-heading\\" data-reactid=\\"90\\">
+              <h3 class=\\"panel-title\\" data-reactid=\\"91\\">
+                <a href=\\"/account/speeches\\" data-reactid=\\"92\\"><span data-reactid=\\"93\\"><!-- react-text: 94 -->&#x1F444; Speeches <!-- /react-text --><span class=\\"badge pull-right\\" data-reactid=\\"95\\">new</span></span>
+                </a>
               </h3>
             </div>
-            <div class=\\"panel-body\\" data-reactid=\\"87\\">
-              <p data-reactid=\\"88\\">Chat with other sorters (a Discord channel).</p>
-              <a class=\\"btn btn-default\\" href=\\"https://discord.gg/6Q8v9Sm\\" target=\\"_blank\\" role=\\"button\\" data-reactid=\\"89\\">Chat</a>
+            <div class=\\"panel-body\\" data-reactid=\\"96\\">
+              <p data-reactid=\\"97\\">Give speeches about the topics you are interested in or about the books you read.</p>
+              <a class=\\"btn btn-default\\" href=\\"/account/speeches\\" role=\\"button\\" data-reactid=\\"98\\">Manage Speeches</a>
             </div>
           </div>
         </div>
       </div>
-      <div class=\\"row\\" data-reactid=\\"90\\">
-        <div class=\\"col-md-4\\" data-reactid=\\"91\\">
-          <div class=\\"panel panel-default\\" data-reactid=\\"92\\">
-            <div class=\\"panel-heading\\" data-reactid=\\"93\\">
-              <h3 class=\\"panel-title\\" data-reactid=\\"94\\">
-                <a href=\\"/account\\" data-reactid=\\"95\\">&#x2699; Account</a>
+      <div class=\\"row\\" data-reactid=\\"99\\">
+        <div class=\\"col-md-4\\" data-reactid=\\"100\\">
+          <div class=\\"panel panel-default\\" data-reactid=\\"101\\">
+            <div class=\\"panel-heading\\" data-reactid=\\"102\\">
+              <h3 class=\\"panel-title\\" data-reactid=\\"103\\">
+                <a href=\\"/account/conversations\\" data-reactid=\\"104\\"><span data-reactid=\\"105\\"><!-- react-text: 106 -->&#x1F5E9; Conversations <!-- /react-text --><span class=\\"badge pull-right\\" data-reactid=\\"107\\">new</span></span>
+                </a>
               </h3>
             </div>
-            <div class=\\"panel-body\\" data-reactid=\\"96\\">
-              <p data-reactid=\\"97\\">Set your username, password etc.</p>
-              <a class=\\"btn btn-default\\" href=\\"/account\\" role=\\"button\\" data-reactid=\\"98\\">Manage Account</a>
+            <div class=\\"panel-body\\" data-reactid=\\"108\\">
+              <p data-reactid=\\"109\\">Have conversations with other sorters about topics you are interested in.</p>
+              <a class=\\"btn btn-default\\" href=\\"/account/conversations\\" role=\\"button\\" data-reactid=\\"110\\">Start Conversations</a>
+            </div>
+          </div>
+        </div>
+        <div class=\\"col-md-4\\" data-reactid=\\"111\\">
+          <div class=\\"panel panel-default\\" data-reactid=\\"112\\">
+            <div class=\\"panel-heading\\" data-reactid=\\"113\\">
+              <h3 class=\\"panel-title\\" data-reactid=\\"114\\">
+                <a href=\\"/account/reads\\" data-reactid=\\"115\\">&#x1F4D6; Reading list</a>
+              </h3>
+            </div>
+            <div class=\\"panel-body\\" data-reactid=\\"116\\">
+              <p data-reactid=\\"117\\">Create a list of things you read and intend to read.</p>
+              <a class=\\"btn btn-default\\" href=\\"/account/reads\\" role=\\"button\\" data-reactid=\\"118\\">Manage Reading List</a>
+            </div>
+          </div>
+        </div>
+        <div class=\\"col-md-4\\" data-reactid=\\"119\\">
+          <div class=\\"panel panel-default\\" data-reactid=\\"120\\">
+            <div class=\\"panel-heading\\" data-reactid=\\"121\\">
+              <h3 class=\\"panel-title\\" data-reactid=\\"122\\">
+                <a href=\\"/account/news\\" data-reactid=\\"123\\">&#x1F46B; Sorters</a>
+              </h3>
+            </div>
+            <div class=\\"panel-body\\" data-reactid=\\"124\\">
+              <p data-reactid=\\"125\\">See what other sorters are doing.</p>
+              <a class=\\"btn btn-default\\" href=\\"/account/news\\" role=\\"button\\" data-reactid=\\"126\\">Sorters</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=\\"row\\" data-reactid=\\"127\\">
+        <div class=\\"col-md-4\\" data-reactid=\\"128\\">
+          <div class=\\"panel panel-default\\" data-reactid=\\"129\\">
+            <div class=\\"panel-heading\\" data-reactid=\\"130\\">
+              <h3 class=\\"panel-title\\" data-reactid=\\"131\\">
+                <a href=\\"https://discord.gg/6Q8v9Sm\\" data-reactid=\\"132\\">&#x1F5E9; Chat</a>
+              </h3>
+            </div>
+            <div class=\\"panel-body\\" data-reactid=\\"133\\">
+              <p data-reactid=\\"134\\">Chat with other sorters (a Discord channel).</p>
+              <a class=\\"btn btn-default\\" href=\\"https://discord.gg/6Q8v9Sm\\" target=\\"_blank\\" role=\\"button\\" data-reactid=\\"135\\">Chat</a>
+            </div>
+          </div>
+        </div>
+        <div class=\\"col-md-4\\" data-reactid=\\"136\\">
+          <div class=\\"panel panel-default\\" data-reactid=\\"137\\">
+            <div class=\\"panel-heading\\" data-reactid=\\"138\\">
+              <h3 class=\\"panel-title\\" data-reactid=\\"139\\">
+                <a href=\\"/account/account\\" data-reactid=\\"140\\">&#x2699; Account</a>
+              </h3>
+            </div>
+            <div class=\\"panel-body\\" data-reactid=\\"141\\">
+              <p data-reactid=\\"142\\">Set your username, password etc.</p>
+              <a class=\\"btn btn-default\\" href=\\"/account/account\\" role=\\"button\\" data-reactid=\\"143\\">Manage Account</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <footer data-reactid=\\"99\\">
-      <div class=\\"container\\" data-reactid=\\"100\\">
-        <hr data-reactid=\\"101\\">
-        <p data-reactid=\\"102\\">
-          <!-- react-text: 103 -->Brought to you with &#x2764; by
+    <footer data-reactid=\\"144\\">
+      <div class=\\"container\\" data-reactid=\\"145\\">
+        <hr data-reactid=\\"146\\">
+        <p data-reactid=\\"147\\">
+          <!-- react-text: 148 -->Brought to you with &#x2764; by
           <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"104\\">Nick Redmark</a>
-          <!-- react-text: 105 -->. Support and discuss the development of this platform on
+          <a href=\\"/about\\" data-reactid=\\"149\\">Nick Redmark</a>
+          <!-- react-text: 150 -->. Support this platform on
           <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"106\\">Patreon</a>
-          <!-- react-text: 107 -->.
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"151\\">Patreon</a>
+          <!-- react-text: 152 -->.
           <!-- /react-text -->
         </p>
       </div>
@@ -173,7 +231,7 @@ exports[`dashboard displays when logged 1`] = `
 `;
 
 exports[`dashboard redirects when unlogged 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"709617274\\">
+"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"453237301\\">
   <div data-reactid=\\"2\\">
     <!-- react-empty: 3 -->
     <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
@@ -199,7 +257,7 @@ exports[`dashboard redirects when unlogged 1`] = `
                 <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
               </li>
               <li class=\\"active\\" data-reactid=\\"24\\">
-                <a href=\\"/dashboard\\" data-reactid=\\"25\\">Dashboard</a>
+                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
               </li>
               <li class=\\"false\\" data-reactid=\\"26\\">
                 <a href=\\"/login\\" data-reactid=\\"27\\">Log in</a>
@@ -222,7 +280,7 @@ exports[`dashboard redirects when unlogged 1`] = `
           <!-- react-text: 36 -->Brought to you with &#x2764; by
           <!-- /react-text -->
           <a href=\\"/about\\" data-reactid=\\"37\\">Nick Redmark</a>
-          <!-- react-text: 38 -->. Support and discuss the development of this platform on
+          <!-- react-text: 38 -->. Support this platform on
           <!-- /react-text -->
           <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"39\\">Patreon</a>
           <!-- react-text: 40 -->.

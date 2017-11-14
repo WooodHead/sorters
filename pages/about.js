@@ -16,7 +16,7 @@ export default withPage(() => (
           <ResponsiveEmbed src='https://www.youtube.com/embed/XbOeO_frzvg' ratio='16:9' />
         </div>
         <p>Check out the profiles of other <a href="/users">sorters</a> do to get an idea of what you can do on this platform.</p>
-        <p>Support this platform and discuss its development on <a href="https://www.patreon.com/nickredmark" target="_blank">Patreon</a>.</p>
+        <p>Support this platform on <a href="https://www.patreon.com/nickredmark" target="_blank">Patreon</a>.</p>
         <p>For now you can become a member only by becoming a patron. It's the easiest way to avoid spam and to get good quality users and content on the platform.</p>
         <h2>About Nick Redmark</h2>
         <p>Hi, I'm Nick Redmark, I'm the developer of this platform. I created it mainly for myself, to document my progress as I try to "sort myself out" and "rescue my father from the underworld". Check out more things I do on my <a href="http://nickredmark.com" target="_blank">personal site</a>.</p>

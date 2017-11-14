@@ -70,15 +70,28 @@ const PROFILE_FIELDS = {
 
 const EVENTS_WITH_TITLE = {
     title: {
-        read: ['created-read', 'reading-read', 'read-read', 'wrote-about-read', 'spoke-about-read'],
+        read: ['created-read', 'reading-read', 'read-read'],
         goal: ['created-goal', 'doing-goal', 'done-goal'],
+        topic: ['created-topic'],
     },
     _id: {
         entry: ['created-entry'],
+        essay: ['created-essay'],
+        speech: ['created-speech'],
+        conversation: ['created-conversation'],
     },
 }
 
-const IGNORED_EVENTS = ['updated-entry', 'deleted-entry']
+const IGNORED_EVENTS = [
+    'updated-entry',
+    'deleted-entry',
+    'updated-essay',
+    'deleted-essay',
+    'updated-speech',
+    'deleted-speech',
+    'updated-conversation',
+    'deleted-conversation',
+]
 
 const integrateEvent = (integrated, event) => {
     if (event.type === 'updated-profile') {
@@ -96,6 +109,8 @@ const integrateEvent = (integrated, event) => {
         integrated.updatedReading = true
     } else if (event.type === 'updated-goals') {
         integrated.updatedGoals = true
+    } else if (event.type === 'updated-topics') {
+        integrated.updatedTopics = true
     } else if (event.type === 'completed-program') {
         if (PROGRAMS[event.name]) {
             integrated[event.name] = true
@@ -151,8 +166,6 @@ const NewsQuery = gql`
                 read {
                     title
                     read
-                    articleUrl
-                    videoUrl
                 }
             }
             ... on UpdatedGoal {
@@ -166,6 +179,32 @@ const NewsQuery = gql`
                     _id
                     title
                     url
+                }
+            }
+            ... on UpdatedTopic {
+                title
+                topic {
+                    title
+                }
+            }
+            ... on UpdatedEssay {
+                essay {
+                    _id
+                    title
+                    url
+                }
+            }
+            ... on UpdatedSpeech {
+                speech {
+                    _id
+                    title
+                    url
+                }
+            }
+            ... on UpdatedConversation {
+                conversation {
+                    _id
+                    title
                 }
             }
             ... on UpdatedValue {
@@ -214,16 +253,19 @@ const NewsComponent = ({data: {loading, events}}) => {
                             }}>
                                 {event.updatedProfile && <li>
                                     👤 Updated <a href={`/u/${username}/profile`}>profile</a>
-                                    {Object.keys(event.updatedProfile).length > 0 && <span>: {Object.keys(event.updatedProfile).map((name, i) => <span key={i}>
-                                            {i ? ', ' : ''}
-                                            {PROFILE_FIELDS[name]}
+                                    {Object.keys(event.updatedProfile).length > 0 && <span>: 
+                                        {Object.keys(event.updatedProfile).slice(0, LIMIT).map((name, i) =>
+                                            <span key={i}>
+                                                {i ? ', ' : ''}
+                                                {PROFILE_FIELDS[name]}
                                             </span>
                                         )}
+                                        {Object.keys(event.updatedProfile).length > LIMIT && <span> and {Object.keys(event.updatedProfile).length - LIMIT} more</span>}
                                     </span>}
                                     .
                                 </li>}
                                 {event['created-entry'] && <li>
-                                    ✎ Added to <a href={`/u/${username}/journal`}>journal</a>:
+                                    ✎ Added to journal:
                                     {Object.keys(event['created-entry']).slice(0, LIMIT).sort().map((t, i) => {
                                         const {title, url} = event['created-entry'][t].entry
                                         return <span key={i}>
@@ -259,19 +301,35 @@ const NewsComponent = ({data: {loading, events}}) => {
                                         </span>)}
                                     {Object.keys(event['done-goal']).length > LIMIT && <span> and {Object.keys(event['done-goal']).length - LIMIT} more</span>}
                                 </li>}
-                                {event['spoke-about-read'] && <li>
-                                    👄 Spoke about 
-                                    {Object.keys(event['spoke-about-read']).slice(0, LIMIT).sort().map((t, i) => <span key={t}>
-                                        {i ? ',' : ''} <a href={event['spoke-about-read'][t].read.videoUrl}>{t}</a>
+                                {event['created-essay'] && <li>
+                                    ✎ Wrote
+                                    {Object.keys(event['created-essay']).slice(0, LIMIT).sort().map((t, i) => <span key={t}>
+                                        {i ? ', ' : ' '}
+                                        <a href={event['created-essay'][t].essay.url}>
+                                            {event['created-essay'][t].essay.title}
+                                        </a>
                                     </span>)}
-                                    {Object.keys(event['spoke-about-read']).length > LIMIT && <span> and {Object.keys(event['spoke-about-read']).length - LIMIT} more</span>}
+                                    {Object.keys(event['created-essay']).length > LIMIT && <span> and {Object.keys(event['created-essay']).length - LIMIT} more</span>}
                                 </li>}
-                                {event['wrote-about-read'] && <li>
-                                    ✎ Wrote about 
-                                    {Object.keys(event['wrote-about-read']).slice(0, LIMIT).sort().map((t, i) => <span key={t}>
-                                        {i ? ', ' : ' '}<a href={event['wrote-about-read'][t].read.articleUrl}>{t}</a>
+                                {event['created-speech'] && <li>
+                                    👄 Spoke about
+                                    {Object.keys(event['created-speech']).slice(0, LIMIT).sort().map((t, i) => <span key={t}>
+                                        {i ? ', ' : ' '}
+                                        <a href={event['created-speech'][t].speech.url}>
+                                            {event['created-speech'][t].speech.title}
+                                        </a>
                                     </span>)}
-                                    {Object.keys(event['wrote-about-read']).length > LIMIT && <span> and {Object.keys(event['wrote-about-read']).length - LIMIT} more</span>}
+                                    {Object.keys(event['created-speech']).length > LIMIT && <span> and {Object.keys(event['created-speech']).length - LIMIT} more</span>}
+                                </li>}
+                                {event['created-conversation'] && <li>
+                                    🗩 Started a conversation about
+                                    {Object.keys(event['created-conversation']).slice(0, LIMIT).sort().map((t, i) => <span key={t}>
+                                        {i ? ', ' : ' '}
+                                        <a href={`/conversation/${event['created-conversation'][t].conversation._id}`}>
+                                            {event['created-conversation'][t].conversation.title}
+                                        </a>
+                                    </span>)}
+                                    {Object.keys(event['created-conversation']).length > LIMIT && <span> and {Object.keys(event['created-conversation']).length - LIMIT} more</span>}
                                 </li>}
                                 {event['read-read'] && <li>
                                     📖 Read
@@ -294,7 +352,7 @@ const NewsComponent = ({data: {loading, events}}) => {
                                     </span>)}
                                     {Object.keys(event['reading-read']).length > LIMIT && <span> and {Object.keys(event['reading-read']).length - LIMIT} more</span>}
                                 </li>}
-                                {event.updatedReading && <li>
+                                {event.updatedGoals && <li>
                                     ◎ Updated <a href={`/u/${username}/goals`}>goals description</a>.
                                 </li>}
                                 {event['created-goal'] && <li>
@@ -313,6 +371,16 @@ const NewsComponent = ({data: {loading, events}}) => {
                                         {i ? ', ' : ' '}<em>{t}</em>
                                     </span>)}
                                     {Object.keys(event['created-read']).length > LIMIT && <span> and {Object.keys(event['created-read']).length - LIMIT} more</span>}
+                                </li>}
+                                {event.updatedTopics && <li>
+                                    💡 Updated <a href={`/u/${username}/topics`}>topics description</a>.
+                                </li>}
+                                {event['created-topic'] && <li>
+                                    💡 Is interested in:
+                                    {Object.keys(event['created-topic']).slice(0, LIMIT).sort().map((t, i) => <span key={t}>
+                                        {i ? ', ' : ' '}<a href={`/u/${username}/topics`}>{t}</a>
+                                    </span>)}
+                                    {Object.keys(event['created-topic']).length > LIMIT && <span> and {Object.keys(event['created-read']).length - LIMIT} more</span>}
                                 </li>}
                             </ul>
                         </div>

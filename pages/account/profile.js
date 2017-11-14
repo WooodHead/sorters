@@ -1,15 +1,16 @@
 import {Component} from 'react'
-import Layout from '../components/layout'
-import withPage from '../providers/page'
 import {compose} from 'recompose'
 import {graphql} from 'react-apollo'
 import gql from 'graphql-tag'
 import withLoginRequired from 'staart/lib/hocs/login-required'
 import Form from 'staart/lib/components/form'
-import {errorMessage} from '../utils/errors'
 import CountryList from 'country-list'
-import RadioButtons from '../components/radio-buttons'
 import Gravatar from 'react-gravatar'
+
+import Layout from '../../components/layout'
+import withPage from '../../providers/page'
+import {errorMessage} from '../../utils/errors'
+import RadioButtons from '../../components/radio-buttons'
 
 const countries = new CountryList()
 
@@ -31,7 +32,7 @@ class ProfileComponent extends Component {
     }
 }
 const Profile = compose(
-    withLoginRequired('/profile'),
+    withLoginRequired('/account/profile'),
 )(ProfileComponent)
 
 const profileFields = [

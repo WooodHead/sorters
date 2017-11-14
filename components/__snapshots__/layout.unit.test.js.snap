@@ -10,7 +10,7 @@ exports[`layout displays title and page 1`] = `
       >
         Nick Redmark
       </a>
-      . Support and discuss the development of this platform on 
+      . Support this platform on 
       <a
         href="https://www.patreon.com/nickredmark"
         target="_blank"
@@ -45,7 +45,7 @@ exports[`layout displays title and page 1`] = `
       Object {
         "label": "Dashboard",
         "name": "dashboard",
-        "url": "/dashboard",
+        "url": "/account",
       },
     ]
   }
@@ -55,29 +55,49 @@ exports[`layout displays title and page 1`] = `
   userMenu={
     Array [
       Object {
-        "label": "Profile",
+        "label": "👤 Profile",
         "name": "profile",
-        "url": "/profile",
+        "url": "/account/profile",
       },
       Object {
-        "label": "Goals",
+        "label": "◎ Goals",
         "name": "goals",
-        "url": "/goals",
+        "url": "/account/goals",
       },
       Object {
-        "label": "Journal",
+        "label": "✎ Journal",
         "name": "journal",
-        "url": "/journal",
+        "url": "/account/journal",
       },
       Object {
-        "label": "Reading List",
+        "label": "💡 Topics",
+        "name": "topics",
+        "url": "/account/topics",
+      },
+      Object {
+        "label": "✎ Essays",
+        "name": "essays",
+        "url": "/account/essays",
+      },
+      Object {
+        "label": "👄 Speeches",
+        "name": "speeches",
+        "url": "/account/speeches",
+      },
+      Object {
+        "label": "🗩 Conversations",
+        "name": "conversations",
+        "url": "/account/conversations",
+      },
+      Object {
+        "label": "📖 Reading List",
         "name": "reads",
-        "url": "/reads",
+        "url": "/account/reads",
       },
       Object {
-        "label": "Account",
+        "label": "⚙ Account",
         "name": "account",
-        "url": "/account",
+        "url": "/account/account",
       },
       Object {
         "label": "Log out",
@@ -99,7 +119,7 @@ exports[`layout shallow-renders 1`] = `
       >
         Nick Redmark
       </a>
-      . Support and discuss the development of this platform on 
+      . Support this platform on 
       <a
         href="https://www.patreon.com/nickredmark"
         target="_blank"
@@ -134,7 +154,7 @@ exports[`layout shallow-renders 1`] = `
       Object {
         "label": "Dashboard",
         "name": "dashboard",
-        "url": "/dashboard",
+        "url": "/account",
       },
     ]
   }
@@ -142,29 +162,49 @@ exports[`layout shallow-renders 1`] = `
   userMenu={
     Array [
       Object {
-        "label": "Profile",
+        "label": "👤 Profile",
         "name": "profile",
-        "url": "/profile",
+        "url": "/account/profile",
       },
       Object {
-        "label": "Goals",
+        "label": "◎ Goals",
         "name": "goals",
-        "url": "/goals",
+        "url": "/account/goals",
       },
       Object {
-        "label": "Journal",
+        "label": "✎ Journal",
         "name": "journal",
-        "url": "/journal",
+        "url": "/account/journal",
       },
       Object {
-        "label": "Reading List",
+        "label": "💡 Topics",
+        "name": "topics",
+        "url": "/account/topics",
+      },
+      Object {
+        "label": "✎ Essays",
+        "name": "essays",
+        "url": "/account/essays",
+      },
+      Object {
+        "label": "👄 Speeches",
+        "name": "speeches",
+        "url": "/account/speeches",
+      },
+      Object {
+        "label": "🗩 Conversations",
+        "name": "conversations",
+        "url": "/account/conversations",
+      },
+      Object {
+        "label": "📖 Reading List",
         "name": "reads",
-        "url": "/reads",
+        "url": "/account/reads",
       },
       Object {
-        "label": "Account",
+        "label": "⚙ Account",
         "name": "account",
-        "url": "/account",
+        "url": "/account/account",
       },
       Object {
         "label": "Log out",

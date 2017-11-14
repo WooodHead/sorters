@@ -69,8 +69,6 @@ const UserQuery = gql`
                     read {
                         title
                         read
-                        articleUrl
-                        videoUrl
                     }
                 }
                 ... on UpdatedGoal {
@@ -79,11 +77,37 @@ const UserQuery = gql`
                         title
                     }
                 }
+                ... on UpdatedTopic {
+                    title
+                    topic {
+                        title
+                    }
+                }
                 ... on UpdatedEntry {
                     entry {
                         _id
                         title
                         url
+                    }
+                }
+                ... on UpdatedEssay {
+                    essay {
+                        _id
+                        title
+                        url
+                    }
+                }
+                ... on UpdatedSpeech {
+                    speech {
+                        _id
+                        title
+                        url
+                    }
+                }
+                ... on UpdatedConversation {
+                    conversation {
+                        _id
+                        title
                     }
                 }
                 ... on UpdatedValue {
@@ -169,20 +193,6 @@ const Event = ({event, username}) => {
             return <Block>
                 ✔ Finished reading <a href={`/u/${username}/reads`}>{event.title}</a>.
             </Block>
-        case 'spoke-about-read':
-            if (!event.read) {
-                return null
-            }
-            return <Block>
-                👄 Spoke about <a href={event.read.videoUrl}>{event.title}</a>
-            </Block>
-        case 'wrote-about-read':
-            if (!event.read) {
-                return null
-            }
-            return <Block>
-                ✎ Wrote about <a href={event.read.articleUrl}>{event.title}</a>
-            </Block>
         case 'updated-goals':
             return <Block>
                 📖 Updated <a href={`/u/${username}/goals`}>goals description</a>.
@@ -199,19 +209,60 @@ const Event = ({event, username}) => {
             return <Block>
                ✔ Achieved <a href={`/u/${username}/goals`}>{event.title}</a>
             </Block>
+        case 'updated-topics':
+            return <Block>
+                💡 Updated <a href={`/u/${username}/topics`}>topics description</a>.
+            </Block>
+        case 'created-topic':
+            return <Block>
+                ✎ Created topic <a href={`/u/${username}/topics`}>{event.title}</a>
+            </Block>
         case 'created-entry':
             if (!event.entry) {
                 return null
             }
             return <Block>
-               ✎ Added journal entry <a href={`/u/${username}/journal`}>{event.entry.title}</a>
+               ✎ Added a journal entry <a href={`/u/${username}/journal`}>{event.entry.title}</a>
             </Block>
         case 'updated-entry':
             return null
         case 'deleted-entry':
             return null
+        case 'created-essay':
+            if (!event.essay) {
+                return null
+            }
+            return <Block>
+               ✎ Wrote an essay <a href={`/u/${username}/essays`}>{event.essay.title}</a>
+            </Block>
+        case 'updated-essay':
+            return null
+        case 'deleted-essay':
+            return null
+        case 'created-speech':
+            if (!event.speech) {
+                return null
+            }
+            return <Block>
+               👄 Spoke about <a href={`/u/${username}/speeches`}>{event.speech.title}</a>
+            </Block>
+        case 'updated-speech':
+            return null
+        case 'deleted-speech':
+            return null
+        case 'created-conversation':
+            if (!event.conversation) {
+                return null
+            }
+            return <Block>
+               🗩 Started a conversation about <a href={`/u/${username}/conversation`}>{event.conversation.title}</a>
+            </Block>
+        case 'updated-conversation':
+            return null
+        case 'deleted-conversation':
+            return null
         default:
-            console.warn(`Unknown event type ${event.type}.`)
+            console.warn(`Unknown event type ${event.type}.`, event)
             return null
     }
 }

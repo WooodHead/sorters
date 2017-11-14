@@ -23,7 +23,7 @@ const menu = [
         label: 'Sorters',
     },
     {
-        url: '/dashboard',
+        url: '/account',
         name: 'dashboard',
         label: 'Dashboard',
     },
@@ -31,29 +31,49 @@ const menu = [
 
 const userMenu = [
     {
-        url: '/profile',
+        url: '/account/profile',
         name: 'profile',
-        label: 'Profile',
+        label: '👤 Profile',
     },
     {
-        url: '/goals',
+        url: '/account/goals',
         name: 'goals',
-        label: 'Goals',
+        label: '◎ Goals',
     },
     {
-        url: '/journal',
+        url: '/account/journal',
         name: 'journal',
-        label: 'Journal',
+        label: '✎ Journal',
     },
     {
-        url: '/reads',
+        url: '/account/topics',
+        name: 'topics',
+        label: '💡 Topics',
+    },
+    {
+        url: '/account/essays',
+        name: 'essays',
+        label: '✎ Essays',
+    },
+    {
+        url: '/account/speeches',
+        name: 'speeches',
+        label: '👄 Speeches',
+    },
+    {
+        url: '/account/conversations',
+        name: 'conversations',
+        label: '🗩 Conversations',
+    },
+    {
+        url: '/account/reads',
         name: 'reads',
-        label: 'Reading List',
+        label: '📖 Reading List',
     },
     {
-        url: '/account',
+        url: '/account/account',
         name: 'account',
-        label: 'Account',
+        label: '⚙ Account',
     },
     {
         url: '/logout',
@@ -69,7 +89,7 @@ export default (props) => (
         menu={menu}
         userMenu={userMenu}
         siteName={siteName}
-        footerMessage={<p>Brought to you with ❤ by <a href="/about">Nick Redmark</a>. Support and discuss the development of this platform on <a href="https://www.patreon.com/nickredmark" target="_blank">Patreon</a>.</p>}
+        footerMessage={<p>Brought to you with ❤ by <a href="/about">Nick Redmark</a>. Support this platform on <a href="https://www.patreon.com/nickredmark" target="_blank">Patreon</a>.</p>}
         {...props}
     />
 )

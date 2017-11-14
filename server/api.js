@@ -12,12 +12,25 @@ const ooth = require('./ooth')
 const crypto = require('crypto-browserify')
 const {GraphQLScalarType} = require('graphql')
 const {objectMap} = require('../utils/objects')
+const {performMigrations} = require('./migrations')
 
-const prepare = (o) => {
+function prepare(o) {
     if (o && o._id) {
         o._id = o._id.toString()
     }
     return o
+}
+
+function testUser(userId) {
+    if (!userId) {
+        throw new Error('User not logged in.')
+    }
+}
+
+function testOwns(entity, userId) {
+    if (entity.userId !== userId) {
+        throw new Error('Forbidden.')
+    }
 }
 
 function nodeifyAsync(asyncFunction) {
@@ -26,12 +39,107 @@ function nodeifyAsync(asyncFunction) {
     }
 }
 
+async function findUserEntities(user, Collection) {
+    return (await Collection.find({ userId: user._id }, {
+        sort: {
+            createdAt: -1,
+        },
+    }).toArray()).map(prepare)
+}
+
+async function createEntity(userId, entity, Collection, Events, type) {
+    testUser(userId)
+    const date = new Date()
+    entity.userId = userId
+    entity.createdAt = date
+    entity.updatedAt = date
+    const {insertedId} = await Collection.insertOne(entity)
+    await Events.insert({
+        userId,
+        type: `created-${type}`,
+        date,
+        [`${type}Id`]: insertedId,
+    })
+    return prepare(await Collection.findOne(ObjectId(insertedId)))
+}
+
+async function updateEntity(userId, entity, Collection, Events, type) {
+    testUser(userId)
+
+    const _id = ObjectId(entity._id)
+    delete(entity._id)
+    const actualEntity = await Collection.findOne({ _id })
+    testOwns(actualEntity, userId)
+
+    const date = new Date()
+    entity.updatedAt = date
+    await Collection.update({ _id }, { $set: entity })
+    await Events.insert({
+        userId,
+        type: `updated-${type}`,
+        date,
+        [`${type}Id`]: _id,
+    })
+
+    return prepare(await Collection.findOne(_id))
+}
+
+async function deleteEntity(userId, _id, Collection, Events, type) {
+    testUser(userId)
+
+    const date = new Date()
+
+    const actualEntity = await Collection.findOne({ _id: ObjectId(_id) })
+    testOwns(actualEntity, userId)
+
+    await Collection.deleteOne({ _id: ObjectId(_id) })
+    await Events.insert({
+        userId,
+        type: `deleted-${type}`,
+        date,
+        [`${type}Id`]: _id,
+    })
+
+    return prepare(actualEntity)
+}
+
+async function findRelatedEntities(value, Collection, field) {
+    return (await Collection.find({
+        [field]: value,
+    }).toArray()).map(prepare)
+}
+
 const start = async (app, settings) => {
     const db = await MongoClient.connect(settings.mongoUrl)
+
+    await performMigrations(db)
 
     const Users = db.collection('users')
     const Events = db.collection('events')
     const Entries = db.collection('entries')
+    const Essays = db.collection('essays')
+    const Speeches = db.collection('speeches')
+    const Conversations = db.collection('conversations')
+
+    Events.createIndex({
+        date: -1,
+    })
+    Entries.createIndex({
+        userId: -1,
+        date: -1,
+    })
+    Essays.createIndex({
+        userId: -1,
+        date: -1,
+    })
+    Speeches.createIndex({
+        userId: -1,
+        date: -1,
+    })
+    Conversations.createIndex({
+        userId: -1,
+        date: -1,
+    })
 
     const typeDefs = []
     typeDefs.push(`
@@ -43,7 +151,11 @@ const start = async (app, settings) => {
             profile: Profile
             reads: [Read]
             goals: [Goal]
+            topics: [Topic]
             entries: [Entry]!
+            essays: [Essay]!
+            speeches: [Speech]!
+            conversations: [Conversation]!
             events: [Event]!
         }
         type UserLocal {
@@ -54,6 +166,7 @@ const start = async (app, settings) => {
             about: String
             bio: String
             goals: String
+            topics: String
             website: String
             blog: String
             youtube: String
@@ -90,20 +203,61 @@ const start = async (app, settings) => {
             title: String!
             reading: Boolean
             read: Boolean
-            articleUrl: String
-            videoUrl: String
+            essays: [Essay]!
+            speeches: [Speech]!
+            conversations: [Conversation]!
         }
         type Goal {
             title: String!
             description: String
             doing: Boolean
             done: Boolean
+            entries: [Entry]!
+            conversations: [Conversation]!
+        }
+        type Topic {
+            title: String!
+            description: String
+            essays: [Essay]!
+            speeches: [Speech]!
+            conversations: [Conversation]!
         }
         type Entry {
             _id: ID!
             title: String!
             url: String
             description: String
+            goalTitles: [String]!
+            createdAt: Date!
+            updatedAt: Date!
+        }
+        type Essay {
+            _id: ID!
+            title: String!
+            url: String
+            content: String
+            topicTitles: [String]!
+            readTitles: [String]!
+            createdAt: Date!
+            updatedAt: Date!
+        }
+        type Speech {
+            _id: ID!
+            title: String!
+            url: String
+            content: String
+            topicTitles: [String]!
+            readTitles: [String]!
+            createdAt: Date!
+            updatedAt: Date!
+        }
+        type Conversation {
+            _id: ID!
+            title: String!
+            url: String
+            content: String
+            topicTitles: [String]!
+            readTitles: [String]!
             goalTitles: [String]!
             createdAt: Date!
             updatedAt: Date!
@@ -150,6 +304,15 @@ const start = async (app, settings) => {
             title: String!
             goal: Goal
         }
+        type UpdatedTopic implements Event {
+            _id: ID!
+            userId: ID!
+            user: User!
+            type: String!
+            date: Date!
+            title: String!
+            topic: Topic
+        }
         type UpdatedEntry implements Event {
             _id: ID!
             userId: ID!
@@ -158,6 +321,33 @@ const start = async (app, settings) => {
             date: Date!
             entryId: ID!
             entry: Entry
+        }
+        type UpdatedEssay implements Event {
+            _id: ID!
+            userId: ID!
+            user: User!
+            type: String!
+            date: Date!
+            essayId: ID!
+            essay: Essay
+        }
+        type UpdatedSpeech implements Event {
+            _id: ID!
+            userId: ID!
+            user: User!
+            type: String!
+            date: Date!
+            speechId: ID!
+            speech: Speech
+        }
+        type UpdatedConversation implements Event {
+            _id: ID!
+            userId: ID!
+            user: User!
+            type: String!
+            date: Date!
+            conversationId: ID!
+            conversation: Conversation
         }
 
         input ProfileInput {
@@ -199,8 +389,6 @@ const start = async (app, settings) => {
             title: String!
             reading: Boolean
             read: Boolean
-            articleUrl: String
-            videoUrl: String
         }
         input NewReadInput {
             title: String!
@@ -214,6 +402,13 @@ const start = async (app, settings) => {
         input NewGoalInput {
             title: String!
         }
+        input TopicInput {
+            title: String!
+            description: String
+        }
+        input NewTopicInput {
+            title: String!
+        }
         input EntryInput {
             _id: ID!
             title: String!
@@ -225,6 +420,51 @@ const start = async (app, settings) => {
             title: String!
             url: String
             description: String
+            goalTitles: [String]!
+        }
+        input EssayInput {
+            _id: ID!
+            title: String!
+            url: String
+            content: String
+            topicTitles: [String]!
+            readTitles: [String]!
+        }
+        input NewEssayInput {
+            title: String!
+            url: String
+            content: String
+            topicTitles: [String]!
+            readTitles: [String]!
+        }
+        input SpeechInput {
+            _id: ID!
+            title: String!
+            url: String
+            content: String
+            topicTitles: [String]!
+            readTitles: [String]!
+        }
+        input NewSpeechInput {
+            title: String!
+            url: String
+            content: String
+            topicTitles: [String]!
+            readTitles: [String]!
+        }
+        input ConversationInput {
+            _id: ID!
+            title: String!
+            content: String
+            topicTitles: [String]!
+            readTitles: [String]!
+            goalTitles: [String]!
+        }
+        input NewConversationInput {
+            title: String!
+            content: String
+            topicTitles: [String]!
+            readTitles: [String]!
             goalTitles: [String]!
         }
 
@@ -246,9 +486,25 @@ const start = async (app, settings) => {
             createGoal(goal: NewGoalInput!): User
             updateGoals(goals: [GoalInput]!): User
 
+            updateTopicsDescription(topics: String): User
+            createTopic(topic: NewTopicInput!): User
+            updateTopics(topics: [TopicInput]!): User
+
             createEntry(entry: NewEntryInput!): Entry
             updateEntry(entry: EntryInput!): Entry
             deleteEntry(_id: ID!): Entry
+
+            createEssay(essay: NewEssayInput!): Essay
+            updateEssay(essay: EssayInput!): Essay
+            deleteEssay(_id: ID!): Essay
+
+            createSpeech(speech: NewSpeechInput!): Speech
+            updateSpeech(speech: SpeechInput!): Speech
+            deleteSpeech(_id: ID!): Speech
+
+            createConversation(conversation: NewConversationInput!): Conversation
+            updateConversation(conversation: ConversationInput!): Conversation
+            deleteConversation(_id: ID!): Conversation
         }
 
         schema {
@@ -314,13 +570,16 @@ const start = async (app, settings) => {
                 }
             },
             entries: async (user) => {
-                return (await Entries.find({
-                    userId: user._id
-                }, {
-                    sort: {
-                        createdAt: -1
-                    }
-                }).toArray()).map(prepare)
+                return await findUserEntities(user, Entries)
+            },
+            essays: async (user) => {
+                return await findUserEntities(user, Essays)
+            },
+            speeches: async (user) => {
+                return await findUserEntities(user, Speeches)
+            },
+            conversations: async (user) => {
+                return await findUserEntities(user, Conversations)
             },
             events: async (user, params, context) => {
                 return (await Events.find({
@@ -333,24 +592,63 @@ const start = async (app, settings) => {
                 }).toArray()).map(prepare)
             },
         },
+        Read: {
+            essays: async (read) => {
+                return await findRelatedEntities(read.title, Essays, 'readTitles')
+            },
+            speeches: async (read) => {
+                return await findRelatedEntities(read.title, Speeches, 'readTitles')
+            },
+            conversations: async (read) => {
+                return await findRelatedEntities(read.title, Conversations, 'readTitles')
+            },
+        },
+        Goal: {
+            entries: async (goal) => {
+                return await findRelatedEntities(goal.title, Essays, 'goalTitles')
+            },
+            conversations: async (goal) => {
+                return await findRelatedEntities(goal.title, Conversations, 'goalTitles')
+            }
+        },
+        Topic: {
+            essays: async (topic) => {
+                return await findRelatedEntities(topic.title, Essays, 'topicTitles')
+            },
+            speeches: async (topic) => {
+                return await findRelatedEntities(topic.title, Speeches, 'topicTitles')
+            },
+            conversations: async (topic) => {
+                return await findRelatedEntities(topic.title, Conversations, 'topicTitles')
+            },
+        },
         Event: {
             __resolveType({type}, context, info) {
                 const eventType = {
                     'updated-profile': 'UpdatedProfile',
                     'updated-reading': 'UpdatedValue',
                     'updated-goals': 'UpdatedValue',
+                    'updated-topics': 'UpdatedValue',
                     'completed-program': 'UpdatedValue',
                     'created-read': 'UpdatedRead',
                     'reading-read': 'UpdatedRead',
                     'read-read': 'UpdatedRead',
-                    'spoke-about-read': 'UpdatedRead',
-                    'wrote-about-read': 'UpdatedRead',
                     'created-goal': 'UpdatedGoal',
                     'doing-goal': 'UpdatedGoal',
                     'done-goal': 'UpdatedGoal',
+                    'created-topic': 'UpdatedTopic',
                     'created-entry': 'UpdatedEntry',
                     'updated-entry': 'UpdatedEntry',
                     'deleted-entry': 'UpdatedEntry',
+                    'created-essay': 'UpdatedEssay',
+                    'updated-essay': 'UpdatedEssay',
+                    'deleted-essay': 'UpdatedEssay',
+                    'created-speech': 'UpdatedSpeech',
+                    'updated-speech': 'UpdatedSpeech',
+                    'deleted-speech': 'UpdatedSpeech',
+                    'created-conversation': 'UpdatedConversation',
+                    'updated-conversation': 'UpdatedConversation',
+                    'deleted-conversation': 'UpdatedConversation',
                 }[type]
                 if (!eventType) {
                     throw new Error(`Unknown event type: ${type}`)
@@ -390,6 +688,17 @@ const start = async (app, settings) => {
                 }
             },
         },
+        UpdatedTopic: {
+            user: async ({userId}) => {
+                return prepare(await Users.findOne(ObjectId(userId)))
+            },
+            topic: async ({userId, title}) => {
+                const user = await Users.findOne(ObjectId(userId))
+                if (user.topics) {
+                    return user.topics.find(r => r.title === title)
+                }
+            },
+        },
         UpdatedEntry: {
             user: async ({userId}) => {
                 return prepare(await Users.findOne(ObjectId(userId)))
@@ -398,11 +707,33 @@ const start = async (app, settings) => {
                 return prepare(await Entries.findOne(ObjectId(entryId)))
             },
         },
+        UpdatedEssay: {
+            user: async ({userId}) => {
+                return prepare(await Users.findOne(ObjectId(userId)))
+            },
+            essay: async ({essayId}) => {
+                return prepare(await Essays.findOne(ObjectId(essayId)))
+            },
+        },
+        UpdatedSpeech: {
+            user: async ({userId}) => {
+                return prepare(await Users.findOne(ObjectId(userId)))
+            },
+            speech: async ({speechId}) => {
+                return prepare(await Speeches.findOne(ObjectId(speechId)))
+            },
+        },
+        UpdatedConversation: {
+            user: async ({userId}) => {
+                return prepare(await Users.findOne(ObjectId(userId)))
+            },
+            conversation: async ({conversationId}) => {
+                return prepare(await Conversations.findOne(ObjectId(conversationId)))
+            },
+        },
         Mutation: {
             updateProfile: async (root, {profile}, {userId}, info) => {
-                if (!userId) {
-                    throw new Error('User not logged in.')
-                }
+                testUser(userId)
                 const user = await Users.findOne(ObjectId(userId))
                 await Users.update({
                     _id: ObjectId(userId)
@@ -441,9 +772,7 @@ const start = async (app, settings) => {
                 return prepare(await Users.findOne(ObjectId(userId)));
             },
             updateReading: async (root, {reading}, {userId}, info) => {
-                if (!userId) {
-                    throw new Error('User not logged in.')
-                }
+                testUser(userId)
                 await Users.update({
                     _id: ObjectId(userId)
                 }, {
@@ -459,9 +788,7 @@ const start = async (app, settings) => {
                 return prepare(await Users.findOne(ObjectId(userId)));
             },
             updateReads: async (root, {reads}, {userId}, info) => {
-                if (!userId) {
-                    throw new Error('User not logged in.')
-                }
+                testUser(userId)
                 const user = await Users.findOne(ObjectId(userId))
                 const userReads = user.reads || []
                 for (const read of reads) {
@@ -491,22 +818,6 @@ const start = async (app, settings) => {
                                 date: new Date(),
                             })
                         }
-                        if (!oldRead.articleUrl && read.articleUrl) {
-                            await Events.insert({
-                                userId,
-                                type: 'wrote-about-read',
-                                title,
-                                date: new Date(),
-                            })
-                        }
-                        if (!oldRead.videoUrl && read.videoUrl) {
-                            await Events.insert({
-                                userId,
-                                type: 'spoke-about-read',
-                                title,
-                                date: new Date(),
-                            })
-                        }
                     }
                 }
                 await Users.update({
@@ -519,9 +830,7 @@ const start = async (app, settings) => {
                 return prepare(await Users.findOne(ObjectId(userId)));
             },
             createRead: async (root, {read}, {userId}, info) => {
-                if (!userId) {
-                    throw new Error('User not logged in.')
-                }
+                testUser(userId)
                 const user = await Users.findOne(ObjectId(userId))
                 if (user.reads) {
                     if (user.reads.some(r => r.title === read.title)) {
@@ -544,9 +853,7 @@ const start = async (app, settings) => {
                 return prepare(await Users.findOne(ObjectId(userId)));
             },
             updateGoalsDescription: async (root, {goals}, {userId}, info) => {
-                if (!userId) {
-                    throw new Error('User not logged in.')
-                }
+                testUser(userId)
                 await (Users.update({
                     _id: ObjectId(userId)
                 }, {
@@ -562,9 +869,7 @@ const start = async (app, settings) => {
                 return prepare(await Users.findOne(ObjectId(userId)));
             },
             updateGoals: async (root, {goals}, {userId}, info) => {
-                if (!userId) {
-                    throw new Error('User not logged in.')
-                }
+                testUser(userId)
                 const user = await Users.findOne(ObjectId(userId))
                 const userGoals = user.goals || []
                 for (const goal of goals) {
@@ -606,9 +911,7 @@ const start = async (app, settings) => {
                 return prepare(await Users.findOne(ObjectId(userId)));
             },
             createGoal: async (root, {goal}, {userId}, info) => {
-                if (!userId) {
-                    throw new Error('User not logged in.')
-                }
+                testUser(userId)
                 const user = await Users.findOne(ObjectId(userId))
                 if (user.goals) {
                     if (user.goals.some(g => g.title === goal.title)) {
@@ -630,82 +933,106 @@ const start = async (app, settings) => {
                 })
                 return prepare(await Users.findOne(ObjectId(userId)));
             },
-            createEntry: async (root, {entry}, {userId}, info) => {
-                if (!userId) {
-                    throw new Error('User not logged in.')
-                }
-                const date = new Date()
-                entry.userId = userId
-                entry.createdAt = date
-                entry.updatedAt = date
-                const {insertedId} = await Entries.insertOne(entry)
+            updateTopicsDescription: async (root, {topics}, {userId}, info) => {
+                testUser(userId)
+                await (Users.update({
+                    _id: ObjectId(userId)
+                }, {
+                    $set: {
+                        'profile.topics': topics
+                    }
+                }));
                 await Events.insert({
                     userId,
-                    type: 'created-entry',
-                    date,
-                    entryId: insertedId,
+                    type: 'updated-topics',
+                    date: new Date(),
                 })
-                return prepare(await Entries.findOne(ObjectId(insertedId)))
+                return prepare(await Users.findOne(ObjectId(userId)));
+            },
+            updateTopics: async (root, {topics}, {userId}, info) => {
+                testUser(userId)
+                const user = await Users.findOne(ObjectId(userId))
+                const userTopics = user.topics || []
+                for (const topic of topics) {
+                    const title = topic.title
+                    const oldTopic = userTopics.find(t => t.title === topic.title)
+                    if (!oldTopic) {
+                        await Events.insert({
+                            userId,
+                            type: 'created-topic',
+                            title,
+                            date: new Date(),
+                        })
+                    }
+                }                
+                await Users.update({
+                    _id: ObjectId(userId)
+                }, {
+                    $set: {
+                        topics
+                    }
+                });
+                return prepare(await Users.findOne(ObjectId(userId)));
+            },
+            createTopic: async (root, {topic}, {userId}, info) => {
+                testUser(userId)
+                const user = await Users.findOne(ObjectId(userId))
+                if (user.topics) {
+                    if (user.topics.some(t => t.title === topic.title)) {
+                        throw new Error('You already created this topic.')
+                    }
+                }
+                await Users.update({
+                    _id: ObjectId(userId)
+                }, {
+                    $push: {
+                        topics: topic
+                    }
+                })
+                await Events.insert({
+                    userId,
+                    type: 'created-topic',
+                    date: new Date(),
+                    title: topic.title,
+                })
+                return prepare(await Users.findOne(ObjectId(userId)));
+            },
+            createEntry: async (root, {entry}, {userId}, info) => {
+                return await createEntity(userId, entry, Entries, Events, 'entry')
             },
             updateEntry: async (root, {entry}, {userId}, info) => {
-                if (!userId) {
-                    throw new Error('User not logged in.')
-                }
-                const _id = ObjectId(entry._id)
-                delete(entry._id)
-
-                const actualEntry = await Entries.findOne({
-                    _id,
-                })
-                if (actualEntry.userId !== userId) {
-                    throw new Error('Forbidden.')
-                }
-
-                const date = new Date()
-                entry.updatedAt = date
-
-                await Entries.update({
-                    _id
-                }, {
-                    $set: entry
-                })
-
-                await Events.insert({
-                    userId,
-                    type: 'updated-entry',
-                    date,
-                    entryId: _id,
-                })
-
-                return prepare(await Entries.findOne(_id))
+                return await updateEntity(userId, entry, Entries, Events, 'entry')
             },
             deleteEntry: async (root, {_id}, {userId}, info) => {
-                if (!userId) {
-                    throw new Error('User not logged in.')
-                }
-
-                const date = new Date()
-
-                const actualEntry = await Entries.findOne({
-                    _id: ObjectId(_id),
-                })
-                if (actualEntry.userId !== userId) {
-                    throw new Error('Forbidden.')
-                }
-
-                await Entries.deleteOne({
-                    _id: ObjectId(_id)
-                })
-
-                await Events.insert({
-                    userId,
-                    type: 'deleted-entry',
-                    date,
-                    entryId: _id,
-                })
-
-                return prepare(actualEntry)
-            }
+                return await deleteEntity(userId, _id, Entries, Events, 'entry')
+            },
+            createEssay: async (root, {essay}, {userId}, info) => {
+                return await createEntity(userId, essay, Essays, Events, 'essay')
+            },
+            updateEssay: async (root, {essay}, {userId}, info) => {
+                return await updateEntity(userId, essay, Essays, Events, 'essay')
+            },
+            deleteEssay: async (root, {_id}, {userId}, info) => {
+                return await deleteEntity(userId, _id, Essays, Events, 'entry')
+            },
+            createSpeech: async (root, {speech}, {userId}, info) => {
+                return await createEntity(userId, speech, Speeches, Events, 'speech')
+            },
+            updateSpeech: async (root, {speech}, {userId}, info) => {
+                return await updateEntity(userId, speech, Speeches, Events, 'speech')
+            },
+            deleteSpeech: async (root, {_id}, {userId}, info) => {
+                return await deleteEntity(userId, _id, Speeches, Events, 'speech')
+            },
+            createConversation: async (root, {conversation}, {userId}, info) => {
+                return await createEntity(userId, conversation, Conversations, Events, 'conversation')
+            },
+            updateConversation: async (root, {conversation}, {userId}, info) => {
+                return await updateEntity(userId, conversation, Conversations, Events, 'conversation')
+            },
+            deleteConversation: async (root, {_id}, {userId}, info) => {
+                return await deleteEntity(userId, _id, Conversations, Events, 'conversation')
+            },
         },
     }
 

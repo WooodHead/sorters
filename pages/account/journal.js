@@ -1,18 +1,19 @@
 import {Component} from 'react'
-import Layout from '../components/layout'
-import withPage from '../providers/page'
 import {compose} from 'recompose'
 import {withUser} from 'ooth-client-react'
 import withLoginRequired from 'staart/lib/hocs/login-required'
 import Form from 'staart/lib/components/form'
-import Markdown from '../components/markdown'
-import {errorMessage} from '../utils/errors'
-import ShyButton from '../components/shy-button'
-import DeleteModal from '../components/delete-modal'
 import gql from 'graphql-tag'
 import {graphql} from 'react-apollo'
-import CheckButtons from '../components/check-buttons'
-import Panel from '../components/panel'
+
+import Layout from '../../components/layout'
+import withPage from '../../providers/page'
+import Markdown from '../../components/markdown'
+import {errorMessage} from '../../utils/errors'
+import ShyButton from '../../components/shy-button'
+import DeleteModal from '../../components/delete-modal'
+import CheckButtons from '../../components/check-buttons'
+import Panel from '../../components/panel'
 
 export default withPage(() => (
     <Layout title="Journal" page="journal">
@@ -101,7 +102,7 @@ class JournalComponent extends Component {
             margin: 'auto'
         }}>
             <h1>Journal</h1>
-            <p>Here you can write regular updates about your <a href="/goals">goals</a>.</p>
+            <p>Here you can write regular updates about your <a href="/account/goals">goals</a>.</p>
             {loading ?
                 <span>Loading...</span>
             :
@@ -233,7 +234,7 @@ class JournalComponent extends Component {
     }
 }
 const Journal = compose(
-    withLoginRequired('/journal'),
+    withLoginRequired('/account/journal'),
     graphql(JournalQuery, {
         name: 'journal'
     }),
