@@ -86,7 +86,7 @@ const UserGoalsComponent = (props) => {
                                         {i ? ', ' : ' '}
                                         {entry.url ?
                                             <span>
-                                                <a href={url} target="_blank">{entry.title}</a>
+                                                <a href={entry.url} target="_blank">{entry.title}</a>
                                                 {' '}(<a href={`/entry/${entry._id}`}>comments</a>)
                                             </span>
                                         :

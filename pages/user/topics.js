@@ -86,7 +86,7 @@ const UserTopicsComponent = (props) => {
                                         {i ? ', ' : ' '}
                                         {essay.url ?
                                             <span>
-                                                <a href={url} target="_blank">{essay.title}</a>
+                                                <a href={essay.url} target="_blank">{essay.title}</a>
                                                 {' '}(<a href={`/essay/${essay._id}`}>comments</a>)
                                             </span>
                                         :
@@ -101,7 +101,7 @@ const UserTopicsComponent = (props) => {
                                         {i ? ', ' : ' '}
                                         {speech.url ?
                                             <span>
-                                                <a href={url} target="_blank">{speech.title}</a>
+                                                <a href={speech.url} target="_blank">{speech.title}</a>
                                                 {' '}(<a href={`/speech/${speech._id}`}>comments</a>)
                                             </span>
                                         :
