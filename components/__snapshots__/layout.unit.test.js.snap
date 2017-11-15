@@ -51,7 +51,7 @@ exports[`layout displays title and page 1`] = `
   }
   page="home"
   siteName="Sorters Club"
-  title="Sort yourself out!"
+  title="Sorters Club - Sort yourself out!"
   userMenu={
     Array [
       Object {

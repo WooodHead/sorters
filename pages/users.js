@@ -57,13 +57,13 @@ const UsersComponent = ({data: {loading, users}}) => (
                 
                 return <div key={username} className="col-xs-12 col-md-6" style={{
                     display: 'flex',
-                    marginBottom: '24px',
+                    marginBottom: '1.5rem',
                     clear: even && 'both'
                 }}>
                     <div>
                         <a href={`/u/${username}`}>
                             <Gravatar md5={emailHash || username} size={100} style={{
-                                marginRight: '24px',
+                                marginRight: '1.5rem',
                             }}/>
                         </a> 
                     </div>

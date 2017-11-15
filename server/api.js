@@ -21,6 +21,11 @@ function prepare(o) {
     return o
 }
 
+function set(o, key, value) {
+    o[key] = value
+    return o
+}
+
 function testUser(userId) {
     if (!userId) {
         throw new Error('User not logged in.')
@@ -28,6 +33,15 @@ function testUser(userId) {
 }
 
 function testOwns(entity, userId) {
+    if (!entity) {
+        throw new Error('Entity does not exist.')
+    }
+    if (!entity.userId) {
+        throw new Error('Entity has no owner.')
+    }
+    if (!userId) {
+        throw new Error('No userId')
+    }
     if (entity.userId !== userId) {
         throw new Error('Forbidden.')
     }
@@ -103,6 +117,28 @@ async function deleteEntity(userId, _id, Collection, Events, type) {
     return prepare(actualEntity)
 }
 
+async function softDeleteEntity(userId, _id, Collection, Events, type, update = {}) {
+    testUser(userId)
+
+    const date = new Date()
+
+    const actualEntity = await Collection.findOne({ _id: ObjectId(_id) })
+    testOwns(actualEntity, userId)
+
+    update.updatedAt = date
+    update.deleted = true
+    await Collection.update({ _id: ObjectId(_id) }, {
+        $set: update,
+    })
+    await Events.insert({
+        userId,
+        type: `deleted-${type}`,
+        date,
+        [`${type}Id`]: _id,
+    })
+    return await prepare(Collection.findOne(ObjectId(_id)))
+}
+
 async function findRelatedEntities(value, Collection, field) {
     return (await Collection.find({
         [field]: value,
@@ -120,6 +156,15 @@ const start = async (app, settings) => {
     const Essays = db.collection('essays')
     const Speeches = db.collection('speeches')
     const Conversations = db.collection('conversations')
+    const Comments = db.collection('comments')
+
+    const COMMENTABLE_COLLECTIONS = {
+        entry: Entries,
+        essay: Essays,
+        speech: Speeches,
+        conversation: Conversations,
+        comment: Comments,
+    }
 
     Events.createIndex({
         date: -1,
@@ -222,17 +267,31 @@ const start = async (app, settings) => {
             speeches: [Speech]!
             conversations: [Conversation]!
         }
-        type Entry {
+        interface Entity {
+            type: String!
             _id: ID!
+            userId: ID!
+            user: User!
+            title: String!
+        }
+        type Entry implements Entity {
+            type: String!
+            _id: ID!
+            userId: ID!
+            user: User!
             title: String!
             url: String
             description: String
             goalTitles: [String]!
             createdAt: Date!
             updatedAt: Date!
+            comments: [Comment]!
         }
-        type Essay {
+        type Essay implements Entity {
+            type: String!
             _id: ID!
+            userId: ID!
+            user: User!
             title: String!
             url: String
             content: String
@@ -240,9 +299,13 @@ const start = async (app, settings) => {
             readTitles: [String]!
             createdAt: Date!
             updatedAt: Date!
+            comments: [Comment]!
         }
-        type Speech {
+        type Speech implements Entity {
+            type: String!
             _id: ID!
+            userId: ID!
+            user: User!
             title: String!
             url: String
             content: String
@@ -250,9 +313,13 @@ const start = async (app, settings) => {
             readTitles: [String]!
             createdAt: Date!
             updatedAt: Date!
+            comments: [Comment]!
         }
-        type Conversation {
+        type Conversation implements Entity {
+            type: String!
             _id: ID!
+            userId: ID!
+            user: User!
             title: String!
             url: String
             content: String
@@ -261,6 +328,23 @@ const start = async (app, settings) => {
             goalTitles: [String]!
             createdAt: Date!
             updatedAt: Date!
+            comments: [Comment]!
+        }
+        type Comment {
+            _id: ID!
+            userId: ID!
+            user: User!
+            entityType: String!
+            entityId: ID!
+            entity: Entity
+            rootEntityId: ID!
+            rootEntityType: String!
+            rootEntity: Entity
+            content: String
+            createdAt: Date!
+            updatedAt: Date!
+            comments: [Comment]!
+            deleted: Boolean
         }
 
         interface Event {
@@ -348,6 +432,15 @@ const start = async (app, settings) => {
             date: Date!
             conversationId: ID!
             conversation: Conversation
+        }
+        type UpdatedComment implements Event {
+            _id: ID!
+            userId: ID!
+            user: User!
+            type: String!
+            date: Date!
+            commentId: ID!
+            comment: Comment
         }
 
         input ProfileInput {
@@ -467,6 +560,15 @@ const start = async (app, settings) => {
             readTitles: [String]!
             goalTitles: [String]!
         }
+        input CommentInput {
+            _id: ID!
+            content: String!
+        }
+        input NewCommentInput {
+            entityType: String!
+            entityId: String!
+            content: String!
+        }
 
         type Query {
             me: User
@@ -474,6 +576,10 @@ const start = async (app, settings) => {
             userByUsername(username: String!): User
             users: [User!]!
             events(limit: Int): [Event!]!
+            entry(_id: ID!): Entry
+            essay(_id: ID!): Essay
+            speech(_id: ID!): Speech
+            conversation(_id: ID!): Conversation
         }
         type Mutation {
             updateProfile(profile: ProfileInput): User
@@ -505,6 +611,10 @@ const start = async (app, settings) => {
             createConversation(conversation: NewConversationInput!): Conversation
             updateConversation(conversation: ConversationInput!): Conversation
             deleteConversation(_id: ID!): Conversation
+
+            createComment(comment: NewCommentInput!): Comment
+            updateComment(comment: CommentInput!): Comment
+            deleteComment(_id: ID!): Comment
         }
 
         schema {
@@ -561,6 +671,18 @@ const start = async (app, settings) => {
                     limit: limit || 400,
                 }).toArray()).map(prepare)
             },
+            entry: async (root, {_id}) => {
+                return prepare(await Entries.findOne(ObjectId(_id)))
+            },
+            essay: async (root, {_id}) => {
+                return prepare(await Essays.findOne(ObjectId(_id)))
+            },
+            speech: async (root, {_id}) => {
+                return prepare(await Speeches.findOne(ObjectId(_id)))
+            },
+            conversation: async (root, {_id}) => {
+                return prepare(await Conversations.findOne(ObjectId(_id)))
+            },
         },
         User: {
             emailHash: async (user) => {
@@ -611,6 +733,20 @@ const start = async (app, settings) => {
                 return await findRelatedEntities(goal.title, Conversations, 'goalTitles')
             }
         },
+        Entity: {
+            __resolveType({type}) {
+                const ENTITY_TYPES = {
+                    'entry': 'Entry',
+                    'essay': 'Essay',
+                    'speech': 'Speech',
+                    'conversation': 'Conversation',
+                }
+                if (!ENTITY_TYPES[type]) {
+                    throw new Error(`Unknown entity type ${type}.`)
+                }
+                return ENTITY_TYPES[type]
+            },
+        },
         Topic: {
             essays: async (topic) => {
                 return await findRelatedEntities(topic.title, Essays, 'topicTitles')
@@ -620,6 +756,101 @@ const start = async (app, settings) => {
             },
             conversations: async (topic) => {
                 return await findRelatedEntities(topic.title, Conversations, 'topicTitles')
+            },
+        },
+        Entry: {
+            type() {
+                return 'entry'
+            },
+            user: async ({userId}) => {
+                return prepare(await Users.findOne(ObjectId(userId)))
+            },
+            comments: async ({_id}) => {
+                return (await Comments.find({
+                    entityType: 'entry',
+                    entityId: _id
+                }, {
+                    sort: {
+                        createdAt: -1,
+                    },
+                }).toArray()).map(prepare)
+            },
+        },
+        Essay: {
+            type() {
+                return 'essay'
+            },
+            user: async ({userId}) => {
+                return prepare(await Users.findOne(ObjectId(userId)))
+            },
+            comments: async ({_id}) => {
+                return (await Comments.find({
+                    entityType: 'essay',
+                    entityId: _id
+                }, {
+                    sort: {
+                        createdAt: -1,
+                    },
+                }).toArray()).map(prepare)
+            },
+        },
+        Speech: {
+            type() {
+                return 'speech'
+            },
+            user: async ({userId}) => {
+                return prepare(await Users.findOne(ObjectId(userId)))
+            },
+            comments: async ({_id}) => {
+                return (await Comments.find({
+                    entityType: 'speech',
+                    entityId: _id
+                }, {
+                    sort: {
+                        createdAt: -1,
+                    },
+                }).toArray()).map(prepare)
+            },
+        },
+        Conversation: {
+            type() {
+                return 'conversation'
+            },
+            user: async ({userId}) => {
+                return prepare(await Users.findOne(ObjectId(userId)))
+            },
+            comments: async ({_id}) => {
+                return (await Comments.find({
+                    entityType: 'conversation',
+                    entityId: _id
+                }, {
+                    sort: {
+                        createdAt: -1,
+                    },
+                }).toArray()).map(prepare)
+            },
+        },
+        Comment: {
+            user: async ({userId}) => {
+                return prepare(await Users.findOne(ObjectId(userId)))
+            },
+            comments: async ({_id}) => {
+                return (await Comments.find({
+                    entityType: 'comment',
+                    entityId: _id
+                }, {
+                    sort: {
+                        createdAt: -1,
+                    },
+                }).toArray()).map(prepare)
+            },
+            entity: async ({entityType, entityId}) => {
+                const Collection = COMMENTABLE_COLLECTIONS[entityType]
+                return set(await Collection.findOne(ObjectId(entityId)), 'type', entityType)
+            },
+            rootEntity: async ({rootEntityType, rootEntityId}) => {
+                const Collection = COMMENTABLE_COLLECTIONS[rootEntityType]
+                return set(await Collection.findOne(ObjectId(rootEntityId)), 'type', rootEntityType)
             },
         },
         Event: {
@@ -649,6 +880,9 @@ const start = async (app, settings) => {
                     'created-conversation': 'UpdatedConversation',
                     'updated-conversation': 'UpdatedConversation',
                     'deleted-conversation': 'UpdatedConversation',
+                    'created-comment': 'UpdatedComment',
+                    'updated-comment': 'UpdatedComment',
+                    'deleted-comment': 'UpdatedComment',
                 }[type]
                 if (!eventType) {
                     throw new Error(`Unknown event type: ${type}`)
@@ -729,6 +963,14 @@ const start = async (app, settings) => {
             },
             conversation: async ({conversationId}) => {
                 return prepare(await Conversations.findOne(ObjectId(conversationId)))
+            },
+        },
+        UpdatedComment: {
+            user: async ({userId}) => {
+                return prepare(await Users.findOne(ObjectId(userId)))
+            },
+            comment: async ({commentId}) => {
+                return prepare(await Comments.findOne(ObjectId(commentId)))
             },
         },
         Mutation: {
@@ -1033,6 +1275,42 @@ const start = async (app, settings) => {
             deleteConversation: async (root, {_id}, {userId}, info) => {
                 return await deleteEntity(userId, _id, Conversations, Events, 'conversation')
             },
+            createComment: async (root, {comment}, {userId}, info) => {
+                testUser(userId)
+                const Collection = COMMENTABLE_COLLECTIONS[comment.entityType]
+                if (!Collection) {
+                    throw new Error(`Invalid entity type ${comment.entityType}`)
+                }
+                const entity = await Collection.findOne(ObjectId(comment.entityId))
+                if (!entity) {
+                    throw new Error(`Entity with ID ${comment.entityId} does not exist.`)
+                }
+                if (comment.entityType === 'comment') {
+                    comment.rootEntityType = entity.rootEntityType
+                    comment.rootEntityId = entity.rootEntityId
+                } else {
+                    comment.rootEntityType = comment.entityType
+                    comment.rootEntityId = comment.entityId
+                }
+                const date = new Date()
+                comment.userId = userId
+                comment.createdAt = date
+                comment.updatedAt = date
+                const {insertedId} = await Comments.insertOne(comment)
+                await Events.insert({
+                    userId,
+                    type: 'created-comment',
+                    date,
+                    commentId: insertedId,
+                })
+                return await Comments.findOne(ObjectId(insertedId))
+            },
+            updateComment: async (root, {comment}, {userId}, info) => {
+                return await updateEntity(userId,comment, Comments, Events, 'comment')
+            },
+            deleteComment: async (root, {_id}, {userId}, info) => {
+                return await softDeleteEntity(userId, _id, Comments, Events, 'comment', { content: null })
+            }
         },
     }
 

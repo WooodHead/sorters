@@ -211,7 +211,7 @@ const UserComponent = (props) => {
                     <li key={name}>
                         <label style={{
                             width: '100px',
-                            marginRight: '24px'
+                            marginRight: '1.5rem'
                         }}>{label}</label>
                         <a href={url}>{url}</a>
                     </li>

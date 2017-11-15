@@ -11,7 +11,7 @@ export default withPage(() => (
         <div style={{
           maxWidth: '100%',
           width: '480px',
-          marginBottom: '24px',
+          marginBottom: '1.5rem',
         }}>
           <ResponsiveEmbed src='https://www.youtube.com/embed/XbOeO_frzvg' ratio='16:9' />
         </div>

@@ -80,10 +80,10 @@ const UserJournal = compose(
     })
 )(UserJournalComponent)
 
-const Entry = ({entry: {url, title, description, goalTitles}}) => (
+const Entry = ({entry: {_id, url, title, description, goalTitles}}) => (
     <div style={{
-        marginTop: '24px',
-        marginBottom: '24px',
+        marginTop: '1.5rem',
+        marginBottom: '1.5rem',
     }}>
         <h3>
             {url ?
@@ -95,9 +95,14 @@ const Entry = ({entry: {url, title, description, goalTitles}}) => (
         {description &&
             <Markdown content={description}/>
         }
-        Goals: {goalTitles.map((goal, i) => (
-            <span key={i}>{i ? ', ' : ' '}<em>{goal}</em></span>
-        ))}
+        {goalTitles.length > 0 &&
+            <div>
+                Goals: {goalTitles.map((goal, i) => (
+                    <span key={i}>{i ? ', ' : ' '}<em>{goal}</em></span>
+                ))}
+            </div>
+        }
+        <a href={`/entry/${_id}`}>Comments</a>
         <hr/>
     </div>
 )

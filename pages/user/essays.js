@@ -81,10 +81,10 @@ const UserEssays = compose(
     })
 )(UserEssaysComponent)
 
-const Essay = ({essay: {url, title, content, topicTitles, readTitles}}) => (
+const Essay = ({essay: {_id, url, title, content, topicTitles, readTitles}}) => (
     <div style={{
-        marginTop: '24px',
-        marginBottom: '24px',
+        marginTop: '1.5rem',
+        marginBottom: '1.5rem',
     }}>
         <h3>
             {url ?
@@ -110,6 +110,7 @@ const Essay = ({essay: {url, title, content, topicTitles, readTitles}}) => (
                 ))}
             </div>
         }
+        <a href={`/essay/${_id}`}>Comments</a>
         <hr/>
     </div>
 )

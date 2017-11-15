@@ -41,7 +41,7 @@
     "markdown-it-emoji": "^1.4.0",
     "mongodb": "^2.2.30",
     "next": "^2.4.7",
-    "ooth": "^0.12.0",
+    "ooth": "0.13",
     "ooth-client": "^0.9.4",
     "ooth-client-react": "^0.8.0",
     "ooth-client-react-next": "^0.9.4",

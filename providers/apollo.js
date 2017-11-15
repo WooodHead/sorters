@@ -33,6 +33,27 @@ const introspectionQueryResultData = {
                     {
                         "name": "UpdatedSpeech",
                     },
+                    {
+                        "name": "UpdatedComment",
+                    },
+                ],
+            },
+            {
+                "kind": "INTERFACE",
+                "name": "Entity",
+                "possibleTypes": [
+                    {
+                        "name": "Essay",
+                    },
+                    {
+                        "name": "Speech",
+                    },
+                    {
+                        "name": "Conversation",
+                    },
+                    {
+                        "name": "Comment",
+                    },
                 ],
             },
         ],

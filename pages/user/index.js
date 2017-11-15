@@ -8,11 +8,7 @@ import UserHeader from '../../components/user-header'
 import {PROGRAMS} from '../../models/programs'
 
 export default withPage(({url: {query: {username}}}) => (
-    <Layout title="Sorter" page="user">
-        <div className="container">
-            <User username={username}/>
-        </div>
-    </Layout>
+    <User username={username}/>
 ))
 
 const urlFields = [
@@ -123,15 +119,27 @@ const UserQuery = gql`
 const UserComponent = (props) => {
     const {data: {loading, userByUsername: user, error}} = props
     if (loading) {
-        return <p>Loading...</p>
+        return <Layout title="Sorter" page="user">
+            <div className="container">
+                <p>Loading...</p>
+            </div>
+        </Layout>
     }
 
     if (error) {
-        return <p>{error}</p>
+        return <Layout title="Sorter" page="user">
+            <div className="container">
+                <p>{error}</p>
+            </div>
+        </Layout>
     }
 
     if (!user) {
-        return <p>Invalid user.</p>
+        return <Layout title="Sorter" page="user">
+            <div className="container">
+                <p>Invalid user.</p>
+            </div>
+        </Layout>
     }
 
     const username = user.local.username
@@ -151,11 +159,13 @@ const UserComponent = (props) => {
         }
     })
 
-    return <div>
-        <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="activity"/>
-        <h2>Activity</h2>
-        {events.map(event => <Event event={event} key={event._id} username={username}/>)}
-    </div>
+    return <Layout title={username} page="user">
+        <div className="container">
+            <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="activity"/>
+            <h2>Activity</h2>
+            {events.map(event => <Event event={event} key={event._id} username={username}/>)}
+        </div>
+    </Layout>
 }
 const User = compose(
     graphql(UserQuery, {
@@ -269,7 +279,7 @@ const Event = ({event, username}) => {
 
 const Block = ({children}) => (
     <div style={{
-        marginBottom: '24px'
+        marginBottom: '1.5rem'
     }}>
         {children}
     </div>

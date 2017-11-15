@@ -4,6 +4,6 @@ import Register from 'staart/lib/components/register'
 
 export default withPage(({url: {query: {next}}}) => {
     return <Layout title="Register" page="register">
-        <Register next={next}/>
+        <Register next={next || '/account'}/>
     </Layout>
 })

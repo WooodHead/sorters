@@ -20,9 +20,20 @@ module.exports = async (settings, dev) => {
         app.get('/u/:username', (req, res) => {
             nextApp.render(req, res, '/user', Object.assign({}, req.params, req.query))
         })
-
         app.get('/u/:username/:view', (req, res) => {
             nextApp.render(req, res, `/user/${req.params.view}`, Object.assign({}, req.params, req.query))
+        })
+        app.get('/entry/:entryId', (req, res) => {
+            nextApp.render(req, res, '/entry', Object.assign({}, req.params, req.query))
+        })
+        app.get('/essay/:essayId', (req, res) => {
+            nextApp.render(req, res, '/essay', Object.assign({}, req.params, req.query))
+        })
+        app.get('/speech/:speechId', (req, res) => {
+            nextApp.render(req, res, '/speech', Object.assign({}, req.params, req.query))
+        })
+        app.get('/conversation/:conversationId', (req, res) => {
+            nextApp.render(req, res, '/conversation', Object.assign({}, req.params, req.query))
         })
 
         app.get('*', (req, res) => {

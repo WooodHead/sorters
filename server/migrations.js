@@ -22,10 +22,10 @@ const MIGRATIONS = [
                 createdAt: date,
                 readTitles: [read.title],
             }
-            console.log(`Creating ${newType}`, essay)
+            console.info(`Creating ${newType}`, essay)
             const {insertedId} = await Collection.insertOne(essay)
             if (event) {
-                console.log('Removing event', event)
+                console.info('Removing event', event)
                 await Events.deleteOne({
                     _id: ObjectId(event._id)
                 })
@@ -36,7 +36,7 @@ const MIGRATIONS = [
                 date,
                 [`${newType}Id`]: insertedId,
             }
-            console.log('Creating event', newEvent)
+            console.info('Creating event', newEvent)
             await Events.insertOne(newEvent)
         }
         
@@ -59,13 +59,13 @@ const MIGRATIONS = [
                 }
             }
         }
-        console.log((await Events.remove({type: 'wrote-about-read'})).result)
-        console.log((await Events.remove({type: 'spoke-about-read'})).result)
+        console.info((await Events.remove({type: 'wrote-about-read'})).result)
+        console.info((await Events.remove({type: 'spoke-about-read'})).result)
     }
 ]
 
 async function performMigrations(db) {
-    console.log(`Performing migrations...`)
+    console.info(`Performing migrations...`)
 
     const Migrations = db.collection('migrations')
     let migrations = await Migrations.findOne({name: 'migrations'})
@@ -78,10 +78,10 @@ async function performMigrations(db) {
     }
     let version = migrations.version
 
-    console.log(`Current migration version: ${version}`)
+    console.info(`Current migration version: ${version}`)
 
     while (version < MIGRATIONS.length) {
-        console.log(`Migrating from version ${version} to version ${version + 1}...`)
+        console.info(`Migrating from version ${version} to version ${version + 1}...`)
         await MIGRATIONS[0](db)
         version++
         await Migrations.update({
@@ -92,7 +92,7 @@ async function performMigrations(db) {
             }
         })
     }
-    console.log(`Migrations performed successfully. Now at version ${version}`)
+    console.info(`Migrations performed successfully. Now at version ${version}`)
 }
 
 module.exports = {

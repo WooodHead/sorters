@@ -91,5 +91,6 @@ export default (props) => (
         siteName={siteName}
         footerMessage={<p>Brought to you with ❤ by <a href="/about">Nick Redmark</a>. Support this platform on <a href="https://www.patreon.com/nickredmark" target="_blank">Patreon</a>.</p>}
         {...props}
+        title={props.title ? `${siteName} - ${props.title}` : props.title}
     />
 )

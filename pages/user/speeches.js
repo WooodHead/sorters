@@ -81,10 +81,10 @@ const UserSpeeches = compose(
     })
 )(UserSpeechesComponent)
 
-const Speech = ({speech: {url, title, content, topicTitles, readTitles}}) => (
+const Speech = ({speech: {_id, url, title, content, topicTitles, readTitles}}) => (
     <div style={{
-        marginTop: '24px',
-        marginBottom: '24px',
+        marginTop: '1.5rem',
+        marginBottom: '1.5rem',
     }}>
         <h3>
             {url ?
@@ -110,6 +110,7 @@ const Speech = ({speech: {url, title, content, topicTitles, readTitles}}) => (
                 ))}
             </div>
         }
+        <a href={`/speech/${_id}`}>Comments</a>
         <hr/>
     </div>
 )

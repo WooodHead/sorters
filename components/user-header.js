@@ -57,7 +57,7 @@ export default ({name, username, emailHash, about, route}) => (
         <div className="row">
             <div className="col-xs-6 col-sm-3 col-md-2">
                 <Gravatar md5={emailHash || username} size={200} style={{
-                    marginBottom: '24px',
+                    marginBottom: '1.5rem',
                     width: '100%',
                     height: 'auto',
                     marginLeft: 'auto',

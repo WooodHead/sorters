@@ -1,62 +1,138 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`news displays 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-1138691822\\">
-  <div data-reactid=\\"2\\">
+"<div data-reactroot=\\"\\">
+  <div>
     <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
-      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\" data-reactid=\\"5\\">
-        <div class=\\"container\\" data-reactid=\\"6\\">
-          <div class=\\"navbar-header\\" data-reactid=\\"7\\">
-            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\" data-reactid=\\"8\\"><span class=\\"sr-only\\" data-reactid=\\"9\\">Toggle navigation</span><span class=\\"icon-bar\\" data-reactid=\\"10\\"></span><span class=\\"icon-bar\\" data-reactid=\\"11\\"></span><span class=\\"icon-bar\\" data-reactid=\\"12\\"></span></button>
+    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
+        <div class=\\"container\\">
+          <div class=\\"navbar-header\\">
+            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
             <a class=\\"navbar-brand\\"
-              href=\\"/\\" data-reactid=\\"13\\">Sorters Club</a>
+              href=\\"/\\">Sorters Club</a>
           </div>
-          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\" data-reactid=\\"14\\">
-            <ul class=\\"nav navbar-nav navbar-right\\" data-reactid=\\"15\\">
-              <li class=\\"false\\" data-reactid=\\"16\\">
-                <a href=\\"/\\" data-reactid=\\"17\\">Home</a>
+          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
+            <ul class=\\"nav navbar-nav navbar-right\\">
+              <li class=\\"false\\">
+                <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"18\\">
-                <a href=\\"/about\\" data-reactid=\\"19\\">About</a>
+              <li class=\\"false\\">
+                <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"active\\" data-reactid=\\"20\\">
-                <a href=\\"/news\\" data-reactid=\\"21\\">News</a>
+              <li class=\\"active\\">
+                <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"22\\">
-                <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
+              <li class=\\"false\\">
+                <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
+              <li class=\\"false\\">
+                <a href=\\"/account\\">Dashboard</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"26\\">
-                <a href=\\"/login\\" data-reactid=\\"27\\">Log in</a>
+              <li class=\\"false\\">
+                <a href=\\"/login\\">Log in</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"28\\">
-                <a href=\\"/register\\" data-reactid=\\"29\\">Register</a>
+              <li class=\\"false\\">
+                <a href=\\"/register\\">Register</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
-    <div class=\\"container\\" data-reactid=\\"30\\">
-      <h1 data-reactid=\\"31\\">News</h1>
-      <p data-reactid=\\"32\\">See what happened recently in the community.</p>
-      <div data-reactid=\\"33\\"></div>
+    <div class=\\"container\\">
+      <h1>News</h1>
+      <p>See what happened recently in the community.</p>
+      <div>
+        <div>
+          <div style=\\"margin-bottom:1.5rem;display:flex;\\">
+            <div>
+              <a href=\\"/u/test\\">
+                <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:1.5rem;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=150 2x\\"
+                  height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\">
+              </a>
+            </div>
+            <div>
+              <h4 style=\\"margin-top:0;\\">
+                <a href=\\"/u/test\\">Test User</a>
+              </h4>
+              <ul style=\\"padding-left:0;list-style-position:inside;\\">
+                <li>
+                  &#x1F464; Updated
+                  <a href=\\"/u/test/profile\\">profile</a><span>:<!-- /react-text --><span><!-- /react-text -->Name<!-- /react-text --></span><span>, <!-- /react-text -->About<!-- /react-text --></span>
+                  <span
+                   >
+                    ,
+                    Bio
+                    </span><span>, <!-- /react-text -->Website<!-- /react-text --></span><span>, <!-- /react-text -->Blog<!-- /react-text --></span>
+                    <span
+                     >
+                      and
+                      22
+                      more
+                      </span>
+                      </span>
+                      .
+                </li>
+                <li>
+                  &#x2714; Completed
+                  Past authoring
+                </li>
+                <li>
+                  &#x2714; Completed
+                  Present faults authoring
+                </li>
+                <li>
+                  &#x2714; Completed
+                  Present virtues authoring
+                </li>
+                <li>
+                  &#x2714; Completed
+                  Future authoring
+                </li>
+                <li>
+                  &#x2714; Completed
+                  Understand myself
+                </li>
+                <li>
+                  &#x25CE; Updated
+                  <a href=\\"/u/test/goals\\">goals description</a>
+                  .
+                </li>
+                <li>
+                  &#x25CE; Wants to achieve
+                  <!-- /react-text --><span> <!-- /react-text --><em>Goal</em></span><span>, <!-- /react-text --><em>Goal - doing</em></span><span>, <!-- /react-text --><em>Goal - done</em></span></li>
+                <li
+                 >
+                  &#x1F4D6; Updated
+                  <a href=\\"/u/test/reads\\">reading list description</a>
+                  .
+                  </li>
+                  <li>
+                    &#x1F4D6; Added books to
+                    <a href=\\"/u/test/reads\\">reading list</a>
+                    :
+                    <!-- /react-text --><span> <!-- /react-text --><em>Read</em></span><span>, <!-- /react-text --><em>Read - read</em></span>
+                    <span
+                     >
+                      ,
+                      <!-- /react-text --><em>Read - reading</em></span>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <footer data-reactid=\\"34\\">
-      <div class=\\"container\\" data-reactid=\\"35\\">
-        <hr data-reactid=\\"36\\">
-        <p data-reactid=\\"37\\">
-          <!-- react-text: 38 -->Brought to you with &#x2764; by
-          <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"39\\">Nick Redmark</a>
-          <!-- react-text: 40 -->. Support this platform on
-          <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"41\\">Patreon</a>
-          <!-- react-text: 42 -->.
-          <!-- /react-text -->
+    <footer>
+      <div class=\\"container\\">
+        <hr>
+        <p>
+          Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>
+          . Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
+          .
         </p>
       </div>
     </footer>
@@ -65,147 +141,123 @@ exports[`news displays 1`] = `
 `;
 
 exports[`news displays changes to user data 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"992799386\\">
-  <div data-reactid=\\"2\\">
+"<div data-reactroot=\\"\\">
+  <div>
     <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
-      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\" data-reactid=\\"5\\">
-        <div class=\\"container\\" data-reactid=\\"6\\">
-          <div class=\\"navbar-header\\" data-reactid=\\"7\\">
-            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\" data-reactid=\\"8\\"><span class=\\"sr-only\\" data-reactid=\\"9\\">Toggle navigation</span><span class=\\"icon-bar\\" data-reactid=\\"10\\"></span><span class=\\"icon-bar\\" data-reactid=\\"11\\"></span><span class=\\"icon-bar\\" data-reactid=\\"12\\"></span></button>
+    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
+        <div class=\\"container\\">
+          <div class=\\"navbar-header\\">
+            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
             <a class=\\"navbar-brand\\"
-              href=\\"/\\" data-reactid=\\"13\\">Sorters Club</a>
+              href=\\"/\\">Sorters Club</a>
           </div>
-          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\" data-reactid=\\"14\\">
-            <ul class=\\"nav navbar-nav navbar-right\\" data-reactid=\\"15\\">
-              <li class=\\"false\\" data-reactid=\\"16\\">
-                <a href=\\"/\\" data-reactid=\\"17\\">Home</a>
+          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
+            <ul class=\\"nav navbar-nav navbar-right\\">
+              <li class=\\"false\\">
+                <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"18\\">
-                <a href=\\"/about\\" data-reactid=\\"19\\">About</a>
+              <li class=\\"false\\">
+                <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"active\\" data-reactid=\\"20\\">
-                <a href=\\"/news\\" data-reactid=\\"21\\">News</a>
+              <li class=\\"active\\">
+                <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"22\\">
-                <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
+              <li class=\\"false\\">
+                <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
+              <li class=\\"false\\">
+                <a href=\\"/account\\">Dashboard</a>
               </li>
-              <li class=\\"dropdownfalse\\" data-reactid=\\"26\\">
-                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" data-reactid=\\"27\\">
-                  <!-- react-text: 28 -->Hello,
-                  <!-- /react-text -->
-                  <!-- react-text: 29 -->test
-                  <!-- /react-text -->
-                  <!-- react-text: 30 -->
-                  <!-- /react-text --><span class=\\"caret\\" data-reactid=\\"31\\"></span></a>
+              <li class=\\"dropdownfalse\\">
+                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">
+                  Hello,
+                  test
+                  
+                  <!-- /react-text --><span class=\\"caret\\"></span></a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
-    <div class=\\"container\\" data-reactid=\\"32\\">
-      <h1 data-reactid=\\"33\\">News</h1>
-      <p data-reactid=\\"34\\">See what happened recently in the community.</p>
-      <div data-reactid=\\"35\\">
-        <div data-reactid=\\"36\\">
-          <div style=\\"margin-bottom:24px;display:flex;\\" data-reactid=\\"37\\">
-            <div data-reactid=\\"38\\">
-              <a href=\\"/u/test\\" data-reactid=\\"39\\">
-                <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:24px;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=150 2x\\"
-                  height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\" data-reactid=\\"40\\">
+    <div class=\\"container\\">
+      <h1>News</h1>
+      <p>See what happened recently in the community.</p>
+      <div>
+        <div>
+          <div style=\\"margin-bottom:1.5rem;display:flex;\\">
+            <div>
+              <a href=\\"/u/test\\">
+                <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:1.5rem;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=150 2x\\"
+                  height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\">
               </a>
             </div>
-            <div data-reactid=\\"41\\">
-              <h4 style=\\"margin-top:0;\\" data-reactid=\\"42\\">
-                <a href=\\"/u/test\\" data-reactid=\\"43\\">Test User</a>
+            <div>
+              <h4 style=\\"margin-top:0;\\">
+                <a href=\\"/u/test\\">Test User</a>
               </h4>
-              <ul style=\\"padding-left:0;list-style-position:inside;\\" data-reactid=\\"44\\">
-                <li data-reactid=\\"45\\">
-                  <!-- react-text: 46 -->&#x1F464; Updated
-                  <!-- /react-text -->
-                  <a href=\\"/u/test/profile\\" data-reactid=\\"47\\">profile</a><span data-reactid=\\"48\\"><!-- react-text: 49 -->:<!-- /react-text --><span data-reactid=\\"50\\"><!-- react-text: 51 --><!-- /react-text --><!-- react-text: 52 -->Name<!-- /react-text --></span><span data-reactid=\\"53\\"><!-- react-text: 54 -->, <!-- /react-text --><!-- react-text: 55 -->About<!-- /react-text --></span>
+              <ul style=\\"padding-left:0;list-style-position:inside;\\">
+                <li>
+                  &#x1F464; Updated
+                  <a href=\\"/u/test/profile\\">profile</a><span>:<!-- /react-text --><span><!-- /react-text -->Name<!-- /react-text --></span><span>, <!-- /react-text -->About<!-- /react-text --></span>
                   <span
-                    data-reactid=\\"56\\">
-                    <!-- react-text: 57 -->,
-                    <!-- /react-text -->
-                    <!-- react-text: 58 -->Bio
-                    <!-- /react-text -->
-                    </span><span data-reactid=\\"59\\"><!-- react-text: 60 -->, <!-- /react-text --><!-- react-text: 61 -->Website<!-- /react-text --></span><span data-reactid=\\"62\\"><!-- react-text: 63 -->, <!-- /react-text --><!-- react-text: 64 -->Blog<!-- /react-text --></span>
+                   >
+                    ,
+                    Bio
+                    </span><span>, <!-- /react-text -->Website<!-- /react-text --></span><span>, <!-- /react-text -->Blog<!-- /react-text --></span>
                     <span
-                      data-reactid=\\"65\\">
-                      <!-- react-text: 66 -->and
-                      <!-- /react-text -->
-                      <!-- react-text: 67 -->22
-                      <!-- /react-text -->
-                      <!-- react-text: 68 -->more
-                      <!-- /react-text -->
+                     >
+                      and
+                      22
+                      more
                       </span>
                       </span>
-                      <!-- react-text: 69 -->.
-                      <!-- /react-text -->
+                      .
                 </li>
-                <li data-reactid=\\"70\\">
-                  <!-- react-text: 71 -->&#x2714; Completed
-                  <!-- /react-text -->
-                  <!-- react-text: 72 -->Past authoring
-                  <!-- /react-text -->
+                <li>
+                  &#x2714; Completed
+                  Past authoring
                 </li>
-                <li data-reactid=\\"73\\">
-                  <!-- react-text: 74 -->&#x2714; Completed
-                  <!-- /react-text -->
-                  <!-- react-text: 75 -->Present faults authoring
-                  <!-- /react-text -->
+                <li>
+                  &#x2714; Completed
+                  Present faults authoring
                 </li>
-                <li data-reactid=\\"76\\">
-                  <!-- react-text: 77 -->&#x2714; Completed
-                  <!-- /react-text -->
-                  <!-- react-text: 78 -->Present virtues authoring
-                  <!-- /react-text -->
+                <li>
+                  &#x2714; Completed
+                  Present virtues authoring
                 </li>
-                <li data-reactid=\\"79\\">
-                  <!-- react-text: 80 -->&#x2714; Completed
-                  <!-- /react-text -->
-                  <!-- react-text: 81 -->Future authoring
-                  <!-- /react-text -->
+                <li>
+                  &#x2714; Completed
+                  Future authoring
                 </li>
-                <li data-reactid=\\"82\\">
-                  <!-- react-text: 83 -->&#x2714; Completed
-                  <!-- /react-text -->
-                  <!-- react-text: 84 -->Understand myself
-                  <!-- /react-text -->
+                <li>
+                  &#x2714; Completed
+                  Understand myself
                 </li>
-                <li data-reactid=\\"85\\">
-                  <!-- react-text: 86 -->&#x25CE; Updated
-                  <!-- /react-text -->
-                  <a href=\\"/u/test/goals\\" data-reactid=\\"87\\">goals description</a>
-                  <!-- react-text: 88 -->.
-                  <!-- /react-text -->
+                <li>
+                  &#x25CE; Updated
+                  <a href=\\"/u/test/goals\\">goals description</a>
+                  .
                 </li>
-                <li data-reactid=\\"89\\">
-                  <!-- react-text: 90 -->&#x25CE; Wants to achieve
-                  <!-- /react-text --><span data-reactid=\\"91\\"><!-- react-text: 92 --> <!-- /react-text --><em data-reactid=\\"93\\">Goal</em></span><span data-reactid=\\"94\\"><!-- react-text: 95 -->, <!-- /react-text --><em data-reactid=\\"96\\">Goal - doing</em></span><span data-reactid=\\"97\\"><!-- react-text: 98 -->, <!-- /react-text --><em data-reactid=\\"99\\">Goal - done</em></span></li>
+                <li>
+                  &#x25CE; Wants to achieve
+                  <!-- /react-text --><span> <!-- /react-text --><em>Goal</em></span><span>, <!-- /react-text --><em>Goal - doing</em></span><span>, <!-- /react-text --><em>Goal - done</em></span></li>
                 <li
-                  data-reactid=\\"100\\">
-                  <!-- react-text: 101 -->&#x1F4D6; Updated
-                  <!-- /react-text -->
-                  <a href=\\"/u/test/reads\\" data-reactid=\\"102\\">reading list description</a>
-                  <!-- react-text: 103 -->.
-                  <!-- /react-text -->
+                 >
+                  &#x1F4D6; Updated
+                  <a href=\\"/u/test/reads\\">reading list description</a>
+                  .
                   </li>
-                  <li data-reactid=\\"104\\">
-                    <!-- react-text: 105 -->&#x1F4D6; Added books to
-                    <!-- /react-text -->
-                    <a href=\\"/u/test/reads\\" data-reactid=\\"106\\">reading list</a>
-                    <!-- react-text: 107 -->:
-                    <!-- /react-text --><span data-reactid=\\"108\\"><!-- react-text: 109 --> <!-- /react-text --><em data-reactid=\\"110\\">Read</em></span><span data-reactid=\\"111\\"><!-- react-text: 112 -->, <!-- /react-text --><em data-reactid=\\"113\\">Read - read</em></span>
+                  <li>
+                    &#x1F4D6; Added books to
+                    <a href=\\"/u/test/reads\\">reading list</a>
+                    :
+                    <!-- /react-text --><span> <!-- /react-text --><em>Read</em></span><span>, <!-- /react-text --><em>Read - read</em></span>
                     <span
-                      data-reactid=\\"114\\">
-                      <!-- react-text: 115 -->,
-                      <!-- /react-text --><em data-reactid=\\"116\\">Read - reading</em></span>
+                     >
+                      ,
+                      <!-- /react-text --><em>Read - reading</em></span>
                   </li>
               </ul>
             </div>
@@ -213,18 +265,15 @@ exports[`news displays changes to user data 1`] = `
         </div>
       </div>
     </div>
-    <footer data-reactid=\\"117\\">
-      <div class=\\"container\\" data-reactid=\\"118\\">
-        <hr data-reactid=\\"119\\">
-        <p data-reactid=\\"120\\">
-          <!-- react-text: 121 -->Brought to you with &#x2764; by
-          <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"122\\">Nick Redmark</a>
-          <!-- react-text: 123 -->. Support this platform on
-          <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"124\\">Patreon</a>
-          <!-- react-text: 125 -->.
-          <!-- /react-text -->
+    <footer>
+      <div class=\\"container\\">
+        <hr>
+        <p>
+          Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>
+          . Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
+          .
         </p>
       </div>
     </footer>
@@ -233,86 +282,81 @@ exports[`news displays changes to user data 1`] = `
 `;
 
 exports[`news displays journal events 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"2146991242\\">
-  <div data-reactid=\\"2\\">
+"<div data-reactroot=\\"\\">
+  <div>
     <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
-      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\" data-reactid=\\"5\\">
-        <div class=\\"container\\" data-reactid=\\"6\\">
-          <div class=\\"navbar-header\\" data-reactid=\\"7\\">
-            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\" data-reactid=\\"8\\"><span class=\\"sr-only\\" data-reactid=\\"9\\">Toggle navigation</span><span class=\\"icon-bar\\" data-reactid=\\"10\\"></span><span class=\\"icon-bar\\" data-reactid=\\"11\\"></span><span class=\\"icon-bar\\" data-reactid=\\"12\\"></span></button>
+    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
+        <div class=\\"container\\">
+          <div class=\\"navbar-header\\">
+            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
             <a class=\\"navbar-brand\\"
-              href=\\"/\\" data-reactid=\\"13\\">Sorters Club</a>
+              href=\\"/\\">Sorters Club</a>
           </div>
-          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\" data-reactid=\\"14\\">
-            <ul class=\\"nav navbar-nav navbar-right\\" data-reactid=\\"15\\">
-              <li class=\\"false\\" data-reactid=\\"16\\">
-                <a href=\\"/\\" data-reactid=\\"17\\">Home</a>
+          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
+            <ul class=\\"nav navbar-nav navbar-right\\">
+              <li class=\\"false\\">
+                <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"18\\">
-                <a href=\\"/about\\" data-reactid=\\"19\\">About</a>
+              <li class=\\"false\\">
+                <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"active\\" data-reactid=\\"20\\">
-                <a href=\\"/news\\" data-reactid=\\"21\\">News</a>
+              <li class=\\"active\\">
+                <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"22\\">
-                <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
+              <li class=\\"false\\">
+                <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
+              <li class=\\"false\\">
+                <a href=\\"/account\\">Dashboard</a>
               </li>
-              <li class=\\"dropdownfalse\\" data-reactid=\\"26\\">
-                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" data-reactid=\\"27\\">
-                  <!-- react-text: 28 -->Hello,
-                  <!-- /react-text -->
-                  <!-- react-text: 29 -->test
-                  <!-- /react-text -->
-                  <!-- react-text: 30 -->
-                  <!-- /react-text --><span class=\\"caret\\" data-reactid=\\"31\\"></span></a>
+              <li class=\\"dropdownfalse\\">
+                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">
+                  Hello,
+                  test
+                  
+                  <!-- /react-text --><span class=\\"caret\\"></span></a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
-    <div class=\\"container\\" data-reactid=\\"32\\">
-      <h1 data-reactid=\\"33\\">News</h1>
-      <p data-reactid=\\"34\\">See what happened recently in the community.</p>
-      <div data-reactid=\\"35\\">
-        <div data-reactid=\\"36\\">
-          <div style=\\"margin-bottom:24px;display:flex;\\" data-reactid=\\"37\\">
-            <div data-reactid=\\"38\\">
-              <a href=\\"/u/test\\" data-reactid=\\"39\\">
-                <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:24px;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=150 2x\\"
-                  height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\" data-reactid=\\"40\\">
+    <div class=\\"container\\">
+      <h1>News</h1>
+      <p>See what happened recently in the community.</p>
+      <div>
+        <div>
+          <div style=\\"margin-bottom:1.5rem;display:flex;\\">
+            <div>
+              <a href=\\"/u/test\\">
+                <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:1.5rem;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=150 2x\\"
+                  height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\">
               </a>
             </div>
-            <div data-reactid=\\"41\\">
-              <h4 style=\\"margin-top:0;\\" data-reactid=\\"42\\">
-                <a href=\\"/u/test\\" data-reactid=\\"43\\">test</a>
+            <div>
+              <h4 style=\\"margin-top:0;\\">
+                <a href=\\"/u/test\\">test</a>
               </h4>
-              <ul style=\\"padding-left:0;list-style-position:inside;\\" data-reactid=\\"44\\">
-                <li data-reactid=\\"45\\">
-                  <!-- react-text: 46 -->&#x270E; Added to journal:
-                  <!-- /react-text --><span data-reactid=\\"47\\"><!-- react-text: 48 --> <!-- /react-text --><a href=\\"http://www.example.com\\" data-reactid=\\"49\\">Hello World</a></span></li>
+              <ul style=\\"padding-left:0;list-style-position:inside;\\">
+                <li>
+                  &#x270E; Added to journal:
+                  <!-- /react-text --><span> <!-- /react-text --><a href=\\"http://www.example.com\\">Hello World</a></span></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <footer data-reactid=\\"50\\">
-      <div class=\\"container\\" data-reactid=\\"51\\">
-        <hr data-reactid=\\"52\\">
-        <p data-reactid=\\"53\\">
-          <!-- react-text: 54 -->Brought to you with &#x2764; by
-          <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"55\\">Nick Redmark</a>
-          <!-- react-text: 56 -->. Support this platform on
-          <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"57\\">Patreon</a>
-          <!-- react-text: 58 -->.
-          <!-- /react-text -->
+    <footer>
+      <div class=\\"container\\">
+        <hr>
+        <p>
+          Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>
+          . Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
+          .
         </p>
       </div>
     </footer>
@@ -321,101 +365,97 @@ exports[`news displays journal events 1`] = `
 `;
 
 exports[`news displays read events 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"1747768150\\">
-  <div data-reactid=\\"2\\">
+"<div data-reactroot=\\"\\">
+  <div>
     <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
-      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\" data-reactid=\\"5\\">
-        <div class=\\"container\\" data-reactid=\\"6\\">
-          <div class=\\"navbar-header\\" data-reactid=\\"7\\">
-            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\" data-reactid=\\"8\\"><span class=\\"sr-only\\" data-reactid=\\"9\\">Toggle navigation</span><span class=\\"icon-bar\\" data-reactid=\\"10\\"></span><span class=\\"icon-bar\\" data-reactid=\\"11\\"></span><span class=\\"icon-bar\\" data-reactid=\\"12\\"></span></button>
+    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
+        <div class=\\"container\\">
+          <div class=\\"navbar-header\\">
+            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
             <a class=\\"navbar-brand\\"
-              href=\\"/\\" data-reactid=\\"13\\">Sorters Club</a>
+              href=\\"/\\">Sorters Club</a>
           </div>
-          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\" data-reactid=\\"14\\">
-            <ul class=\\"nav navbar-nav navbar-right\\" data-reactid=\\"15\\">
-              <li class=\\"false\\" data-reactid=\\"16\\">
-                <a href=\\"/\\" data-reactid=\\"17\\">Home</a>
+          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
+            <ul class=\\"nav navbar-nav navbar-right\\">
+              <li class=\\"false\\">
+                <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"18\\">
-                <a href=\\"/about\\" data-reactid=\\"19\\">About</a>
+              <li class=\\"false\\">
+                <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"active\\" data-reactid=\\"20\\">
-                <a href=\\"/news\\" data-reactid=\\"21\\">News</a>
+              <li class=\\"active\\">
+                <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"22\\">
-                <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
+              <li class=\\"false\\">
+                <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
+              <li class=\\"false\\">
+                <a href=\\"/account\\">Dashboard</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"26\\">
-                <a href=\\"/login\\" data-reactid=\\"27\\">Log in</a>
+              <li class=\\"false\\">
+                <a href=\\"/login\\">Log in</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"28\\">
-                <a href=\\"/register\\" data-reactid=\\"29\\">Register</a>
+              <li class=\\"false\\">
+                <a href=\\"/register\\">Register</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
-    <div class=\\"container\\" data-reactid=\\"30\\">
-      <h1 data-reactid=\\"31\\">News</h1>
-      <p data-reactid=\\"32\\">See what happened recently in the community.</p>
-      <div data-reactid=\\"33\\">
-        <div data-reactid=\\"34\\">
-          <div style=\\"margin-bottom:24px;display:flex;\\" data-reactid=\\"35\\">
-            <div data-reactid=\\"36\\">
-              <a href=\\"/u/test\\" data-reactid=\\"37\\">
-                <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:24px;\\" src=\\"//www.gravatar.com/avatar/test?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/test?d=retro&amp;r=g&amp;s=150 2x\\" height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\"
-                  data-reactid=\\"38\\">
+    <div class=\\"container\\">
+      <h1>News</h1>
+      <p>See what happened recently in the community.</p>
+      <div>
+        <div>
+          <div style=\\"margin-bottom:1.5rem;display:flex;\\">
+            <div>
+              <a href=\\"/u/test\\">
+                <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:1.5rem;\\" src=\\"//www.gravatar.com/avatar/test?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/test?d=retro&amp;r=g&amp;s=150 2x\\" height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\"
+                 >
               </a>
             </div>
-            <div data-reactid=\\"39\\">
-              <h4 style=\\"margin-top:0;\\" data-reactid=\\"40\\">
-                <a href=\\"/u/test\\" data-reactid=\\"41\\">test</a>
+            <div>
+              <h4 style=\\"margin-top:0;\\">
+                <a href=\\"/u/test\\">test</a>
               </h4>
-              <ul style=\\"padding-left:0;list-style-position:inside;\\" data-reactid=\\"42\\">
-                <li data-reactid=\\"43\\">
-                  <!-- react-text: 44 -->&#x2714; Achieved
-                  <!-- /react-text --><span data-reactid=\\"45\\"><!-- react-text: 46 --> <!-- /react-text --><em data-reactid=\\"47\\">TestGoal</em></span></li>
-                <li data-reactid=\\"48\\">
-                  <!-- react-text: 49 -->&#x1F4D6; Read
-                  <!-- /react-text --><span data-reactid=\\"50\\"><!-- react-text: 51 --> <!-- /react-text --><em data-reactid=\\"52\\">Test</em></span></li>
-                <li data-reactid=\\"53\\">
-                  <!-- react-text: 54 -->&#x26CF; Is working on
-                  <!-- /react-text --><span data-reactid=\\"55\\"><!-- react-text: 56 --> <!-- /react-text --><em data-reactid=\\"57\\">TestGoal</em></span></li>
-                <li data-reactid=\\"58\\">
-                  <!-- react-text: 59 -->&#x1F441; Started reading
-                  <!-- /react-text --><span data-reactid=\\"60\\"><!-- react-text: 61 --> <!-- /react-text --><em data-reactid=\\"62\\">Test</em></span></li>
-                <li data-reactid=\\"63\\">
-                  <!-- react-text: 64 -->&#x25CE; Wants to achieve
-                  <!-- /react-text --><span data-reactid=\\"65\\"><!-- react-text: 66 --> <!-- /react-text --><em data-reactid=\\"67\\">TestGoal</em></span></li>
-                <li data-reactid=\\"68\\">
-                  <!-- react-text: 69 -->&#x1F4D6; Added books to
-                  <!-- /react-text -->
-                  <a href=\\"/u/test/reads\\" data-reactid=\\"70\\">reading list</a>
-                  <!-- react-text: 71 -->:
-                  <!-- /react-text --><span data-reactid=\\"72\\"><!-- react-text: 73 --> <!-- /react-text --><em data-reactid=\\"74\\">Test</em></span></li>
+              <ul style=\\"padding-left:0;list-style-position:inside;\\">
+                <li>
+                  &#x2714; Achieved
+                  <!-- /react-text --><span> <!-- /react-text --><em>TestGoal</em></span></li>
+                <li>
+                  &#x1F4D6; Read
+                  <!-- /react-text --><span> <!-- /react-text --><em>Test</em></span></li>
+                <li>
+                  &#x26CF; Is working on
+                  <!-- /react-text --><span> <!-- /react-text --><em>TestGoal</em></span></li>
+                <li>
+                  &#x1F441; Started reading
+                  <!-- /react-text --><span> <!-- /react-text --><em>Test</em></span></li>
+                <li>
+                  &#x25CE; Wants to achieve
+                  <!-- /react-text --><span> <!-- /react-text --><em>TestGoal</em></span></li>
+                <li>
+                  &#x1F4D6; Added books to
+                  <a href=\\"/u/test/reads\\">reading list</a>
+                  :
+                  <!-- /react-text --><span> <!-- /react-text --><em>Test</em></span></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <footer data-reactid=\\"75\\">
-      <div class=\\"container\\" data-reactid=\\"76\\">
-        <hr data-reactid=\\"77\\">
-        <p data-reactid=\\"78\\">
-          <!-- react-text: 79 -->Brought to you with &#x2764; by
-          <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"80\\">Nick Redmark</a>
-          <!-- react-text: 81 -->. Support this platform on
-          <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"82\\">Patreon</a>
-          <!-- react-text: 83 -->.
-          <!-- /react-text -->
+    <footer>
+      <div class=\\"container\\">
+        <hr>
+        <p>
+          Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>
+          . Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
+          .
         </p>
       </div>
     </footer>
@@ -424,82 +464,76 @@ exports[`news displays read events 1`] = `
 `;
 
 exports[`news limits results 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"924737979\\">
-  <div data-reactid=\\"2\\">
+"<div data-reactroot=\\"\\">
+  <div>
     <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
-      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\" data-reactid=\\"5\\">
-        <div class=\\"container\\" data-reactid=\\"6\\">
-          <div class=\\"navbar-header\\" data-reactid=\\"7\\">
-            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\" data-reactid=\\"8\\"><span class=\\"sr-only\\" data-reactid=\\"9\\">Toggle navigation</span><span class=\\"icon-bar\\" data-reactid=\\"10\\"></span><span class=\\"icon-bar\\" data-reactid=\\"11\\"></span><span class=\\"icon-bar\\" data-reactid=\\"12\\"></span></button>
+    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
+        <div class=\\"container\\">
+          <div class=\\"navbar-header\\">
+            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
             <a class=\\"navbar-brand\\"
-              href=\\"/\\" data-reactid=\\"13\\">Sorters Club</a>
+              href=\\"/\\">Sorters Club</a>
           </div>
-          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\" data-reactid=\\"14\\">
-            <ul class=\\"nav navbar-nav navbar-right\\" data-reactid=\\"15\\">
-              <li class=\\"false\\" data-reactid=\\"16\\">
-                <a href=\\"/\\" data-reactid=\\"17\\">Home</a>
+          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
+            <ul class=\\"nav navbar-nav navbar-right\\">
+              <li class=\\"false\\">
+                <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"18\\">
-                <a href=\\"/about\\" data-reactid=\\"19\\">About</a>
+              <li class=\\"false\\">
+                <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"active\\" data-reactid=\\"20\\">
-                <a href=\\"/news\\" data-reactid=\\"21\\">News</a>
+              <li class=\\"active\\">
+                <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"22\\">
-                <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
+              <li class=\\"false\\">
+                <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
+              <li class=\\"false\\">
+                <a href=\\"/account\\">Dashboard</a>
               </li>
-              <li class=\\"dropdownfalse\\" data-reactid=\\"26\\">
-                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\" data-reactid=\\"27\\">
-                  <!-- react-text: 28 -->Hello,
-                  <!-- /react-text -->
-                  <!-- react-text: 29 -->test
-                  <!-- /react-text -->
-                  <!-- react-text: 30 -->
-                  <!-- /react-text --><span class=\\"caret\\" data-reactid=\\"31\\"></span></a>
+              <li class=\\"dropdownfalse\\">
+                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">
+                  Hello,
+                  test
+                  
+                  <!-- /react-text --><span class=\\"caret\\"></span></a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
-    <div class=\\"container\\" data-reactid=\\"32\\">
-      <h1 data-reactid=\\"33\\">News</h1>
-      <p data-reactid=\\"34\\">See what happened recently in the community.</p>
-      <div data-reactid=\\"35\\">
-        <div data-reactid=\\"36\\">
-          <div style=\\"margin-bottom:24px;display:flex;\\" data-reactid=\\"37\\">
-            <div data-reactid=\\"38\\">
-              <a href=\\"/u/test\\" data-reactid=\\"39\\">
-                <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:24px;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=150 2x\\"
-                  height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\" data-reactid=\\"40\\">
+    <div class=\\"container\\">
+      <h1>News</h1>
+      <p>See what happened recently in the community.</p>
+      <div>
+        <div>
+          <div style=\\"margin-bottom:1.5rem;display:flex;\\">
+            <div>
+              <a href=\\"/u/test\\">
+                <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:1.5rem;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=150 2x\\"
+                  height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\">
               </a>
             </div>
-            <div data-reactid=\\"41\\">
-              <h4 style=\\"margin-top:0;\\" data-reactid=\\"42\\">
-                <a href=\\"/u/test\\" data-reactid=\\"43\\">test</a>
+            <div>
+              <h4 style=\\"margin-top:0;\\">
+                <a href=\\"/u/test\\">test</a>
               </h4>
-              <ul style=\\"padding-left:0;list-style-position:inside;\\" data-reactid=\\"44\\">
-                <li data-reactid=\\"45\\">
-                  <!-- react-text: 46 -->&#x270E; Added to journal:
-                  <!-- /react-text --><span data-reactid=\\"47\\"><!-- react-text: 48 --> <!-- /react-text --><a href=\\"http://www.example.com\\" data-reactid=\\"49\\">Hello World</a></span><span data-reactid=\\"50\\"><!-- react-text: 51 -->, <!-- /react-text --><a href=\\"http://www.example.com\\" data-reactid=\\"52\\">Hello World</a></span>
+              <ul style=\\"padding-left:0;list-style-position:inside;\\">
+                <li>
+                  &#x270E; Added to journal:
+                  <!-- /react-text --><span> <!-- /react-text --><a href=\\"http://www.example.com\\">Hello World</a></span><span>, <!-- /react-text --><a href=\\"http://www.example.com\\">Hello World</a></span>
                   <span
-                    data-reactid=\\"53\\">
-                    <!-- react-text: 54 -->,
-                    <!-- /react-text -->
-                    <a href=\\"http://www.example.com\\" data-reactid=\\"55\\">Hello World</a>
-                    </span><span data-reactid=\\"56\\"><!-- react-text: 57 -->, <!-- /react-text --><a href=\\"http://www.example.com\\" data-reactid=\\"58\\">Hello World</a></span><span data-reactid=\\"59\\"><!-- react-text: 60 -->, <!-- /react-text --><a href=\\"http://www.example.com\\" data-reactid=\\"61\\">Hello World</a></span>
+                   >
+                    ,
+                    <a href=\\"http://www.example.com\\">Hello World</a>
+                    </span><span>, <!-- /react-text --><a href=\\"http://www.example.com\\">Hello World</a></span><span>, <!-- /react-text --><a href=\\"http://www.example.com\\">Hello World</a></span>
                     <span
-                      data-reactid=\\"62\\">
-                      <!-- react-text: 63 -->and
-                      <!-- /react-text -->
-                      <!-- react-text: 64 -->6
-                      <!-- /react-text -->
-                      <!-- react-text: 65 -->more
-                      <!-- /react-text -->
+                     >
+                      and
+                      6
+                      more
                       </span>
                 </li>
               </ul>
@@ -508,18 +542,15 @@ exports[`news limits results 1`] = `
         </div>
       </div>
     </div>
-    <footer data-reactid=\\"66\\">
-      <div class=\\"container\\" data-reactid=\\"67\\">
-        <hr data-reactid=\\"68\\">
-        <p data-reactid=\\"69\\">
-          <!-- react-text: 70 -->Brought to you with &#x2764; by
-          <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"71\\">Nick Redmark</a>
-          <!-- react-text: 72 -->. Support this platform on
-          <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"73\\">Patreon</a>
-          <!-- react-text: 74 -->.
-          <!-- /react-text -->
+    <footer>
+      <div class=\\"container\\">
+        <hr>
+        <p>
+          Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>
+          . Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
+          .
         </p>
       </div>
     </footer>

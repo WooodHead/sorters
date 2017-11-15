@@ -1,104 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`about displays 1`] = `
-"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"1646069694\\">
-  <div data-reactid=\\"2\\">
+"<div data-reactroot=\\"\\">
+  <div>
     <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\" data-reactid=\\"4\\">
-      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\" data-reactid=\\"5\\">
-        <div class=\\"container\\" data-reactid=\\"6\\">
-          <div class=\\"navbar-header\\" data-reactid=\\"7\\">
-            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\" data-reactid=\\"8\\"><span class=\\"sr-only\\" data-reactid=\\"9\\">Toggle navigation</span><span class=\\"icon-bar\\" data-reactid=\\"10\\"></span><span class=\\"icon-bar\\" data-reactid=\\"11\\"></span><span class=\\"icon-bar\\" data-reactid=\\"12\\"></span></button>
+    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+      <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
+        <div class=\\"container\\">
+          <div class=\\"navbar-header\\">
+            <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
             <a class=\\"navbar-brand\\"
-              href=\\"/\\" data-reactid=\\"13\\">Sorters Club</a>
+              href=\\"/\\">Sorters Club</a>
           </div>
-          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\" data-reactid=\\"14\\">
-            <ul class=\\"nav navbar-nav navbar-right\\" data-reactid=\\"15\\">
-              <li class=\\"false\\" data-reactid=\\"16\\">
-                <a href=\\"/\\" data-reactid=\\"17\\">Home</a>
+          <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
+            <ul class=\\"nav navbar-nav navbar-right\\">
+              <li class=\\"false\\">
+                <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"active\\" data-reactid=\\"18\\">
-                <a href=\\"/about\\" data-reactid=\\"19\\">About</a>
+              <li class=\\"active\\">
+                <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"20\\">
-                <a href=\\"/news\\" data-reactid=\\"21\\">News</a>
+              <li class=\\"false\\">
+                <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"22\\">
-                <a href=\\"/users\\" data-reactid=\\"23\\">Sorters</a>
+              <li class=\\"false\\">
+                <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"24\\">
-                <a href=\\"/account\\" data-reactid=\\"25\\">Dashboard</a>
+              <li class=\\"false\\">
+                <a href=\\"/account\\">Dashboard</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"26\\">
-                <a href=\\"/login\\" data-reactid=\\"27\\">Log in</a>
+              <li class=\\"false\\">
+                <a href=\\"/login\\">Log in</a>
               </li>
-              <li class=\\"false\\" data-reactid=\\"28\\">
-                <a href=\\"/register\\" data-reactid=\\"29\\">Register</a>
+              <li class=\\"false\\">
+                <a href=\\"/register\\">Register</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
-    <div class=\\"container\\" data-reactid=\\"30\\">
-      <h2 data-reactid=\\"31\\">About Sorters Club</h2>
-      <p data-reactid=\\"32\\">This is a Jordan Peterson fan site, and a resource for people who want to follow his advice.</p>
-      <p data-reactid=\\"33\\">
-        <!-- react-text: 34 -->It is based mainly on Peterson&apos;s
-        <!-- /react-text -->
-        <a href=\\"https://www.youtube.com/watch?v=XbOeO_frzvg\\" data-reactid=\\"35\\">Message to Millennials</a>
-        <!-- react-text: 36 -->:
-        <!-- /react-text -->
+    <div class=\\"container\\">
+      <h2>About Sorters Club</h2>
+      <p>This is a Jordan Peterson fan site, and a resource for people who want to follow his advice.</p>
+      <p>
+        It is based mainly on Peterson&apos;s
+        <a href=\\"https://www.youtube.com/watch?v=XbOeO_frzvg\\">Message to Millennials</a>
+        :
       </p>
-      <div style=\\"max-width:100%;width:480px;margin-bottom:24px;\\" data-reactid=\\"37\\">
-        <div style=\\"position:relative;height:0;overflow:hidden;max-width:100%;padding-bottom:56.25%;\\" data-reactid=\\"38\\">
-          <iframe frameborder=\\"0\\" src=\\"https://www.youtube.com/embed/XbOeO_frzvg\\" style=\\"position:absolute;top:0;left:0;width:100%;height:100%;\\" data-reactid=\\"39\\"></iframe>
+      <div style=\\"max-width:100%;width:480px;margin-bottom:1.5rem;\\">
+        <div style=\\"position:relative;height:0;overflow:hidden;max-width:100%;padding-bottom:56.25%;\\">
+          <iframe frameborder=\\"0\\" src=\\"https://www.youtube.com/embed/XbOeO_frzvg\\" style=\\"position:absolute;top:0;left:0;width:100%;height:100%;\\"></iframe>
         </div>
       </div>
-      <p data-reactid=\\"40\\">
-        <!-- react-text: 41 -->Check out the profiles of other
-        <!-- /react-text -->
-        <a href=\\"/users\\" data-reactid=\\"42\\">sorters</a>
-        <!-- react-text: 43 -->do to get an idea of what you can do on this platform.
-        <!-- /react-text -->
+      <p>
+        Check out the profiles of other
+        <a href=\\"/users\\">sorters</a>
+        do to get an idea of what you can do on this platform.
       </p>
-      <p data-reactid=\\"44\\">
-        <!-- react-text: 45 -->Support this platform on
-        <!-- /react-text -->
-        <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"46\\">Patreon</a>
-        <!-- react-text: 47 -->.
-        <!-- /react-text -->
+      <p>
+        Support this platform on
+        <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
+        .
       </p>
-      <p data-reactid=\\"48\\">For now you can become a member only by becoming a patron. It&apos;s the easiest way to avoid spam and to get good quality users and content on the platform.</p>
-      <h2 data-reactid=\\"49\\">About Nick Redmark</h2>
-      <p data-reactid=\\"50\\">
-        <!-- react-text: 51 -->Hi, I&apos;m Nick Redmark, I&apos;m the developer of this platform. I created it mainly for myself, to document my progress as I try to &quot;sort myself out&quot; and &quot;rescue my father from the underworld&quot;. Check out more things I do
+      <p>For now you can become a member only by becoming a patron. It&apos;s the easiest way to avoid spam and to get good quality users and content on the platform.</p>
+      <h2>About Nick Redmark</h2>
+      <p>
+        Hi, I&apos;m Nick Redmark, I&apos;m the developer of this platform. I created it mainly for myself, to document my progress as I try to &quot;sort myself out&quot; and &quot;rescue my father from the underworld&quot;. Check out more things I do
         on my
-        <!-- /react-text -->
-        <a href=\\"http://nickredmark.com\\" target=\\"_blank\\" data-reactid=\\"52\\">personal site</a>
-        <!-- react-text: 53 -->.
-        <!-- /react-text -->
+        <a href=\\"http://nickredmark.com\\" target=\\"_blank\\">personal site</a>
+        .
       </p>
-      <p data-reactid=\\"54\\">
-        <b data-reactid=\\"55\\">Note for Prof. Peterson:</b>
-        <!-- react-text: 56 -->If you happen to end up on this site, I&apos;d like to express my gratitude for what you are doing, and let you know that I&apos;d be delighted to collaborate with you on any project you might have to help people sort themselves out in a more
+      <p>
+        <b>Note for Prof. Peterson:</b>
+        If you happen to end up on this site, I&apos;d like to express my gratitude for what you are doing, and let you know that I&apos;d be delighted to collaborate with you on any project you might have to help people sort themselves out in a more
         systematic way. In particular I find your project of building an online university for the humanities deeply inspiring.
-        <!-- /react-text -->
       </p>
-      <img src=\\"/static/nickredmark.jpg\\" style=\\"max-width:100%;width:200px;\\" data-reactid=\\"57\\">
+      <img src=\\"/static/nickredmark.jpg\\" style=\\"max-width:100%;width:200px;\\">
     </div>
-    <footer data-reactid=\\"58\\">
-      <div class=\\"container\\" data-reactid=\\"59\\">
-        <hr data-reactid=\\"60\\">
-        <p data-reactid=\\"61\\">
-          <!-- react-text: 62 -->Brought to you with &#x2764; by
-          <!-- /react-text -->
-          <a href=\\"/about\\" data-reactid=\\"63\\">Nick Redmark</a>
-          <!-- react-text: 64 -->. Support this platform on
-          <!-- /react-text -->
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\" data-reactid=\\"65\\">Patreon</a>
-          <!-- react-text: 66 -->.
-          <!-- /react-text -->
+    <footer>
+      <div class=\\"container\\">
+        <hr>
+        <p>
+          Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>
+          . Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
+          .
         </p>
       </div>
     </footer>

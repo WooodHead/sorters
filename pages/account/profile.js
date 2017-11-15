@@ -313,7 +313,7 @@ class ProfileFormComponent extends Component {
                             <div className="row">
                                 <div className="col-xs-6">
                                     <Gravatar md5={emailHash || username} size={200} style={{
-                                        marginBottom: '24px',
+                                        marginBottom: '1.5rem',
                                         width: '100%',
                                         height: 'auto',
                                         marginLeft: 'auto',

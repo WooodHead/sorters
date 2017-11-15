@@ -4272,12 +4272,27 @@ mongodb-core@2.1.14:
     bson "~1.0.4"
     require_optional "~1.0.0"
 
-mongodb@^2.2.22, mongodb@^2.2.30:
+mongodb-core@2.1.17:
+  version "2.1.17"
+  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-2.1.17.tgz#a418b337a14a14990fb510b923dee6a813173df8"
+  dependencies:
+    bson "~1.0.4"
+    require_optional "~1.0.0"
+
+mongodb@^2.2.30:
   version "2.2.30"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.30.tgz#8ccd801f676c8172040c2f2b47e9602a0d5634ab"
   dependencies:
     es6-promise "3.2.1"
     mongodb-core "2.1.14"
+    readable-stream "2.2.7"
+
+mongodb@^2.2.31:
+  version "2.2.33"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-2.2.33.tgz#b537c471d34a6651b48f36fdbf29750340e08b50"
+  dependencies:
+    es6-promise "3.2.1"
+    mongodb-core "2.1.17"
     readable-stream "2.2.7"
 
 morgan@^1.7.0:
@@ -4671,9 +4686,9 @@ ooth-local@^0.12.0:
     nodeify "^1.0.0"
     passport-local "^1.0.0"
 
-ooth@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/ooth/-/ooth-0.12.0.tgz#bae45713ccaff97bfd886ac24cda93ee0323c510"
+ooth@0.13:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/ooth/-/ooth-0.13.0.tgz#706b1c1a5836e30c7135c2614b367b96c8b241c5"
   dependencies:
     body-parser "^1.16.0"
     cookie-parser "^1.4.3"
@@ -4681,7 +4696,7 @@ ooth@^0.12.0:
     express-session "^1.15.0"
     express-ws "^3.0.0"
     jsonwebtoken "^7.2.1"
-    mongodb "^2.2.22"
+    mongodb "^2.2.31"
     morgan "^1.7.0"
     nodeify "^1.0.0"
     passport "^0.3.2"

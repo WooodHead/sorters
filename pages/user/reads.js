@@ -66,8 +66,6 @@ const UserReadsComponent = (props) => {
     const {name, about, reading} = profile
     const reads = user.reads || []
 
-    console.log(reads.map(read => [read.essays, read.speeches, read.conversations]))
-    
     return <div>
         <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="reads"/>
         <h2>Reads</h2>

@@ -21,7 +21,7 @@ exports[`user-header shallow-renders 1`] = `
           Object {
             "display": "block",
             "height": "auto",
-            "marginBottom": "24px",
+            "marginBottom": "1.5rem",
             "marginLeft": "auto",
             "marginRight": "auto",
             "width": "100%",

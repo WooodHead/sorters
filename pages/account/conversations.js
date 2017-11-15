@@ -1,6 +1,5 @@
 import {Component} from 'react'
 import {compose} from 'recompose'
-import {withUser} from 'ooth-client-react'
 import withLoginRequired from 'staart/lib/hocs/login-required'
 import Form from 'staart/lib/components/form'
 import gql from 'graphql-tag'
@@ -329,7 +328,7 @@ class Conversation extends Component {
             
 
         return <div style={{
-            marginBottom: '24px'
+            marginBottom: '1.5rem'
         }}>
             {this.state.edit ?
                 <Panel title="Edit Conversation"
@@ -412,8 +411,8 @@ class Conversation extends Component {
                 </Panel>
             :
                 <div style={{
-                    marginTop: '24px',
-                    marginBottom: '24px',
+                    marginTop: '1.5rem',
+                    marginBottom: '1.5rem',
                 }}>
                     <span style={{
                         display: 'block',

@@ -3,15 +3,30 @@ import gql from 'graphql-tag'
 import {compose} from 'recompose'
 import Gravatar from 'react-gravatar'
 import moment from 'moment'
+import _ from 'lodash'
+
 import {PROGRAMS} from '../models/programs'
+import {log} from '../utils/debug'
+import {Avatar} from '../components/user'
+import {EntityLink} from '../components/entity'
 
 const digestEvents = (events) => {
     const byDayUser = {}
-    for (const event of events) {
+    for (let event of events) {
         if (!event.user.local || !event.user.local.username) {
             continue
         }
         const day = moment(event.date).format('YYYYMMDD')
+
+        if (event.type === 'created-comment') {
+            if (!event.comment || event.comment.deleted) {
+                continue
+            }
+            event = _.cloneDeep(event)
+            event.commenter = event.user
+            event.user = event.comment.rootEntity.user
+        }
+
         const userId = event.user._id
         if (!byDayUser[day]) {
             byDayUser[day] = {}
@@ -91,6 +106,8 @@ const IGNORED_EVENTS = [
     'deleted-speech',
     'updated-conversation',
     'deleted-conversation',
+    'updated-comment',
+    'deleted-comment',
 ]
 
 const integrateEvent = (integrated, event) => {
@@ -116,6 +133,21 @@ const integrateEvent = (integrated, event) => {
             integrated[event.name] = true
         }
         else throw new Error(`Unknown program type: ${event.name}`)
+    } else if (event.type === 'created-comment') {
+        if (!integrated['created-comment']) {
+            integrated['created-comment'] = {}
+        }
+        if (!event.comment.rootEntity) {
+            return
+        }
+        if (!integrated['created-comment'][event.comment.rootEntity._id]) {
+            integrated['created-comment'][event.comment.rootEntity._id] = event.comment.rootEntity
+            integrated['created-comment'][event.comment.rootEntity._id].commenters = {}
+        }
+        if (event.commenter._id !== event.user._id
+            && !integrated['created-comment'][event.comment.rootEntity._id].commenters[event.commenter._id]) {
+            integrated['created-comment'][event.comment.rootEntity._id].commenters[event.commenter._id] = event.commenter
+        }
     } else if (IGNORED_EVENTS.indexOf(event.type) > -1) {
         return
     } else {
@@ -213,6 +245,27 @@ const NewsQuery = gql`
             ... on UpdatedProfile {
                 values
             }
+            ... on UpdatedComment {
+                comment {
+                    rootEntity {
+                        type
+                        _id
+                        title
+                        user {
+                            _id
+                            profile {
+                                name
+                            }
+                            emailHash
+                            local {
+                                username
+                            }
+                        }        
+                    }
+                    content
+                    deleted
+                }
+            }
         }
     }
 `
@@ -229,13 +282,13 @@ const NewsComponent = ({data: {loading, events}}) => {
                     const {emailHash, local: {username}} = event.user
                     const name = event.user.profile && event.user.profile.name
                     return <div key={j} style={{
-                        marginBottom: '24px',
+                        marginBottom: '1.5rem',
                         display: 'flex',
                     }}>
                         <div>
                             <a href={`/u/${username}`}>
                                 <Gravatar md5={emailHash || username} size={75} style={{
-                                    marginRight: '24px',
+                                    marginRight: '1.5rem',
                                 }}/>
                             </a>
                         </div>
@@ -381,6 +434,23 @@ const NewsComponent = ({data: {loading, events}}) => {
                                         {i ? ', ' : ' '}<a href={`/u/${username}/topics`}>{t}</a>
                                     </span>)}
                                     {Object.keys(event['created-topic']).length > LIMIT && <span> and {Object.keys(event['created-read']).length - LIMIT} more</span>}
+                                </li>}
+                                {event['created-comment'] && <li>
+                                    Had conversations on
+                                    <ul>
+                                        {Object.values(event['created-comment']).map(entity => {
+                                            return <li key={entity._id} style={{ lineHeight: 2 }}>
+                                                <EntityLink entity={entity}/>
+                                                {Object.keys(entity.commenters).length > 0 && <span>
+                                                    {' with'}
+                                                    {Object.values(entity.commenters).map((user, i) => <span key={i}>
+                                                        {' '}
+                                                        <Avatar user={user}/>
+                                                    </span>)}
+                                                </span>}
+                                            </li>
+                                        })}
+                                    </ul>
                                 </li>}
                             </ul>
                         </div>

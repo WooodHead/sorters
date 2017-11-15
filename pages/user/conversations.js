@@ -81,10 +81,10 @@ const UserConversations = compose(
     })
 )(UserConversationsComponent)
 
-const Conversation = ({conversation: {url, title, content, topicTitles, readTitles, goalTitles}}) => (
+const Conversation = ({conversation: {_id, url, title, content, topicTitles, readTitles, goalTitles}}) => (
     <div style={{
-        marginTop: '24px',
-        marginBottom: '24px',
+        marginTop: '1.5rem',
+        marginBottom: '1.5rem',
     }}>
         <h3>
             {url ?
@@ -117,6 +117,7 @@ const Conversation = ({conversation: {url, title, content, topicTitles, readTitl
                 ))}
             </div>
         }
+        <a href={`/conversation/${_id}`}>Comments</a>
         <hr/>
     </div>
 )
