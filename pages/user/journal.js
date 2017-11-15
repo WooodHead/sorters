@@ -87,7 +87,7 @@ const Entry = ({entry: {_id, url, title, description, goalTitles}}) => (
     }}>
         <h3>
             {url ?
-                <a href={url}>{title}</a>
+                <a href={url} target="_blank">{title}</a>
             :
                 title
             }

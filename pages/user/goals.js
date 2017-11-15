@@ -32,10 +32,12 @@ query($username: String!) {
             doing
             done
             entries {
+                _id
                 title
                 url
             }
             conversations {
+                _id
                 title
             }
         }
@@ -82,7 +84,14 @@ const UserGoalsComponent = (props) => {
                                 <li>✎ Journal entries: 
                                     {entries.map((entry, i) => (<span key={i}>
                                         {i ? ', ' : ' '}
-                                        <a href={entry.url || `/speech/${entry._id}`}>{entry.title}</a>
+                                        {entry.url ?
+                                            <span>
+                                                <a href={url} target="_blank">{entry.title}</a>
+                                                {' '}(<a href={`/entry/${entry._id}`}>comments</a>)
+                                            </span>
+                                        :
+                                            <a href={`/entry/${entry._id}`}>{entry.title}</a>
+                                        }
                                     </span>))}
                                 </li>
                             }
@@ -90,7 +99,7 @@ const UserGoalsComponent = (props) => {
                                 <li>🗩 Conversations: 
                                     {conversations.map((conversation, i) => (<span key={i}>
                                         {i ? ', ' : ' '}
-                                        <a href={conversation.url || `/conversation/${conversation._id}`}>{conversation.title}</a>
+                                        <a href={`/conversation/${conversation._id}`}>{conversation.title}</a>
                                     </span>))}
                                 </li>
                             }

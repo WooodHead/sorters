@@ -324,7 +324,7 @@ const NewsComponent = ({data: {loading, events}}) => {
                                         return <span key={i}>
                                             {i ? ', ' : ' '}
                                             {url ?
-                                                <a href={url}>{title}</a>
+                                                <a href={url} target="_blank">{title}</a>
                                             :
                                                 <a href={`/u/${username}/journal`}>{title}</a>
                                             }

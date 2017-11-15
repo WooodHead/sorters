@@ -1,5 +1,5 @@
 import cheerio from 'cheerio'
-import pretty from 'pretty'
+import {pretty} from './utils'
 import {MongoClient, ObjectID} from 'mongodb'
 import {setup, teardown} from './setup'
 

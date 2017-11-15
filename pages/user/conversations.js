@@ -87,11 +87,7 @@ const Conversation = ({conversation: {_id, url, title, content, topicTitles, rea
         marginBottom: '1.5rem',
     }}>
         <h3>
-            {url ?
-                <a href={url}>{title}</a>
-            :
-                title
-            }
+            {title}
         </h3>
         {content &&
             <Markdown content={content}/>

@@ -111,6 +111,10 @@ exports[`user displays 1`] = `
       </div>
       <div style=\\"margin-bottom:1.5rem;\\">
         &#x25CE; Wants to achieve
+        <a href=\\"/u/test/goals\\">Goal</a>
+      </div>
+      <div style=\\"margin-bottom:1.5rem;\\">
+        &#x25CE; Wants to achieve
         <a href=\\"/u/test/goals\\">Goal - doing</a>
       </div>
       <div style=\\"margin-bottom:1.5rem;\\">
@@ -121,10 +125,6 @@ exports[`user displays 1`] = `
         &#x1F4D6; Updated
         <a href=\\"/u/test/goals\\">goals description</a>
         .
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x25CE; Wants to achieve
-        <a href=\\"/u/test/goals\\">Goal</a>
       </div>
       <div style=\\"margin-bottom:1.5rem;\\">
         &#x1F4D6; Updated
@@ -402,7 +402,7 @@ exports[`user displays journal 1`] = `
         <h2>Journal</h2>
         <div style=\\"margin-top:1.5rem;margin-bottom:1.5rem;\\">
           <h3>
-            <a href=\\"http://www.example.com\\">Hello World</a>
+            <a href=\\"http://www.example.com\\" target=\\"_blank\\">Hello World</a>
           </h3>
           <div class=\\"markdown\\">
             <p>Lorem ipsum</p>
@@ -410,7 +410,7 @@ exports[`user displays journal 1`] = `
           <div>
             Goals:
             <!-- /react-text --><span> <!-- /react-text --><em>Goal</em></span><span>, <!-- /react-text --><em>Goal - doing</em></span></div>
-          <a href=\\"/entry/5a0c04c1920c3c41bbb64d1b\\"
+          <a href=\\"/entry/<id>\\"
            >Comments</a>
           <hr>
         </div>

@@ -10,7 +10,7 @@ const Panel = ({title, children, url, target, label, onClose}) => (
             }
             <h3 className="panel-title">
                 {url ?
-                    <a href={url}>{title}</a>
+                    <a href={url} target="_blank">{title}</a>
                 :
                     title
                 }

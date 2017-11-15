@@ -368,7 +368,7 @@ class Entry extends Component {
                     </span>
                     <h3>
                         {url ?
-                            <a href={url}>{title}</a>
+                            <a href={url} target="_blank">{title}</a>
                         :
                             title
                         }
@@ -383,6 +383,7 @@ class Entry extends Component {
                             ))}
                         </span>
                     }
+                    <a href={`/entry/${_id}`}>Comments</a>
                     <hr/>
                 </div>
             }

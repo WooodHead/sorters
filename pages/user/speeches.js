@@ -88,7 +88,7 @@ const Speech = ({speech: {_id, url, title, content, topicTitles, readTitles}}) =
     }}>
         <h3>
             {url ?
-                <a href={url}>{title}</a>
+                <a href={url} target="_blank">{title}</a>
             :
                 title
             }

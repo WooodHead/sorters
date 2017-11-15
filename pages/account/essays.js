@@ -419,7 +419,7 @@ class Essay extends Component {
                     </span>
                     <h3>
                         {url ?
-                            <a href={url}>{title}</a>
+                            <a href={url} target="_blank">{title}</a>
                         :
                             title
                         }
@@ -441,6 +441,7 @@ class Essay extends Component {
                             ))}
                         </div>
                     }
+                    <a href={`/essay/${_id}`}>Comments</a>
                     <hr/>
                 </div>
             }

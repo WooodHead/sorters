@@ -43,86 +43,7 @@ exports[`news displays 1`] = `
     <div class=\\"container\\">
       <h1>News</h1>
       <p>See what happened recently in the community.</p>
-      <div>
-        <div>
-          <div style=\\"margin-bottom:1.5rem;display:flex;\\">
-            <div>
-              <a href=\\"/u/test\\">
-                <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:1.5rem;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=150 2x\\"
-                  height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\">
-              </a>
-            </div>
-            <div>
-              <h4 style=\\"margin-top:0;\\">
-                <a href=\\"/u/test\\">Test User</a>
-              </h4>
-              <ul style=\\"padding-left:0;list-style-position:inside;\\">
-                <li>
-                  &#x1F464; Updated
-                  <a href=\\"/u/test/profile\\">profile</a><span>:<!-- /react-text --><span><!-- /react-text -->Name<!-- /react-text --></span><span>, <!-- /react-text -->About<!-- /react-text --></span>
-                  <span
-                   >
-                    ,
-                    Bio
-                    </span><span>, <!-- /react-text -->Website<!-- /react-text --></span><span>, <!-- /react-text -->Blog<!-- /react-text --></span>
-                    <span
-                     >
-                      and
-                      22
-                      more
-                      </span>
-                      </span>
-                      .
-                </li>
-                <li>
-                  &#x2714; Completed
-                  Past authoring
-                </li>
-                <li>
-                  &#x2714; Completed
-                  Present faults authoring
-                </li>
-                <li>
-                  &#x2714; Completed
-                  Present virtues authoring
-                </li>
-                <li>
-                  &#x2714; Completed
-                  Future authoring
-                </li>
-                <li>
-                  &#x2714; Completed
-                  Understand myself
-                </li>
-                <li>
-                  &#x25CE; Updated
-                  <a href=\\"/u/test/goals\\">goals description</a>
-                  .
-                </li>
-                <li>
-                  &#x25CE; Wants to achieve
-                  <!-- /react-text --><span> <!-- /react-text --><em>Goal</em></span><span>, <!-- /react-text --><em>Goal - doing</em></span><span>, <!-- /react-text --><em>Goal - done</em></span></li>
-                <li
-                 >
-                  &#x1F4D6; Updated
-                  <a href=\\"/u/test/reads\\">reading list description</a>
-                  .
-                  </li>
-                  <li>
-                    &#x1F4D6; Added books to
-                    <a href=\\"/u/test/reads\\">reading list</a>
-                    :
-                    <!-- /react-text --><span> <!-- /react-text --><em>Read</em></span><span>, <!-- /react-text --><em>Read - read</em></span>
-                    <span
-                     >
-                      ,
-                      <!-- /react-text --><em>Read - reading</em></span>
-                  </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div></div>
     </div>
     <footer>
       <div class=\\"container\\">
@@ -341,7 +262,7 @@ exports[`news displays journal events 1`] = `
               <ul style=\\"padding-left:0;list-style-position:inside;\\">
                 <li>
                   &#x270E; Added to journal:
-                  <!-- /react-text --><span> <!-- /react-text --><a href=\\"http://www.example.com\\">Hello World</a></span></li>
+                  <!-- /react-text --><span> <!-- /react-text --><a href=\\"http://www.example.com\\" target=\\"_blank\\">Hello World</a></span></li>
               </ul>
             </div>
           </div>
@@ -523,12 +444,12 @@ exports[`news limits results 1`] = `
               <ul style=\\"padding-left:0;list-style-position:inside;\\">
                 <li>
                   &#x270E; Added to journal:
-                  <!-- /react-text --><span> <!-- /react-text --><a href=\\"http://www.example.com\\">Hello World</a></span><span>, <!-- /react-text --><a href=\\"http://www.example.com\\">Hello World</a></span>
+                  <!-- /react-text --><span> <!-- /react-text --><a href=\\"http://www.example.com\\" target=\\"_blank\\">Hello World</a></span><span>, <!-- /react-text --><a href=\\"http://www.example.com\\" target=\\"_blank\\">Hello World</a></span>
                   <span
                    >
                     ,
-                    <a href=\\"http://www.example.com\\">Hello World</a>
-                    </span><span>, <!-- /react-text --><a href=\\"http://www.example.com\\">Hello World</a></span><span>, <!-- /react-text --><a href=\\"http://www.example.com\\">Hello World</a></span>
+                    <a href=\\"http://www.example.com\\" target=\\"_blank\\">Hello World</a>
+                    </span><span>, <!-- /react-text --><a href=\\"http://www.example.com\\" target=\\"_blank\\">Hello World</a></span><span>, <!-- /react-text --><a href=\\"http://www.example.com\\" target=\\"_blank\\">Hello World</a></span>
                     <span
                      >
                       and

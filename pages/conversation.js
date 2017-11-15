@@ -78,11 +78,7 @@ const ConversationComponent = (props) => {
     return <Layout title={title} page="user">
         <div className="container">
             <h1>
-                {url ?
-                    <a href={url}>{title}</a>
-                :
-                    title
-                }
+                {title}
             </h1>
             <Author user={user}/>
             {content &&

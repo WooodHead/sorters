@@ -1,10 +1,11 @@
 const {ObjectId} = require('mongodb')
+const {findOne, find} = require('./utils')
 
 const MIGRATIONS = [
     async (db) => {
         async function doStuff(userId, type, read, Collection, newType) {
             let date = new Date('2017-08-01')
-            const event = await Events.findOne({
+            const event = await findOne(Events, {
                 type,
                 userId,
                 title: read.title,
@@ -17,9 +18,12 @@ const MIGRATIONS = [
                 date = event.date
             }
             const essay = {
+                userId,
                 title: read.title,
                 url: read.articleUrl,
                 createdAt: date,
+                updatedAt: date,
+                topicTitles: [],
                 readTitles: [read.title],
             }
             console.info(`Creating ${newType}`, essay)
@@ -45,7 +49,7 @@ const MIGRATIONS = [
         const Events = db.collection('events')
         const Essays = db.collection('essays')
         const Speeches = db.collection('speeches')
-        const users = await Users.find({}).toArray()
+        const users = await find(Users, {})
         for (const user of users) {
             const userId = user._id
             if (user.reads) {
@@ -68,13 +72,13 @@ async function performMigrations(db) {
     console.info(`Performing migrations...`)
 
     const Migrations = db.collection('migrations')
-    let migrations = await Migrations.findOne({name: 'migrations'})
+    let migrations = await findOne(Migrations, {name: 'migrations'})
     if (!migrations) {
         await Migrations.insert({
             name: 'migrations',
             version: 0,
         })
-        migrations = await Migrations.findOne({name: 'migrations'})
+        migrations = await findOne(Migrations, {name: 'migrations'})
     }
     let version = migrations.version
 

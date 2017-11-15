@@ -78,7 +78,7 @@ const EntryComponent = (props) => {
         <div className="container">
             <h1>
                 {url ?
-                    <a href={url}>{title}</a>
+                    <a href={url} target="_blank">{title}</a>
                 :
                     title
                 }

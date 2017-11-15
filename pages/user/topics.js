@@ -30,14 +30,17 @@ query($username: String!) {
             title
             description
             essays {
+                _id
                 title
                 url
             }
             speeches {
+                _id
                 title
                 url
             }
             conversations {
+                _id
                 title
             }
         }
@@ -81,7 +84,14 @@ const UserTopicsComponent = (props) => {
                                 <li>✎ Essays: 
                                     {essays.map((essay, i) => (<span key={i}>
                                         {i ? ', ' : ' '}
-                                        <a href={essay.url || `/essay/${essay._id}`}>{essay.title}</a>
+                                        {essay.url ?
+                                            <span>
+                                                <a href={url} target="_blank">{essay.title}</a>
+                                                {' '}(<a href={`/essay/${essay._id}`}>comments</a>)
+                                            </span>
+                                        :
+                                            <a href={`/essay/${essay._id}`}>{essay.title}</a>
+                                        }
                                     </span>))}
                                 </li>
                             }
@@ -89,7 +99,14 @@ const UserTopicsComponent = (props) => {
                                 <li>👄 Speeches: 
                                     {speeches.map((speech, i) => (<span key={i}>
                                         {i ? ', ' : ' '}
-                                        <a href={speech.url || `/speech/${speech._id}`}>{speech.title}</a>
+                                        {speech.url ?
+                                            <span>
+                                                <a href={url} target="_blank">{speech.title}</a>
+                                                {' '}(<a href={`/speech/${speech._id}`}>comments</a>)
+                                            </span>
+                                        :
+                                            <a href={`/speech/${speech._id}`}>{speech.title}</a>
+                                        }
                                     </span>))}
                                 </li>
                             }
@@ -97,7 +114,7 @@ const UserTopicsComponent = (props) => {
                                 <li>🗩 Conversations: 
                                     {conversations.map((conversation, i) => (<span key={i}>
                                         {i ? ', ' : ' '}
-                                        <a href={conversation.url || `/conversation/${conversation._id}`}>{conversation.title}</a>
+                                        <a href={`/conversation/${conversation._id}`}>{conversation.title}</a>
                                     </span>))}
                                 </li>
                             }

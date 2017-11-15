@@ -66,13 +66,14 @@ exports[`goals displays 1`] = `
               <a style=\\"cursor:pointer;font-size:140%;\\">&#x270E;</a>
               </span>
               <h3>
-                <a href=\\"http://www.example.com\\">Hello World</a>
+                <a href=\\"http://www.example.com\\" target=\\"_blank\\">Hello World</a>
               </h3>
               <div class=\\"markdown\\">
                 <p>Lorem ipsum</p>
               </div><span>Goals: <!-- /react-text --><span> <!-- /react-text -->Goal<!-- /react-text --></span><span>, <!-- /react-text -->Goal - doing<!-- /react-text --></span></span>
-              <hr
-               >
+              <a
+                href=\\"/entry/<id>\\">Comments</a>
+                <hr>
             </div>
           </div>
         </div>

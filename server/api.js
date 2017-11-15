@@ -13,13 +13,7 @@ const crypto = require('crypto-browserify')
 const {GraphQLScalarType} = require('graphql')
 const {objectMap} = require('../utils/objects')
 const {performMigrations} = require('./migrations')
-
-function prepare(o) {
-    if (o && o._id) {
-        o._id = o._id.toString()
-    }
-    return o
-}
+const {prepare} = require('./utils')
 
 function set(o, key, value) {
     o[key] = value

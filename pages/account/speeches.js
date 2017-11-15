@@ -419,7 +419,7 @@ class Speech extends Component {
                     </span>
                     <h3>
                         {url ?
-                            <a href={url}>{title}</a>
+                            <a href={url} target="_blank">{title}</a>
                         :
                             title
                         }
@@ -441,6 +441,7 @@ class Speech extends Component {
                             ))}
                         </div>
                     }
+                    <a href={`/speech/${_id}`}>Comments</a>
                     <hr/>
                 </div>
             }

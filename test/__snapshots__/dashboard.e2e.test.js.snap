@@ -56,7 +56,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/profile\\">&#x1F464; Profile</a>
+                <a href=\\"/account/profile\\" target=\\"_blank\\">&#x1F464; Profile</a>
               </h3>
             </div>
             <div class=\\"panel-body\\">
@@ -69,7 +69,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/goals\\">&#x25CE; Goals</a>
+                <a href=\\"/account/goals\\" target=\\"_blank\\">&#x25CE; Goals</a>
               </h3>
             </div>
             <div class=\\"panel-body\\">
@@ -82,7 +82,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/journal\\">&#x270E; Journal</a>
+                <a href=\\"/account/journal\\" target=\\"_blank\\">&#x270E; Journal</a>
               </h3>
             </div>
             <div class=\\"panel-body\\">
@@ -97,7 +97,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/topics\\"><span>&#x1F4A1; Topics <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
+                <a href=\\"/account/topics\\" target=\\"_blank\\"><span>&#x1F4A1; Topics <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
                 </a>
               </h3>
             </div>
@@ -111,7 +111,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/essays\\"><span>&#x270E; Essays <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
+                <a href=\\"/account/essays\\" target=\\"_blank\\"><span>&#x270E; Essays <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
                 </a>
               </h3>
             </div>
@@ -125,7 +125,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/speeches\\"><span>&#x1F444; Speeches <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
+                <a href=\\"/account/speeches\\" target=\\"_blank\\"><span>&#x1F444; Speeches <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
                 </a>
               </h3>
             </div>
@@ -141,7 +141,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/conversations\\"><span>&#x1F5E9; Conversations <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
+                <a href=\\"/account/conversations\\" target=\\"_blank\\"><span>&#x1F5E9; Conversations <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
                 </a>
               </h3>
             </div>
@@ -155,7 +155,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/reads\\">&#x1F4D6; Reading list</a>
+                <a href=\\"/account/reads\\" target=\\"_blank\\">&#x1F4D6; Reading list</a>
               </h3>
             </div>
             <div class=\\"panel-body\\">
@@ -168,7 +168,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/news\\">&#x1F46B; Sorters</a>
+                <a href=\\"/account/news\\" target=\\"_blank\\">&#x1F46B; Sorters</a>
               </h3>
             </div>
             <div class=\\"panel-body\\">
@@ -183,7 +183,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"https://discord.gg/6Q8v9Sm\\">&#x1F5E9; Chat</a>
+                <a href=\\"https://discord.gg/6Q8v9Sm\\" target=\\"_blank\\">&#x1F5E9; Chat</a>
               </h3>
             </div>
             <div class=\\"panel-body\\">
@@ -196,7 +196,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/account\\">&#x2699; Account</a>
+                <a href=\\"/account/account\\" target=\\"_blank\\">&#x2699; Account</a>
               </h3>
             </div>
             <div class=\\"panel-body\\">

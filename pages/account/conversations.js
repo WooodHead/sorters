@@ -455,6 +455,7 @@ class Conversation extends Component {
                             ))}
                         </div>
                     }
+                    <a href={`/conversation/${_id}`}>Comments</a>
                     <hr/>
                 </div>
             }
