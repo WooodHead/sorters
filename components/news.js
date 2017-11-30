@@ -13,13 +13,13 @@ import {EntityLink} from '../components/entity'
 const digestEvents = (events) => {
     const byDayUser = {}
     for (let event of events) {
-        if (!event.user.local || !event.user.local.username) {
+        if (!event.user || !event.user.local || !event.user.local.username) {
             continue
         }
         const day = moment(event.date).format('YYYYMMDD')
 
         if (event.type === 'created-comment') {
-            if (!event.comment || event.comment.deleted) {
+            if (!event.comment || event.comment.deleted || !event.comment.entity || !event.comment.rootEntity) {
                 continue
             }
             event = _.cloneDeep(event)
