@@ -96,10 +96,7 @@ class JournalComponent extends Component {
             }
         }
 
-        return <div style={{
-            maxWidth: '400px',
-            margin: 'auto'
-        }}>
+        return <div className="container">
             <h1>Journal</h1>
             <p>Here you can write regular updates about your <a href="/account/goals">goals</a>.</p>
             {loading ?
@@ -377,11 +374,11 @@ class Entry extends Component {
                         <Markdown content={description}/>
                     }
                     {entryGoalTitles.length > 0 &&
-                        <span>
+                        <div>
                             Goals: {entryGoalTitles.map((goal, i) => (
                                 <span key={i}>{i ? ', ' : ' '}{goal}</span>
                             ))}
-                        </span>
+                        </div>
                     }
                     <a href={`/entry/${_id}`}>Comments</a>
                     <hr/>

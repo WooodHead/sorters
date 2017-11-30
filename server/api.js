@@ -721,7 +721,7 @@ const start = async (app, settings) => {
         },
         Goal: {
             entries: async (goal) => {
-                return await findRelatedEntities(goal.title, Essays, 'goalTitles')
+                return await findRelatedEntities(goal.title, Entries, 'goalTitles')
             },
             conversations: async (goal) => {
                 return await findRelatedEntities(goal.title, Conversations, 'goalTitles')
@@ -840,11 +840,17 @@ const start = async (app, settings) => {
             },
             entity: async ({entityType, entityId}) => {
                 const Collection = COMMENTABLE_COLLECTIONS[entityType]
-                return set(await Collection.findOne(ObjectId(entityId)), 'type', entityType)
+                const entity = await Collection.findOne(ObjectId(entityId))
+                if (entity) {
+                    return set(entity, 'type', entityType)
+                }
             },
             rootEntity: async ({rootEntityType, rootEntityId}) => {
                 const Collection = COMMENTABLE_COLLECTIONS[rootEntityType]
-                return set(await Collection.findOne(ObjectId(rootEntityId)), 'type', rootEntityType)
+                const entity = await Collection.findOne(ObjectId(rootEntityId))
+                if (entity) {
+                    return set(entity, 'type', rootEntityType)
+                }
             },
         },
         Event: {
