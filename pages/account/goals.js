@@ -13,6 +13,7 @@ import RadioButtons from '../../components/radio-buttons'
 import ShyButton from '../../components/shy-button'
 import DeleteModal from '../../components/delete-modal'
 import {errorMessage} from '../../utils/errors'
+import AccountHeader from '../../components/account-header'
 
 export default withPage(() => (
     <Layout title="Goals" page="goals">
@@ -85,135 +86,138 @@ class GoalsComponent extends Component {
             done,
         }))) || []
 
-        return <div style={{
-            maxWidth: '400px',
-            margin: 'auto'
-        }}>
-            <h1>Goals</h1>
+        return <div className="container">
+            <AccountHeader route="goals"/>
+            <h2>Goals</h2>
             {loading ?
                 <span>Loading...</span>
             :
                 (username ?
                     <div>
                         {goals.length > 0 && <p>Your public goal list can be found at <a href={`/u/${username}/goals`}>/u/{username}/goals</a>.</p>}
-                        <h2>Description</h2>
-                        <p>Here you can describe how you chose your goals.</p>
-                        <Form
-                            onSubmit={() => {
-                                const goalsDescription = this.goalsDescription.value
-                                updateGoalsDescription({
-                                    variables: {
-                                        goals: goalsDescription
+                        <div style={{
+                            maxWidth: '400px',
+                            margin: 'auto'
+                        }}>
+                            <h3>Description</h3>
+                            <p>Here you can describe how you chose your goals.</p>
+                            <Form
+                                onSubmit={() => {
+                                    const goalsDescription = this.goalsDescription.value
+                                    updateGoalsDescription({
+                                        variables: {
+                                            goals: goalsDescription
+                                        }
+                                    }).then(() => {
+                                        this.setState({
+                                            goalsDescriptionState: 'success',
+                                            goalsDescriptionMessage: 'Goals description saved.'
+                                        })
+                                    }).catch(e => {
+                                        this.setState({
+                                            goalsDescriptionState: 'error',
+                                            goalsDescriptionMessage: errorMessage(e)
+                                        })
+                                    })
+                                }}
+                                state={this.state.goalsDescriptionState}
+                                message={this.state.goalsDescriptionMessage}
+                                submitLabel="Save"
+                            >
+                                <div className="form-group">
+                                    <label htmlFor="goals-description">Description</label>
+                                    <textarea
+                                        className="form-control"
+                                        rows="4"
+                                        ref={ref => this.goalsDescription = ref}
+                                        defaultValue={goalsDescription}
+                                    />
+                                </div>
+                            </Form>
+                            {goals.length > 0 &&
+                                <div>
+                                    <h3>Your Goals</h3>
+                                    <GoalsList
+                                        goals={goals}
+                                        distance={1}
+                                        onSortEnd={({oldIndex, newIndex}) => {
+                                            const newGoals = arrayMove(goals, oldIndex, newIndex)
+                                            updateGoals({
+                                                variables: {
+                                                    goals: newGoals
+                                                }
+                                            }).then(() => {
+                                                refetch();
+                                            }).catch(e => {
+                                                console.error(e)
+                                            })
+                                        }}
+                                        updateGoal={(key, goal) => {
+                                            goals[key] = goal;
+                                            return updateGoals({
+                                                variables: {
+                                                    goals
+                                                }
+                                            }).then(() => {
+                                                refetch();
+                                            })
+                                        }}
+                                        removeGoal={(key) => {
+                                            goals.splice(key, 1)
+                                            return updateGoals({
+                                                variables: {
+                                                    goals
+                                                }
+                                            }).then(() => {
+                                                refetch();
+                                            }).catch(e => {
+                                                console.error(e)
+                                            })
+                                        }}
+                                    />
+                                </div>
+                            }
+                            <h4>New Goal</h4>
+                            <Form
+                                onSubmit={() => {
+                                    const goal = {
+                                        title: this.title.value
                                     }
-                                }).then(() => {
-                                    this.setState({
-                                        goalsDescriptionState: 'success',
-                                        goalsDescriptionMessage: 'Goals description saved.'
-                                    })
-                                }).catch(e => {
-                                    this.setState({
-                                        goalsDescriptionState: 'error',
-                                        goalsDescriptionMessage: errorMessage(e)
-                                    })
-                                })
-                            }}
-                            state={this.state.goalsDescriptionState}
-                            message={this.state.goalsDescriptionMessage}
-                            submitLabel="Save"
-                        >
-                            <div className="form-group">
-                                <label htmlFor="goals-description">Description</label>
-                                <textarea
-                                    className="form-control"
-                                    rows="4"
-                                    ref={ref => this.goalsDescription = ref}
-                                    defaultValue={goalsDescription}
-                                />
-                            </div>
-                        </Form>
-                        {goals.length > 0 &&
-                            <div>
-                                <h2>Your Goals</h2>
-                                <GoalsList
-                                    goals={goals}
-                                    distance={1}
-                                    onSortEnd={({oldIndex, newIndex}) => {
-                                        const newGoals = arrayMove(goals, oldIndex, newIndex)
-                                        updateGoals({
-                                            variables: {
-                                                goals: newGoals
-                                            }
-                                        }).then(() => {
-                                            refetch();
-                                        }).catch(e => {
-                                            console.error(e)
+                                    createGoal({
+                                        variables: {
+                                            goal
+                                        }
+                                    }).then(() => {
+                                        this.title.value = ''
+                                        this.setState({
+                                            state: 'success',
+                                            message: 'Goals updated!'
+                                        }, refetch)
+                                    }).catch(e => {
+                                        this.setState({
+                                            state: 'error',
+                                            message: errorMessage(e)
                                         })
-                                    }}
-                                    updateGoal={(key, goal) => {
-                                        goals[key] = goal;
-                                        return updateGoals({
-                                            variables: {
-                                                goals
-                                            }
-                                        }).then(() => {
-                                            refetch();
-                                        })
-                                    }}
-                                    removeGoal={(key) => {
-                                        goals.splice(key, 1)
-                                        return updateGoals({
-                                            variables: {
-                                                goals
-                                            }
-                                        }).then(() => {
-                                            refetch();
-                                        }).catch(e => {
-                                            console.error(e)
-                                        })
-                                    }}
-                                />
-                            </div>
-                        }
-                        <h3>New Goal</h3>
-                        <Form
-                            onSubmit={() => {
-                                const goal = {
-                                    title: this.title.value
-                                }
-                                createGoal({
-                                    variables: {
-                                        goal
-                                    }
-                                }).then(() => {
-                                    this.title.value = ''
-                                    this.setState({
-                                        state: 'success',
-                                        message: 'Goals updated!'
-                                    }, refetch)
-                                }).catch(e => {
-                                    this.setState({
-                                        state: 'error',
-                                        message: errorMessage(e)
                                     })
-                                })
-                            }}
-                            state={this.state.state}
-                            message={this.state.message}
-                            submitLabel="New Goal"
-                        >
-                            <div className="form-group">
-                                <label htmlFor="title">Title</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder={goals.length === 0 ? 'Clean my room' : ''}
-                                    ref={ref => {
-                                        this.title = ref
-                                    }}
-                                    required
-                                />
-                            </div>
-                        </Form>
+                                }}
+                                state={this.state.state}
+                                message={this.state.message}
+                                submitLabel="New Goal"
+                            >
+                                <div className="form-group">
+                                    <label htmlFor="title">Title</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder={goals.length === 0 ? 'Clean my room' : ''}
+                                        ref={ref => {
+                                            this.title = ref
+                                        }}
+                                        required
+                                    />
+                                </div>
+                            </Form>
+                        </div>
                     </div>
                 :
                     <p>To activate your profile set a username in your <a href="/account">account page</a>.</p>

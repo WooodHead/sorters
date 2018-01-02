@@ -6,6 +6,7 @@ import withLoginRequired from 'staart/lib/hocs/login-required'
 import Layout from '../../components/layout'
 import withPage from '../../providers/page'
 import RawPanel from '../../components/panel'
+import AccountHeader from '../../components/account-header'
 
 const Panel = (props) => (
   <div className="col-md-4">
@@ -21,7 +22,8 @@ export default withPage(() => (
 
 const DashboardComponent = ({user}) => (
     <div className="container">
-      <h1>Dashboard</h1>
+      <AccountHeader route="dashboard"/>
+      <h2>Dashboard</h2>
       {user.local && user.local.username &&
         <p>
             Your profile can be found at <a href={`/u/${user.local.username}`}>{`/u/${user.local.username}`}</a>.

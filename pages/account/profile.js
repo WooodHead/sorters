@@ -11,6 +11,7 @@ import Layout from '../../components/layout'
 import withPage from '../../providers/page'
 import {errorMessage} from '../../utils/errors'
 import RadioButtons from '../../components/radio-buttons'
+import AccountHeader from '../../components/account-header'
 
 const countries = new CountryList()
 
@@ -22,11 +23,9 @@ export default withPage(() => (
 
 class ProfileComponent extends Component {
     render() {
-        return <div style={{
-            maxWidth: '400px',
-            margin: 'auto'
-        }}>
-            <h1>Profile</h1>
+        return <div className="container">
+            <AccountHeader route="profile"/>
+            <h2>Profile</h2>
             <ProfileForm/>
         </div>
     }
@@ -309,193 +308,198 @@ class ProfileFormComponent extends Component {
                         <div>
                             <p>Your profile is live at <a href={`/u/${username}`}>/u/{username}</a>.</p>
                             <p>Please only save information you feel comfortable sharing publicly.</p>
-                            <h2>Profile picture</h2>
-                            <div className="row">
-                                <div className="col-xs-6">
-                                    <Gravatar md5={emailHash || username} size={200} style={{
-                                        marginBottom: '1.5rem',
-                                        width: '100%',
-                                        height: 'auto',
-                                        marginLeft: 'auto',
-                                        marginRight: 'auto',
-                                        display: 'block'
-                                    }}/>
+                            <div style={{
+                                maxWidth: '400px',
+                                margin: 'auto'
+                            }}>
+                                <h3>Profile picture</h3>
+                                <div className="row">
+                                    <div className="col-xs-6">
+                                        <Gravatar md5={emailHash || username} size={200} style={{
+                                            marginBottom: '1.5rem',
+                                            width: '100%',
+                                            height: 'auto',
+                                            marginLeft: 'auto',
+                                            marginRight: 'auto',
+                                            display: 'block'
+                                        }}/>
+                                    </div>
                                 </div>
-                            </div>
-                            <p>Set your public profile image over at <a href="https://www.gravatar.com" target="_blank">Gravatar</a>.</p>
-                            <Form
-                                onSubmit={() => {
-                                    const profile = {}
-                                    for (const section of profileFields) {
-                                        for (const {name, type} of section.fields) {
-                                            let value = this[name].value
-                                            switch (type) {
-                                                case 'check':
-                                                    value = !!this[name].checked
-                                                    break
-                                                case 'url':
-                                                    if (value && !/^https?:\/\/.+/.test(value)) {
-                                                        value = 'http://' + value
-                                                    }
-                                                    break
-                                                case 'radio':
-                                                    value = Object.keys(this[name].radios).find(key => this[name].radios[key].checked)
-                                                    break
-                                                case 'date':
-                                                    if (value) {
-                                                        value = new Date(value)
-                                                    }
-                                                    break
-                                                case 'int':
-                                                    if (value.length) {
-                                                        value = parseInt(value)
-                                                    } else {
-                                                        value = undefined
-                                                    }
-                                                    break
+                                <p>Set your public profile image over at <a href="https://www.gravatar.com" target="_blank">Gravatar</a>.</p>
+                                <Form
+                                    onSubmit={() => {
+                                        const profile = {}
+                                        for (const section of profileFields) {
+                                            for (const {name, type} of section.fields) {
+                                                let value = this[name].value
+                                                switch (type) {
+                                                    case 'check':
+                                                        value = !!this[name].checked
+                                                        break
+                                                    case 'url':
+                                                        if (value && !/^https?:\/\/.+/.test(value)) {
+                                                            value = 'http://' + value
+                                                        }
+                                                        break
+                                                    case 'radio':
+                                                        value = Object.keys(this[name].radios).find(key => this[name].radios[key].checked)
+                                                        break
+                                                    case 'date':
+                                                        if (value) {
+                                                            value = new Date(value)
+                                                        }
+                                                        break
+                                                    case 'int':
+                                                        if (value.length) {
+                                                            value = parseInt(value)
+                                                        } else {
+                                                            value = undefined
+                                                        }
+                                                        break
+                                                }
+                                                profile[name] = value
                                             }
-                                            profile[name] = value
                                         }
-                                    }
-                                    updateProfile({
-                                        variables: {
-                                            profile
-                                        }
-                                    })
-                                    .then(() => {
-                                        this.setState({
-                                            state: 'success',
-                                            message: 'Profile updated!'
+                                        updateProfile({
+                                            variables: {
+                                                profile
+                                            }
                                         })
-                                    })
-                                    .catch(e => {
-                                        this.setState({
-                                            state: 'error',
-                                            message: errorMessage(e)
+                                        .then(() => {
+                                            this.setState({
+                                                state: 'success',
+                                                message: 'Profile updated!'
+                                            })
                                         })
-                                    })
-                                }}
-                                state={this.state.state}
-                                message={this.state.message}
-                                submitLabel="Save profile"
-                            >
-                                {profileFields.map(({title, fields}, i) => (
-                                    <div key={i}>
-                                        <h2>{title}</h2>
-                                        {fields.map(({name, label, type, placeholder, options}) => {
-                                            switch (type) {
-                                                case 'text':
-                                                    return <div key={name} className="form-group">
-                                                        <label htmlFor={name}>{label}</label>
-                                                        <textarea
-                                                            className="form-control"
-                                                            rows="4"
-                                                            ref={ref => {
-                                                                this[name] = ref
-                                                            }}
-                                                            defaultValue={profile[name]}
-                                                            placeholder={placeholder}
-                                                        />
-                                                    </div>
-                                                case 'shortText':
-                                                    return <div key={name} className="form-group">
-                                                        <label htmlFor={name}>{label}</label>
-                                                        <textarea
-                                                            name={name}
-                                                            className="form-control"
-                                                            rows="2"
-                                                            ref={ref => {
-                                                                this[name] = ref
-                                                            }}
-                                                            defaultValue={profile[name]}
-                                                            placeholder={placeholder}
-                                                        />
-                                                    </div>
-                                                case 'check':
-                                                    return <div key={name} className="checkbox">
-                                                        <label>
-                                                            <input
-                                                                name={name}
-                                                                type="checkbox"
-                                                                defaultChecked={profile[name]}
+                                        .catch(e => {
+                                            this.setState({
+                                                state: 'error',
+                                                message: errorMessage(e)
+                                            })
+                                        })
+                                    }}
+                                    state={this.state.state}
+                                    message={this.state.message}
+                                    submitLabel="Save profile"
+                                >
+                                    {profileFields.map(({title, fields}, i) => (
+                                        <div key={i}>
+                                            <h3>{title}</h3>
+                                            {fields.map(({name, label, type, placeholder, options}) => {
+                                                switch (type) {
+                                                    case 'text':
+                                                        return <div key={name} className="form-group">
+                                                            <label htmlFor={name}>{label}</label>
+                                                            <textarea
+                                                                className="form-control"
+                                                                rows="4"
                                                                 ref={ref => {
                                                                     this[name] = ref
                                                                 }}
+                                                                defaultValue={profile[name]}
+                                                                placeholder={placeholder}
                                                             />
-                                                            {label}
-                                                        </label>
-                                                    </div>
-                                                case 'select':
-                                                    return <div key={name} className="form-group">
-                                                        <label htmlFor={name}>{label}</label>
-                                                        <select
-                                                            className="form-control"
-                                                            name={name}
-                                                            defaultValue={profile[name]}
-                                                            ref={ref => {
-                                                                this[name] = ref
-                                                            }}
-                                                        >
-                                                            <option/>
-                                                            {Object.keys(options).map(option => (
-                                                                <option key={option} value={option}>{options[option]}</option>
-                                                            ))}
-                                                        </select>
-                                                    </div>
-                                                case 'radio':
-                                                    return <RadioButtons
-                                                            key={name}
-                                                            id={name}
-                                                            name={name}
-                                                            label={label}
-                                                            defaultValue={profile[name]}
-                                                            ref={ref => {
-                                                                this[name] = ref
-                                                            }}
-                                                            values={options}
-                                                        />
-                                                default:
-                                                    let value = profile[name]
-                                                    if (type === 'date' && value) {
-                                                        value = new Date(value).toISOString().split('T')[0];
+                                                        </div>
+                                                    case 'shortText':
+                                                        return <div key={name} className="form-group">
+                                                            <label htmlFor={name}>{label}</label>
+                                                            <textarea
+                                                                name={name}
+                                                                className="form-control"
+                                                                rows="2"
+                                                                ref={ref => {
+                                                                    this[name] = ref
+                                                                }}
+                                                                defaultValue={profile[name]}
+                                                                placeholder={placeholder}
+                                                            />
+                                                        </div>
+                                                    case 'check':
+                                                        return <div key={name} className="checkbox">
+                                                            <label>
+                                                                <input
+                                                                    name={name}
+                                                                    type="checkbox"
+                                                                    defaultChecked={profile[name]}
+                                                                    ref={ref => {
+                                                                        this[name] = ref
+                                                                    }}
+                                                                />
+                                                                {label}
+                                                            </label>
+                                                        </div>
+                                                    case 'select':
+                                                        return <div key={name} className="form-group">
+                                                            <label htmlFor={name}>{label}</label>
+                                                            <select
+                                                                className="form-control"
+                                                                name={name}
+                                                                defaultValue={profile[name]}
+                                                                ref={ref => {
+                                                                    this[name] = ref
+                                                                }}
+                                                            >
+                                                                <option/>
+                                                                {Object.keys(options).map(option => (
+                                                                    <option key={option} value={option}>{options[option]}</option>
+                                                                ))}
+                                                            </select>
+                                                        </div>
+                                                    case 'radio':
+                                                        return <RadioButtons
+                                                                key={name}
+                                                                id={name}
+                                                                name={name}
+                                                                label={label}
+                                                                defaultValue={profile[name]}
+                                                                ref={ref => {
+                                                                    this[name] = ref
+                                                                }}
+                                                                values={options}
+                                                            />
+                                                    default:
+                                                        let value = profile[name]
+                                                        if (type === 'date' && value) {
+                                                            value = new Date(value).toISOString().split('T')[0];
+                                                        }
+                                                        return <div key={name} className="form-group">
+                                                            <label htmlFor={name}>{label}</label>
+                                                            <input
+                                                                type={type || "text"}
+                                                                className="form-control"
+                                                                id={name}
+                                                                ref={ref => {
+                                                                    this[name] = ref
+                                                                }}
+                                                                defaultValue={value}
+                                                                placeholder={placeholder}
+                                                            />
+                                                        </div>
+                                                }
+                                            })}
+                                            {i < profileFields.length - 1 &&
+                                                <div>
+                                                    {this.state.state === 'success' &&
+                                                        <div className="alert alert-success" role="alert">
+                                                            {this.state.message}
+                                                        </div>
                                                     }
-                                                    return <div key={name} className="form-group">
-                                                        <label htmlFor={name}>{label}</label>
-                                                        <input
-                                                            type={type || "text"}
-                                                            className="form-control"
-                                                            id={name}
-                                                            ref={ref => {
-                                                                this[name] = ref
-                                                            }}
-                                                            defaultValue={value}
-                                                            placeholder={placeholder}
-                                                        />
-                                                    </div>
+                                                    {this.state.state === 'error' &&
+                                                        <div className="alert alert-danger" role="alert">
+                                                            {this.state.message}
+                                                        </div>
+                                                    }
+                                                    <button type="submit" className="btn btn-primary btn-block">Save profile</button>
+                                                </div>
                                             }
-                                        })}
-                                        {i < profileFields.length - 1 &&
-                                            <div>
-                                                {this.state.state === 'success' &&
-                                                    <div className="alert alert-success" role="alert">
-                                                        {this.state.message}
-                                                    </div>
-                                                }
-                                                {this.state.state === 'error' &&
-                                                    <div className="alert alert-danger" role="alert">
-                                                        {this.state.message}
-                                                    </div>
-                                                }
-                                                <button type="submit" className="btn btn-primary btn-block">Save profile</button>
-                                            </div>
-                                        }
-                                    </div>
-                                ))}
-                            </Form>
+                                        </div>
+                                    ))}
+                                </Form>
+                            </div>
                         </div>
                     :
                         <div>
-                            <h2>Username</h2>
+                            <h3>Username</h3>
                             <p>To activate your profile set a username in your <a href="/account">account page</a>.</p>
                         </div>
                     }

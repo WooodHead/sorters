@@ -13,6 +13,7 @@ import ShyButton from '../../components/shy-button'
 import DeleteModal from '../../components/delete-modal'
 import CheckButtons from '../../components/check-buttons'
 import Panel from '../../components/panel'
+import AccountHeader from '../../components/account-header'
 
 export default withPage(() => (
     <Layout title="Conversations" page="conversations">
@@ -119,11 +120,9 @@ class ConversationesComponent extends Component {
             }
         }
 
-        return <div style={{
-            maxWidth: '400px',
-            margin: 'auto'
-        }}>
-            <h1>Conversations</h1>
+        return <div className="container">
+            <AccountHeader route="conversations"/>
+            <h2>Conversations</h2>
             <p>Here you can start conversations about the <a href="/account/topics">topics</a> you are interested in, about the <a href="/account/reads">books</a> you read or about the <a href="/account/goals">goals</a> you are pursuing.</p>
             {loading ?
                 <span>Loading...</span>
@@ -235,7 +234,7 @@ class ConversationesComponent extends Component {
                     }
                     {conversations.length > 0 &&
                         <div>
-                            <h2>Conversations</h2>
+                            <h3>Conversations</h3>
                             {conversations.map((conversation) => (
                                 <Conversation
                                     key={conversation._id}
@@ -430,7 +429,7 @@ class Conversation extends Component {
                             }}
                         >✎</ShyButton>
                     </span>
-                    <h3>{title}</h3>
+                    <h4>{title}</h4>
                     {content &&
                         <Markdown content={content}/>
                     }

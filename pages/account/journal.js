@@ -13,6 +13,7 @@ import ShyButton from '../../components/shy-button'
 import DeleteModal from '../../components/delete-modal'
 import CheckButtons from '../../components/check-buttons'
 import Panel from '../../components/panel'
+import AccountHeader from '../../components/account-header'
 
 export default withPage(() => (
     <Layout title="Journal" page="journal">
@@ -97,7 +98,8 @@ class JournalComponent extends Component {
         }
 
         return <div className="container">
-            <h1>Journal</h1>
+            <AccountHeader route="journal"/>
+            <h2>Journal</h2>
             <p>Here you can write regular updates about your <a href="/account/goals">goals</a>.</p>
             {loading ?
                 <span>Loading...</span>
@@ -200,7 +202,7 @@ class JournalComponent extends Component {
                     }
                     {entries.length > 0 &&
                         <div>
-                            <h2>Entries</h2>
+                            <h3>Entries</h3>
                             {entries.map((entry) => (
                                 <Entry
                                     key={entry._id}
@@ -363,13 +365,13 @@ class Entry extends Component {
                             }}
                         >✎</ShyButton>
                     </span>
-                    <h3>
+                    <h4>
                         {url ?
                             <a href={url} target="_blank">{title}</a>
                         :
                             title
                         }
-                    </h3>
+                    </h4>
                     {description &&
                         <Markdown content={description}/>
                     }

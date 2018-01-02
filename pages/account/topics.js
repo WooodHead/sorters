@@ -13,6 +13,7 @@ import RadioButtons from '../../components/radio-buttons'
 import ShyButton from '../../components/shy-button'
 import DeleteModal from '../../components/delete-modal'
 import {errorMessage} from '../../utils/errors'
+import AccountHeader from '../../components/account-header'
 
 export default withPage(() => (
     <Layout title="Topics" page="topics">
@@ -79,11 +80,9 @@ class TopicsComponent extends Component {
             description,
         }))) || []
 
-        return <div style={{
-            maxWidth: '400px',
-            margin: 'auto'
-        }}>
-            <h1>Topics</h1>
+        return <div className="container">
+            <AccountHeader route="topics"/>
+            <h2>Topics</h2>
             {loading ?
                 <span>Loading...</span>
             :
@@ -91,124 +90,129 @@ class TopicsComponent extends Component {
                     {username && topics.length > 0 &&
                         <p>Your public topics list can be found at <a href={`/u/${username}/topics`}>/u/{username}/topics</a>.</p>
                     }
-                    <h2>Description</h2>
-                    <p>Here you can provide a general description of your interests.</p>
-                    <Form
-                        onSubmit={() => {
-                            const topicsDescription = this.topicsDescription.value
-                            updateTopicsDescription({
-                                variables: {
-                                    topics: topicsDescription
+                    <div style={{
+                        maxWidth: '400px',
+                        margin: 'auto'
+                    }}>
+                        <h3>Description</h3>
+                        <p>Here you can provide a general description of your interests.</p>
+                        <Form
+                            onSubmit={() => {
+                                const topicsDescription = this.topicsDescription.value
+                                updateTopicsDescription({
+                                    variables: {
+                                        topics: topicsDescription
+                                    }
+                                }).then(() => {
+                                    this.setState({
+                                        topicsDescriptionState: 'success',
+                                        topicsDescriptionMessage: 'Topics description saved.'
+                                    })
+                                }).catch(e => {
+                                    this.setState({
+                                        topicsDescriptionState: 'error',
+                                        topicsDescriptionMessage: errorMessage(e)
+                                    })
+                                })
+                            }}
+                            state={this.state.topicsDescriptionState}
+                            message={this.state.topicsDescriptionMessage}
+                            submitLabel="Save"
+                        >
+                            <div className="form-group">
+                                <label htmlFor="topics-description">Description</label>
+                                <textarea
+                                    className="form-control"
+                                    rows="4"
+                                    ref={ref => this.topicsDescription = ref}
+                                    defaultValue={topicsDescription}
+                                />
+                            </div>
+                        </Form>
+                        {topics.length > 0 &&
+                            <div>
+                                <h3>Your Topics</h3>
+                                <TopicsList
+                                    topics={topics}
+                                    distance={1}
+                                    onSortEnd={({oldIndex, newIndex}) => {
+                                        const newTopics = arrayMove(topics, oldIndex, newIndex)
+                                        updateTopics({
+                                            variables: {
+                                                topics: newTopics
+                                            }
+                                        }).then(() => {
+                                            refetch();
+                                        }).catch(e => {
+                                            console.error(e)
+                                        })
+                                    }}
+                                    updateTopic={(key, topic) => {
+                                        topics[key] = topic;
+                                        return updateTopics({
+                                            variables: {
+                                                topics
+                                            }
+                                        }).then(() => {
+                                            refetch();
+                                        })
+                                    }}
+                                    removeTopic={(key) => {
+                                        topics.splice(key, 1)
+                                        return updateTopics({
+                                            variables: {
+                                                topics
+                                            }
+                                        }).then(() => {
+                                            refetch();
+                                        }).catch(e => {
+                                            console.error(e)
+                                        })
+                                    }}
+                                />
+                            </div>
+                        }
+                        <h4>New Topic</h4>
+                        <Form
+                            onSubmit={() => {
+                                const topic = {
+                                    title: this.title.value
                                 }
-                            }).then(() => {
-                                this.setState({
-                                    topicsDescriptionState: 'success',
-                                    topicsDescriptionMessage: 'Topics description saved.'
-                                })
-                            }).catch(e => {
-                                this.setState({
-                                    topicsDescriptionState: 'error',
-                                    topicsDescriptionMessage: errorMessage(e)
-                                })
-                            })
-                        }}
-                        state={this.state.topicsDescriptionState}
-                        message={this.state.topicsDescriptionMessage}
-                        submitLabel="Save"
-                    >
-                        <div className="form-group">
-                            <label htmlFor="topics-description">Description</label>
-                            <textarea
-                                className="form-control"
-                                rows="4"
-                                ref={ref => this.topicsDescription = ref}
-                                defaultValue={topicsDescription}
-                            />
-                        </div>
-                    </Form>
-                    {topics.length > 0 &&
-                        <div>
-                            <h2>Your Topics</h2>
-                            <TopicsList
-                                topics={topics}
-                                distance={1}
-                                onSortEnd={({oldIndex, newIndex}) => {
-                                    const newTopics = arrayMove(topics, oldIndex, newIndex)
-                                    updateTopics({
-                                        variables: {
-                                            topics: newTopics
-                                        }
-                                    }).then(() => {
-                                        refetch();
-                                    }).catch(e => {
-                                        console.error(e)
+                                createTopic({
+                                    variables: {
+                                        topic
+                                    }
+                                }).then(() => {
+                                    this.title.value = ''
+                                    this.setState({
+                                        state: 'success',
+                                        message: 'Topics updated!'
+                                    }, refetch)
+                                }).catch(e => {
+                                    this.setState({
+                                        state: 'error',
+                                        message: errorMessage(e)
                                     })
-                                }}
-                                updateTopic={(key, topic) => {
-                                    topics[key] = topic;
-                                    return updateTopics({
-                                        variables: {
-                                            topics
-                                        }
-                                    }).then(() => {
-                                        refetch();
-                                    })
-                                }}
-                                removeTopic={(key) => {
-                                    topics.splice(key, 1)
-                                    return updateTopics({
-                                        variables: {
-                                            topics
-                                        }
-                                    }).then(() => {
-                                        refetch();
-                                    }).catch(e => {
-                                        console.error(e)
-                                    })
-                                }}
-                            />
-                        </div>
-                    }
-                    <h3>New Topic</h3>
-                    <Form
-                        onSubmit={() => {
-                            const topic = {
-                                title: this.title.value
-                            }
-                            createTopic({
-                                variables: {
-                                    topic
-                                }
-                            }).then(() => {
-                                this.title.value = ''
-                                this.setState({
-                                    state: 'success',
-                                    message: 'Topics updated!'
-                                }, refetch)
-                            }).catch(e => {
-                                this.setState({
-                                    state: 'error',
-                                    message: errorMessage(e)
                                 })
-                            })
-                        }}
-                        state={this.state.state}
-                        message={this.state.message}
-                        submitLabel="New Topic"
-                    >
-                        <div className="form-group">
-                            <label htmlFor="title">Title</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder={topics.length === 0 ? 'Jungian archetypes' : ''}
-                                ref={ref => {
-                                    this.title = ref
-                                }}
-                                required
-                            />
-                        </div>
-                    </Form>
+                            }}
+                            state={this.state.state}
+                            message={this.state.message}
+                            submitLabel="New Topic"
+                        >
+                            <div className="form-group">
+                                <label htmlFor="title">Title</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder={topics.length === 0 ? 'Jungian archetypes' : ''}
+                                    ref={ref => {
+                                        this.title = ref
+                                    }}
+                                    required
+                                />
+                            </div>
+                        </Form>
+                    </div>
                 </div>
             }
         </div>

@@ -13,6 +13,7 @@ import ShyButton from '../../components/shy-button'
 import DeleteModal from '../../components/delete-modal'
 import CheckButtons from '../../components/check-buttons'
 import Panel from '../../components/panel'
+import AccountHeader from '../../components/account-header'
 
 export default withPage(() => (
     <Layout title="Essays" page="essays">
@@ -109,11 +110,9 @@ class EssaysComponent extends Component {
             }
         }
 
-        return <div style={{
-            maxWidth: '400px',
-            margin: 'auto'
-        }}>
-            <h1>Essays</h1>
+        return <div className="container">
+            <AccountHeader route="essays"/>
+            <h2>Essays</h2>
             <p>Here you can write essays about the <a href="/account/topics">topics</a> you are interested in or about the <a href="/account/reads">books</a> you read.</p>
             {loading ?
                 <span>Loading...</span>
@@ -227,7 +226,7 @@ class EssaysComponent extends Component {
                     }
                     {essays.length > 0 &&
                         <div>
-                            <h2>Essays</h2>
+                            <h3>Essays</h3>
                             {essays.map((essay) => (
                                 <Essay
                                     key={essay._id}
@@ -417,13 +416,13 @@ class Essay extends Component {
                             }}
                         >✎</ShyButton>
                     </span>
-                    <h3>
+                    <h4>
                         {url ?
                             <a href={url} target="_blank">{title}</a>
                         :
                             title
                         }
-                    </h3>
+                    </h4>
                     {content &&
                         <Markdown content={content}/>
                     }

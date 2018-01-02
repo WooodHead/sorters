@@ -22,14 +22,14 @@ const menu = [
         name: 'users',
         label: 'Sorters',
     },
-    {
-        url: '/account',
-        name: 'dashboard',
-        label: 'Dashboard',
-    },
 ]
 
 const userMenu = [
+    {
+        url: '/account',
+        name: 'dashboard',
+        label: '⌂ Dashboard',
+    },
     {
         url: '/account/profile',
         name: 'profile',

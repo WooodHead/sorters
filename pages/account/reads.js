@@ -13,6 +13,7 @@ import RadioButtons from '../../components/radio-buttons'
 import ShyButton from '../../components/shy-button'
 import DeleteModal from '../../components/delete-modal'
 import {errorMessage} from '../../utils/errors'
+import AccountHeader from '../../components/account-header'
 
 export default withPage(() => (
     <Layout title="Reading list" page="reads">
@@ -82,11 +83,9 @@ class ReadsComponent extends Component {
                 read,
             }))) || []
 
-        return <div style={{
-            maxWidth: '400px',
-            margin: 'auto'
-        }}>
-            <h1>Reading List</h1>
+        return <div className="container">
+            <AccountHeader route="reads"/>
+            <h2>Reading List</h2>
             {loading ?
                 <span>Loading...</span>
             :
@@ -94,124 +93,129 @@ class ReadsComponent extends Component {
                     {username && reads.length > 0 &&
                         <p>Your public reading list can be found at <a href={`/u/${username}/reads`}>/u/{username}/reads</a>.</p>
                     }
-                    <h2>Description</h2>
-                    <p>Here you can describe how you put together your reading list.</p>
-                    <Form
-                        onSubmit={() => {
-                            const reading = this.reading.value
-                            updateReading({
-                                variables: {
-                                    reading
+                    <div style={{
+                        maxWidth: '400px',
+                        margin: 'auto'
+                    }}>
+                        <h3>Description</h3>
+                        <p>Here you can describe how you put together your reading list.</p>
+                        <Form
+                            onSubmit={() => {
+                                const reading = this.reading.value
+                                updateReading({
+                                    variables: {
+                                        reading
+                                    }
+                                }).then(() => {
+                                    this.setState({
+                                        readingState: 'success',
+                                        readingMessage: 'Reading list description saved.'
+                                    })
+                                }).catch(e => {
+                                    this.setState({
+                                        readingState: 'error',
+                                        readingMessage: errorMessage(e),
+                                    })
+                                })
+                            }}
+                            state={this.state.readingState}
+                            message={this.state.readingMessage}
+                            submitLabel="Save"
+                        >
+                            <div className="form-group">
+                                <label htmlFor="reading">Description</label>
+                                <textarea
+                                    className="form-control"
+                                    rows="4"
+                                    ref={ref => this.reading = ref}
+                                    defaultValue={reading}
+                                />
+                            </div>
+                        </Form>
+                        {reads.length > 0 &&
+                            <div>
+                                <h3>Your Reads</h3>
+                                <ReadsList
+                                    reads={reads}
+                                    distance={1}
+                                    onSortEnd={({oldIndex, newIndex}) => {
+                                        const newReads = arrayMove(reads, oldIndex, newIndex)
+                                        updateReads({
+                                            variables: {
+                                                reads: newReads
+                                            }
+                                        }).then(() => {
+                                            refetch();
+                                        }).catch(e => {
+                                            console.error(e)
+                                        })
+                                    }}
+                                    updateRead={(key, read) => {
+                                        reads[key] = read;
+                                        return updateReads({
+                                            variables: {
+                                                reads
+                                            }
+                                        }).then(() => {
+                                            refetch();
+                                        })
+                                    }}
+                                    removeRead={(key) => {
+                                        reads.splice(key, 1)
+                                        return updateReads({
+                                            variables: {
+                                                reads
+                                            }
+                                        }).then(() => {
+                                            refetch();
+                                        }).catch(e => {
+                                            console.error(e)
+                                        })
+                                    }}
+                                />
+                            </div>
+                        }
+                        <h4>New Book</h4>
+                        <Form
+                            onSubmit={() => {
+                                const read = {
+                                    title: this.title.value
                                 }
-                            }).then(() => {
-                                this.setState({
-                                    readingState: 'success',
-                                    readingMessage: 'Reading list description saved.'
-                                })
-                            }).catch(e => {
-                                this.setState({
-                                    readingState: 'error',
-                                    readingMessage: errorMessage(e),
-                                })
-                            })
-                        }}
-                        state={this.state.readingState}
-                        message={this.state.readingMessage}
-                        submitLabel="Save"
-                    >
-                        <div className="form-group">
-                            <label htmlFor="reading">Description</label>
-                            <textarea
-                                className="form-control"
-                                rows="4"
-                                ref={ref => this.reading = ref}
-                                defaultValue={reading}
-                            />
-                        </div>
-                    </Form>
-                    {reads.length > 0 &&
-                        <div>
-                            <h2>Your Reads</h2>
-                            <ReadsList
-                                reads={reads}
-                                distance={1}
-                                onSortEnd={({oldIndex, newIndex}) => {
-                                    const newReads = arrayMove(reads, oldIndex, newIndex)
-                                    updateReads({
-                                        variables: {
-                                            reads: newReads
-                                        }
-                                    }).then(() => {
-                                        refetch();
-                                    }).catch(e => {
-                                        console.error(e)
+                                createRead({
+                                    variables: {
+                                        read
+                                    }
+                                }).then(() => {
+                                    this.title.value = ''
+                                    this.setState({
+                                        state: 'success',
+                                        message: 'Reads updated!'
+                                    }, refetch)
+                                }).catch(e => {
+                                    this.setState({
+                                        state: 'error',
+                                        message: errorMessage(e),
                                     })
-                                }}
-                                updateRead={(key, read) => {
-                                    reads[key] = read;
-                                    return updateReads({
-                                        variables: {
-                                            reads
-                                        }
-                                    }).then(() => {
-                                        refetch();
-                                    })
-                                }}
-                                removeRead={(key) => {
-                                    reads.splice(key, 1)
-                                    return updateReads({
-                                        variables: {
-                                            reads
-                                        }
-                                    }).then(() => {
-                                        refetch();
-                                    }).catch(e => {
-                                        console.error(e)
-                                    })
-                                }}
-                            />
-                        </div>
-                    }
-                    <h3>New Book</h3>
-                    <Form
-                        onSubmit={() => {
-                            const read = {
-                                title: this.title.value
-                            }
-                            createRead({
-                                variables: {
-                                    read
-                                }
-                            }).then(() => {
-                                this.title.value = ''
-                                this.setState({
-                                    state: 'success',
-                                    message: 'Reads updated!'
-                                }, refetch)
-                            }).catch(e => {
-                                this.setState({
-                                    state: 'error',
-                                    message: errorMessage(e),
                                 })
-                            })
-                        }}
-                        state={this.state.state}
-                        message={this.state.message}
-                        submitLabel="New Book"
-                    >
-                        <div className="form-group">
-                            <label htmlFor="title">Title</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder={reads.length === 0 ? 'Jordan Peterson - Maps of Meaning' : ''}
-                                ref={ref => {
-                                    this.title = ref
-                                }}
-                                required
-                            />
-                        </div>
-                    </Form>
+                            }}
+                            state={this.state.state}
+                            message={this.state.message}
+                            submitLabel="New Book"
+                        >
+                            <div className="form-group">
+                                <label htmlFor="title">Title</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder={reads.length === 0 ? 'Jordan Peterson - Maps of Meaning' : ''}
+                                    ref={ref => {
+                                        this.title = ref
+                                    }}
+                                    required
+                                />
+                            </div>
+                        </Form>
+                    </div>
                 </div>
             }
         </div>
