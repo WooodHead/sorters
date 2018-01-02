@@ -6,6 +6,7 @@ import moment from 'moment'
 import _ from 'lodash'
 
 import {PROGRAMS} from '../models/programs'
+import {IGNORED_EVENTS} from '../models/events'
 import {log} from '../utils/debug'
 import {Avatar} from '../components/user'
 import {EntityLink} from '../components/entity'
@@ -96,19 +97,6 @@ const EVENTS_WITH_TITLE = {
         conversation: ['created-conversation'],
     },
 }
-
-const IGNORED_EVENTS = [
-    'updated-entry',
-    'deleted-entry',
-    'updated-essay',
-    'deleted-essay',
-    'updated-speech',
-    'deleted-speech',
-    'updated-conversation',
-    'deleted-conversation',
-    'updated-comment',
-    'deleted-comment',
-]
 
 const integrateEvent = (integrated, event) => {
     if (event.type === 'updated-profile') {

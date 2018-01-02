@@ -14,6 +14,7 @@ const {GraphQLScalarType} = require('graphql')
 const {objectMap} = require('../utils/objects')
 const {performMigrations} = require('./migrations')
 const {prepare} = require('./utils')
+const {IGNORED_EVENTS} = require('../models/events')
 
 function set(o, key, value) {
     o[key] = value
@@ -659,7 +660,11 @@ const start = async (app, settings) => {
                 }))
             },
             events: async (root, {limit}, context) => {
-                return (await Events.find({}, {
+                return (await Events.find({
+                    type: {
+                        $nin: IGNORED_EVENTS,
+                    }
+                }, {
                     sort: {
                         date: -1
                     },
