@@ -15,6 +15,14 @@ export default withPage(() => (
         }}>
           <ResponsiveEmbed src='https://www.youtube.com/embed/XbOeO_frzvg' ratio='16:9' />
         </div>
+        <p>Also, this:</p>
+        <div style={{
+          maxWidth: '100%',
+          width: '480px',
+          marginBottom: '1.5rem',
+        }}>
+          <ResponsiveEmbed src='https://www.youtube.com/embed/cGkQil14LPQ' ratio='16:9' />
+        </div>        
         <p>Check out the profiles of other <a href="/users">sorters</a> do to get an idea of what you can do on this platform.</p>
         <p>Support this platform on <a href="https://www.patreon.com/nickredmark" target="_blank">Patreon</a>.</p>
         <p>For now you can become a member only by becoming a patron. It's the easiest way to avoid spam and to get good quality users and content on the platform.</p>
