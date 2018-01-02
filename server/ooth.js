@@ -4,20 +4,22 @@ const oothLocal = require('ooth-local')
 const oothFacebook = require('ooth-facebook')
 const oothGoogle = require('ooth-google')
 const mail = require('./mail')
+const OothMongo = require('ooth-mongo')
+const {ObjectId} = require('mongodb')
 
-module.exports = async function start(app, settings) {
+module.exports = async function start(app, db, settings) {
 
     const ooth = new Ooth({
-        mongoUrl: settings.mongoUrl,
         sharedSecret: settings.sharedSecret,
         path: settings.oothPath,
     })
+    const oothMongo = new OothMongo(db, ObjectId)
 
-    await ooth.start(app)
+    await ooth.start(app, oothMongo)
 
     const sendMail = mail(settings.mailgun)
     ooth.use('local', oothLocal({
-        onRegister({email, verificationToken}) {
+        onRegister({email, verificationToken, _id}) {
             sendMail({
                 from: settings.mail.from,
                 to: email,
@@ -29,8 +31,8 @@ module.exports = async function start(app, settings) {
                 from: settings.mail.from,
                 to: email,
                 subject: 'Verify your Sorters Club email address',
-                body: `Please verify your Sorters Club email by opening the following url: ${settings.url}/verify-email?token=${verificationToken}.`,
-                html: `Please verify your Sorters Club email by opening the following url: ${settings.url}/verify-email?token=${verificationToken}.`,
+                body: `Please verify your Sorters Club email by opening the following url: ${settings.url}/verify-email?token=${verificationToken}&userId=${_id}.`,
+                html: `Please verify your Sorters Club email by opening the following url: ${settings.url}/verify-email?token=${verificationToken}&userId=${_id}.`,
             })
         },
         onGenerateVerificationToken({email, verificationToken}) {
@@ -38,8 +40,17 @@ module.exports = async function start(app, settings) {
                 from: settings.mail.from,
                 to: email,
                 subject: 'Verify your Sorters Club email address',
-                body: `Please verify your Sorters Club email by opening the following url: ${settings.url}/verify-email?token=${verificationToken}.`,
-                html: `Please verify your Sorters Club email by opening the following url: ${settings.url}/verify-email?token=${verificationToken}.`,
+                body: `Please verify your Sorters Club email by opening the following url: ${settings.url}/verify-email?token=${verificationToken}&userId=${_id}.`,
+                html: `Please verify your Sorters Club email by opening the following url: ${settings.url}/verify-email?token=${verificationToken}&userId=${_id}.`,
+            })
+        },
+        onSetEmail({email, verificationToken, _id}) {
+            sendMail({
+                from: settings.mail.from,
+                to: email,
+                subject: 'Verify your email address',
+                body: `Please verify your email by opening the following url: ${settings.ul}/verify-email?token=${verificationToken}&userId=${_id}.`,
+                html: `Please verify your email by opening the following url: ${settings.url}/verify-email?token=${verificationToken}&userId=${_id}.`,
             })
         },
         onVerify({email}) {
@@ -51,13 +62,13 @@ module.exports = async function start(app, settings) {
                 html: `Your Sorters Club email address has been verified.`,
             })
         },
-        onForgotPassword({email, passwordResetToken}) {
+        onForgotPassword({email, passwordResetToken, _id}) {
             sendMail({
                 from: settings.mail.from,
                 to: email,
                 subject: 'Reset Sorters Club password',
-                body: `Reset your password for Sorters Club on the following page: ${settings.url}/reset-password?token=${passwordResetToken}.`,
-                html: `Reset your password for Sorters Club on the following page: ${settings.url}/reset-password?token=${passwordResetToken}.`,
+                body: `Reset your password for Sorters Club on the following page: ${settings.url}/reset-password?token=${passwordResetToken}&userId=${_id}.`,
+                html: `Reset your password for Sorters Club on the following page: ${settings.url}/reset-password?token=${passwordResetToken}&userId=${_id}.`,
             })
         },
         onResetPassword({email}) {

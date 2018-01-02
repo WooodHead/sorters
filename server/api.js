@@ -140,7 +140,8 @@ async function findRelatedEntities(value, Collection, field) {
 }
 
 const start = async (app, settings) => {
-    const db = await MongoClient.connect(settings.mongoUrl)
+    const client = await MongoClient.connect(settings.mongoUrl)
+    const db = client.db(settings.mongoUrl.split('://')[1].split('/')[1])
 
     await performMigrations(db)
 
@@ -1335,7 +1336,7 @@ const start = async (app, settings) => {
         resave: false,
         saveUninitialized: true,
     }))
-    await ooth(app, settings)
+    await ooth(app, db, settings)
 
     app.use('/graphql', bodyParser.json(), graphqlExpress((req, res) => {
         return {
