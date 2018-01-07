@@ -121,7 +121,7 @@ exports[`index displays 1`] = `
                     </li>
                     <li>&#x1F4D6; Updated
                       <a href=\\"/u/test/reads\\">reading list description</a>.</li>
-                    <li>&#x1F4D6; Wants to read <span><span> <a href=\\"/read/<id>\\">Read - read</a></span><span>, <a href=\\"/read/<id>\\">Read - reading</a></span><span>, <a href=\\"/read/<id>\\">Read</a></span></span>
+                    <li>&#x1F4D6; Wants to read <span><span> <a href=\\"/read/<id>\\">Read - reading</a></span><span>, <a href=\\"/read/<id>\\">Read - read</a></span><span>, <a href=\\"/read/<id>\\">Read</a></span></span>
                     </li>
                   </ul>
                 </div>
