@@ -13,11 +13,6 @@ const menu = [
         label: 'About',
     },
     {
-        url: '/news',
-        name: 'news',
-        label: 'News',
-    },
-    {
         url: '/users',
         name: 'users',
         label: 'Sorters',

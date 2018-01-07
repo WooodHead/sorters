@@ -61,9 +61,6 @@ const DashboardComponent = ({user}) => (
         <Panel title="📖 Reading list" url="/account/reads" label="Manage Reading List">
           <p>Create a list of things you read and intend to read.</p>
         </Panel>
-        <Panel title="👫 Sorters" url="/account/news" label="Sorters">
-          <p>See what other sorters are doing.</p>
-        </Panel>
       </div>
       <div className="row">
         <Panel title="🗩 Chat" url="https://discord.gg/6Q8v9Sm" label="Chat" target="_blank">
