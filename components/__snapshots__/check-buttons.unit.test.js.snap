@@ -9,6 +9,7 @@ exports[`check-buttons shallow-renders 1`] = `
   </label>
   <div
     className="checkbox"
+    key="foo"
   >
     <label>
       <input
@@ -22,6 +23,7 @@ exports[`check-buttons shallow-renders 1`] = `
   </div>
   <div
     className="checkbox"
+    key="bar"
   >
     <label>
       <input

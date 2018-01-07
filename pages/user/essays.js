@@ -6,6 +6,7 @@ import {compose} from 'recompose'
 import Markdown from '../../components/markdown'
 import Gravatar from 'react-gravatar'
 import UserHeader from '../../components/user-header'
+import Related from '../../components/related-entities'
 
 export default withPage(({url: {query: {username}}}) => (
     <Layout title="Sorter" page="user-essays">
@@ -31,8 +32,14 @@ const UserEssaysQuery = gql`
                 title
                 url
                 content
-                topicTitles
-                readTitles
+                topics {
+                    _id
+                    title
+                }
+                reads {
+                    _id
+                    title
+                }
             }
         }
     }
@@ -81,7 +88,7 @@ const UserEssays = compose(
     })
 )(UserEssaysComponent)
 
-const Essay = ({essay: {_id, url, title, content, topicTitles, readTitles}}) => (
+const Essay = ({essay: {_id, url, title, content, topics, reads}}) => (
     <div style={{
         marginTop: '1.5rem',
         marginBottom: '1.5rem',
@@ -90,26 +97,14 @@ const Essay = ({essay: {_id, url, title, content, topicTitles, readTitles}}) => 
             {url ?
                 <a href={url} target="_blank">{title}</a>
             :
-                title
+                <a href={`/essay/${_id}`}>{title}</a>
             }
         </h3>
         {content &&
             <Markdown content={content}/>
         }
-        {topicTitles.length > 0 &&
-            <div>
-                Topics: {topicTitles.map((topic, i) => (
-                    <span key={i}>{i ? ', ' : ' '}<em>{topic}</em></span>
-                ))}
-            </div>
-        }
-        {readTitles.length > 0 &&
-            <div>
-                Books: {readTitles.map((read, i) => (
-                    <span key={i}>{i ? ', ' : ' '}<em>{read}</em></span>
-                ))}
-            </div>
-        }
+        <Related entities={topics} label="Topics:" type="topic"/>
+        <Related entities={reads} label="Books:" type="read"/>
         <a href={`/essay/${_id}`}>Comments</a>
         <hr/>
     </div>

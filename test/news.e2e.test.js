@@ -2,7 +2,7 @@ import cheerio from 'cheerio'
 import {pretty} from './utils'
 import {ObjectID} from 'mongodb'
 import {setup, teardown} from './setup'
-import {generateAndLogUser, setUserData} from './fixtures'
+import {generateAndLogUser, setUserData, getGoalIds} from './fixtures'
 import {request} from './utils'
 
 let db
@@ -38,69 +38,75 @@ describe('news', () => {
 
     it('displays read events', async () => {
         const Users = db.collection('users')
-        const {insertedId} = await Users.insertOne({
+        const Reads = db.collection('reads')
+        const Goals = db.collection('goals')
+        const {insertedId: userId} = await Users.insertOne({
             local: {
                 username: 'test'
             },
-            reads: [
-                {
-                    title: 'Test',
-                }
-            ],
-            goals: [
-                {
-                    title: 'TestGoal',
-                },
-            ],
+        });
+        const {insertedId: goalId} = await Goals.insertOne({
+            userId,
+            title: 'Test',
+        })
+        const {insertedId: readId} = await Reads.insertOne({
+            userId,
+            title: 'TestGoal',
+        })
+        await Users.update({}, {
+            $set: {
+                readIds: [readId],
+                goalIds: [goalId],
+            },
         })
         const Events = db.collection('events')
         const date = new Date('2017-08-24T06:52:59.645Z')
         await Events.insertOne({
-            userId: ObjectID(insertedId),
+            userId,
             type: 'created-read',
             date,
-            title: 'Test',
+            readId,
         })
         await Events.insertOne({
-            userId: ObjectID(insertedId),
+            userId,
             type: 'reading-read',
             date,
-            title: 'Test',
+            readId,
         })
         await Events.insertOne({
-            userId: ObjectID(insertedId),
+            userId,
             type: 'read-read',
             date,
-            title: 'Test',
+            readId,
         })
         await Events.insertOne({
-            userId: ObjectID(insertedId),
+            userId,
             type: 'created-goal',
             date,
-            title: 'TestGoal',
+            goalId,
         })
         await Events.insertOne({
-            userId: ObjectID(insertedId),
+            userId,
             type: 'doing-goal',
             date,
-            title: 'TestGoal',
+            goalId,
         })
         await Events.insertOne({
-            userId: ObjectID(insertedId),
+            userId,
             type: 'done-goal',
             date,
-            title: 'TestGoal',
+            goalId,
         })
         await Events.insertOne({
-            userId: ObjectID(insertedId),
+            userId,
             type: 'done-goal',
             date,
-            title: 'DeletedGoal',
+            goalId,
         })
         const browserPage = await browser.createPage()
         const status = await browserPage.open(`http://localhost:3000/news`)
         expect(status).toBe('success')
-
+        
         const text = await browserPage.property('content')
         const $ = cheerio.load(text)
         const page = $('#__next')
@@ -112,6 +118,8 @@ describe('news', () => {
         const browserPage = await browser.createPage()
 
         await generateAndLogUser(browserPage)
+
+        const goalIds = await getGoalIds(browserPage)
 
         await request(browserPage, `http://localhost:3000/graphql`, 'POST', {
             query: `
@@ -126,7 +134,7 @@ describe('news', () => {
                     title: 'Hello World',
                     url: 'http://www.example.com',
                     description: 'Lorem ipsum',
-                    goalTitles: ['Goal', 'Goal - doing'],
+                    goalIds,
                 },
             },
         })
@@ -161,6 +169,8 @@ describe('news', () => {
         const browserPage = await browser.createPage()
         
         await generateAndLogUser(browserPage)
+        const goalIds = await getGoalIds(browserPage)
+
         for (let i=0; i<11; i++) {
             await request(browserPage, `http://localhost:3000/graphql`, 'POST', {
                 query: `
@@ -175,7 +185,7 @@ describe('news', () => {
                         title: 'Hello World',
                         url: 'http://www.example.com',
                         description: 'Lorem ipsum',
-                        goalTitles: ['Goal', 'Goal - doing'],
+                        goalIds,
                     },
                 },
             })    

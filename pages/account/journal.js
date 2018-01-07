@@ -11,9 +11,10 @@ import Markdown from '../../components/markdown'
 import {errorMessage} from '../../utils/errors'
 import ShyButton from '../../components/shy-button'
 import DeleteModal from '../../components/delete-modal'
-import CheckButtons from '../../components/check-buttons'
+import EntityCheckButtons from '../../components/entity-check-buttons'
 import Panel from '../../components/panel'
 import AccountHeader from '../../components/account-header'
+import Related from '../../components/related-entities'
 
 export default withPage(() => (
     <Layout title="Journal" page="journal">
@@ -32,9 +33,14 @@ const JournalQuery = gql`
                 title
                 url
                 description
-                goalTitles
+                goalIds
+                goals {
+                    _id
+                    title
+                }
             }
             goals {
+                _id
                 title
             }
         }
@@ -75,27 +81,7 @@ class JournalComponent extends Component {
         } = this.props
 
         const username = me && me.local && me.local.username
-        const entries = (me && me.entries && me.entries.map(({
-            _id,
-            title,
-            url,
-            description,
-            goalTitles,
-        }) => ({
-            _id,
-            title,
-            url,
-            description,
-            goalTitles,
-        }))) || []
-        const goalTitles = (me && me.goals && me.goals.map(goal => goal.title)) || []
-
-        const goals = {}
-        for (const title of goalTitles) {
-            goals[title] = {
-                label: title
-            }
-        }
+        const entries = (me && me.entries) || []
 
         return <div className="container">
             <AccountHeader route="journal"/>
@@ -118,12 +104,12 @@ class JournalComponent extends Component {
                         >
                             <Form
                                 onSubmit={() => {
-                                    const goalTitles = Object.values(this.goals.checks).filter(g => g.checked).map(g => g.value)
+                                    const goalIds = Object.values(this.goals.checks).filter(g => g.checked).map(g => g.value)
                                     const entry = {
                                         title: this.title.value,
                                         url: this.url.value,
                                         description: this.description.value,
-                                        goalTitles,
+                                        goalIds,
                                     }
                                     createEntry({
                                         variables: {
@@ -185,11 +171,11 @@ class JournalComponent extends Component {
                                         ref={ref => this.description = ref}
                                     />
                                 </div>
-                                <CheckButtons
+                                <EntityCheckButtons
                                     label="Goals"
                                     id="goals"
-                                    values={goals}
-                                    ref={ref => this.goals = ref}
+                                    entities={me.goals}
+                                    checksRef={ref => this.goals = ref}
                                 />
                             </Form>
                         </Panel>
@@ -207,7 +193,7 @@ class JournalComponent extends Component {
                                 <Entry
                                     key={entry._id}
                                     entry={entry}
-                                    goalTitles={goalTitles}
+                                    goals={me.goals}
                                     onUpdate={(entry) => {
                                         return updateEntry({
                                             variables: {
@@ -253,18 +239,19 @@ class Entry extends Component {
         this.state = {}
     }
     render() {
-        const {entry: {_id, title, url, description, goalTitles: entryGoalTitles},
-            goalTitles,
-            onUpdate, onDelete} = this.props
-
-        const goals = {}
-        for (const title of goalTitles) {
-            goals[title] = {
-                label: title,
-                default: entryGoalTitles.indexOf(title) > -1,
-            }
-        }
-            
+        const {
+            entry: {
+                _id,
+                title, 
+                url, 
+                description, 
+                goalIds,
+                goals: entryGoals,
+            },
+            goals,
+            onUpdate,
+            onDelete
+        } = this.props
 
         return <div style={{
             marginBottom: '1.5rem'
@@ -279,13 +266,13 @@ class Entry extends Component {
                 >
                     <Form
                         onSubmit={() => {
-                            const goalTitles = Object.values(this.goals.checks).filter(g => g.checked).map(g => g.value)
+                            const goalIds = Object.values(this.goals.checks).filter(g => g.checked).map(g => g.value)
                             const entry = {
                                 _id,
                                 title: this.title.value,
                                 url: this.url.value,
                                 description: this.description.value,
-                                goalTitles,
+                                goalIds,
                             }
                             onUpdate(entry)
                                 .then(() => {
@@ -336,11 +323,12 @@ class Entry extends Component {
                                 defaultValue={description}
                             />
                         </div>
-                        <CheckButtons
+                        <EntityCheckButtons
                             label="Goals"
                             id="goals"
-                            values={goals}
-                            ref={ref => this.goals = ref}
+                            entities={goals}
+                            defaultEntityIds={goalIds}
+                            checksRef={ref => this.goals = ref}
                         />
                     </Form>
                 </Panel>
@@ -375,13 +363,7 @@ class Entry extends Component {
                     {description &&
                         <Markdown content={description}/>
                     }
-                    {entryGoalTitles.length > 0 &&
-                        <div>
-                            Goals: {entryGoalTitles.map((goal, i) => (
-                                <span key={i}>{i ? ', ' : ' '}{goal}</span>
-                            ))}
-                        </div>
-                    }
+                    <Related entities={entryGoals} label="Goals:" type="goal"/>
                     <a href={`/entry/${_id}`}>Comments</a>
                     <hr/>
                 </div>

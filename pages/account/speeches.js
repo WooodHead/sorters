@@ -11,9 +11,10 @@ import Markdown from '../../components/markdown'
 import {errorMessage} from '../../utils/errors'
 import ShyButton from '../../components/shy-button'
 import DeleteModal from '../../components/delete-modal'
-import CheckButtons from '../../components/check-buttons'
+import EntityCheckButtons from '../../components/entity-check-buttons'
 import Panel from '../../components/panel'
 import AccountHeader from '../../components/account-header'
+import Related from '../../components/related-entities'
 
 export default withPage(() => (
     <Layout title="Speeches" page="speeches">
@@ -32,13 +33,23 @@ const SpeechesQuery = gql`
                 title
                 url
                 content
-                topicTitles
-                readTitles
+                topicIds
+                topics {
+                    _id
+                    title
+                }
+                readIds
+                reads {
+                    _id
+                    title
+                }
             }
             topics {
+                _id
                 title
             }
             reads {
+                _id
                 title
             }
         }
@@ -70,6 +81,7 @@ class SpeechesComponent extends Component {
         super()
         this.state = {}
     }
+
     render() {
         const {
             speeches: {loading, me, refetch},
@@ -79,36 +91,7 @@ class SpeechesComponent extends Component {
         } = this.props
 
         const username = me && me.local && me.local.username
-        const speeches = (me && me.speeches && me.speeches.map(({
-            _id,
-            title,
-            url,
-            content,
-            readTitles,
-            topicTitles,
-        }) => ({
-            _id,
-            title,
-            url,
-            content,
-            topicTitles,
-            readTitles,
-        }))) || []
-        const topicTitles = (me && me.topics && me.topics.map(topic => topic.title)) || []
-        const readTitles = (me && me.reads && me.reads.map(read => read.title)) || []
-        
-        const topics = {}
-        for (const title of topicTitles) {
-            topics[title] = {
-                label: title
-            }
-        }
-        const reads = {}
-        for (const title of readTitles) {
-            reads[title] = {
-                label: title
-            }
-        }
+        const speeches = (me && me.speeches) || []
 
         return <div className="container">
             <AccountHeader route="speeches"/>
@@ -131,14 +114,14 @@ class SpeechesComponent extends Component {
                         >
                             <Form
                                 onSubmit={() => {
-                                    const topicTitles = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
-                                    const readTitles = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
+                                    const topicIds = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
+                                    const readIds = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
                                     const speech = {
                                         title: this.title.value,
                                         url: this.url.value,
                                         content: this.content.value,
-                                        topicTitles,
-                                        readTitles,
+                                        topicIds,
+                                        readIds,
                                     }
                                     createSpeech({
                                         variables: {
@@ -203,17 +186,17 @@ class SpeechesComponent extends Component {
                                         ref={ref => this.content = ref}
                                     />
                                 </div>
-                                <CheckButtons
+                                <EntityCheckButtons
                                     label="Topics"
                                     id="topics"
-                                    values={topics}
-                                    ref={ref => this.topics = ref}
+                                    entities={me.topics}
+                                    checksRef={ref => this.topics = ref}
                                 />
-                                <CheckButtons
+                                <EntityCheckButtons
                                     label="Books"
                                     id="reads"
-                                    values={reads}
-                                    ref={ref => this.reads = ref}
+                                    entities={me.reads}
+                                    checksRef={ref => this.reads = ref}
                                 />
                             </Form>
                         </Panel>
@@ -231,8 +214,8 @@ class SpeechesComponent extends Component {
                                 <Speech
                                     key={speech._id}
                                     speech={speech}
-                                    topicTitles={topicTitles}
-                                    readTitles={readTitles}
+                                    topics={me.topics}
+                                    reads={me.reads}
                                     onUpdate={(speech) => {
                                         return updateSpeech({
                                             variables: {
@@ -267,6 +250,9 @@ const Speeches = compose(
     graphql(CreateSpeechQuery, {
         name: 'createSpeech',
     }),
+    graphql(UpdateSpeechQuery, {
+        name: 'updateSpeech',
+    }),
     graphql(DeleteSpeechQuery, {
         name: 'deleteSpeech',
     }),
@@ -284,30 +270,16 @@ class Speech extends Component {
                 title,
                 url,
                 content,
-                topicTitles: speechTopicTitles,
-                readTitles: speechReadTitles,
+                topicIds,
+                topics: speechTopics,
+                readIds,
+                reads: speechReads,
             },
-            topicTitles,
-            readTitles,
+            topics,
+            reads,
             onUpdate,
             onDelete
         } = this.props
-
-        const topics = {}
-        for (const title of topicTitles) {
-            topics[title] = {
-                label: title,
-                default: speechTopicTitles.indexOf(title) > -1,
-            }
-        }
-        const reads = {}
-        for (const title of readTitles) {
-            reads[title] = {
-                label: title,
-                default: speechReadTitles.indexOf(title) > -1,
-            }
-        }
-            
 
         return <div style={{
             marginBottom: '1.5rem'
@@ -322,15 +294,15 @@ class Speech extends Component {
                 >
                     <Form
                         onSubmit={() => {
-                            const topicTitles = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
-                            const readTitles = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
+                            const topicIds = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
+                            const readIds = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
                             const speech = {
                                 _id,
                                 title: this.title.value,
                                 url: this.url.value,
                                 content: this.content.value,
-                                topicTitles,
-                                readTitles,
+                                topicIds,
+                                readIds,
                             }
                             onUpdate(speech)
                                 .then(() => {
@@ -381,17 +353,19 @@ class Speech extends Component {
                                 defaultValue={content}
                             />
                         </div>
-                        <CheckButtons
+                        <EntityCheckButtons
                             label="Topics"
                             id="topics"
-                            values={topics}
-                            ref={ref => this.topics = ref}
+                            entities={topics}
+                            defaultEntityIds={topicIds}
+                            checksRef={ref => this.topics = ref}
                         />
-                        <CheckButtons
+                        <EntityCheckButtons
                             label="Reads"
                             id="reads"
-                            values={reads}
-                            ref={ref => this.reads = ref}
+                            entities={reads}
+                            defaultEntityIds={readIds}
+                            checksRef={ref => this.reads = ref}
                         />
                     </Form>
                 </Panel>
@@ -420,26 +394,14 @@ class Speech extends Component {
                         {url ?
                             <a href={url} target="_blank">{title}</a>
                         :
-                            title
+                            <a href={`/speech/${_id}`}>{title}</a>
                         }
                     </h4>
                     {content &&
                         <Markdown content={content}/>
                     }
-                    {speechTopicTitles.length > 0 &&
-                        <div>
-                            Topics: {speechTopicTitles.map((topic, i) => (
-                                <span key={i}>{i ? ', ' : ' '}{topic}</span>
-                            ))}
-                        </div>
-                    }
-                    {speechReadTitles.length > 0 &&
-                        <div>
-                            Books: {speechReadTitles.map((read, i) => (
-                                <span key={i}>{i ? ', ' : ' '}{read}</span>
-                            ))}
-                        </div>
-                    }
+                    <Related entities={speechTopics} label="Topics:" type="topic"/>
+                    <Related entities={speechReads} label="Books:" type="read"/>
                     <a href={`/speech/${_id}`}>Comments</a>
                     <hr/>
                 </div>

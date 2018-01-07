@@ -1,79 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`goals displays 1`] = `
+exports[`journal displays 1`] = `
 "<div data-reactroot=\\"\\">
   <div>
-    <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+    <div style=\\"padding-top:50px;padding-bottom:20px\\">
       <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
         <div class=\\"container\\">
           <div class=\\"navbar-header\\">
             <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
-            <a class=\\"navbar-brand\\"
-              href=\\"/\\">Sorters Club</a>
+            <a class=\\"navbar-brand\\" href=\\"/\\">Sorters Club</a>
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\">
-                <a href=\\"/account\\">Dashboard</a>
-              </li>
-              <li class=\\"dropdownfalse\\">
-                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">
-                  Hello,
-                  test
-                  
-                  <!-- /react-text --><span class=\\"caret\\"></span></a>
+              <li class=\\"dropdownundefined\\">
+                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">Hello, test <span class=\\"caret\\"></span></a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
-    <div style=\\"max-width:400px;margin:auto;\\">
-      <h1>Journal</h1>
-      <p>
-        Here you can write regular updates about your
-        <a href=\\"/account/goals\\">goals</a>
-        .
-      </p>
+    <div class=\\"container\\">
       <div>
-        <p>
-          Your journal can be found at
-          <a href=\\"/u/test/journal\\">
-            /u/
-            test
-            /journal
-          </a>
-          .
-        </p>
+        <h1>Account</h1>
+        <ul class=\\"nav nav-tabs\\">
+          <li role=\\"presentation\\">
+            <a href=\\"/account\\">&#x2302; Dashboard</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/profile\\">&#x1F464; Profile</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/goals\\">&#x25CE; Goals</a>
+          </li>
+          <li role=\\"presentation\\" class=\\"active\\">
+            <a href=\\"/account/journal\\">&#x270E; Journal</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/topics\\">&#x1F4A1; Topics</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/essays\\">&#x270E; Essays</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/speeches\\">&#x1F444; Speeches</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/conversations\\">&#x1F5E9; Conversations</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/reads\\">&#x1F4D6; Reading List</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/account\\">&#x2699; Account</a>
+          </li>
+        </ul>
+      </div>
+      <h2>Journal</h2>
+      <p>Here you can write regular updates about your
+        <a href=\\"/account/goals\\">goals</a>.</p>
+      <div>
+        <p>Your journal can be found at
+          <a href=\\"/u/test/journal\\">/u/ test /journal</a>.</p>
         <button class=\\"btn btn-primary\\">New Journal Entry</button>
         <div>
-          <h2>Entries</h2>
-          <div style=\\"margin-bottom:1.5rem;\\">
-            <div style=\\"margin-top:1.5rem;margin-bottom:1.5rem;\\"><span style=\\"display:block;float:right;\\"><span><a style=\\"cursor:pointer;font-size:140%;\\">&#x1F5D1;</a><!-- react-empty: 54 --></span>
-              <a style=\\"cursor:pointer;font-size:140%;\\">&#x270E;</a>
+          <h3>Entries</h3>
+          <div style=\\"margin-bottom:1.5rem\\">
+            <div style=\\"margin-top:1.5rem;margin-bottom:1.5rem\\"><span style=\\"display:block;float:right\\"><span><a style=\\"cursor:pointer;font-size:140%\\">&#x1F5D1;</a></span>
+              <a style=\\"cursor:pointer;font-size:140%\\">&#x270E;</a>
               </span>
-              <h3>
+              <h4>
                 <a href=\\"http://www.example.com\\" target=\\"_blank\\">Hello World</a>
-              </h3>
+              </h4>
               <div class=\\"markdown\\">
                 <p>Lorem ipsum</p>
-              </div><span>Goals: <!-- /react-text --><span> <!-- /react-text -->Goal<!-- /react-text --></span><span>, <!-- /react-text -->Goal - doing<!-- /react-text --></span></span>
-              <a
-                href=\\"/entry/<id>\\">Comments</a>
-                <hr>
+              </div>
+              <a href=\\"/entry/<id>\\">Comments</a>
+              <hr>
             </div>
           </div>
         </div>
@@ -82,13 +97,9 @@ exports[`goals displays 1`] = `
     <footer>
       <div class=\\"container\\">
         <hr>
-        <p>
-          Brought to you with &#x2764; by
-          <a href=\\"/about\\">Nick Redmark</a>
-          . Support this platform on
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
-          .
-        </p>
+        <p>Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>. Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
       </div>
     </footer>
   </div>

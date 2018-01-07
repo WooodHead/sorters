@@ -11,9 +11,10 @@ import Markdown from '../../components/markdown'
 import {errorMessage} from '../../utils/errors'
 import ShyButton from '../../components/shy-button'
 import DeleteModal from '../../components/delete-modal'
-import CheckButtons from '../../components/check-buttons'
+import EntityCheckButtons from '../../components/entity-check-buttons'
 import Panel from '../../components/panel'
 import AccountHeader from '../../components/account-header'
+import Related from '../../components/related-entities'
 
 export default withPage(() => (
     <Layout title="Conversations" page="conversations">
@@ -21,7 +22,7 @@ export default withPage(() => (
     </Layout>
 ))
 
-const ConversationesQuery = gql`
+const ConversationsQuery = gql`
     query {
         me {
             local {
@@ -31,17 +32,32 @@ const ConversationesQuery = gql`
                 _id
                 title
                 content
-                topicTitles
-                readTitles
-                goalTitles
+                topicIds
+                topics {
+                    _id
+                    title
+                }
+                readIds
+                reads {
+                    _id
+                    title
+                }
+                goalIds
+                goals {
+                    _id
+                    title
+                }
             }
             topics {
+                _id
                 title
             }
             reads {
+                _id
                 title
             }
             goals {
+                _id
                 title
             }
         }
@@ -68,11 +84,12 @@ const DeleteConversationQuery = gql`
         }
     }
 `
-class ConversationesComponent extends Component {
+class ConversationsComponent extends Component {
     constructor() {
         super()
         this.state = {}
     }
+
     render() {
         const {
             conversations: {loading, me, refetch},
@@ -82,44 +99,8 @@ class ConversationesComponent extends Component {
         } = this.props
 
         const username = me && me.local && me.local.username
-        const conversations = (me && me.conversations && me.conversations.map(({
-            _id,
-            title,
-            content,
-            readTitles,
-            topicTitles,
-            goalTitles,
-        }) => ({
-            _id,
-            title,
-            content,
-            topicTitles,
-            readTitles,
-            goalTitles,
-        }))) || []
-        const topicTitles = (me && me.topics && me.topics.map(topic => topic.title)) || []
-        const readTitles = (me && me.reads && me.reads.map(read => read.title)) || []
-        const goalTitles = (me && me.goals && me.goals.map(goal => goal.title)) || []
+        const conversations = (me && me.conversations) || []
         
-        const topics = {}
-        for (const title of topicTitles) {
-            topics[title] = {
-                label: title
-            }
-        }
-        const reads = {}
-        for (const title of readTitles) {
-            reads[title] = {
-                label: title
-            }
-        }
-        const goals = {}
-        for (const title of goalTitles) {
-            goals[title] = {
-                label: title
-            }
-        }
-
         return <div className="container">
             <AccountHeader route="conversations"/>
             <h2>Conversations</h2>
@@ -141,15 +122,15 @@ class ConversationesComponent extends Component {
                         >
                             <Form
                                 onSubmit={() => {
-                                    const topicTitles = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
-                                    const readTitles = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
-                                    const goalTitles = Object.values(this.goals.checks).filter(r => r.checked).map(r => r.value)
+                                    const topicIds = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
+                                    const readIds = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
+                                    const goalIds = Object.values(this.goals.checks).filter(r => r.checked).map(r => r.value)
                                     const conversation = {
                                         title: this.title.value,
                                         content: this.content.value,
-                                        topicTitles,
-                                        readTitles,
-                                        goalTitles,
+                                        topicIds,
+                                        readIds,
+                                        goalIds,
                                     }
                                     createConversation({
                                         variables: {
@@ -205,23 +186,23 @@ class ConversationesComponent extends Component {
                                         ref={ref => this.content = ref}
                                     />
                                 </div>
-                                <CheckButtons
+                                <EntityCheckButtons
                                     label="Topics"
                                     id="topics"
-                                    values={topics}
-                                    ref={ref => this.topics = ref}
+                                    entities={me.topics}
+                                    checksRef={ref => this.topics = ref}
                                 />
-                                <CheckButtons
+                                <EntityCheckButtons
                                     label="Books"
                                     id="reads"
-                                    values={reads}
-                                    ref={ref => this.reads = ref}
+                                    entities={me.reads}
+                                    checksRef={ref => this.reads = ref}
                                 />
-                                <CheckButtons
+                                <EntityCheckButtons
                                     label="Goals"
                                     id="goals"
-                                    values={goals}
-                                    ref={ref => this.goals = ref}
+                                    entities={me.goals}
+                                    checksRef={ref => this.goals = ref}
                                 />
                             </Form>
                         </Panel>
@@ -239,9 +220,9 @@ class ConversationesComponent extends Component {
                                 <Conversation
                                     key={conversation._id}
                                     conversation={conversation}
-                                    topicTitles={topicTitles}
-                                    readTitles={readTitles}
-                                    goalTitles={goalTitles}
+                                    topics={me.topics}
+                                    reads={me.reads}
+                                    goals={me.goals}
                                     onUpdate={(conversation) => {
                                         return updateConversation({
                                             variables: {
@@ -267,7 +248,7 @@ class ConversationesComponent extends Component {
 }
 const Conversations = compose(
     withLoginRequired('/account/conversations'),
-    graphql(ConversationesQuery, {
+    graphql(ConversationsQuery, {
         name: 'conversations'
     }),
     graphql(UpdateConversationQuery, {
@@ -276,10 +257,13 @@ const Conversations = compose(
     graphql(CreateConversationQuery, {
         name: 'createConversation',
     }),
+    graphql(UpdateConversationQuery, {
+        name: 'updateConversation',
+    }),
     graphql(DeleteConversationQuery, {
         name: 'deleteConversation',
     }),
-)(ConversationesComponent)
+)(ConversationsComponent)
 
 class Conversation extends Component {
     constructor() {
@@ -292,39 +276,19 @@ class Conversation extends Component {
                 _id,
                 title,
                 content,
-                topicTitles: conversationTopicTitles,
-                readTitles: conversationReadTitles,
-                goalTitles: conversationGoalTitles,
+                topicIds,
+                topics: conversationTopics,
+                readIds,
+                reads: conversationReads,
+                goalIds,
+                goals: conversationGoals,
             },
-            topicTitles,
-            readTitles,
-            goalTitles,
+            topics,
+            reads,
+            goals,
             onUpdate,
             onDelete
         } = this.props
-
-        const topics = {}
-        for (const title of topicTitles) {
-            topics[title] = {
-                label: title,
-                default: conversationTopicTitles.indexOf(title) > -1,
-            }
-        }
-        const reads = {}
-        for (const title of readTitles) {
-            reads[title] = {
-                label: title,
-                default: conversationReadTitles.indexOf(title) > -1,
-            }
-        }
-        const goals = {}
-        for (const title of goalTitles) {
-            goals[title] = {
-                label: title,
-                default: conversationGoalTitles.indexOf(title) > -1,
-            }
-        }
-            
 
         return <div style={{
             marginBottom: '1.5rem'
@@ -339,16 +303,16 @@ class Conversation extends Component {
                 >
                     <Form
                         onSubmit={() => {
-                            const topicTitles = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
-                            const readTitles = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
-                            const goalTitles = Object.values(this.goals.checks).filter(r => r.checked).map(r => r.value)
+                            const topicIds = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
+                            const readIds = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
+                            const goalIds = Object.values(this.goals.checks).filter(r => r.checked).map(r => r.value)
                             const conversation = {
                                 _id,
                                 title: this.title.value,
                                 content: this.content.value,
-                                topicTitles,
-                                readTitles,
-                                goalTitles,
+                                topicIds,
+                                readIds,
+                                goalIds,
                             }
                             onUpdate(conversation)
                                 .then(() => {
@@ -388,23 +352,26 @@ class Conversation extends Component {
                                 defaultValue={content}
                             />
                         </div>
-                        <CheckButtons
+                        <EntityCheckButtons
                             label="Topics"
                             id="topics"
-                            values={topics}
-                            ref={ref => this.topics = ref}
+                            entities={topics}
+                            defaultEntityIds={topicIds}
+                            checksRef={ref => this.topics = ref}
                         />
-                        <CheckButtons
+                        <EntityCheckButtons
                             label="Reads"
                             id="reads"
-                            values={reads}
-                            ref={ref => this.reads = ref}
+                            entities={reads}
+                            defaultEntityIds={readIds}
+                            checksRef={ref => this.reads = ref}
                         />
-                        <CheckButtons
+                        <EntityCheckButtons
                             label="Goals"
                             id="goals"
-                            values={goals}
-                            ref={ref => this.goals = ref}
+                            entities={goals}
+                            defaultEntityIds={goalIds}
+                            checksRef={ref => this.goals = ref}
                         />
                     </Form>
                 </Panel>
@@ -429,31 +396,13 @@ class Conversation extends Component {
                             }}
                         >✎</ShyButton>
                     </span>
-                    <h4>{title}</h4>
+                    <h4><a href={`/conversation/${_id}`}>{title}</a></h4>
                     {content &&
                         <Markdown content={content}/>
                     }
-                    {conversationTopicTitles.length > 0 &&
-                        <div>
-                            Topics: {conversationTopicTitles.map((topic, i) => (
-                                <span key={i}>{i ? ', ' : ' '}{topic}</span>
-                            ))}
-                        </div>
-                    }
-                    {conversationReadTitles.length > 0 &&
-                        <div>
-                            Books: {conversationReadTitles.map((read, i) => (
-                                <span key={i}>{i ? ', ' : ' '}{read}</span>
-                            ))}
-                        </div>
-                    }
-                    {conversationGoalTitles.length > 0 &&
-                        <div>
-                            Goals: {conversationGoalTitles.map((goal, i) => (
-                                <span key={i}>{i ? ', ' : ' '}{goal}</span>
-                            ))}
-                        </div>
-                    }
+                    <Related entities={conversationTopics} label="Topics:" type="topic"/>
+                    <Related entities={conversationReads} label="Books:" type="read"/>
+                    <Related entities={conversationGoals} label="Goals:" type="goal"/>
                     <a href={`/conversation/${_id}`}>Comments</a>
                     <hr/>
                 </div>

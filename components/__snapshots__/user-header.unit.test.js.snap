@@ -52,6 +52,7 @@ exports[`user-header shallow-renders 1`] = `
   >
     <li
       className={false}
+      key="activity"
       role="presentation"
     >
       <a
@@ -62,6 +63,7 @@ exports[`user-header shallow-renders 1`] = `
     </li>
     <li
       className={false}
+      key="profile"
       role="presentation"
     >
       <a
@@ -72,6 +74,7 @@ exports[`user-header shallow-renders 1`] = `
     </li>
     <li
       className={false}
+      key="goals"
       role="presentation"
     >
       <a
@@ -82,6 +85,7 @@ exports[`user-header shallow-renders 1`] = `
     </li>
     <li
       className="active"
+      key="journal"
       role="presentation"
     >
       <a
@@ -92,6 +96,7 @@ exports[`user-header shallow-renders 1`] = `
     </li>
     <li
       className={false}
+      key="reads"
       role="presentation"
     >
       <a
@@ -102,6 +107,7 @@ exports[`user-header shallow-renders 1`] = `
     </li>
     <li
       className={false}
+      key="topics"
       role="presentation"
     >
       <a
@@ -112,6 +118,7 @@ exports[`user-header shallow-renders 1`] = `
     </li>
     <li
       className={false}
+      key="essays"
       role="presentation"
     >
       <a
@@ -122,6 +129,7 @@ exports[`user-header shallow-renders 1`] = `
     </li>
     <li
       className={false}
+      key="speeches"
       role="presentation"
     >
       <a
@@ -132,6 +140,7 @@ exports[`user-header shallow-renders 1`] = `
     </li>
     <li
       className={false}
+      key="conversations"
       role="presentation"
     >
       <a

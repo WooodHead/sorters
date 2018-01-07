@@ -28,6 +28,7 @@ const GoalsQuery = gql`
                 username
             }
             goals {
+                _id
                 title
                 description
                 doing
@@ -40,15 +41,29 @@ const GoalsQuery = gql`
     }
 `
 const UpdateGoalsQuery = gql`
-    mutation($goals: [GoalInput]!) {
-        updateGoals(goals: $goals) {
+    mutation($goalIds: [ID]!) {
+        updateGoals(goalIds: $goalIds) {
             _id
         }
     }
 `
 const CreateGoalQuery = gql`
-    mutation($goal: NewGoalInput!) {
-        createGoal(goal: $goal) {
+mutation($goal: NewGoalInput!) {
+    createGoal(goal: $goal) {
+        _id
+    }
+}
+`
+const UpdateGoalQuery = gql`
+    mutation($goal: GoalInput!) {
+        updateGoal(goal: $goal) {
+            _id
+        }
+    }
+`
+const DeleteGoalQuery = gql`
+    mutation($_id: ID!) {
+        deleteGoal(_id: $_id) {
             _id
         }
     }
@@ -70,21 +85,13 @@ class GoalsComponent extends Component {
             goals: {loading, me, refetch},
             updateGoals,
             createGoal,
+            updateGoal,
+            deleteGoal,
             updateGoalsDescription,
         } = this.props
         const username = me && me.local && me.local.username
         const {goals: goalsDescription} = (me && me.profile) || {}
-        const goals = (me && me.goals && me.goals.map(({
-            title,
-            description,
-            doing,
-            done,
-        }) => ({
-            title,
-            description,
-            doing,
-            done,
-        }))) || []
+        const goals = (me && me.goals) || []
 
         return <div className="container">
             <AccountHeader route="goals"/>
@@ -144,7 +151,7 @@ class GoalsComponent extends Component {
                                             const newGoals = arrayMove(goals, oldIndex, newIndex)
                                             updateGoals({
                                                 variables: {
-                                                    goals: newGoals
+                                                    goalIds: newGoals.map(({_id}) => _id),
                                                 }
                                             }).then(() => {
                                                 refetch();
@@ -152,21 +159,19 @@ class GoalsComponent extends Component {
                                                 console.error(e)
                                             })
                                         }}
-                                        updateGoal={(key, goal) => {
-                                            goals[key] = goal;
-                                            return updateGoals({
+                                        updateGoal={(goal) => {
+                                            return updateGoal({
                                                 variables: {
-                                                    goals
-                                                }
+                                                    goal,
+                                                },
                                             }).then(() => {
                                                 refetch();
                                             })
                                         }}
-                                        removeGoal={(key) => {
-                                            goals.splice(key, 1)
-                                            return updateGoals({
+                                        removeGoal={(_id) => {
+                                            return deleteGoal({
                                                 variables: {
-                                                    goals
+                                                    _id
                                                 }
                                             }).then(() => {
                                                 refetch();
@@ -237,6 +242,12 @@ const Goals = compose(
     graphql(CreateGoalQuery, {
         name: 'createGoal'
     }),
+    graphql(UpdateGoalQuery, {
+        name: 'updateGoal'
+    }),
+    graphql(DeleteGoalQuery, {
+        name: 'deleteGoal'
+    }),    
     graphql(UpdateGoalsDescriptionQuery, {
         name: 'updateGoalsDescription'
     })
@@ -244,13 +255,13 @@ const Goals = compose(
 
 const GoalsListComponent = ({goals, updateGoal, removeGoal}) => (
     <ul>
-        {goals.map((goal, key) => (
+        {goals.map((goal, i) => (
             <Goal
-                key={key}
-                index={key}
+                key={goal._id}
                 goal={goal}
-                update={goal => updateGoal(key, goal)}
-                remove={() => removeGoal(key)}
+                index={i}
+                update={goal => updateGoal(goal)}
+                remove={() => removeGoal(goal._id)}
             />
         ))}
     </ul>
@@ -265,7 +276,7 @@ class GoalComponent extends Component {
         this.state = {}
     }
     render() {
-        const {goal: {title, description, doing, done}, update, remove} = this.props
+        const {goal: {_id, title, description, doing, done}, update, remove} = this.props
         const goalStatus = done ? 'done' : (doing ? 'doing' : 'not')
         return <li style={{
             cursor: 'pointer',
@@ -277,6 +288,7 @@ class GoalComponent extends Component {
                         let goalStatus = ['done', 'doing', 'not']
                             .find(value => this.goalStatus.radios[value].checked) || 'not'
                         const goal = {
+                            _id,
                             title: this.title.value,
                             doing: goalStatus === 'doing',
                             done: goalStatus === 'done',
@@ -319,7 +331,6 @@ class GoalComponent extends Component {
                             ref={ref => {
                                 this.title = ref
                             }}
-                            readOnly
                         />
                     </div>
                     <RadioButtons
@@ -361,7 +372,7 @@ class GoalComponent extends Component {
                             }}
                         >✎</ShyButton>
                     </span>
-                    <span>{title}</span>
+                    <a href={`/goal/${_id}`}>{title}</a>
                     {goalStatus === 'done' && <span> ✔</span>}
                 </span>
             }

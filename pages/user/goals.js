@@ -27,6 +27,7 @@ query($username: String!) {
             goals
         }
         goals {
+            _id
             title
             description
             doing
@@ -73,10 +74,10 @@ const UserGoalsComponent = (props) => {
         }
         {goalsList.length > 0 ?
             <ul>
-                {goalsList.map(({title, description, doing, done, entries, conversations}, key) => {
+                {goalsList.map(({_id, title, description, doing, done, entries, conversations}, key) => {
                     const goalStatus = done ? 'done' : (doing ? 'doing' : 'not')
                     return <li key={key}>
-                        <span>{title}</span>
+                        <a href={`/goal/${_id}`}>{title}</a>
                         {goalStatus === 'doing' && <span> ⛏</span>}
                         {goalStatus === 'done' && <span> ✔</span>}
                         <ul>

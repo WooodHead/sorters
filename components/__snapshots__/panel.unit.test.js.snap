@@ -12,6 +12,7 @@ exports[`panel shallow-renders 1`] = `
     >
       <a
         href="/foo"
+        target="_blank"
       >
         Title
       </a>

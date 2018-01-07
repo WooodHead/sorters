@@ -27,6 +27,7 @@ query($username: String!) {
             topics
         }
         topics {
+            _id
             title
             description
             essays {
@@ -66,7 +67,7 @@ const UserTopicsComponent = (props) => {
     const profile = user.profile || {}
     const {about, name, topics} = profile
     const emailHash = user.emailHash
-    const topicsList = user.topics || []
+    const topicsList = user.topics
 
     return <div>
         <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="topics"/>
@@ -76,9 +77,9 @@ const UserTopicsComponent = (props) => {
         }
         {topicsList.length > 0 ?
             <ul>
-                {topicsList.map(({title, description, essays, speeches, conversations}, key) => {
+                {topicsList.map(({_id, title, description, essays, speeches, conversations}, key) => {
                     return <li key={key}>
-                        <span>{title}</span>
+                        <a href={`/topic/${_id}`}>{title}</a>
                         <ul>
                             {essays.length > 0 &&
                                 <li>✎ Essays: 

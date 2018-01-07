@@ -11,7 +11,7 @@
     "clean": "del .next",
     "build": "next build",
     "start": "export NODE_ENV=prod && node index.js",
-    "start:test": "export NODE_ENV=prod && export MONGO_URL=mongodb://localhost:27017/sorters_test && node --harmony-async-await index.js",
+    "start:test": "export NODE_ENV=prod && export MONGO_URL=mongodb://localhost:27017/sorters_test && node index.js",
     "linked-modules": "find node_modules/ -maxdepth 1 -type l -ls | grep -o -E \"[^/]+$\"",
     "save-linked-modules": "npm run -s linked-modules > .linked_modules",
     "link-modules": "cat .linked_modules | xargs yarn link",
@@ -66,6 +66,7 @@
     "cheerio": "^1.0.0-rc.2",
     "del-cli": "^1.1.0",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.0",
     "jest": "^22.0.4",
     "phantom": "^4.0.12",
@@ -74,5 +75,10 @@
     "react-test-renderer": "^16.2.0",
     "set-cookie-parser": "^2.0.0",
     "wd": "^1.5.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/setupTests.js"
+    ]
   }
 }

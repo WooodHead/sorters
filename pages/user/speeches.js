@@ -31,8 +31,14 @@ const UserSpeechesQuery = gql`
                 title
                 url
                 content
-                topicTitles
-                readTitles
+                topics {
+                    _id
+                    title
+                }
+                reads {
+                    _id
+                    title
+                }
             }
         }
     }
@@ -81,7 +87,7 @@ const UserSpeeches = compose(
     })
 )(UserSpeechesComponent)
 
-const Speech = ({speech: {_id, url, title, content, topicTitles, readTitles}}) => (
+const Speech = ({speech: {_id, url, title, content, topics, reads}}) => (
     <div style={{
         marginTop: '1.5rem',
         marginBottom: '1.5rem',
@@ -96,17 +102,17 @@ const Speech = ({speech: {_id, url, title, content, topicTitles, readTitles}}) =
         {content &&
             <Markdown content={content}/>
         }
-        {topicTitles.length > 0 &&
+        {topics.length > 0 &&
             <div>
-                Topics: {topicTitles.map((topic, i) => (
-                    <span key={i}>{i ? ', ' : ' '}<em>{topic}</em></span>
+                Topics: {topics.map(({_id, title}, i) => (
+                    <span key={i}>{i ? ', ' : ' '}<a href={`/topic/${_id}`}>{title}</a></span>
                 ))}
             </div>
         }
-        {readTitles.length > 0 &&
+        {reads.length > 0 &&
             <div>
-                Books: {readTitles.map((read, i) => (
-                    <span key={i}>{i ? ', ' : ' '}<em>{read}</em></span>
+                Books: {reads.map(({_id, title}, i) => (
+                    <span key={i}>{i ? ', ' : ' '}<a href={`/read/${_id}`}>{title}</a></span>
                 ))}
             </div>
         }

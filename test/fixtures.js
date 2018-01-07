@@ -23,14 +23,18 @@ export const logUser = async (page) => {
 }
 
 export const setUserData = async (page) => {
-    await request(page, `http://localhost:3000/graphql`, 'POST', {
+    const res = await request(page, `http://localhost:3000/graphql`, 'POST', {
         query: `
             mutation (
                 $profile: ProfileInput,
                 $reading: String,
                 $goalsDescription: String,
-                $goals: [GoalInput]!,
-                $reads: [ReadInput]!
+                $goal1: NewGoalInput!,
+                $goal2: NewGoalInput!,
+                $goal3: NewGoalInput!,
+                $read1: NewReadInput!,
+                $read2: NewReadInput!,
+                $read3: NewReadInput!,
             ) {
                 updateProfile(profile: $profile) {
                     _id
@@ -41,11 +45,29 @@ export const setUserData = async (page) => {
                 updateGoalsDescription(goals: $goalsDescription) {
                     _id
                 }
-                updateGoals(goals: $goals) {
+                goal1: createGoal(goal: $goal1) {
                     _id
+                    title
                 }
-                updateReads(reads: $reads) {
+                goal2: createGoal(goal: $goal2) {
                     _id
+                    title
+                }
+                goal3: createGoal(goal: $goal3) {
+                    _id
+                    title
+                }
+                read1: createRead(read: $read1) {
+                    _id
+                    title
+                }
+                read2: createRead(read: $read2) {
+                    _id
+                    title
+                }
+                read3: createRead(read: $read3) {
+                    _id
+                    title
                 }
             }
         `,
@@ -86,32 +108,68 @@ export const setUserData = async (page) => {
             },
             reading: 'Test user reading',
             goalsDescription: 'Test user goals',
-            reads: [
-                {
-                    title: 'Read',
-                },
-                {
-                    title: 'Read - reading',
-                    reading: true,
-                },
-                {
-                    title: 'Read - read',
-                    read: true,
-                },
-            ],
-            goals: [
-                {
-                    title: 'Goal',
-                },
-                {
-                    title: 'Goal - doing',
-                    doing: true,
-                },
-                {
-                    title: 'Goal - done',
-                    done: true,
-                },
-            ],
+            read1: {
+                title: 'Read',
+            },
+            read2: {
+                title: 'Read - reading',
+            },
+            read3:{
+                title: 'Read - read',
+            },
+            goal1: {
+                title: 'Goal',
+            },
+            goal2: {
+                title: 'Goal - doing',
+            },
+            goal3: {
+                title: 'Goal - done',
+            },
         },
     })
+    const res2 = await request(page, 'http://localhost:3000/graphql', 'POST', {
+        query: `
+            mutation(
+                $goal1: GoalInput!,
+                $goal2: GoalInput!,
+                $read1: ReadInput!,
+                $read2: ReadInput!,
+            ) {
+                goal1: updateGoal(goal: $goal1) {
+                    _id
+                }
+                goal2: updateGoal(goal: $goal2) {
+                    _id
+                }
+                read1: updateRead(read: $read1) {
+                    _id
+                }
+                read2: updateRead(read: $read2) {
+                    _id
+                }
+            }
+        `,
+        variables: {
+            read1: res.data.read2,
+            read2: res.data.read3,
+            goal1: res.data.goal2,
+            goal2: res.data.goal3,
+        }
+    })
+}
+
+
+export async function getGoalIds(browserPage) {
+    return (await request(browserPage, `http://localhost:3000/graphql`, 'POST', {
+        query: `
+            query {
+                me {
+                    goals {
+                        _id
+                    }
+                }
+            }
+        `
+    })).data.me.goals.map(goal => goal._id);
 }

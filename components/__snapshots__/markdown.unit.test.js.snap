@@ -6,7 +6,7 @@ exports[`markdown renders 1`] = `
   dangerouslySetInnerHTML={
     Object {
       "__html": "<h3>title</h3>
-    ",
+",
     }
   }
 />

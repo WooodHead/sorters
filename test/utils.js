@@ -29,6 +29,8 @@ export function pretty(str) {
     str = str.replace(/<!-- react-text: \d+ -->/g, '')
     str = str.replace(/ *<!-- \/react-text -->\n/g, '')
     str = str.replace(/\b\w{24}\b/g, '<id>')
+    str = str.replace(/\n *<!-- +-->/g, ' ')
+    str = str.replace(/ *<!-- +-->/g, '')
 
     return str
 }

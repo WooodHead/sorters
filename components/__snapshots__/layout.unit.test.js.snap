@@ -42,11 +42,6 @@ exports[`layout displays title and page 1`] = `
         "name": "users",
         "url": "/users",
       },
-      Object {
-        "label": "Dashboard",
-        "name": "dashboard",
-        "url": "/account",
-      },
     ]
   }
   page="home"
@@ -54,6 +49,11 @@ exports[`layout displays title and page 1`] = `
   title="Sorters Club - Sort yourself out!"
   userMenu={
     Array [
+      Object {
+        "label": "⌂ Dashboard",
+        "name": "dashboard",
+        "url": "/account",
+      },
       Object {
         "label": "👤 Profile",
         "name": "profile",
@@ -151,16 +151,16 @@ exports[`layout shallow-renders 1`] = `
         "name": "users",
         "url": "/users",
       },
-      Object {
-        "label": "Dashboard",
-        "name": "dashboard",
-        "url": "/account",
-      },
     ]
   }
   siteName="Sorters Club"
   userMenu={
     Array [
+      Object {
+        "label": "⌂ Dashboard",
+        "name": "dashboard",
+        "url": "/account",
+      },
       Object {
         "label": "👤 Profile",
         "name": "profile",

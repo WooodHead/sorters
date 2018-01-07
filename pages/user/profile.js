@@ -91,13 +91,13 @@ const UserQuery = gql`
                 openness
             }
             reads {
-                title
+                _id
             }
             goals {
-                title
+                _id
             }
             topics {
-                title
+                _id
             }
             entries {
                 _id

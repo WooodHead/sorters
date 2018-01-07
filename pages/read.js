@@ -9,13 +9,13 @@ import Author from '../components/author'
 import UserHeader from '../components/user-header'
 import Related from '../components/related-entities'
 
-export default withPage(({url: {query: {conversationId}}}) => (
-    <Conversation conversationId={conversationId}/>
+export default withPage(({url: {query: {readId}}}) => (
+    <Read readId={readId}/>
 ))
 
-const ConversationQuery = gql`
-    query($conversationId: ID!) {
-        conversation(_id: $conversationId) {
+const ReadQuery = gql`
+    query($readId: ID!) {
+        read(_id: $readId) {
             _id
             user {
                 emailHash
@@ -28,17 +28,15 @@ const ConversationQuery = gql`
                 }
             }
             title
-            url
-            content
-            topics {
+            essays {
                 _id
                 title
             }
-            reads {
+            speeches {
                 _id
                 title
             }
-            goals {
+            conversations {
                 _id
                 title
             }
@@ -60,10 +58,10 @@ const ConversationQuery = gql`
         }
     }
 `
-const ConversationComponent = (props) => {
-    const {data: {loading, conversation, error, refetch}} = props
+const ReadComponent = (props) => {
+    const {data: {loading, read, error, refetch}} = props
     if (loading) {
-        return <Layout title="Loading conversation" page="user">
+        return <Layout title="Loading book" page="user">
             <div className="container">
                 <p>Loading...</p>
             </div>
@@ -78,15 +76,15 @@ const ConversationComponent = (props) => {
         </Layout>
     }
 
-    if (!conversation) {
-        return <Layout title="Invalid conversation" page="user">
+    if (!read) {
+        return <Layout title="Invalid book" page="user">
             <div className="container">
-                <p>Invalid conversation.</p>
+                <p>Invalid book.</p>
             </div>
         </Layout>
     }
 
-    const {_id, title, url, content, reads, topics, goals, comments, user} = conversation
+    const {_id, title, url, description, essays, speeches, conversations, comments, user} = read
     const username = user.local.username
     const profile = user.profile || {}
     const {about, name} = profile
@@ -94,26 +92,26 @@ const ConversationComponent = (props) => {
 
     return <Layout title={title} page="user">
         <div className="container">
-            <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="conversations" />
+            <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="reads" />
             <h1>
                 {title}
             </h1>
-            {content &&
-                <Markdown content={content}/>
+            {description &&
+                <Markdown content={description}/>
             }
-            <Related entities={topics} label="Topics:" type="topic"/>
-            <Related entities={reads} label="Books:" type="read"/>
-            <Related entities={goals} label="Goals:" type="goal"/>
-            <Comments comments={comments} entityType="conversation" entityId={_id} onNewComment={refetch} onChangeComment={refetch} onDeleteComment={refetch}/>
+            <Related entities={essays} label="Essays:" type="essay"/>
+            <Related entities={speeches} label="Speeches:" type="speech"/>
+            <Related entities={conversations} label="Conversations:" type="conversation"/>
+            <Comments comments={comments} entityType="read" entityId={_id} onNewComment={refetch} onChangeComment={refetch} onDeleteComment={refetch}/>
         </div>
     </Layout>
 }
-const Conversation = compose(
-    graphql(ConversationQuery, {
-        options: ({conversationId}) => ({
+const Read = compose(
+    graphql(ReadQuery, {
+        options: ({readId}) => ({
             variables: {
-                conversationId
+                readId
             }
         })
     })
-)(ConversationComponent)
+)(ReadComponent)

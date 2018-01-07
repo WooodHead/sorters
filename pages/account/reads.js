@@ -28,6 +28,7 @@ const ReadsQuery = gql`
                 username
             }
             reads {
+                _id
                 title
                 reading
                 read
@@ -39,8 +40,8 @@ const ReadsQuery = gql`
     }
 `
 const UpdateReadsQuery = gql`
-    mutation($reads: [ReadInput]!) {
-        updateReads(reads: $reads) {
+    mutation($readIds: [ID]!) {
+        updateReads(readIds: $readIds) {
             _id
         }
     }
@@ -48,6 +49,20 @@ const UpdateReadsQuery = gql`
 const CreateReadQuery = gql`
     mutation($read: NewReadInput!) {
         createRead(read: $read) {
+            _id
+        }
+    }
+`
+const UpdateReadQuery = gql`
+    mutation($read: ReadInput!) {
+        updateRead(read: $read) {
+            _id
+        }
+    }
+`
+const DeleteReadQuery = gql`
+    mutation($_id: ID!) {
+        deleteRead(_id: $_id) {
             _id
         }
     }
@@ -69,19 +84,13 @@ class ReadsComponent extends Component {
             reads: {loading, me, refetch},
             updateReads,
             createRead,
+            updateRead,
+            deleteRead,
             updateReading,
         } = this.props
         const username = me && me.local && me.local.username
-        const {reading} = (me && me.profile) || {}
-        const reads = (me && me.reads && me.reads.map(({
-                title,
-                reading,
-                read,
-            }) => ({
-                title,
-                reading,
-                read,
-            }))) || []
+        const {reading} = me && me.profile || {}
+        const reads = (me && me.reads) || []
 
         return <div className="container">
             <AccountHeader route="reads"/>
@@ -142,7 +151,7 @@ class ReadsComponent extends Component {
                                         const newReads = arrayMove(reads, oldIndex, newIndex)
                                         updateReads({
                                             variables: {
-                                                reads: newReads
+                                                readIds: newReads.map(({_id}) => _id),
                                             }
                                         }).then(() => {
                                             refetch();
@@ -150,21 +159,19 @@ class ReadsComponent extends Component {
                                             console.error(e)
                                         })
                                     }}
-                                    updateRead={(key, read) => {
-                                        reads[key] = read;
-                                        return updateReads({
+                                    updateRead={(read) => {
+                                        return updateRead({
                                             variables: {
-                                                reads
-                                            }
+                                                read,
+                                            },
                                         }).then(() => {
                                             refetch();
                                         })
                                     }}
-                                    removeRead={(key) => {
-                                        reads.splice(key, 1)
-                                        return updateReads({
+                                    removeRead={(_id) => {
+                                        return deleteRead({
                                             variables: {
-                                                reads
+                                                _id
                                             }
                                         }).then(() => {
                                             refetch();
@@ -232,6 +239,12 @@ const Reads = compose(
     graphql(CreateReadQuery, {
         name: 'createRead'
     }),
+    graphql(UpdateReadQuery, {
+        name: 'updateRead'
+    }),
+    graphql(DeleteReadQuery, {
+        name: 'deleteRead'
+    }),
     graphql(UpdateReadingQuery, {
         name: 'updateReading'
     }),
@@ -239,13 +252,13 @@ const Reads = compose(
 
 const ReadsListComponent = ({reads, updateRead, removeRead}) => (
     <ul>
-        {reads.map((read, key) => (
+        {reads.map((read, i) => (
             <Read
-                key={key}
-                index={key}
+                key={read._id}
+                index={i}
                 read={read}
-                update={read => updateRead(key, read)}
-                remove={() => removeRead(key)}
+                update={read => updateRead(read)}
+                remove={() => removeRead(read._id)}
             />
         ))}
     </ul>
@@ -260,7 +273,7 @@ class ReadComponent extends Component {
         this.state = {}
     }
     render() {
-        const {read: {title, reading, read}, update, remove} = this.props
+        const {read: {_id, title, reading, read}, update, remove} = this.props
         const readingStatus = read ? 'read' : (reading ? 'reading' : 'not')
         return <li style={{
             cursor: 'pointer',
@@ -271,6 +284,7 @@ class ReadComponent extends Component {
                     onSubmit={() => {
                         let readingStatus = ['read', 'reading', 'not'].find(value => this.readingStatus.radios[value].checked) || 'not'
                         const read = {
+                            _id,
                             title: this.title.value,
                             reading: readingStatus === 'reading',
                             read: readingStatus === 'read',
@@ -313,7 +327,6 @@ class ReadComponent extends Component {
                             ref={ref => {
                                 this.title = ref
                             }}
-                            readOnly
                         />
                     </div>
                     <RadioButtons

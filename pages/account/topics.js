@@ -28,6 +28,7 @@ const TopicsQuery = gql`
                 username
             }
             topics {
+                _id
                 title
                 description
             }
@@ -38,8 +39,8 @@ const TopicsQuery = gql`
     }
 `
 const UpdateTopicsQuery = gql`
-    mutation($topics: [TopicInput]!) {
-        updateTopics(topics: $topics) {
+    mutation($topicIds: [ID]!) {
+        updateTopics(topicIds: $topicIds) {
             _id
         }
     }
@@ -50,6 +51,20 @@ const CreateTopicQuery = gql`
             _id
         }
     }
+`
+const UpdateTopicQuery = gql`
+mutation($topic: TopicInput!) {
+    updateTopic(topic: $topic) {
+        _id
+    }
+}
+`
+const DeleteTopicQuery = gql`
+mutation($_id: ID!) {
+    deleteTopic(_id: $_id) {
+        _id
+    }
+}
 `
 const UpdateTopicsDescriptionQuery = gql`
     mutation($topics: String) {
@@ -68,17 +83,13 @@ class TopicsComponent extends Component {
             topics: {loading, me, refetch},
             updateTopics,
             createTopic,
+            updateTopic,
+            deleteTopic,
             updateTopicsDescription,
         } = this.props
         const username = me && me.local && me.local.username
         const {topics: topicsDescription} = (me && me.profile) || {}
-        const topics = (me && me.topics && me.topics.map(({
-            title,
-            description,
-        }) => ({
-            title,
-            description,
-        }))) || []
+        const topics = (me && me.topics) || []
 
         return <div className="container">
             <AccountHeader route="topics"/>
@@ -147,21 +158,19 @@ class TopicsComponent extends Component {
                                             console.error(e)
                                         })
                                     }}
-                                    updateTopic={(key, topic) => {
-                                        topics[key] = topic;
-                                        return updateTopics({
+                                    updateTopic={(topic) => {
+                                        return updateTopic({
                                             variables: {
-                                                topics
+                                                topic,
                                             }
                                         }).then(() => {
                                             refetch();
                                         })
                                     }}
-                                    removeTopic={(key) => {
-                                        topics.splice(key, 1)
-                                        return updateTopics({
+                                    deleteTopic={(_id) => {
+                                        return deleteTopic({
                                             variables: {
-                                                topics
+                                                _id
                                             }
                                         }).then(() => {
                                             refetch();
@@ -229,20 +238,26 @@ const Topics = compose(
     graphql(CreateTopicQuery, {
         name: 'createTopic'
     }),
+    graphql(UpdateTopicQuery, {
+        name: 'updateTopic'
+    }),
+    graphql(DeleteTopicQuery, {
+        name: 'deleteTopic'
+    }),
     graphql(UpdateTopicsDescriptionQuery, {
         name: 'updateTopicsDescription'
     })
 )(TopicsComponent)
 
-const TopicsListComponent = ({topics, updateTopic, removeTopic}) => (
+const TopicsListComponent = ({topics, updateTopic, deleteTopic}) => (
     <ul>
-        {topics.map((topic, key) => (
+        {topics.map((topic, i) => (
             <Topic
-                key={key}
-                index={key}
+                key={topic._id}
+                index={i}
                 topic={topic}
-                update={topic => updateTopic(key, topic)}
-                remove={() => removeTopic(key)}
+                update={topic => updateTopic(topic)}
+                deleteTopic={() => deleteTopic(topic._id)}
             />
         ))}
     </ul>
@@ -257,7 +272,7 @@ class TopicComponent extends Component {
         this.state = {}
     }
     render() {
-        const {topic: {title, description}, update, remove} = this.props
+        const {topic: {_id, title, description}, update, deleteTopic} = this.props
         return <li style={{
             cursor: 'pointer',
             clear: 'both',
@@ -266,6 +281,7 @@ class TopicComponent extends Component {
                 <Form
                     onSubmit={() => {
                         const topic = {
+                            _id,
                             title: this.title.value,
                         }
                         update(topic)
@@ -306,7 +322,6 @@ class TopicComponent extends Component {
                             ref={ref => {
                                 this.title = ref
                             }}
-                            readOnly
                         />
                     </div>
                 </Form>
@@ -319,7 +334,7 @@ class TopicComponent extends Component {
                         <DeleteModal
                             title="Delete topic?"
                             message="A deleted topic can't be recovered."
-                            onDelete={remove}
+                            onDelete={deleteTopic}
                         />&nbsp;
                         <ShyButton
                             onClick={() => {
@@ -329,7 +344,7 @@ class TopicComponent extends Component {
                             }}
                         >✎</ShyButton>
                     </span>
-                    <span>{title}</span>
+                    <a href={`/topic/${_id}`}>{title}</a>
                 </span>
             }
         </li>

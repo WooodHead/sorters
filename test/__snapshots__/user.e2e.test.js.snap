@@ -3,38 +3,29 @@
 exports[`user displays 1`] = `
 "<div data-reactroot=\\"\\">
   <div>
-    <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+    <div style=\\"padding-top:50px;padding-bottom:20px\\">
       <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
         <div class=\\"container\\">
           <div class=\\"navbar-header\\">
             <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
-            <a class=\\"navbar-brand\\"
-              href=\\"/\\">Sorters Club</a>
+            <a class=\\"navbar-brand\\" href=\\"/\\">Sorters Club</a>
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\">
-                <a href=\\"/account\\">Dashboard</a>
-              </li>
-              <li class=\\"dropdownfalse\\">
-                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">
-                  Hello,
-                  test
-                  
-                  <!-- /react-text --><span class=\\"caret\\"></span></a>
+              <li class=\\"dropdownundefined\\">
+                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">Hello, test <span class=\\"caret\\"></span></a>
               </li>
             </ul>
           </div>
@@ -46,15 +37,12 @@ exports[`user displays 1`] = `
         <h1>Test User</h1>
         <div class=\\"row\\">
           <div class=\\"col-xs-6 col-sm-3 col-md-2\\">
-            <img alt=\\"Gravatar for undefined\\" style=\\"margin-bottom:1.5rem;width:100%;height:auto;margin-left:auto;margin-right:auto;display:block;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=200\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=400 2x\\"
+            <img alt=\\"Gravatar for undefined\\" style=\\"margin-bottom:1.5rem;width:100%;height:auto;margin-left:auto;margin-right:auto;display:block\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=200\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=400 2x\\"
               height=\\"200\\" width=\\"200\\" class=\\"react-gravatar\\">
           </div>
           <div class=\\"col-xs-12 col-sm-9 col-md-10\\">
             <p>
-              <a href=\\"/u/test\\">
-                /u/
-                test
-              </a>
+              <a href=\\"/u/test\\">/u/ test</a>
             </p>
             <div>
               <div class=\\"markdown\\">
@@ -67,111 +55,68 @@ exports[`user displays 1`] = `
           <li role=\\"presentation\\" class=\\"active\\">
             <a href=\\"/u/test\\">&#x26CF; Activity</a>
           </li>
-          <li role=\\"presentation\\" class=\\"false\\">
+          <li role=\\"presentation\\">
             <a href=\\"/u/test/profile\\">&#x1F464; Profile</a>
           </li>
-          <li role=\\"presentation\\" class=\\"false\\">
+          <li role=\\"presentation\\">
             <a href=\\"/u/test/goals\\">&#x25CE; Goals</a>
           </li>
-          <li role=\\"presentation\\" class=\\"false\\">
+          <li role=\\"presentation\\">
             <a href=\\"/u/test/journal\\">&#x270E; Journal</a>
           </li>
-          <li role=\\"presentation\\" class=\\"false\\">
+          <li role=\\"presentation\\">
             <a href=\\"/u/test/reads\\">&#x1F4D6; Books</a>
           </li>
-          <li role=\\"presentation\\" class=\\"false\\">
+          <li role=\\"presentation\\">
             <a href=\\"/u/test/topics\\">&#x1F4A1; Topics</a>
           </li>
-          <li role=\\"presentation\\" class=\\"false\\">
+          <li role=\\"presentation\\">
             <a href=\\"/u/test/essays\\">&#x270E; Essays</a>
           </li>
-          <li role=\\"presentation\\" class=\\"false\\">
+          <li role=\\"presentation\\">
             <a href=\\"/u/test/speeches\\">&#x1F444; Speeches</a>
           </li>
-          <li role=\\"presentation\\" class=\\"false\\">
+          <li role=\\"presentation\\">
             <a href=\\"/u/test/conversations\\">&#x1F5E9; Conversations</a>
           </li>
         </ul>
       </div>
       <h2>Activity</h2>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x1F4D6; Wants to read
-        <a href=\\"/u/test/reads\\">Read</a>
-        .
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x1F4D6; Wants to read
-        <a href=\\"/u/test/reads\\">Read - reading</a>
-        .
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x1F4D6; Wants to read
-        <a href=\\"/u/test/reads\\">Read - read</a>
-        .
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x25CE; Wants to achieve
-        <a href=\\"/u/test/goals\\">Goal</a>
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x25CE; Wants to achieve
-        <a href=\\"/u/test/goals\\">Goal - doing</a>
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x25CE; Wants to achieve
-        <a href=\\"/u/test/goals\\">Goal - done</a>
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x1F4D6; Updated
-        <a href=\\"/u/test/goals\\">goals description</a>
-        .
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x1F4D6; Updated
-        <a href=\\"/u/test/reads\\">reading list description</a>
-        .
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x1F464; Updated
-        <a href=\\"/u/test/profile\\">profile</a>
-        .
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x2714; Completed
-        <a href=\\"/u/test/profile\\">Past authoring</a>
-        .
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x2714; Completed
-        <a href=\\"/u/test/profile\\">Present virtues authoring</a>
-        .
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x2714; Completed
-        <a href=\\"/u/test/profile\\">Present faults authoring</a>
-        .
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x2714; Completed
-        <a href=\\"/u/test/profile\\">Future authoring</a>
-        .
-      </div>
-      <div style=\\"margin-bottom:1.5rem;\\">
-        &#x2714; Completed
-        <a href=\\"/u/test/profile\\">Understand myself</a>
-        .
-      </div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x1F4D6; Wants to read
+        <a href=\\"/read/<id>\\">Read - read</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x1F4D6; Wants to read
+        <a href=\\"/read/<id>\\">Read - reading</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x1F4D6; Wants to read
+        <a href=\\"/read/<id>\\">Read</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x25CE; Wants to achieve
+        <a href=\\"/goal/<id>\\">Goal - done</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x25CE; Wants to achieve
+        <a href=\\"/goal/<id>\\">Goal - doing</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x1F4D6; Updated
+        <a href=\\"/u/test/goals\\">goals description</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x25CE; Wants to achieve
+        <a href=\\"/goal/<id>\\">Goal</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x1F4D6; Updated
+        <a href=\\"/u/test/reads\\">reading list description</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x1F464; Updated
+        <a href=\\"/u/test/profile\\">profile</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x2714; Completed
+        <a href=\\"/u/test/profile\\">Past authoring</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x2714; Completed
+        <a href=\\"/u/test/profile\\">Present virtues authoring</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x2714; Completed
+        <a href=\\"/u/test/profile\\">Present faults authoring</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x2714; Completed
+        <a href=\\"/u/test/profile\\">Future authoring</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x2714; Completed
+        <a href=\\"/u/test/profile\\">Understand myself</a>.</div>
     </div>
     <footer>
       <div class=\\"container\\">
         <hr>
-        <p>
-          Brought to you with &#x2764; by
-          <a href=\\"/about\\">Nick Redmark</a>
-          . Support this platform on
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
-          .
-        </p>
+        <p>Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>. Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
       </div>
     </footer>
   </div>
@@ -181,38 +126,29 @@ exports[`user displays 1`] = `
 exports[`user displays goals 1`] = `
 "<div data-reactroot=\\"\\">
   <div>
-    <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+    <div style=\\"padding-top:50px;padding-bottom:20px\\">
       <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
         <div class=\\"container\\">
           <div class=\\"navbar-header\\">
             <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
-            <a class=\\"navbar-brand\\"
-              href=\\"/\\">Sorters Club</a>
+            <a class=\\"navbar-brand\\" href=\\"/\\">Sorters Club</a>
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\">
-                <a href=\\"/account\\">Dashboard</a>
-              </li>
-              <li class=\\"dropdownfalse\\">
-                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">
-                  Hello,
-                  test
-                  
-                  <!-- /react-text --><span class=\\"caret\\"></span></a>
+              <li class=\\"dropdownundefined\\">
+                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">Hello, test <span class=\\"caret\\"></span></a>
               </li>
             </ul>
           </div>
@@ -225,15 +161,12 @@ exports[`user displays goals 1`] = `
           <h1>Test User</h1>
           <div class=\\"row\\">
             <div class=\\"col-xs-6 col-sm-3 col-md-2\\">
-              <img alt=\\"Gravatar for undefined\\" style=\\"margin-bottom:1.5rem;width:100%;height:auto;margin-left:auto;margin-right:auto;display:block;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=200\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=400 2x\\"
+              <img alt=\\"Gravatar for undefined\\" style=\\"margin-bottom:1.5rem;width:100%;height:auto;margin-left:auto;margin-right:auto;display:block\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=200\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=400 2x\\"
                 height=\\"200\\" width=\\"200\\" class=\\"react-gravatar\\">
             </div>
             <div class=\\"col-xs-12 col-sm-9 col-md-10\\">
               <p>
-                <a href=\\"/u/test\\">
-                  /u/
-                  test
-                </a>
+                <a href=\\"/u/test\\">/u/ test</a>
               </p>
               <div>
                 <div class=\\"markdown\\">
@@ -243,31 +176,31 @@ exports[`user displays goals 1`] = `
             </div>
           </div>
           <ul class=\\"nav nav-tabs\\">
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test\\">&#x26CF; Activity</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/profile\\">&#x1F464; Profile</a>
             </li>
             <li role=\\"presentation\\" class=\\"active\\">
               <a href=\\"/u/test/goals\\">&#x25CE; Goals</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/journal\\">&#x270E; Journal</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/reads\\">&#x1F4D6; Books</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/topics\\">&#x1F4A1; Topics</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/essays\\">&#x270E; Essays</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/speeches\\">&#x1F444; Speeches</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/conversations\\">&#x1F5E9; Conversations</a>
             </li>
           </ul>
@@ -277,13 +210,16 @@ exports[`user displays goals 1`] = `
           <p>Test user goals</p>
         </div>
         <ul>
-          <li><span>Goal</span>
+          <li>
+            <a href=\\"/goal/<id>\\">Goal</a>
             <ul></ul>
           </li>
-          <li><span>Goal - doing</span><span> &#x26CF;</span>
+          <li>
+            <a href=\\"/goal/<id>\\">Goal - doing</a>
             <ul></ul>
           </li>
-          <li><span>Goal - done</span><span> &#x2714;</span>
+          <li>
+            <a href=\\"/goal/<id>\\">Goal - done</a>
             <ul></ul>
           </li>
         </ul>
@@ -292,13 +228,9 @@ exports[`user displays goals 1`] = `
     <footer>
       <div class=\\"container\\">
         <hr>
-        <p>
-          Brought to you with &#x2764; by
-          <a href=\\"/about\\">Nick Redmark</a>
-          . Support this platform on
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
-          .
-        </p>
+        <p>Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>. Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
       </div>
     </footer>
   </div>
@@ -308,38 +240,29 @@ exports[`user displays goals 1`] = `
 exports[`user displays journal 1`] = `
 "<div data-reactroot=\\"\\">
   <div>
-    <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+    <div style=\\"padding-top:50px;padding-bottom:20px\\">
       <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
         <div class=\\"container\\">
           <div class=\\"navbar-header\\">
             <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
-            <a class=\\"navbar-brand\\"
-              href=\\"/\\">Sorters Club</a>
+            <a class=\\"navbar-brand\\" href=\\"/\\">Sorters Club</a>
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\">
-                <a href=\\"/account\\">Dashboard</a>
-              </li>
-              <li class=\\"dropdownfalse\\">
-                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">
-                  Hello,
-                  test
-                  
-                  <!-- /react-text --><span class=\\"caret\\"></span></a>
+              <li class=\\"dropdownundefined\\">
+                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">Hello, test <span class=\\"caret\\"></span></a>
               </li>
             </ul>
           </div>
@@ -352,15 +275,12 @@ exports[`user displays journal 1`] = `
           <h1>Test User</h1>
           <div class=\\"row\\">
             <div class=\\"col-xs-6 col-sm-3 col-md-2\\">
-              <img alt=\\"Gravatar for undefined\\" style=\\"margin-bottom:1.5rem;width:100%;height:auto;margin-left:auto;margin-right:auto;display:block;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=200\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=400 2x\\"
+              <img alt=\\"Gravatar for undefined\\" style=\\"margin-bottom:1.5rem;width:100%;height:auto;margin-left:auto;margin-right:auto;display:block\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=200\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=400 2x\\"
                 height=\\"200\\" width=\\"200\\" class=\\"react-gravatar\\">
             </div>
             <div class=\\"col-xs-12 col-sm-9 col-md-10\\">
               <p>
-                <a href=\\"/u/test\\">
-                  /u/
-                  test
-                </a>
+                <a href=\\"/u/test\\">/u/ test</a>
               </p>
               <div>
                 <div class=\\"markdown\\">
@@ -370,48 +290,45 @@ exports[`user displays journal 1`] = `
             </div>
           </div>
           <ul class=\\"nav nav-tabs\\">
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test\\">&#x26CF; Activity</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/profile\\">&#x1F464; Profile</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/goals\\">&#x25CE; Goals</a>
             </li>
             <li role=\\"presentation\\" class=\\"active\\">
               <a href=\\"/u/test/journal\\">&#x270E; Journal</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/reads\\">&#x1F4D6; Books</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/topics\\">&#x1F4A1; Topics</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/essays\\">&#x270E; Essays</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/speeches\\">&#x1F444; Speeches</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/conversations\\">&#x1F5E9; Conversations</a>
             </li>
           </ul>
         </div>
         <h2>Journal</h2>
-        <div style=\\"margin-top:1.5rem;margin-bottom:1.5rem;\\">
+        <div style=\\"margin-top:1.5rem;margin-bottom:1.5rem\\">
           <h3>
             <a href=\\"http://www.example.com\\" target=\\"_blank\\">Hello World</a>
           </h3>
           <div class=\\"markdown\\">
             <p>Lorem ipsum</p>
           </div>
-          <div>
-            Goals:
-            <!-- /react-text --><span> <!-- /react-text --><em>Goal</em></span><span>, <!-- /react-text --><em>Goal - doing</em></span></div>
-          <a href=\\"/entry/<id>\\"
-           >Comments</a>
+          <div>Goals: <span> <a href=\\"/goal/<id>\\">Goal</a></span><span>, <a href=\\"/goal/<id>\\">Goal - doing</a></span><span>, <a href=\\"/goal/<id>\\">Goal - done</a></span></div>
+          <a href=\\"/entry/<id>\\">Comments</a>
           <hr>
         </div>
       </div>
@@ -419,13 +336,9 @@ exports[`user displays journal 1`] = `
     <footer>
       <div class=\\"container\\">
         <hr>
-        <p>
-          Brought to you with &#x2764; by
-          <a href=\\"/about\\">Nick Redmark</a>
-          . Support this platform on
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
-          .
-        </p>
+        <p>Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>. Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
       </div>
     </footer>
   </div>
@@ -435,38 +348,29 @@ exports[`user displays journal 1`] = `
 exports[`user displays profile 1`] = `
 "<div data-reactroot=\\"\\">
   <div>
-    <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+    <div style=\\"padding-top:50px;padding-bottom:20px\\">
       <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
         <div class=\\"container\\">
           <div class=\\"navbar-header\\">
             <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
-            <a class=\\"navbar-brand\\"
-              href=\\"/\\">Sorters Club</a>
+            <a class=\\"navbar-brand\\" href=\\"/\\">Sorters Club</a>
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\">
-                <a href=\\"/account\\">Dashboard</a>
-              </li>
-              <li class=\\"dropdownfalse\\">
-                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">
-                  Hello,
-                  test
-                  
-                  <!-- /react-text --><span class=\\"caret\\"></span></a>
+              <li class=\\"dropdownundefined\\">
+                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">Hello, test <span class=\\"caret\\"></span></a>
               </li>
             </ul>
           </div>
@@ -479,15 +383,12 @@ exports[`user displays profile 1`] = `
           <h1>Test User</h1>
           <div class=\\"row\\">
             <div class=\\"col-xs-6 col-sm-3 col-md-2\\">
-              <img alt=\\"Gravatar for undefined\\" style=\\"margin-bottom:1.5rem;width:100%;height:auto;margin-left:auto;margin-right:auto;display:block;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=200\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=400 2x\\"
+              <img alt=\\"Gravatar for undefined\\" style=\\"margin-bottom:1.5rem;width:100%;height:auto;margin-left:auto;margin-right:auto;display:block\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=200\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=400 2x\\"
                 height=\\"200\\" width=\\"200\\" class=\\"react-gravatar\\">
             </div>
             <div class=\\"col-xs-12 col-sm-9 col-md-10\\">
               <p>
-                <a href=\\"/u/test\\">
-                  /u/
-                  test
-                </a>
+                <a href=\\"/u/test\\">/u/ test</a>
               </p>
               <div>
                 <div class=\\"markdown\\">
@@ -497,82 +398,71 @@ exports[`user displays profile 1`] = `
             </div>
           </div>
           <ul class=\\"nav nav-tabs\\">
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test\\">&#x26CF; Activity</a>
             </li>
             <li role=\\"presentation\\" class=\\"active\\">
               <a href=\\"/u/test/profile\\">&#x1F464; Profile</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/goals\\">&#x25CE; Goals</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/journal\\">&#x270E; Journal</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/reads\\">&#x1F4D6; Books</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/topics\\">&#x1F4A1; Topics</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/essays\\">&#x270E; Essays</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/speeches\\">&#x1F444; Speeches</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/conversations\\">&#x1F5E9; Conversations</a>
             </li>
           </ul>
         </div>
         <h2>Summary</h2>
         <ul>
-          <li>
-            &#x25CE;
-            3
-            
+          <li>&#x25CE; 3 
             <a href=\\"/u/test/goals\\">goals</a>
           </li>
-          <li>
-            &#x1F4D6;
-            3
-            
+          <li>&#x1F4D6; 3 
             <a href=\\"/u/test/reads\\">books in reading list</a>
           </li>
           <li>A man</li>
-          <li>
-            City:
-            Zurich
-            ,
-            Switzerland
-          </li>
+          <li>City: Zurich , Switzerland</li>
         </ul>
         <div>
           <h2>Links</h2>
           <ul>
             <li>
-              <label style=\\"width:100px;margin-right:1.5rem;\\">Website</label>
+              <label style=\\"width:100px;margin-right:1.5rem\\">Website</label>
               <a href=\\"http://website\\">http://website</a>
             </li>
             <li>
-              <label style=\\"width:100px;margin-right:1.5rem;\\">Blog</label>
+              <label style=\\"width:100px;margin-right:1.5rem\\">Blog</label>
               <a href=\\"http://blog\\">http://blog</a>
             </li>
             <li>
-              <label style=\\"width:100px;margin-right:1.5rem;\\">Youtube</label>
+              <label style=\\"width:100px;margin-right:1.5rem\\">Youtube</label>
               <a href=\\"http://youtube\\">http://youtube</a>
             </li>
             <li>
-              <label style=\\"width:100px;margin-right:1.5rem;\\">Twitter</label>
+              <label style=\\"width:100px;margin-right:1.5rem\\">Twitter</label>
               <a href=\\"http://twitter\\">http://twitter</a>
             </li>
             <li>
-              <label style=\\"width:100px;margin-right:1.5rem;\\">Reddit</label>
+              <label style=\\"width:100px;margin-right:1.5rem\\">Reddit</label>
               <a href=\\"http://reddit\\">http://reddit</a>
             </li>
             <li>
-              <label style=\\"width:100px;margin-right:1.5rem;\\">Patreon</label>
+              <label style=\\"width:100px;margin-right:1.5rem\\">Patreon</label>
               <a href=\\"http://patreon\\">http://patreon</a>
             </li>
           </ul>
@@ -586,99 +476,44 @@ exports[`user displays profile 1`] = `
         <div>
           <h2>Self Authoring suite</h2>
           <ul>
-            <li>
-              Completed
-              Past authoring
-            </li>
-            <li>
-              Completed
-              Present faults authoring
-            </li>
-            <li>
-              Completed
-              Present virtues authoring
-            </li>
-            <li>
-              Completed
-              Future authoring
-            </li>
+            <li>Completed Past authoring</li>
+            <li>Completed Present faults authoring</li>
+            <li>Completed Present virtues authoring</li>
+            <li>Completed Future authoring</li>
           </ul>
         </div>
         <div>
           <h2>Big 5</h2>
           <ul>
-            <li>
-              Completed
-              Understand myself
-            </li>
-            <li>
-              Agreeableness:
-              50
+            <li>Completed Understand myself</li>
+            <li>Agreeableness: 50
               <ul>
-                <li>
-                  Compassion:
-                  50
-                </li>
-                <li>
-                  Politeness:
-                  50
-                </li>
+                <li>Compassion: 50</li>
+                <li>Politeness: 50</li>
               </ul>
             </li>
-            <li>
-              Conscientiousness:
-              50
+            <li>Conscientiousness: 50
               <ul>
-                <li>
-                  Industriousness:
-                  50
-                </li>
-                <li>
-                  Orderliness:
-                  50
-                </li>
+                <li>Industriousness: 50</li>
+                <li>Orderliness: 50</li>
               </ul>
             </li>
-            <li>
-              Extraversion:
-              50
+            <li>Extraversion: 50
               <ul>
-                <li>
-                  Enthusiasm:
-                  50
-                </li>
-                <li>
-                  Orderliness:
-                  50
-                </li>
+                <li>Enthusiasm: 50</li>
+                <li>Orderliness: 50</li>
               </ul>
             </li>
-            <li>
-              Neuroticism:
-              50
+            <li>Neuroticism: 50
               <ul>
-                <li>
-                  Withdrawal:
-                  50
-                </li>
-                <li>
-                  Volatility:
-                  50
-                </li>
+                <li>Withdrawal: 50</li>
+                <li>Volatility: 50</li>
               </ul>
             </li>
-            <li>
-              Openness to experience:
-              50
+            <li>Openness to experience: 50
               <ul>
-                <li>
-                  Intellect:
-                  50
-                </li>
-                <li>
-                  Openness:
-                  50
-                </li>
+                <li>Intellect: 50</li>
+                <li>Openness: 50</li>
               </ul>
             </li>
           </ul>
@@ -688,13 +523,9 @@ exports[`user displays profile 1`] = `
     <footer>
       <div class=\\"container\\">
         <hr>
-        <p>
-          Brought to you with &#x2764; by
-          <a href=\\"/about\\">Nick Redmark</a>
-          . Support this platform on
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
-          .
-        </p>
+        <p>Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>. Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
       </div>
     </footer>
   </div>
@@ -704,38 +535,29 @@ exports[`user displays profile 1`] = `
 exports[`user displays reads 1`] = `
 "<div data-reactroot=\\"\\">
   <div>
-    <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+    <div style=\\"padding-top:50px;padding-bottom:20px\\">
       <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
         <div class=\\"container\\">
           <div class=\\"navbar-header\\">
             <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
-            <a class=\\"navbar-brand\\"
-              href=\\"/\\">Sorters Club</a>
+            <a class=\\"navbar-brand\\" href=\\"/\\">Sorters Club</a>
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\">
-                <a href=\\"/account\\">Dashboard</a>
-              </li>
-              <li class=\\"dropdownfalse\\">
-                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">
-                  Hello,
-                  test
-                  
-                  <!-- /react-text --><span class=\\"caret\\"></span></a>
+              <li class=\\"dropdownundefined\\">
+                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">Hello, test <span class=\\"caret\\"></span></a>
               </li>
             </ul>
           </div>
@@ -748,15 +570,12 @@ exports[`user displays reads 1`] = `
           <h1>Test User</h1>
           <div class=\\"row\\">
             <div class=\\"col-xs-6 col-sm-3 col-md-2\\">
-              <img alt=\\"Gravatar for undefined\\" style=\\"margin-bottom:1.5rem;width:100%;height:auto;margin-left:auto;margin-right:auto;display:block;\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=200\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=400 2x\\"
+              <img alt=\\"Gravatar for undefined\\" style=\\"margin-bottom:1.5rem;width:100%;height:auto;margin-left:auto;margin-right:auto;display:block\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=200\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=400 2x\\"
                 height=\\"200\\" width=\\"200\\" class=\\"react-gravatar\\">
             </div>
             <div class=\\"col-xs-12 col-sm-9 col-md-10\\">
               <p>
-                <a href=\\"/u/test\\">
-                  /u/
-                  test
-                </a>
+                <a href=\\"/u/test\\">/u/ test</a>
               </p>
               <div>
                 <div class=\\"markdown\\">
@@ -766,31 +585,31 @@ exports[`user displays reads 1`] = `
             </div>
           </div>
           <ul class=\\"nav nav-tabs\\">
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test\\">&#x26CF; Activity</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/profile\\">&#x1F464; Profile</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/goals\\">&#x25CE; Goals</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/journal\\">&#x270E; Journal</a>
             </li>
             <li role=\\"presentation\\" class=\\"active\\">
               <a href=\\"/u/test/reads\\">&#x1F4D6; Books</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/topics\\">&#x1F4A1; Topics</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/essays\\">&#x270E; Essays</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/speeches\\">&#x1F444; Speeches</a>
             </li>
-            <li role=\\"presentation\\" class=\\"false\\">
+            <li role=\\"presentation\\">
               <a href=\\"/u/test/conversations\\">&#x1F5E9; Conversations</a>
             </li>
           </ul>
@@ -800,13 +619,16 @@ exports[`user displays reads 1`] = `
           <p>Test user reading</p>
         </div>
         <ul>
-          <li><span>Read</span>
+          <li>
+            <a href=\\"/read/<id>\\">Read</a>
             <ul></ul>
           </li>
-          <li><span>Read - reading</span><span>&#xA0;&#x1F441;</span>
+          <li>
+            <a href=\\"/read/<id>\\">Read - reading</a>
             <ul></ul>
           </li>
-          <li><span>Read - read</span><span>&#xA0;&#x2714;</span>
+          <li>
+            <a href=\\"/read/<id>\\">Read - read</a>
             <ul></ul>
           </li>
         </ul>
@@ -815,13 +637,9 @@ exports[`user displays reads 1`] = `
     <footer>
       <div class=\\"container\\">
         <hr>
-        <p>
-          Brought to you with &#x2764; by
-          <a href=\\"/about\\">Nick Redmark</a>
-          . Support this platform on
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
-          .
-        </p>
+        <p>Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>. Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
       </div>
     </footer>
   </div>

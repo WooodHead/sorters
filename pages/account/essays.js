@@ -11,9 +11,10 @@ import Markdown from '../../components/markdown'
 import {errorMessage} from '../../utils/errors'
 import ShyButton from '../../components/shy-button'
 import DeleteModal from '../../components/delete-modal'
-import CheckButtons from '../../components/check-buttons'
+import EntityCheckButtons from '../../components/entity-check-buttons'
 import Panel from '../../components/panel'
 import AccountHeader from '../../components/account-header'
+import Related from '../../components/related-entities'
 
 export default withPage(() => (
     <Layout title="Essays" page="essays">
@@ -32,13 +33,23 @@ const EssaysQuery = gql`
                 title
                 url
                 content
-                topicTitles
-                readTitles
+                topicIds
+                topics {
+                    _id
+                    title
+                }
+                readIds
+                reads {
+                    _id
+                    title
+                }
             }
             topics {
+                _id
                 title
             }
             reads {
+                _id
                 title
             }
         }
@@ -70,6 +81,7 @@ class EssaysComponent extends Component {
         super()
         this.state = {}
     }
+
     render() {
         const {
             essays: {loading, me, refetch},
@@ -79,36 +91,7 @@ class EssaysComponent extends Component {
         } = this.props
 
         const username = me && me.local && me.local.username
-        const essays = (me && me.essays && me.essays.map(({
-            _id,
-            title,
-            url,
-            content,
-            readTitles,
-            topicTitles,
-        }) => ({
-            _id,
-            title,
-            url,
-            content,
-            topicTitles,
-            readTitles,
-        }))) || []
-        const topicTitles = (me && me.topics && me.topics.map(topic => topic.title)) || []
-        const readTitles = (me && me.reads && me.reads.map(read => read.title)) || []
-        
-        const topics = {}
-        for (const title of topicTitles) {
-            topics[title] = {
-                label: title
-            }
-        }
-        const reads = {}
-        for (const title of readTitles) {
-            reads[title] = {
-                label: title
-            }
-        }
+        const essays = (me && me.essays) || []
 
         return <div className="container">
             <AccountHeader route="essays"/>
@@ -131,14 +114,14 @@ class EssaysComponent extends Component {
                         >
                             <Form
                                 onSubmit={() => {
-                                    const topicTitles = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
-                                    const readTitles = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
+                                    const topicIds = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
+                                    const readIds = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
                                     const essay = {
                                         title: this.title.value,
                                         url: this.url.value,
                                         content: this.content.value,
-                                        topicTitles,
-                                        readTitles,
+                                        topicIds,
+                                        readIds,
                                     }
                                     createEssay({
                                         variables: {
@@ -203,17 +186,17 @@ class EssaysComponent extends Component {
                                         ref={ref => this.content = ref}
                                     />
                                 </div>
-                                <CheckButtons
+                                <EntityCheckButtons
                                     label="Topics"
                                     id="topics"
-                                    values={topics}
-                                    ref={ref => this.topics = ref}
+                                    entities={me.topics}
+                                    checksRef={ref => this.topics = ref}
                                 />
-                                <CheckButtons
+                                <EntityCheckButtons
                                     label="Books"
                                     id="reads"
-                                    values={reads}
-                                    ref={ref => this.reads = ref}
+                                    entities={me.reads}
+                                    checksRef={ref => this.reads = ref}
                                 />
                             </Form>
                         </Panel>
@@ -231,8 +214,8 @@ class EssaysComponent extends Component {
                                 <Essay
                                     key={essay._id}
                                     essay={essay}
-                                    topicTitles={topicTitles}
-                                    readTitles={readTitles}
+                                    topics={me.topics}
+                                    reads={me.reads}
                                     onUpdate={(essay) => {
                                         return updateEssay({
                                             variables: {
@@ -267,9 +250,12 @@ const Essays = compose(
     graphql(CreateEssayQuery, {
         name: 'createEssay',
     }),
+    graphql(UpdateEssayQuery, {
+        name: 'updateEssay',
+    }),
     graphql(DeleteEssayQuery, {
         name: 'deleteEssay',
-    }),
+    }),    
 )(EssaysComponent)
 
 class Essay extends Component {
@@ -284,30 +270,16 @@ class Essay extends Component {
                 title,
                 url,
                 content,
-                topicTitles: essayTopicTitles,
-                readTitles: essayReadTitles,
+                topicIds,
+                topics: essayTopics,
+                readIds,
+                reads: essayReads,
             },
-            topicTitles,
-            readTitles,
+            topics,
+            reads,
             onUpdate,
             onDelete
         } = this.props
-
-        const topics = {}
-        for (const title of topicTitles) {
-            topics[title] = {
-                label: title,
-                default: essayTopicTitles.indexOf(title) > -1,
-            }
-        }
-        const reads = {}
-        for (const title of readTitles) {
-            reads[title] = {
-                label: title,
-                default: essayReadTitles.indexOf(title) > -1,
-            }
-        }
-            
 
         return <div style={{
             marginBottom: '1.5rem'
@@ -322,15 +294,15 @@ class Essay extends Component {
                 >
                     <Form
                         onSubmit={() => {
-                            const topicTitles = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
-                            const readTitles = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
+                            const topicIds = Object.values(this.topics.checks).filter(t => t.checked).map(t => t.value)
+                            const readIds = Object.values(this.reads.checks).filter(r => r.checked).map(r => r.value)
                             const essay = {
                                 _id,
                                 title: this.title.value,
                                 url: this.url.value,
                                 content: this.content.value,
-                                topicTitles,
-                                readTitles,
+                                topicIds,
+                                readIds,
                             }
                             onUpdate(essay)
                                 .then(() => {
@@ -381,17 +353,19 @@ class Essay extends Component {
                                 defaultValue={content}
                             />
                         </div>
-                        <CheckButtons
+                        <EntityCheckButtons
                             label="Topics"
                             id="topics"
-                            values={topics}
-                            ref={ref => this.topics = ref}
+                            entities={topics}
+                            defaultEntityIds={topicIds}
+                            checksRef={ref => this.topics = ref}
                         />
-                        <CheckButtons
+                        <EntityCheckButtons
                             label="Reads"
                             id="reads"
-                            values={reads}
-                            ref={ref => this.reads = ref}
+                            entities={reads}
+                            defaultEntityIds={readIds}
+                            checksRef={ref => this.reads = ref}
                         />
                     </Form>
                 </Panel>
@@ -420,26 +394,14 @@ class Essay extends Component {
                         {url ?
                             <a href={url} target="_blank">{title}</a>
                         :
-                            title
+                            <a href={`/essay/${_id}`}>{title}</a>
                         }
                     </h4>
                     {content &&
                         <Markdown content={content}/>
                     }
-                    {essayTopicTitles.length > 0 &&
-                        <div>
-                            Topics: {essayTopicTitles.map((topic, i) => (
-                                <span key={i}>{i ? ', ' : ' '}{topic}</span>
-                            ))}
-                        </div>
-                    }
-                    {essayReadTitles.length > 0 &&
-                        <div>
-                            Books: {essayReadTitles.map((read, i) => (
-                                <span key={i}>{i ? ', ' : ' '}{read}</span>
-                            ))}
-                        </div>
-                    }
+                    <Related entities={essayTopics} label="Topics:" type="topic"/>
+                    <Related entities={essayReads} label="Books:" type="read"/>
                     <a href={`/essay/${_id}`}>Comments</a>
                     <hr/>
                 </div>

@@ -61,21 +61,21 @@ const UserQuery = gql`
                 type
                 date
                 ... on UpdatedRead {
-                    title
                     read {
+                        _id
                         title
                         read
                     }
                 }
                 ... on UpdatedGoal {
-                    title
                     goal {
+                        _id
                         title
                     }
                 }
                 ... on UpdatedTopic {
-                    title
                     topic {
+                        _id
                         title
                     }
                 }
@@ -192,80 +192,68 @@ const Event = ({event, username}) => {
                 📖 Updated <a href={`/u/${username}/reads`}>reading list description</a>.
             </Block>
         case 'created-read':
-            return <Block>
-                📖 Wants to read <a href={`/u/${username}/reads`}>{event.title}</a>.
+            return event.read && <Block>
+                📖 Wants to read <a href={`/read/${event.read._id}`}>{event.read.title}</a>.
             </Block>
         case 'reading-read':
-            return <Block>
-                👁 Started reading <a href={`/u/${username}/reads`}>{event.title}</a>.
+            return event.read && <Block>
+                👁 Started reading <a href={`/read/${event.read._id}`}>{event.read.title}</a>.
             </Block>
         case 'read-read':
-            return <Block>
-                ✔ Finished reading <a href={`/u/${username}/reads`}>{event.title}</a>.
+            return event.read && <Block>
+                ✔ Finished reading <a href={`/read/${event.read._id}`}>{event.read.title}</a>.
             </Block>
         case 'updated-goals':
             return <Block>
                 📖 Updated <a href={`/u/${username}/goals`}>goals description</a>.
             </Block>
         case 'created-goal':
-            return <Block>
-                ◎ Wants to achieve <a href={`/u/${username}/goals`}>{event.title}</a>
+            return event.goal && <Block>
+                ◎ Wants to achieve <a href={`/goal/${event.goal._id}`}>{event.goal.title}</a>.
             </Block>
         case 'doing-goal':
-            return <Block>
-               ⛏ Started working on <a href={`/u/${username}/goals`}>{event.title}</a>
+            return event.goal && <Block>
+               ⛏ Started working on <a href={`/goal/${event.goal._id}`}>{event.goal.title}</a>.
             </Block>
         case 'done-goal':
-            return <Block>
-               ✔ Achieved <a href={`/u/${username}/goals`}>{event.title}</a>
+            return event.goal && <Block>
+               ✔ Achieved <a href={`/goal/${event.goal._id}`}>{event.goal.title}</a>.
             </Block>
         case 'updated-topics':
             return <Block>
                 💡 Updated <a href={`/u/${username}/topics`}>topics description</a>.
             </Block>
         case 'created-topic':
-            return <Block>
-                ✎ Created topic <a href={`/u/${username}/topics`}>{event.title}</a>
+            return event.topic && <Block>
+                ✎ Created topic <a href={`/topic/${event.topic._id}`}>{event.topic.title}</a>.
             </Block>
         case 'created-entry':
-            if (!event.entry) {
-                return null
-            }
-            return <Block>
-               ✎ Added a journal entry <a href={`/u/${username}/journal`}>{event.entry.title}</a>
+            return event.entry && <Block>
+               ✎ Added a journal entry <a href={`/entry/${event.entry._id}`}>{event.entry.title}</a>.
             </Block>
         case 'updated-entry':
             return null
         case 'deleted-entry':
             return null
         case 'created-essay':
-            if (!event.essay) {
-                return null
-            }
-            return <Block>
-               ✎ Wrote an essay <a href={`/u/${username}/essays`}>{event.essay.title}</a>
+            return event.essay && <Block>
+               ✎ Wrote an essay <a href={`/essay/${event.essay._id}`}>{event.essay.title}</a>.
             </Block>
         case 'updated-essay':
             return null
         case 'deleted-essay':
             return null
         case 'created-speech':
-            if (!event.speech) {
-                return null
-            }
-            return <Block>
-               👄 Spoke about <a href={`/u/${username}/speeches`}>{event.speech.title}</a>
+            return event.speech && <Block>
+               👄 Spoke about <a href={`/speech/${event.speech._id}`}>{event.speech.title}</a>.
             </Block>
         case 'updated-speech':
             return null
         case 'deleted-speech':
             return null
         case 'created-conversation':
-            if (!event.conversation) {
-                return null
-            }
-            return <Block>
-               🗩 Started a conversation about <a href={`/u/${username}/conversation`}>{event.conversation.title}</a>
+            return event.conversation && <Block>
+               🗩 Started a conversation about <a href={`/conversation/${event.conversation._id}`}>{event.conversation.title}</a>
             </Block>
         case 'updated-conversation':
             return null

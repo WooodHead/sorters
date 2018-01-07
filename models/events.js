@@ -1,5 +1,9 @@
 
 const IGNORED_EVENTS = [
+    'deleted-goal',
+    'deleted-read',
+    'updated-topic',
+    'deleted-topic',
     'updated-entry',
     'deleted-entry',
     'updated-essay',

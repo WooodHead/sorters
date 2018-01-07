@@ -3,36 +3,31 @@
 exports[`about displays 1`] = `
 "<div data-reactroot=\\"\\">
   <div>
-    <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+    <div style=\\"padding-top:50px;padding-bottom:20px\\">
       <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
         <div class=\\"container\\">
           <div class=\\"navbar-header\\">
             <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
-            <a class=\\"navbar-brand\\"
-              href=\\"/\\">Sorters Club</a>
+            <a class=\\"navbar-brand\\" href=\\"/\\">Sorters Club</a>
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/\\">Home</a>
               </li>
               <li class=\\"active\\">
                 <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"false\\">
-                <a href=\\"/account\\">Dashboard</a>
-              </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/login\\">Log in</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/register\\">Register</a>
               </li>
             </ul>
@@ -43,51 +38,39 @@ exports[`about displays 1`] = `
     <div class=\\"container\\">
       <h2>About Sorters Club</h2>
       <p>This is a Jordan Peterson fan site, and a resource for people who want to follow his advice.</p>
-      <p>
-        It is based mainly on Peterson&apos;s
-        <a href=\\"https://www.youtube.com/watch?v=XbOeO_frzvg\\">Message to Millennials</a>
-        :
-      </p>
-      <div style=\\"max-width:100%;width:480px;margin-bottom:1.5rem;\\">
-        <div style=\\"position:relative;height:0;overflow:hidden;max-width:100%;padding-bottom:56.25%;\\">
-          <iframe frameborder=\\"0\\" src=\\"https://www.youtube.com/embed/XbOeO_frzvg\\" style=\\"position:absolute;top:0;left:0;width:100%;height:100%;\\"></iframe>
+      <p>It is based mainly on Peterson&apos;s
+        <a href=\\"https://www.youtube.com/watch?v=XbOeO_frzvg\\">Message to Millennials</a>:</p>
+      <div style=\\"max-width:100%;width:480px;margin-bottom:1.5rem\\">
+        <div style=\\"position:relative;height:0;overflow:hidden;max-width:100%;padding-bottom:56.25%\\">
+          <iframe frameborder=\\"0\\" src=\\"https://www.youtube.com/embed/XbOeO_frzvg\\" style=\\"position:absolute;top:0;left:0;width:100%;height:100%\\"></iframe>
         </div>
       </div>
-      <p>
-        Check out the profiles of other
-        <a href=\\"/users\\">sorters</a>
-        do to get an idea of what you can do on this platform.
-      </p>
-      <p>
-        Support this platform on
-        <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
-        .
-      </p>
+      <p>Also, this:</p>
+      <div style=\\"max-width:100%;width:480px;margin-bottom:1.5rem\\">
+        <div style=\\"position:relative;height:0;overflow:hidden;max-width:100%;padding-bottom:56.25%\\">
+          <iframe frameborder=\\"0\\" src=\\"https://www.youtube.com/embed/cGkQil14LPQ\\" style=\\"position:absolute;top:0;left:0;width:100%;height:100%\\"></iframe>
+        </div>
+      </div>
+      <p>Check out the profiles of other
+        <a href=\\"/users\\">sorters</a> do to get an idea of what you can do on this platform.</p>
+      <p>Support this platform on
+        <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
       <p>For now you can become a member only by becoming a patron. It&apos;s the easiest way to avoid spam and to get good quality users and content on the platform.</p>
       <h2>About Nick Redmark</h2>
-      <p>
-        Hi, I&apos;m Nick Redmark, I&apos;m the developer of this platform. I created it mainly for myself, to document my progress as I try to &quot;sort myself out&quot; and &quot;rescue my father from the underworld&quot;. Check out more things I do
+      <p>Hi, I&apos;m Nick Redmark, I&apos;m the developer of this platform. I created it mainly for myself, to document my progress as I try to &quot;sort myself out&quot; and &quot;rescue my father from the underworld&quot;. Check out more things I do
         on my
-        <a href=\\"http://nickredmark.com\\" target=\\"_blank\\">personal site</a>
-        .
-      </p>
+        <a href=\\"http://nickredmark.com\\" target=\\"_blank\\">personal site</a>.</p>
       <p>
-        <b>Note for Prof. Peterson:</b>
-        If you happen to end up on this site, I&apos;d like to express my gratitude for what you are doing, and let you know that I&apos;d be delighted to collaborate with you on any project you might have to help people sort themselves out in a more
-        systematic way. In particular I find your project of building an online university for the humanities deeply inspiring.
-      </p>
-      <img src=\\"/static/nickredmark.jpg\\" style=\\"max-width:100%;width:200px;\\">
+        <b>Note for Prof. Peterson:</b> If you happen to end up on this site, I&apos;d like to express my gratitude for what you are doing, and let you know that I&apos;d be delighted to collaborate with you on any project you might have to help people sort
+        themselves out in a more systematic way. In particular I find your project of building an online university for the humanities deeply inspiring.</p>
+      <img src=\\"/static/nickredmark.jpg\\" style=\\"max-width:100%;width:200px\\">
     </div>
     <footer>
       <div class=\\"container\\">
         <hr>
-        <p>
-          Brought to you with &#x2764; by
-          <a href=\\"/about\\">Nick Redmark</a>
-          . Support this platform on
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
-          .
-        </p>
+        <p>Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>. Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
       </div>
     </footer>
   </div>

@@ -30,9 +30,18 @@ const UserConversationsQuery = gql`
                 _id
                 title
                 content
-                topicTitles
-                readTitles
-                goalTitles
+                topics {
+                    _id
+                    title
+                }
+                reads {
+                    _id
+                    title
+                }
+                goals {
+                    _id
+                    title
+                }
             }
         }
     }
@@ -81,35 +90,37 @@ const UserConversations = compose(
     })
 )(UserConversationsComponent)
 
-const Conversation = ({conversation: {_id, url, title, content, topicTitles, readTitles, goalTitles}}) => (
+const Conversation = ({conversation: {_id, url, title, content, topics, reads, goals}}) => (
     <div style={{
         marginTop: '1.5rem',
         marginBottom: '1.5rem',
     }}>
         <h3>
-            {title}
+            <a href={`/conversation/${_id}`}>
+                {title}
+            </a>
         </h3>
         {content &&
             <Markdown content={content}/>
         }
-        {topicTitles.length > 0 &&
+        {topics.length > 0 &&
             <div>
-                Topics: {topicTitles.map((topic, i) => (
-                    <span key={i}>{i ? ', ' : ' '}<em>{topic}</em></span>
+                Topics: {topics.map(({_id, title}, i) => (
+                    <span key={i}>{i ? ', ' : ' '}<a href={`/topic/${_id}`}>{title}</a></span>
                 ))}
             </div>
         }
-        {readTitles.length > 0 &&
+        {reads.length > 0 &&
             <div>
-                Books: {readTitles.map((read, i) => (
-                    <span key={i}>{i ? ', ' : ' '}<em>{read}</em></span>
+                Books: {reads.map(({_id, title}, i) => (
+                    <span key={i}>{i ? ', ' : ' '}<a href={`/read/${_id}`}>{title}</a></span>
                 ))}
             </div>
         }
-        {goalTitles.length > 0 &&
+        {goals.length > 0 &&
             <div>
-                Goals: {goalTitles.map((goal, i) => (
-                    <span key={i}>{i ? ', ' : ' '}<em>{goal}</em></span>
+                Goals: {goals.map(({_id, title}, i) => (
+                    <span key={i}>{i ? ', ' : ' '}<a href={`/goal${_id}`}>{title}</a></span>
                 ))}
             </div>
         }

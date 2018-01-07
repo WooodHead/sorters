@@ -6,6 +6,8 @@ import {compose} from 'recompose'
 import Markdown from '../components/markdown'
 import Comments from '../components/comments'
 import Author from '../components/author'
+import UserHeader from '../components/user-header'
+import Related from '../components/related-entities'
 
 export default withPage(({url: {query: {essayId}}}) => (
     <Essay essayId={essayId}/>
@@ -19,6 +21,7 @@ const EssayQuery = gql`
                 emailHash
                 profile {
                     name
+                    about
                 }
                 local {
                     username
@@ -27,8 +30,14 @@ const EssayQuery = gql`
             title
             url
             content
-            topicTitles
-            readTitles
+            topics {
+                _id
+                title
+            }
+            reads {
+                _id
+                title
+            }
             comments {
                 _id
                 user {
@@ -73,10 +82,15 @@ const EssayComponent = (props) => {
         </Layout>
     }
 
-    const {_id, title, url, content, readTitles, topicTitles, comments, user} = essay
+    const {_id, title, url, content, reads, topics, comments, user} = essay
+    const username = user.local.username
+    const profile = user.profile || {}
+    const {about, name} = profile
+    const emailHash = user.emailHash
 
     return <Layout title={title} page="user">
         <div className="container">
+            <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="essays" />
             <h1>
                 {url ?
                     <a href={url} target="_blank">{title}</a>
@@ -84,24 +98,11 @@ const EssayComponent = (props) => {
                     title
                 }
             </h1>
-            <Author user={user}/>
             {content &&
                 <Markdown content={content}/>
             }
-            {readTitles.length > 0 &&
-                <div>
-                    Books: {readTitles.map((read, i) => (
-                        <span key={i}>{i ? ', ' : ' '}<em>{read}</em></span>
-                    ))}
-                </div>
-            }
-            {topicTitles.length > 0 &&
-                <div>
-                    Topics: {topicTitles.map((topic, i) => (
-                        <span key={i}>{i ? ', ' : ' '}<em>{topic}</em></span>
-                    ))}
-                </div>
-            }
+            <Related entities={topics} label="Topics:" type="topic"/>
+            <Related entities={reads} label="Books:" type="read"/>
             <Comments comments={comments} entityType="essay" entityId={_id} onNewComment={refetch} onChangeComment={refetch} onDeleteComment={refetch}/>
         </div>
     </Layout>

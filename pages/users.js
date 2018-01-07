@@ -28,16 +28,6 @@ const UsersQuery = gql`
                 name
                 about
             }
-            goals {
-                title
-                doing
-                done
-            }
-            reads {
-                title
-                reading
-                read
-            }
         }
     }
 `
@@ -81,18 +71,6 @@ const UsersComponent = ({data: {loading, users}}) => (
                         <div>
                             <Markdown content={`${teaser}${cut ? ` [more](/u/${username})` : ''}`}/>
                         </div>
-                        {readsCount > 0 &&
-                            <div>
-                                📖 {readsCount} <a href={`/u/${username}/reads`}>books</a>
-                                {currentlyReading && <span>, reading <em>{currentlyReading.title}</em></span>}
-                            </div>
-                        }
-                        {goalsCount > 0 &&
-                            <div>
-                                ◎ {goalsCount} <a href={`/u/${username}/goals`}>goals</a>
-                                {currentGoal && <span>, working on <em>{currentGoal.title}</em></span>}
-                            </div>
-                        }
                     </div>
                 </div>
             })}

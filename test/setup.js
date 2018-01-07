@@ -4,7 +4,8 @@ import phantom from 'phantom'
 
 export const setup = async () => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000
-    const db = await MongoClient.connect('mongodb://localhost:27017/sorters_test')
+    const client = await MongoClient.connect('mongodb://localhost:27017/sorters_test')
+    const db = client.db('sorters_test')
     
     const browser = await phantom.create([], { logLevel: 'error' })
     

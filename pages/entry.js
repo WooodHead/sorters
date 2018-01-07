@@ -5,6 +5,7 @@ import gql from 'graphql-tag'
 import {compose} from 'recompose'
 import Markdown from '../components/markdown'
 import Comments from '../components/comments'
+import UserHeader from '../components/user-header'
 import Author from '../components/author'
 
 export default withPage(({url: {query: {entryId}}}) => (
@@ -19,6 +20,7 @@ const EntryQuery = gql`
                 emailHash
                 profile {
                     name
+                    about
                 }
                 local {
                     username
@@ -27,7 +29,10 @@ const EntryQuery = gql`
             title
             url
             description
-            goalTitles
+            goals {
+                _id
+                title
+            }
             comments {
                 _id
                 user {
@@ -72,10 +77,15 @@ const EntryComponent = (props) => {
         </Layout>
     }
 
-    const {_id, title, url, description, goalTitles, comments,user} = entry
+    const {_id, title, url, description, goals, comments,user} = entry
+    const username = user.local.username
+    const profile = user.profile || {}
+    const {about, name} = profile
+    const emailHash = user.emailHash
 
     return <Layout title={title} page="user">
         <div className="container">
+            <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="journal" />
             <h1>
                 {url ?
                     <a href={url} target="_blank">{title}</a>
@@ -83,14 +93,13 @@ const EntryComponent = (props) => {
                     title
                 }
             </h1>
-            <Author user={user}/>
             {description &&
                 <Markdown content={description}/>
             }
-            {goalTitles.length > 0 &&
+            {goals.length > 0 &&
                 <div>
-                    Goals: {goalTitles.map((goal, i) => (
-                        <span key={i}>{i ? ', ' : ' '}<em>{goal}</em></span>
+                    Goals: {goals.map(({_id, title}, i) => (
+                        <span key={i}>{i ? ', ' : ' '}<a href={`/goal/${_id}`}>{title}</a></span>
                     ))}
                 </div>
             }

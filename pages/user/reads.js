@@ -27,6 +27,7 @@ query($username: String!) {
             reading
         }
         reads {
+            _id
             title
             reading
             read
@@ -75,10 +76,10 @@ const UserReadsComponent = (props) => {
         {reading && <Markdown content={reading}/>}
         {reads.length > 0 ?
             <ul>
-                {reads.map(({title, reading, read, essays, speeches, conversations}, key) => {
+                {reads.map(({_id, title, reading, read, essays, speeches, conversations}, key) => {
                     const readingStatus = read ? 'read' : (reading ? 'reading' : 'not')
                     return <li key={key}>
-                        <span>{title}</span>
+                        <a href={`/read/${_id}`}>{title}</a>
                         {readingStatus === 'read' && <span>&nbsp;✔</span>}
                         {readingStatus === 'reading' && <span>&nbsp;👁</span>}
                         <ul>

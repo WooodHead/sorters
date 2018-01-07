@@ -3,38 +3,29 @@
 exports[`dashboard displays when logged 1`] = `
 "<div data-reactroot=\\"\\">
   <div>
-    <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+    <div style=\\"padding-top:50px;padding-bottom:20px\\">
       <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
         <div class=\\"container\\">
           <div class=\\"navbar-header\\">
             <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
-            <a class=\\"navbar-brand\\"
-              href=\\"/\\">Sorters Club</a>
+            <a class=\\"navbar-brand\\" href=\\"/\\">Sorters Club</a>
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"active\\">
-                <a href=\\"/account\\">Dashboard</a>
-              </li>
-              <li class=\\"dropdownfalse\\">
-                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">
-                  Hello,
-                  test
-                  
-                  <!-- /react-text --><span class=\\"caret\\"></span></a>
+              <li class=\\"dropdownundefined\\">
+                <a href=\\"#\\" class=\\"dropdown-toggle\\" data-toggle=\\"dropdown\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"true\\">Hello, test <span class=\\"caret\\"></span></a>
               </li>
             </ul>
           </div>
@@ -42,12 +33,44 @@ exports[`dashboard displays when logged 1`] = `
       </nav>
     </div>
     <div class=\\"container\\">
-      <h1>Dashboard</h1>
-      <p>
-        Your profile can be found at
-        <a href=\\"/u/test\\">/u/test</a>
-        .
-      </p>
+      <div>
+        <h1>Account</h1>
+        <ul class=\\"nav nav-tabs\\">
+          <li role=\\"presentation\\" class=\\"active\\">
+            <a href=\\"/account\\">&#x2302; Dashboard</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/profile\\">&#x1F464; Profile</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/goals\\">&#x25CE; Goals</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/journal\\">&#x270E; Journal</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/topics\\">&#x1F4A1; Topics</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/essays\\">&#x270E; Essays</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/speeches\\">&#x1F444; Speeches</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/conversations\\">&#x1F5E9; Conversations</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/reads\\">&#x1F4D6; Reading List</a>
+          </li>
+          <li role=\\"presentation\\">
+            <a href=\\"/account/account\\">&#x2699; Account</a>
+          </li>
+        </ul>
+      </div>
+      <h2>Dashboard</h2>
+      <p>Your profile can be found at
+        <a href=\\"/u/test\\">/u/test</a>.</p>
       <div class=\\"alert alert-info\\">
         <p>Thank you for joining sorters club! This is your dashboard. As the platform develops, you will find more features here.</p>
       </div>
@@ -97,7 +120,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/topics\\" target=\\"_blank\\"><span>&#x1F4A1; Topics <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
+                <a href=\\"/account/topics\\" target=\\"_blank\\"><span>&#x1F4A1; Topics <span class=\\"badge pull-right\\">new</span></span>
                 </a>
               </h3>
             </div>
@@ -111,7 +134,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/essays\\" target=\\"_blank\\"><span>&#x270E; Essays <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
+                <a href=\\"/account/essays\\" target=\\"_blank\\"><span>&#x270E; Essays <span class=\\"badge pull-right\\">new</span></span>
                 </a>
               </h3>
             </div>
@@ -125,7 +148,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/speeches\\" target=\\"_blank\\"><span>&#x1F444; Speeches <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
+                <a href=\\"/account/speeches\\" target=\\"_blank\\"><span>&#x1F444; Speeches <span class=\\"badge pull-right\\">new</span></span>
                 </a>
               </h3>
             </div>
@@ -141,7 +164,7 @@ exports[`dashboard displays when logged 1`] = `
           <div class=\\"panel panel-default\\">
             <div class=\\"panel-heading\\">
               <h3 class=\\"panel-title\\">
-                <a href=\\"/account/conversations\\" target=\\"_blank\\"><span>&#x1F5E9; Conversations <!-- /react-text --><span class=\\"badge pull-right\\">new</span></span>
+                <a href=\\"/account/conversations\\" target=\\"_blank\\"><span>&#x1F5E9; Conversations <span class=\\"badge pull-right\\">new</span></span>
                 </a>
               </h3>
             </div>
@@ -210,13 +233,9 @@ exports[`dashboard displays when logged 1`] = `
     <footer>
       <div class=\\"container\\">
         <hr>
-        <p>
-          Brought to you with &#x2764; by
-          <a href=\\"/about\\">Nick Redmark</a>
-          . Support this platform on
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
-          .
-        </p>
+        <p>Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>. Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
       </div>
     </footer>
   </div>
@@ -226,36 +245,31 @@ exports[`dashboard displays when logged 1`] = `
 exports[`dashboard redirects when unlogged 1`] = `
 "<div data-reactroot=\\"\\">
   <div>
-    <!-- react-empty: 3 -->
-    <div style=\\"padding-top:50px;padding-bottom:20px;\\">
+    <div style=\\"padding-top:50px;padding-bottom:20px\\">
       <nav class=\\"navbar navbar-inverse navbar-fixed-top\\">
         <div class=\\"container\\">
           <div class=\\"navbar-header\\">
             <button type=\\"button\\" class=\\"navbar-toggle collapsed\\" data-toggle=\\"collapse\\" data-target=\\"#navbar\\" aria-expanded=\\"false\\" aria-controls=\\"navbar\\"><span class=\\"sr-only\\">Toggle navigation</span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span><span class=\\"icon-bar\\"></span></button>
-            <a class=\\"navbar-brand\\"
-              href=\\"/\\">Sorters Club</a>
+            <a class=\\"navbar-brand\\" href=\\"/\\">Sorters Club</a>
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/\\">Home</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/about\\">About</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/news\\">News</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
-              <li class=\\"active\\">
-                <a href=\\"/account\\">Dashboard</a>
-              </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/login\\">Log in</a>
               </li>
-              <li class=\\"false\\">
+              <li>
                 <a href=\\"/register\\">Register</a>
               </li>
             </ul>
@@ -269,13 +283,9 @@ exports[`dashboard redirects when unlogged 1`] = `
     <footer>
       <div class=\\"container\\">
         <hr>
-        <p>
-          Brought to you with &#x2764; by
-          <a href=\\"/about\\">Nick Redmark</a>
-          . Support this platform on
-          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>
-          .
-        </p>
+        <p>Brought to you with &#x2764; by
+          <a href=\\"/about\\">Nick Redmark</a>. Support this platform on
+          <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
       </div>
     </footer>
   </div>

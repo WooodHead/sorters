@@ -31,7 +31,10 @@ const UserJournalQuery = gql`
                 title
                 url
                 description
-                goalTitles
+                goals {
+                    _id
+                    title
+                }
             }
         }
     }
@@ -80,7 +83,7 @@ const UserJournal = compose(
     })
 )(UserJournalComponent)
 
-const Entry = ({entry: {_id, url, title, description, goalTitles}}) => (
+const Entry = ({entry: {_id, url, title, description, goals}}) => (
     <div style={{
         marginTop: '1.5rem',
         marginBottom: '1.5rem',
@@ -89,16 +92,16 @@ const Entry = ({entry: {_id, url, title, description, goalTitles}}) => (
             {url ?
                 <a href={url} target="_blank">{title}</a>
             :
-                title
+                <a href={`/entry/${_id}`}>{title}</a>
             }
         </h3>
         {description &&
             <Markdown content={description}/>
         }
-        {goalTitles.length > 0 &&
+        {goals.length > 0 &&
             <div>
-                Goals: {goalTitles.map((goal, i) => (
-                    <span key={i}>{i ? ', ' : ' '}<em>{goal}</em></span>
+                Goals: {goals.map(({_id, title}, i) => (
+                    <span key={i}>{i ? ', ' : ' '}<a href={`/goal/${_id}`}>{title}</a></span>
                 ))}
             </div>
         }

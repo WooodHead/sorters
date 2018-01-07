@@ -9,6 +9,7 @@ exports[`radio-buttons shallow-renders 1`] = `
   </label>
   <div
     className="radio"
+    key="foo"
   >
     <label>
       <input
@@ -23,6 +24,7 @@ exports[`radio-buttons shallow-renders 1`] = `
   </div>
   <div
     className="radio"
+    key="bar"
   >
     <label>
       <input

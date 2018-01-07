@@ -2,7 +2,7 @@ import cheerio from 'cheerio'
 import {pretty} from './utils'
 import {ObjectID} from 'mongodb'
 import {setup, teardown} from './setup'
-import {generateAndLogUser} from './fixtures'
+import {generateAndLogUser, getGoalIds} from './fixtures'
 import {request} from './utils'
 
 let db
@@ -22,13 +22,15 @@ afterAll(async () => {
     await teardown({db, browser})
 })
 
-describe('goals', () => {
+describe('journal', () => {
     it('displays', async () => {
         const browserPage = await browser.createPage()
         
         await generateAndLogUser(browserPage)
 
-        await request(browserPage, `http://localhost:3000/graphql`, 'POST', {
+        const goalIds = await getGoalIds(browserPage)
+
+        const res = await request(browserPage, `http://localhost:3000/graphql`, 'POST', {
             query: `
                 mutation($entry: NewEntryInput!) {
                     createEntry(entry: $entry) {
@@ -41,7 +43,7 @@ describe('goals', () => {
                     title: 'Hello World',
                     url: 'http://www.example.com',
                     description: 'Lorem ipsum',
-                    goalTitles: ['Goal', 'Goal - doing'],
+                    goalIds,
                 },
             },
         })
