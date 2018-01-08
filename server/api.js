@@ -218,6 +218,9 @@ const start = async (app, settings) => {
     const Comments = db.collection('comments')
 
     const COMMENTABLE_COLLECTIONS = {
+        read: Reads,
+        goal: Goals,
+        topic: Topics,
         entry: Entries,
         essay: Essays,
         speech: Speeches,
