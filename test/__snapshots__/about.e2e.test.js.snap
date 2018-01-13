@@ -19,9 +19,6 @@ exports[`about displays 1`] = `
                 <a href=\\"/about\\">About</a>
               </li>
               <li>
-                <a href=\\"/news\\">News</a>
-              </li>
-              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
               <li>
@@ -36,7 +33,13 @@ exports[`about displays 1`] = `
       </nav>
     </div>
     <div class=\\"container\\">
-      <h2>About Sorters Club</h2>
+      <h2>Sort yourself out!</h2>
+      <p>Join the community of people who like Prof. Jordan Peterson&apos;s advice and want to sort themselves out!</p>
+      <div style=\\"max-width:100%;width:480px;margin-bottom:1.5rem\\">
+        <div style=\\"position:relative;height:0;overflow:hidden;max-width:100%;padding-bottom:56.25%\\">
+          <iframe frameborder=\\"0\\" src=\\"https://www.youtube.com/embed/3Z7t92_3ESE\\" style=\\"position:absolute;top:0;left:0;width:100%;height:100%\\"></iframe>
+        </div>
+      </div>
       <p>This is a Jordan Peterson fan site, and a resource for people who want to follow his advice.</p>
       <p>It is based mainly on Peterson&apos;s
         <a href=\\"https://www.youtube.com/watch?v=XbOeO_frzvg\\">Message to Millennials</a>:</p>
@@ -55,7 +58,19 @@ exports[`about displays 1`] = `
         <a href=\\"/users\\">sorters</a> do to get an idea of what you can do on this platform.</p>
       <p>Support this platform on
         <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
-      <p>For now you can become a member only by becoming a patron. It&apos;s the easiest way to avoid spam and to get good quality users and content on the platform.</p>
+      <h2>Features</h2>
+      <ul>
+        <li>Follow other sorters</li>
+        <li>Share and track your goals</li>
+        <li>Write your progress in a journal</li>
+        <li>Track your reading list</li>
+        <li>Share your writing and speaking</li>
+        <li>Have conversations with other sorters</li>
+        <li>Free and open source</li>
+      </ul>
+      <h2>Support</h2>
+      <p>Become a supporter of Sorters Club on
+        <a href=\\"https://www.patreon.com/nickredmark\\" target=\\"_blank\\">Patreon</a>.</p>
       <h2>About Nick Redmark</h2>
       <p>Hi, I&apos;m Nick Redmark, I&apos;m the developer of this platform. I created it mainly for myself, to document my progress as I try to &quot;sort myself out&quot; and &quot;rescue my father from the underworld&quot;. Check out more things I do
         on my

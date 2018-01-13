@@ -26,7 +26,7 @@ describe('news', () => {
 
     it('displays', async () => {
         const browserPage = await browser.createPage()
-        const status = await browserPage.open(`http://localhost:3000/news`)
+        const status = await browserPage.open(`http://localhost:3000/`)
         expect(status).toBe('success')
 
         const text = await browserPage.property('content')
@@ -104,7 +104,7 @@ describe('news', () => {
             goalId,
         })
         const browserPage = await browser.createPage()
-        const status = await browserPage.open(`http://localhost:3000/news`)
+        const status = await browserPage.open(`http://localhost:3000/`)
         expect(status).toBe('success')
         
         const text = await browserPage.property('content')
@@ -139,7 +139,7 @@ describe('news', () => {
             },
         })
 
-        const status = await browserPage.open(`http://localhost:3000/news`)
+        const status = await browserPage.open(`http://localhost:3000/`)
         expect(status).toBe('success')
 
         const text = await browserPage.property('content')
@@ -155,7 +155,7 @@ describe('news', () => {
         await generateAndLogUser(browserPage)
         await setUserData(browserPage)
 
-        const status = await browserPage.open(`http://localhost:3000/news`)
+        const status = await browserPage.open(`http://localhost:3000/`)
         expect(status).toBe('success')
 
         const text = await browserPage.property('content')
@@ -191,7 +191,7 @@ describe('news', () => {
             })    
         }
 
-        const status = await browserPage.open(`http://localhost:3000/news`)
+        const status = await browserPage.open(`http://localhost:3000/`)
         expect(status).toBe('success')
 
         const text = await browserPage.property('content')

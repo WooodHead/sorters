@@ -19,9 +19,6 @@ exports[`dashboard displays when logged 1`] = `
                 <a href=\\"/about\\">About</a>
               </li>
               <li>
-                <a href=\\"/news\\">News</a>
-              </li>
-              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
               <li class=\\"dropdownundefined\\">
@@ -187,19 +184,6 @@ exports[`dashboard displays when logged 1`] = `
             </div>
           </div>
         </div>
-        <div class=\\"col-md-4\\">
-          <div class=\\"panel panel-default\\">
-            <div class=\\"panel-heading\\">
-              <h3 class=\\"panel-title\\">
-                <a href=\\"/account/news\\" target=\\"_blank\\">&#x1F46B; Sorters</a>
-              </h3>
-            </div>
-            <div class=\\"panel-body\\">
-              <p>See what other sorters are doing.</p>
-              <a class=\\"btn btn-default\\" href=\\"/account/news\\" role=\\"button\\">Sorters</a>
-            </div>
-          </div>
-        </div>
       </div>
       <div class=\\"row\\">
         <div class=\\"col-md-4\\">
@@ -259,9 +243,6 @@ exports[`dashboard redirects when unlogged 1`] = `
               </li>
               <li>
                 <a href=\\"/about\\">About</a>
-              </li>
-              <li>
-                <a href=\\"/news\\">News</a>
               </li>
               <li>
                 <a href=\\"/users\\">Sorters</a>

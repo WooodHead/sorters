@@ -19,9 +19,6 @@ exports[`user displays 1`] = `
                 <a href=\\"/about\\">About</a>
               </li>
               <li>
-                <a href=\\"/news\\">News</a>
-              </li>
-              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
               <li class=\\"dropdownundefined\\">
@@ -95,9 +92,9 @@ exports[`user displays 1`] = `
       <div style=\\"margin-bottom:1.5rem\\">&#x25CE; Wants to achieve
         <a href=\\"/goal/<id>\\">Goal</a>.</div>
       <div style=\\"margin-bottom:1.5rem\\">&#x1F4D6; Updated
-        <a href=\\"/u/test/reads\\">reading list description</a>.</div>
-      <div style=\\"margin-bottom:1.5rem\\">&#x1F4D6; Updated
         <a href=\\"/u/test/goals\\">goals description</a>.</div>
+      <div style=\\"margin-bottom:1.5rem\\">&#x1F4D6; Updated
+        <a href=\\"/u/test/reads\\">reading list description</a>.</div>
       <div style=\\"margin-bottom:1.5rem\\">&#x1F464; Updated
         <a href=\\"/u/test/profile\\">profile</a>.</div>
       <div style=\\"margin-bottom:1.5rem\\">&#x2714; Completed
@@ -140,9 +137,6 @@ exports[`user displays goals 1`] = `
               </li>
               <li>
                 <a href=\\"/about\\">About</a>
-              </li>
-              <li>
-                <a href=\\"/news\\">News</a>
               </li>
               <li>
                 <a href=\\"/users\\">Sorters</a>
@@ -256,9 +250,6 @@ exports[`user displays journal 1`] = `
                 <a href=\\"/about\\">About</a>
               </li>
               <li>
-                <a href=\\"/news\\">News</a>
-              </li>
-              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
               <li class=\\"dropdownundefined\\">
@@ -362,9 +353,6 @@ exports[`user displays profile 1`] = `
               </li>
               <li>
                 <a href=\\"/about\\">About</a>
-              </li>
-              <li>
-                <a href=\\"/news\\">News</a>
               </li>
               <li>
                 <a href=\\"/users\\">Sorters</a>
@@ -549,9 +537,6 @@ exports[`user displays reads 1`] = `
               </li>
               <li>
                 <a href=\\"/about\\">About</a>
-              </li>
-              <li>
-                <a href=\\"/news\\">News</a>
               </li>
               <li>
                 <a href=\\"/users\\">Sorters</a>

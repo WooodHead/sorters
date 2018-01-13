@@ -19,9 +19,6 @@ exports[`profile displays 1`] = `
                 <a href=\\"/about\\">About</a>
               </li>
               <li>
-                <a href=\\"/news\\">News</a>
-              </li>
-              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
               <li class=\\"dropdownundefined\\">

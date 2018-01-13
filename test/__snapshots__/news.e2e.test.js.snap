@@ -12,14 +12,11 @@ exports[`news displays 1`] = `
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li>
+              <li class=\\"active\\">
                 <a href=\\"/\\">Home</a>
               </li>
               <li>
                 <a href=\\"/about\\">About</a>
-              </li>
-              <li class=\\"active\\">
-                <a href=\\"/news\\">News</a>
               </li>
               <li>
                 <a href=\\"/users\\">Sorters</a>
@@ -36,8 +33,7 @@ exports[`news displays 1`] = `
       </nav>
     </div>
     <div class=\\"container\\">
-      <h1>News</h1>
-      <p>See what happened recently in the community.</p>
+      <h1>Sorters Club</h1>
       <div></div>
     </div>
     <footer>
@@ -64,14 +60,11 @@ exports[`news displays changes to user data 1`] = `
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li>
+              <li class=\\"active\\">
                 <a href=\\"/\\">Home</a>
               </li>
               <li>
                 <a href=\\"/about\\">About</a>
-              </li>
-              <li class=\\"active\\">
-                <a href=\\"/news\\">News</a>
               </li>
               <li>
                 <a href=\\"/users\\">Sorters</a>
@@ -85,8 +78,7 @@ exports[`news displays changes to user data 1`] = `
       </nav>
     </div>
     <div class=\\"container\\">
-      <h1>News</h1>
-      <p>See what happened recently in the community.</p>
+      <h1>Sorters Club</h1>
       <div>
         <div>
           <div style=\\"margin-bottom:1.5rem;display:flex\\">
@@ -110,11 +102,11 @@ exports[`news displays changes to user data 1`] = `
                 <li>&#x2714; Completed Understand myself</li>
                 <li>&#x25CE; Updated
                   <a href=\\"/u/test/goals\\">goals description</a>.</li>
-                <li>&#x25CE; Wants to achieve <span><span> <a href=\\"/goal/<id>\\">Goal - done</a></span><span>, <a href=\\"/goal/<id>\\">Goal - doing</a></span><span>, <a href=\\"/goal/<id>\\">Goal</a></span></span>
+                <li>&#x25CE; Wants to achieve <span><span> <a href=\\"/goal/<id>\\">Goal</a></span><span>, <a href=\\"/goal/<id>\\">Goal - doing</a></span><span>, <a href=\\"/goal/<id>\\">Goal - done</a></span></span>
                 </li>
                 <li>&#x1F4D6; Updated
                   <a href=\\"/u/test/reads\\">reading list description</a>.</li>
-                <li>&#x1F4D6; Wants to read <span><span> <a href=\\"/read/<id>\\">Read - read</a></span><span>, <a href=\\"/read/<id>\\">Read - reading</a></span><span>, <a href=\\"/read/<id>\\">Read</a></span></span>
+                <li>&#x1F4D6; Wants to read <span><span> <a href=\\"/read/<id>\\">Read</a></span><span>, <a href=\\"/read/<id>\\">Read - reading</a></span><span>, <a href=\\"/read/<id>\\">Read - read</a></span></span>
                 </li>
               </ul>
             </div>
@@ -146,14 +138,11 @@ exports[`news displays journal events 1`] = `
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li>
+              <li class=\\"active\\">
                 <a href=\\"/\\">Home</a>
               </li>
               <li>
                 <a href=\\"/about\\">About</a>
-              </li>
-              <li class=\\"active\\">
-                <a href=\\"/news\\">News</a>
               </li>
               <li>
                 <a href=\\"/users\\">Sorters</a>
@@ -167,8 +156,7 @@ exports[`news displays journal events 1`] = `
       </nav>
     </div>
     <div class=\\"container\\">
-      <h1>News</h1>
-      <p>See what happened recently in the community.</p>
+      <h1>Sorters Club</h1>
       <div>
         <div>
           <div style=\\"margin-bottom:1.5rem;display:flex\\">
@@ -216,14 +204,11 @@ exports[`news displays read events 1`] = `
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li>
+              <li class=\\"active\\">
                 <a href=\\"/\\">Home</a>
               </li>
               <li>
                 <a href=\\"/about\\">About</a>
-              </li>
-              <li class=\\"active\\">
-                <a href=\\"/news\\">News</a>
               </li>
               <li>
                 <a href=\\"/users\\">Sorters</a>
@@ -240,8 +225,7 @@ exports[`news displays read events 1`] = `
       </nav>
     </div>
     <div class=\\"container\\">
-      <h1>News</h1>
-      <p>See what happened recently in the community.</p>
+      <h1>Sorters Club</h1>
       <div>
         <div>
           <div style=\\"margin-bottom:1.5rem;display:flex\\">
@@ -297,14 +281,11 @@ exports[`news limits results 1`] = `
           </div>
           <div id=\\"navbar\\" class=\\"collapse navbar-collapse\\">
             <ul class=\\"nav navbar-nav navbar-right\\">
-              <li>
+              <li class=\\"active\\">
                 <a href=\\"/\\">Home</a>
               </li>
               <li>
                 <a href=\\"/about\\">About</a>
-              </li>
-              <li class=\\"active\\">
-                <a href=\\"/news\\">News</a>
               </li>
               <li>
                 <a href=\\"/users\\">Sorters</a>
@@ -318,8 +299,7 @@ exports[`news limits results 1`] = `
       </nav>
     </div>
     <div class=\\"container\\">
-      <h1>News</h1>
-      <p>See what happened recently in the community.</p>
+      <h1>Sorters Club</h1>
       <div>
         <div>
           <div style=\\"margin-bottom:1.5rem;display:flex\\">

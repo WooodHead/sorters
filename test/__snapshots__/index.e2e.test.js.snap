@@ -19,9 +19,6 @@ exports[`index displays 1`] = `
                 <a href=\\"/about\\">About</a>
               </li>
               <li>
-                <a href=\\"/news\\">News</a>
-              </li>
-              <li>
                 <a href=\\"/users\\">Sorters</a>
               </li>
               <li class=\\"dropdownundefined\\">
@@ -33,104 +30,39 @@ exports[`index displays 1`] = `
       </nav>
     </div>
     <div class=\\"container\\">
-      <div class=\\"jumbotron\\">
-        <h1>Sort yourself out!</h1>
-        <p>Join the community of people who like Prof. Jordan Peterson&apos;s advice and want to sort themselves out!</p>
-        <div style=\\"max-width:100%;width:480px;margin:auto;margin-bottom:1.5rem\\">
-          <div style=\\"position:relative;height:0;overflow:hidden;max-width:100%;padding-bottom:56.25%\\">
-            <iframe frameborder=\\"0\\" src=\\"https://www.youtube.com/embed/3Z7t92_3ESE\\" style=\\"position:absolute;top:0;left:0;width:100%;height:100%\\"></iframe>
-          </div>
-        </div>
-        <p>
-          <a class=\\"btn btn-primary btn-lg\\" href=\\"/about\\" role=\\"button\\">Learn more &#xBB;</a>
-        </p>
-      </div>
-      <div class=\\"row\\">
-        <div class=\\"col-md-4\\">
-          <h2>Follow other sorters</h2>
-          <p>Peterson started a movement of people who want to change the world by starting from themselves. See what&apos;s happening in the sorter community.</p>
-          <p>
-            <a class=\\"btn btn-default\\" href=\\"/users\\" role=\\"button\\">See community &#xBB;</a>
-          </p>
-        </div>
-        <div class=\\"col-md-4\\">
-          <h2>Share your goals</h2>
-          <p>Orient yourself towards the best possible good. Whether you have done the self-authoring suite (recommended) or not, here you can share your vision with the community.</p>
-          <p>
-            <a class=\\"btn btn-default\\" href=\\"/register\\" role=\\"button\\">Register &#xBB;</a>
-          </p>
-        </div>
-        <div class=\\"col-md-4\\">
-          <h2>Read, write, speak</h2>
-          <p>Rescue your father from the belly of the beast by reading the great works of your culture. Become articulate by writing and speaking about them. Share it all in your reading list.</p>
-          <p>
-            <a class=\\"btn btn-default\\" href=\\"/u/nmaro\\" role=\\"button\\">See an example &#xBB;</a>
-          </p>
-        </div>
-      </div>
-      <div class=\\"row\\">
-        <div class=\\"col-md-4\\">
-          <h2>Begin the sorter journey</h2>
-          <p>Share your progress as you clean your room and learn to read, write and speak, all the while rescuing your father from the underworld.</p>
-          <p>
-            <a class=\\"btn btn-default\\" href=\\"/register\\" role=\\"button\\">Register &#xBB;</a>
-          </p>
-        </div>
-        <div class=\\"col-md-4\\">
-          <h2>Free and open source</h2>
-          <p>You can use this platform freely. If you are a coder you can even contribute to its development on GitHub.</p>
-          <p>
-            <a class=\\"btn btn-default\\" href=\\"https://github.com/nmaro/sorters\\" role=\\"button\\" target=\\"_blank\\">Source code &#xBB;</a>
-          </p>
-        </div>
-        <div class=\\"col-md-4\\">
-          <h2>Support on Patreon</h2>
-          <p>Become a supporter of Sorters Club on Patreon.</p>
-          <p>
-            <a class=\\"btn btn-default\\" href=\\"https://www.patreon.com/nickredmark\\" role=\\"button\\" target=\\"_blank\\">Support &#xBB;</a>
-          </p>
-        </div>
-      </div>
-      <div class=\\"row\\">
-        <div class=\\"col-xs-12\\">
-          <h2>Latest news</h2>
-          <div>
+      <h1>Sorters Club</h1>
+      <div>
+        <div>
+          <div style=\\"margin-bottom:1.5rem;display:flex\\">
             <div>
-              <div style=\\"margin-bottom:1.5rem;display:flex\\">
-                <div>
-                  <a href=\\"/u/test\\">
-                    <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:1.5rem\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=150 2x\\"
-                      height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\">
-                  </a>
-                </div>
-                <div>
-                  <h4 style=\\"margin-top:0\\">
-                    <a href=\\"/u/test\\">Test User</a>
-                  </h4>
-                  <ul style=\\"padding-left:0;list-style-position:inside\\">
-                    <li>&#x1F464; Updated
-                      <a href=\\"/u/test/profile\\">profile</a> <span>:<span>Name</span><span>,About</span><span>,Bio</span><span>,Website</span><span>,Blog</span><span> and22 more</span></span>.</li>
-                    <li>&#x2714; Completed Past authoring</li>
-                    <li>&#x2714; Completed Present faults authoring</li>
-                    <li>&#x2714; Completed Present virtues authoring</li>
-                    <li>&#x2714; Completed Future authoring</li>
-                    <li>&#x2714; Completed Understand myself</li>
-                    <li>&#x25CE; Updated
-                      <a href=\\"/u/test/goals\\">goals description</a>.</li>
-                    <li>&#x25CE; Wants to achieve <span><span> <a href=\\"/goal/<id>\\">Goal - done</a></span><span>, <a href=\\"/goal/<id>\\">Goal - doing</a></span><span>, <a href=\\"/goal/<id>\\">Goal</a></span></span>
-                    </li>
-                    <li>&#x1F4D6; Updated
-                      <a href=\\"/u/test/reads\\">reading list description</a>.</li>
-                    <li>&#x1F4D6; Wants to read <span><span> <a href=\\"/read/<id>\\">Read - reading</a></span><span>, <a href=\\"/read/<id>\\">Read - read</a></span><span>, <a href=\\"/read/<id>\\">Read</a></span></span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <a href=\\"/u/test\\">
+                <img alt=\\"Gravatar for undefined\\" style=\\"margin-right:1.5rem\\" src=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=75\\" srcset=\\"//www.gravatar.com/avatar/23463b99b62a72f26ed677cc556c44e8?d=retro&amp;r=g&amp;s=150 2x\\"
+                  height=\\"75\\" width=\\"75\\" class=\\"react-gravatar\\">
+              </a>
+            </div>
+            <div>
+              <h4 style=\\"margin-top:0\\">
+                <a href=\\"/u/test\\">Test User</a>
+              </h4>
+              <ul style=\\"padding-left:0;list-style-position:inside\\">
+                <li>&#x1F464; Updated
+                  <a href=\\"/u/test/profile\\">profile</a> <span>:<span>Name</span><span>,About</span><span>,Bio</span><span>,Website</span><span>,Blog</span><span> and22 more</span></span>.</li>
+                <li>&#x2714; Completed Past authoring</li>
+                <li>&#x2714; Completed Present faults authoring</li>
+                <li>&#x2714; Completed Present virtues authoring</li>
+                <li>&#x2714; Completed Future authoring</li>
+                <li>&#x2714; Completed Understand myself</li>
+                <li>&#x25CE; Updated
+                  <a href=\\"/u/test/goals\\">goals description</a>.</li>
+                <li>&#x25CE; Wants to achieve <span><span> <a href=\\"/goal/<id>\\">Goal</a></span><span>, <a href=\\"/goal/<id>\\">Goal - doing</a></span><span>, <a href=\\"/goal/<id>\\">Goal - done</a></span></span>
+                </li>
+                <li>&#x1F4D6; Updated
+                  <a href=\\"/u/test/reads\\">reading list description</a>.</li>
+                <li>&#x1F4D6; Wants to read <span><span> <a href=\\"/read/<id>\\">Read</a></span><span>, <a href=\\"/read/<id>\\">Read - reading</a></span><span>, <a href=\\"/read/<id>\\">Read - read</a></span></span>
+                </li>
+              </ul>
             </div>
           </div>
-          <p>
-            <a href=\\"/news\\">More news</a>
-          </p>
         </div>
       </div>
     </div>
