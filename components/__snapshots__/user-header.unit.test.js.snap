@@ -45,6 +45,7 @@ exports[`user-header shallow-renders 1`] = `
           content="Hi there I'm Nick"
         />
       </div>
+      <getContext(Apollo(getContext(SendMessageComponent))) />
     </div>
   </div>
   <ul

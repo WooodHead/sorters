@@ -90,7 +90,7 @@ const SpeechComponent = (props) => {
 
     return <Layout title={title} page="user">
         <div className="container">
-            <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="speeches" />
+            <UserHeader id={user._id} name={name} username={username} emailHash={emailHash} about={about} route="speeches" />
             <h1>
                 {url ?
                     <a href={url} target="_blank">{title}</a>

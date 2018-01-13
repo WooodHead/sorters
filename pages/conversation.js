@@ -94,7 +94,7 @@ const ConversationComponent = (props) => {
 
     return <Layout title={title} page="user">
         <div className="container">
-            <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="conversations" />
+            <UserHeader _id={user._id} name={name} username={username} emailHash={emailHash} about={about} route="conversations" />
             <h1>
                 {title}
             </h1>

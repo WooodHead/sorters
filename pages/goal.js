@@ -90,7 +90,7 @@ const GoalComponent = (props) => {
 
     return <Layout title={title} page="user">
         <div className="container">
-            <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="goals" />
+            <UserHeader id={user._id} name={name} username={username} emailHash={emailHash} about={about} route="goals" />
             <h1>
                 {title}
             </h1>

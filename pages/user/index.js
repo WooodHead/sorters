@@ -41,6 +41,7 @@ const urlFields = [
 const UserQuery = gql`
     query($username: String!) {
         userByUsername(username: $username) {
+            _id
             local {
                 username
             }
@@ -142,6 +143,7 @@ const UserComponent = (props) => {
         </Layout>
     }
 
+    const _id = user._id
     const username = user.local.username
     const emailHash = user.emailHash
     const profile = user.profile || {}
@@ -161,7 +163,7 @@ const UserComponent = (props) => {
 
     return <Layout title={username} page="user">
         <div className="container">
-            <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="activity"/>
+            <UserHeader _id={_id} name={name} username={username} emailHash={emailHash} about={about} route="activity"/>
             <h2>Activity</h2>
             {events.map(event => <Event event={event} key={event._id} username={username}/>)}
         </div>

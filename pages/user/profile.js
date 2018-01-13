@@ -51,6 +51,7 @@ const urlFields = [
 const UserQuery = gql`
     query($username: String!) {
         userByUsername(username: $username) {
+            _id
             local {
                 username
             }
@@ -128,6 +129,7 @@ const UserComponent = (props) => {
         return <p>Invalid user.</p>
     }
 
+    const _id = user._id
     const username = user.local.username
     const emailHash = user.emailHash
     const profile = user.profile || {}
@@ -181,7 +183,7 @@ const UserComponent = (props) => {
     })
 
     return <div>
-        <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="profile"/>
+        <UserHeader _id={_id} name={name} username={username} emailHash={emailHash} about={about} route="profile"/>
         <h2>Summary</h2>
         <ul>
             {goals.length > 0 && <li>◎ {goals.length} <a href={`/u/${username}/goals`}>goals</a></li>}

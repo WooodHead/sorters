@@ -90,7 +90,7 @@ const EssayComponent = (props) => {
 
     return <Layout title={title} page="user">
         <div className="container">
-            <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="essays" />
+            <UserHeader id={user._id} name={name} username={username} emailHash={emailHash} about={about} route="essays" />
             <h1>
                 {url ?
                     <a href={url} target="_blank">{title}</a>

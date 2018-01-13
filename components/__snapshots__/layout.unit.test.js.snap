@@ -33,11 +33,6 @@ exports[`layout displays title and page 1`] = `
         "url": "/about",
       },
       Object {
-        "label": "News",
-        "name": "news",
-        "url": "/news",
-      },
-      Object {
         "label": "Sorters",
         "name": "users",
         "url": "/users",
@@ -58,6 +53,11 @@ exports[`layout displays title and page 1`] = `
         "label": "👤 Profile",
         "name": "profile",
         "url": "/account/profile",
+      },
+      Object {
+        "label": "🗩 Messages",
+        "name": "messages",
+        "url": "/account/messages",
       },
       Object {
         "label": "◎ Goals",
@@ -142,11 +142,6 @@ exports[`layout shallow-renders 1`] = `
         "url": "/about",
       },
       Object {
-        "label": "News",
-        "name": "news",
-        "url": "/news",
-      },
-      Object {
         "label": "Sorters",
         "name": "users",
         "url": "/users",
@@ -165,6 +160,11 @@ exports[`layout shallow-renders 1`] = `
         "label": "👤 Profile",
         "name": "profile",
         "url": "/account/profile",
+      },
+      Object {
+        "label": "🗩 Messages",
+        "name": "messages",
+        "url": "/account/messages",
       },
       Object {
         "label": "◎ Goals",

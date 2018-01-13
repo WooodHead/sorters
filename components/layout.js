@@ -31,6 +31,11 @@ const userMenu = [
         label: '👤 Profile',
     },
     {
+        url: '/account/messages',
+        name: 'messages',
+        label: '🗩 Messages',
+    },
+    {
         url: '/account/goals',
         name: 'goals',
         label: '◎ Goals',

@@ -11,12 +11,12 @@ import ShyButton from '../components/shy-button'
 import DeleteModal from '../components/delete-modal'
 import {username} from './user'
 
-function CommentsComponent({user, comments, entityType, entityId, onNewComment, onChangeComment, onDeleteComment}) {
+function CommentsComponent({user, comments, entityType, entityId, onNewComment, onChangeComment, onDeleteComment, title, commentLabel, submitCommentLabel}) {
     return <div>
-        <h2>Comments</h2>
+        <h2>{title || 'Comments'}</h2>
         {user ?
             (username(user) ?
-                <CommentForm entityType={entityType} entityId={entityId} user={user} onNewComment={onNewComment}/>
+                <CommentForm entityType={entityType} entityId={entityId} user={user} onNewComment={onNewComment} label={commentLabel} submitLabel={submitCommentLabel}/>
             :
                 <div className="alert alert-info">
                     <p>
@@ -182,7 +182,7 @@ class CommentComponent extends React.Component {
         }
     }
 }
-const Comment = compose(
+export const Comment = compose(
     graphql(UpdateCommentQuery, {
         name: 'updateComment',
     }),
@@ -204,7 +204,7 @@ class CommentFormComponent extends React.Component {
         this.state = {}
     }
     render() {
-        const {createComment, onNewComment, entityType, entityId} = this.props
+        const {createComment, onNewComment, entityType, entityId, label, submitLabel} = this.props
         return <Form
             onSubmit={() => {
                 const comment = {
@@ -228,10 +228,10 @@ class CommentFormComponent extends React.Component {
             }}
             state={this.state.state}
             message={this.state.message}
-            submitLabel="Send Comment"
+            submitLabel={submitLabel || 'Send Comment'}
         >
             <div className="form-group">
-                <label htmlFor="content">Comment</label>
+                <label htmlFor="content">{label || 'Comment'}</label>
                 <textarea
                     className="form-control"
                     rows="4"

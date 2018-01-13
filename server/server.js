@@ -44,6 +44,9 @@ module.exports = async (settings, dev) => {
         app.get('/conversation/:conversationId', (req, res) => {
             nextApp.render(req, res, '/conversation', Object.assign({}, req.params, req.query))
         })
+        app.get('/account/chat/:chatId', (req, res) => {
+            nextApp.render(req, res, '/account/chat', Object.assign({}, req.params, req.query))
+        })
 
         app.get('*', (req, res) => {
             return handle(req, res)

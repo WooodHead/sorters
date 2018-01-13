@@ -40,6 +40,9 @@ exports[`dashboard displays when logged 1`] = `
             <a href=\\"/account/profile\\">&#x1F464; Profile</a>
           </li>
           <li role=\\"presentation\\">
+            <a href=\\"/account/messages\\">&#x1F5E9; Messages</a>
+          </li>
+          <li role=\\"presentation\\">
             <a href=\\"/account/goals\\">&#x25CE; Goals</a>
           </li>
           <li role=\\"presentation\\">

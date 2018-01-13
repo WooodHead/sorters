@@ -46,6 +46,7 @@ exports[`user displays 1`] = `
                 <p>Test user about</p>
               </div>
             </div>
+            <button class=\\"btn btn-primary\\">Send message</button>
           </div>
         </div>
         <ul class=\\"nav nav-tabs\\">
@@ -167,6 +168,7 @@ exports[`user displays goals 1`] = `
                   <p>Test user about</p>
                 </div>
               </div>
+              <button class=\\"btn btn-primary\\">Send message</button>
             </div>
           </div>
           <ul class=\\"nav nav-tabs\\">
@@ -278,6 +280,7 @@ exports[`user displays journal 1`] = `
                   <p>Test user about</p>
                 </div>
               </div>
+              <button class=\\"btn btn-primary\\">Send message</button>
             </div>
           </div>
           <ul class=\\"nav nav-tabs\\">
@@ -383,6 +386,7 @@ exports[`user displays profile 1`] = `
                   <p>Test user about</p>
                 </div>
               </div>
+              <button class=\\"btn btn-primary\\">Send message</button>
             </div>
           </div>
           <ul class=\\"nav nav-tabs\\">
@@ -567,6 +571,7 @@ exports[`user displays reads 1`] = `
                   <p>Test user about</p>
                 </div>
               </div>
+              <button class=\\"btn btn-primary\\">Send message</button>
             </div>
           </div>
           <ul class=\\"nav nav-tabs\\">

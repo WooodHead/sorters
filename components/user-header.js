@@ -1,5 +1,15 @@
 import Markdown from '../components/markdown'
 import Gravatar from 'react-gravatar'
+import gql from 'graphql-tag'
+import {compose} from 'recompose'
+import {graphql} from 'react-apollo'
+import React from 'react'
+import withRouter from 'staart/lib/hocs/router'
+import ShyButton from '../components/shy-button'
+import Form from 'staart/lib/components/form'
+import {errorMessage} from '../utils/errors'
+import {withUser} from 'ooth-client-react'
+import {username} from './user'
 
 const MENU = [
     {
@@ -49,7 +59,7 @@ const MENU = [
     },
 ]
 
-export default ({name, username, emailHash, about, route}) => (
+export default ({_id, name, username, emailHash, about, route}) => (
     <div>
         <h1>
             {name || username}
@@ -72,6 +82,7 @@ export default ({name, username, emailHash, about, route}) => (
                         <Markdown content={about}/>
                     </div>
                 }
+                <SendMessage userId={_id}/>
             </div>
         </div>
         <ul className="nav nav-tabs">
@@ -81,3 +92,90 @@ export default ({name, username, emailHash, about, route}) => (
         </ul>
     </div>
 )
+
+const SendMessageQuery = gql`
+    mutation($userId: ID!, $message: String!) {
+        createChat(userId: $userId, message: $message) {
+            _id
+        }
+    }
+`
+class SendMessageComponent extends React.Component {
+    constructor() {
+        super()
+        this.state = {}
+    }
+    render() {
+        const {user, sendMessage, userId, Router} = this.props
+
+        if (!user) {
+            return null
+        }
+
+        if (!username(user)) {
+            return <div className="alert alert-info">
+                <p>
+                    Set a <a href="/account/account" style={{ fontWeight: 'bold' }}>username</a> to leave a comment.
+                </p>
+            </div>
+        }
+
+        if (!this.state.edit) {
+            return <button
+                className="btn btn-primary"
+                onClick={() => this.setState({edit: true})}
+            >Send message</button>
+        }
+
+        return <Form
+            onSubmit={() => {
+                sendMessage({
+                    variables: {
+                        userId,
+                        message: this.message.value,
+                    },
+                }).then(({data: {createChat: {_id}}}) => {
+                    Router.push(`/account/chat/${_id}`)
+                }).catch(e => {
+                    this.setState({
+                        state: 'error',
+                        message: errorMessage(e),
+                    })
+                })
+            }}
+            state={this.state.state}
+            message={this.state.message}
+            submitLabel="Send private message"
+        >
+            <span
+                style={{
+                    display: 'block',
+                    float: 'right',
+                }}
+            >
+                <ShyButton
+                    onClick={() => {
+                        this.setState({
+                            edit: false,
+                        })
+                    }}
+                >✕</ShyButton>{' '}
+            </span>
+            <div className="form-group">
+                <label htmlFor="content">Message</label>
+                <textarea
+                    className="form-control"
+                    rows="4"
+                    ref={ref => this.message = ref}
+                />
+            </div>
+        </Form>
+    }
+}
+const SendMessage = compose(
+    withUser,
+    graphql(SendMessageQuery, {
+        name: 'sendMessage',
+    }),
+    withRouter,
+)(SendMessageComponent)

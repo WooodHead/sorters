@@ -6717,8 +6717,8 @@ ssri@^4.1.2:
     safe-buffer "^5.1.0"
 
 staart@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/staart/-/staart-1.0.0.tgz#ac98ed2b2f4680485beba4ffeeed417ecd867389"
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/staart/-/staart-1.0.1.tgz#b04cfe5c0eefff72985281e47055af2e6a4d92b5"
   dependencies:
     ooth-client-react "^1.1.0"
     prop-types "^15.6.0"

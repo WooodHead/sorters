@@ -17,6 +17,7 @@ export default withPage(({url: {query: {username}}}) => (
 const UserQuery = gql`
 query($username: String!) {
     userByUsername(username: $username) {
+        _id
         local {
             username
         }
@@ -63,6 +64,7 @@ const UserTopicsComponent = (props) => {
         return <p>Invalid user.</p>
     }
     
+    const _id = user._id
     const username = user.local.username
     const profile = user.profile || {}
     const {about, name, topics} = profile
@@ -70,7 +72,7 @@ const UserTopicsComponent = (props) => {
     const topicsList = user.topics
 
     return <div>
-        <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="topics"/>
+        <UserHeader _id={_id} name={name} username={username} emailHash={emailHash} about={about} route="topics"/>
         <h2>Topics</h2>
         {topics &&
             <Markdown content={topics}/>

@@ -10,6 +10,11 @@ const MENU = [
         label: '👤 Profile',
     },
     {
+        url: '/messages',
+        name: 'messages',
+        label: '🗩 Messages',
+    },
+    {
         url: '/goals',
         name: 'goals',
         label: '◎ Goals',

@@ -8,12 +8,14 @@ const {makeExecutableSchema} = require('graphql-tools')
 const morgan = require('morgan')
 const cors = require('cors')
 const nodeify = require('nodeify')
+const _ = require('lodash')
+
 const ooth = require('./ooth')
 const crypto = require('crypto-browserify')
 const {GraphQLScalarType} = require('graphql')
 const {objectMap} = require('../utils/objects')
 const {performMigrations} = require('./migrations')
-const {prepare, find} = require('./utils')
+const {prepare, find, findOne} = require('./utils')
 const {IGNORED_EVENTS} = require('../models/events')
 
 function set(o, key, value) {
@@ -95,19 +97,21 @@ async function updateOrderedEntities(userId, entityIds, Collection, type, Users)
     return await findByIds(Collection, entityIds)
 }
 
-async function createEntity(userId, entity, Collection, Events, type) {
+async function createEntity(userId, entity, Collection, Events = null, type = null) {
     testUser(userId)
     const date = new Date()
     entity.userId = userId
     entity.createdAt = date
     entity.updatedAt = date
     const {insertedId} = await Collection.insertOne(entity)
-    await Events.insert({
-        userId,
-        type: `created-${type}`,
-        date,
-        [`${type}Id`]: insertedId,
-    })
+    if (Events) {
+        await Events.insert({
+            userId,
+            type: `created-${type}`,
+            date,
+            [`${type}Id`]: insertedId,
+        })
+    }
     return prepare(await Collection.findOne(ObjectId(insertedId)))
 }
 
@@ -216,8 +220,10 @@ const start = async (app, settings) => {
     const Speeches = db.collection('speeches')
     const Conversations = db.collection('conversations')
     const Comments = db.collection('comments')
+    const Chats = db.collection('chats')
 
     const COMMENTABLE_COLLECTIONS = {
+        chat: Chats,
         read: Reads,
         goal: Goals,
         topic: Topics,
@@ -267,6 +273,7 @@ const start = async (app, settings) => {
             speeches: [Speech]!
             conversations: [Conversation]!
             events: [Event]!
+            chats: [Chat]!
         }
         type UserLocal {
             username: String
@@ -417,6 +424,13 @@ const start = async (app, settings) => {
             createdAt: Date!
             updatedAt: Date!
             comments: [Comment]!
+        }
+        type Chat {
+            _id: ID!
+            userIds: [ID]!
+            users: [User]!
+            comments: [Comment]!
+            lastComment: Comment!
         }
         type Comment {
             _id: ID!
@@ -677,6 +691,7 @@ const start = async (app, settings) => {
             essay(_id: ID!): Essay
             speech(_id: ID!): Speech
             conversation(_id: ID!): Conversation
+            chat(_id: ID!): Chat
         }
         type Mutation {
             updateProfile(profile: ProfileInput): User
@@ -714,6 +729,8 @@ const start = async (app, settings) => {
             createConversation(conversation: NewConversationInput!): Conversation
             updateConversation(conversation: ConversationInput!): Conversation
             deleteConversation(_id: ID!): Conversation
+
+            createChat(userId: ID!, message: String!): Chat
 
             createComment(comment: NewCommentInput!): Comment
             updateComment(comment: CommentInput!): Comment
@@ -800,6 +817,14 @@ const start = async (app, settings) => {
             conversation: async (root, {_id}) => {
                 return prepare(await Conversations.findOne(ObjectId(_id)))
             },
+            chat: async (root, {_id}, {userId}) => {
+                testUser(userId)
+                const chat = prepare(await Chats.findOne(ObjectId(_id)))
+                if (chat.userIds.indexOf(userId) === -1) {
+                    throw new Error('Not your chat')
+                }
+                return chat
+            },
         },
         User: {
             emailHash: async (user) => {
@@ -807,6 +832,15 @@ const start = async (app, settings) => {
                     const email = user.local.email
                     return crypto.createHash('md5').update(email).digest("hex")
                 }
+            },
+            chats: async ({_id}, {}, {userId}) => {
+                testUser(userId)
+                if (_id != userId) {
+                    throw new Error('You can only see your own chats.')
+                }
+                return await find(Chats, {
+                    userIds: userId,
+                })
             },
             reads: async ({readIds}) => {
                 return await findByIds(Reads, readIds)
@@ -829,7 +863,7 @@ const start = async (app, settings) => {
             conversations: async (user) => {
                 return await findUserEntities(user, Conversations)
             },
-            events: async (user, params, context) => {
+            events: async (user) => {
                 return await find(Events, {
                     userId: user._id,
                 }, {
@@ -856,6 +890,25 @@ const start = async (app, settings) => {
                 }
                 return ENTITY_TYPES[type]
             },
+        },
+        Chat: {
+            users: async ({userIds}) => {
+                return await findByIds(Users, userIds)
+            },
+            comments: async ({_id}) => {
+                return await findComments(Comments, 'chat', _id)
+            },
+            lastComment: async ({_id}) => {
+                console.log('searching', _id)
+                return await findOne(Comments, {
+                    rootEntityType: 'chat',
+                    rootEntityId: _id,
+                }, {
+                    sort: {
+                        createdAt: -1,
+                    },
+                })
+            }
         },
         Read: {
             type() {
@@ -1313,6 +1366,23 @@ const start = async (app, settings) => {
             deleteConversation: async (root, {_id}, {userId}, info) => {
                 return await deleteEntity(userId, _id, Conversations, Events, 'conversation')
             },
+            createChat: async (root, {userId: otherUserId, message}, {userId}, info) => {
+                const chat = await createEntity(userId, {
+                    userIds: [userId, otherUserId],
+                }, Chats)
+                const date = new Date() 
+                await Comments.insertOne({
+                    rootEntityType: 'chat',
+                    rootEntityId: chat._id,
+                    entityType: 'chat',
+                    entityId: chat._id,
+                    userId,
+                    createdAt: date,
+                    updatedAt: date,
+                    content: message,
+                })
+                return chat
+            },
             createComment: async (root, {comment}, {userId}, info) => {
                 testUser(userId)
                 const Collection = COMMENTABLE_COLLECTIONS[comment.entityType]
@@ -1348,7 +1418,7 @@ const start = async (app, settings) => {
             },
             deleteComment: async (root, {_id}, {userId}, info) => {
                 return await softDeleteEntity(userId, _id, Comments, Events, 'comment', { content: null })
-            }
+            },
         },
     }
 

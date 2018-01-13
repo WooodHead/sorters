@@ -92,7 +92,7 @@ const ReadComponent = (props) => {
 
     return <Layout title={title} page="user">
         <div className="container">
-            <UserHeader name={name} username={username} emailHash={emailHash} about={about} route="reads" />
+            <UserHeader id={user._id} name={name} username={username} emailHash={emailHash} about={about} route="reads" />
             <h1>
                 {title}
             </h1>
