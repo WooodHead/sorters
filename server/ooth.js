@@ -35,7 +35,7 @@ module.exports = async function start(app, db, settings) {
                 html: `Please verify your Sorters Club email by opening the following url: ${settings.url}/verify-email?token=${verificationToken}&userId=${_id}.`,
             })
         },
-        onGenerateVerificationToken({email, verificationToken}) {
+        onGenerateVerificationToken({email, verificationToken, _id}) {
             sendMail({
                 from: settings.mail.from,
                 to: email,

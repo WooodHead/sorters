@@ -260,7 +260,7 @@ const NewsComponent = ({data: {loading, events}}) => {
                 {day.map((event, j) => {
                     const {emailHash, local: {username}} = event.user
                     const name = event.user.profile && event.user.profile.name
-                    return <div key={j} style={{
+                    return <div key={username} style={{
                         marginBottom: '1.5rem',
                         display: 'flex',
                     }}>

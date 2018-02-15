@@ -12,7 +12,6 @@ import AccountHeader from '../../components/account-header'
 import withLoginRequired from 'staart/lib/hocs/login-required'
 
 export default withPage(({url: {query: {chatId}}}) => {
-    console.log(chatId)
     return <Chat chatId={chatId}/>
 })
 

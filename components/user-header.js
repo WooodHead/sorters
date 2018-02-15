@@ -135,7 +135,7 @@ class SendMessageComponent extends React.Component {
                         message: this.message.value,
                     },
                 }).then(({data: {createChat: {_id}}}) => {
-                    Router.push(`/account/chat/${_id}`)
+                    Router.push(`/account/chat?chatId=${_id}`, `/account/chat/${_id}`)
                 }).catch(e => {
                     this.setState({
                         state: 'error',
