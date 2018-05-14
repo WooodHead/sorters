@@ -14,7 +14,9 @@ const IGNORED_EVENTS = [
     'deleted-conversation',
     'updated-comment',
     'deleted-comment',
-    'chat',
+    'created-chat',
+    'updated-chat',
+    'deleted-chat'
 ]
 
 module.exports = {
