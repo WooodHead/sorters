@@ -884,6 +884,7 @@ const start = async (app, settings) => {
                     'essay': 'Essay',
                     'speech': 'Speech',
                     'conversation': 'Conversation',
+                    'chat': 'Chat',
                 }
                 if (!ENTITY_TYPES[type]) {
                     throw new Error(`Unknown entity type ${type}.`)
