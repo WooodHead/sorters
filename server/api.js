@@ -430,6 +430,7 @@ const start = async (app, settings) => {
             _id: ID!
             userId: ID!
             user: User!
+            title: String
             userIds: [ID]!
             users: [User]!
             comments: [Comment]!
