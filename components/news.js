@@ -44,12 +44,15 @@ const digestEvents = (events) => {
         .sort().reverse()
         .map(d => {
             const day = byDayUser[d]
-            return Object.keys(day)
+            return {
+                day: d,
+                events: Object.keys(day)
                 .map(k => day[k])
                 .filter(event => Object.keys(event).length > 2)
                 .sort((a, b) => b.date - a.date)
+            }            
         })
-        .filter(events => events.length)
+        .filter(day => day.events.length)
     return days
 }
 
@@ -255,9 +258,10 @@ const NewsComponent = ({data: {loading, events}}) => {
     const days = digestEvents(events)
 
     return <div>
-        {days.map((day, i) => {
-            return <div key={i}>
-                {day.map((event, j) => {
+        {days.map((day) => {
+            return <div key={day.day}>
+                <h3>{moment(day.day, 'YYYYMMDD').format('MMMM Do YYYY')}</h3>
+                {day.events.map((event, j) => {
                     const {emailHash, local: {username}} = event.user
                     const name = event.user.profile && event.user.profile.name
                     return <div key={username} style={{
