@@ -55,7 +55,7 @@ yarn
 Run:
 
 ```
-yarn run dev
+yarn dev
 ```
 
 Visit `http://localhost:3000` (or the url you set up in settings.js).
@@ -65,7 +65,7 @@ Visit `http://localhost:3000` (or the url you set up in settings.js).
 If you have been running in development mode, clean:
 
 ```
-yarn run clean
+yarn clean
 ```
 
 Build:
@@ -116,11 +116,11 @@ yarn start:test
 In an other terminal, run tests:
 
 ```
-yarn run test:e2e
+yarn test:e2e
 ```
 
 To run in watch mode:
 
 ```
-yarn run test:e2e --watch
+yarn test:e2e --watch
 ```
