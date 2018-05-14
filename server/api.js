@@ -897,6 +897,9 @@ const start = async (app, settings) => {
             },
         },
         Chat: {
+            user: async ({userId}) => {
+                return await findOne(Users, ObjectId(userId))
+            },
             users: async ({userIds}) => {
                 return await findByIds(Users, userIds)
             },

@@ -243,6 +243,20 @@ const MIGRATIONS = [
             {type: 'read', Collection: Reads},            
             {type: 'goal', Collection: Goals},            
         ], COLLECTIONS_BY_TYPE)        
+    },
+    async (db) => {
+        const Chats = db.collection('chats')
+        const chats = await find(Chats, {})
+        for (const chat of chats) {
+            console.info(`Updating chat ${chat._id}`)
+            await Chats.update({
+                _id: ObjectId(chat._id),
+            }, {
+                $set: {
+                    userId: chat.userIds[0]
+                }
+            })
+        }
     }
 ]
 
