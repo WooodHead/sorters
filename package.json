@@ -14,14 +14,7 @@
     "start:test": "export NODE_ENV=prod && export MONGO_URL=mongodb://localhost:27017/sorters_test && node index.js",
     "linked-modules": "find node_modules/ -maxdepth 1 -type l -ls | grep -o -E \"[^/]+$\"",
     "save-linked-modules": "npm run -s linked-modules > .linked_modules",
-    "link-modules": "cat .linked_modules | xargs yarn link",
-    "docker:build": "docker build -t sorters .",
-    "docker:clean": "docker rm -f sorters || true",
-    "docker:run": "docker run -p 7880:3000 -d --link sorters-mongo:mongo --name sorters sorters && npm run docker:logs",
-    "docker:stop": "docker stop sorters",
-    "docker:start": "docker start sorters && npm run docker:logs",
-    "docker:logs": "docker logs -f sorters",
-    "deploy": "npm run docker:build && npm run docker:clean && npm run docker:run"
+    "link-modules": "cat .linked_modules | xargs yarn link"
   },
   "author": "Nicola Marcacci Rossi <nicolamr@gmail.com> (http://nmr.io)",
   "license": "ISC",
