@@ -63,8 +63,13 @@ const MIGRATIONS = [
                 }
             }
         }
-        console.info((await Events.remove({type: 'wrote-about-read'})).result)
-        console.info((await Events.remove({type: 'spoke-about-read'})).result)
+        try {
+            console.info('Remove outdated events.')
+            console.info((await Events.remove({type: 'wrote-about-read'})).result)
+            console.info((await Events.remove({type: 'spoke-about-read'})).result)
+        } catch (e) {
+            console.error(e)
+        }
     },
     async (db) => {
         async function doStuff(userId, entities, type, updateEvents, Collection) {
