@@ -1,4 +1,4 @@
-import Layout from './layout'
+import Layout from '../components/layout'
 import withPage from '../providers/page'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'

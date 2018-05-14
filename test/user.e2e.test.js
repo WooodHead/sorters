@@ -24,15 +24,15 @@ afterAll(async () => {
 
 describe('user', () => {
     it('displays', async () => {
-        const browserPage = await browser.createPage()
+        const browserPage = await browser.newPage()
 
         await generateAndLogUser(browserPage)
         await setUserData(browserPage)
         
-        const status = await browserPage.open(`http://localhost:3000/u/test`)
-        expect(status).toBe('success')
+        const response = await browserPage.goto(`http://localhost:3000/u/test`)
+        expect(response.status()).toBe(200)
 
-        const text = await browserPage.property('content')
+        const text = await response.text()
         const $ = cheerio.load(text)
         const page = $('#__next')
         const html = pretty(page.html())
@@ -40,15 +40,15 @@ describe('user', () => {
     })
 
     it('displays goals', async () => {
-        const browserPage = await browser.createPage()
+        const browserPage = await browser.newPage()
 
         await generateAndLogUser(browserPage)
         await setUserData(browserPage)
         
-        const status = await browserPage.open(`http://localhost:3000/u/test/goals`)
-        expect(status).toBe('success')
+        const response = await browserPage.goto(`http://localhost:3000/u/test/goals`)
+        expect(response.status()).toBe(200)
 
-        const text = await browserPage.property('content')
+        const text = await response.text()
         const $ = cheerio.load(text)
         const page = $('#__next')
         const html = pretty(page.html())
@@ -56,7 +56,7 @@ describe('user', () => {
     })
 
     it('displays journal', async () => {
-        const browserPage = await browser.createPage()
+        const browserPage = await browser.newPage()
 
         await generateAndLogUser(browserPage)
         await setUserData(browserPage)
@@ -79,10 +79,10 @@ describe('user', () => {
             },
         })
         
-        const status = await browserPage.open(`http://localhost:3000/u/test/journal`)
-        expect(status).toBe('success')
+        const response = await browserPage.goto(`http://localhost:3000/u/test/journal`)
+        expect(response.status()).toBe(200)
 
-        const text = await browserPage.property('content')
+        const text = await response.text()
         const $ = cheerio.load(text)
         const page = $('#__next')
         const html = pretty(page.html())
@@ -90,15 +90,15 @@ describe('user', () => {
     })
 
     it('displays profile', async () => {
-        const browserPage = await browser.createPage()
+        const browserPage = await browser.newPage()
 
         await generateAndLogUser(browserPage)
         await setUserData(browserPage)
         
-        const status = await browserPage.open(`http://localhost:3000/u/test/profile`)
-        expect(status).toBe('success')
+        const response = await browserPage.goto(`http://localhost:3000/u/test/profile`)
+        expect(response.status()).toBe(200)
 
-        const text = await browserPage.property('content')
+        const text = await response.text()
         const $ = cheerio.load(text)
         const page = $('#__next')
         const html = pretty(page.html())
@@ -106,15 +106,15 @@ describe('user', () => {
     })
 
     it('displays reads', async () => {
-        const browserPage = await browser.createPage()
+        const browserPage = await browser.newPage()
 
         await generateAndLogUser(browserPage)
         await setUserData(browserPage)
         
-        const status = await browserPage.open(`http://localhost:3000/u/test/reads`)
-        expect(status).toBe('success')
+        const response = await browserPage.goto(`http://localhost:3000/u/test/reads`)
+        expect(response.status()).toBe(200)
 
-        const text = await browserPage.property('content')
+        const text = await response.text()
         const $ = cheerio.load(text)
         const page = $('#__next')
         const html = pretty(page.html())

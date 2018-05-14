@@ -1,13 +1,11 @@
-import DeleteModal from './delete-modal'
+import ShyButton from '../components/shy-button'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 
-describe('delete-modal', () => {
+describe('shy-button', () => {
     it('shallow-renders', () => {
-        const component = shallow(<DeleteModal
-            title="Delete book?"
-            message="A deleted book can't be recovered."/>)
+        const component = shallow(<ShyButton>✎</ShyButton>)
         const tree = toJson(component)
         expect(tree).toMatchSnapshot()
     })

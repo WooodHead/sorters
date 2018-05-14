@@ -1,4 +1,4 @@
-import Markdown from './markdown'
+import Markdown from '../components/markdown'
 import renderer from 'react-test-renderer'
 
 describe('markdown', () => {

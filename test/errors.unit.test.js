@@ -1,4 +1,4 @@
-import {errorMessage} from './errors'
+import {errorMessage} from '../utils/errors'
 
 describe('error utils', () => {
     describe('errorMessage', () => {

@@ -33,6 +33,7 @@ exports[`index displays 1`] = `
       <h1>Sorters Club</h1>
       <div>
         <div>
+          <h3>May 14th 2018</h3>
           <div style=\\"margin-bottom:1.5rem;display:flex\\">
             <div>
               <a href=\\"/u/test\\">

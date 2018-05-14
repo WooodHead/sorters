@@ -25,11 +25,11 @@ describe('news', () => {
     })
 
     it('displays', async () => {
-        const browserPage = await browser.createPage()
-        const status = await browserPage.open(`http://localhost:3000/`)
-        expect(status).toBe('success')
+        const browserPage = await browser.newPage()
+        const response = await browserPage.goto(`http://localhost:3000/`)
+        expect(response.status()).toBe(200)
 
-        const text = await browserPage.property('content')
+        const text = await response.text()
         const $ = cheerio.load(text)
         const page = $('#__next')
         const html = pretty(page.html())
@@ -103,11 +103,11 @@ describe('news', () => {
             date,
             goalId,
         })
-        const browserPage = await browser.createPage()
-        const status = await browserPage.open(`http://localhost:3000/`)
-        expect(status).toBe('success')
+        const browserPage = await browser.newPage()
+        const response = await browserPage.goto(`http://localhost:3000/`)
+        expect(response.status()).toBe(200)
         
-        const text = await browserPage.property('content')
+        const text = await response.text()
         const $ = cheerio.load(text)
         const page = $('#__next')
         const html = pretty(page.html())
@@ -115,10 +115,10 @@ describe('news', () => {
     })
 
     it('displays journal events', async () => {
-        const browserPage = await browser.createPage()
+        const browserPage = await browser.newPage()
 
         await generateAndLogUser(browserPage)
-
+        
         const goalIds = await getGoalIds(browserPage)
 
         await request(browserPage, `http://localhost:3000/graphql`, 'POST', {
@@ -139,10 +139,11 @@ describe('news', () => {
             },
         })
 
-        const status = await browserPage.open(`http://localhost:3000/`)
-        expect(status).toBe('success')
+        
+        const response = await browserPage.goto(`http://localhost:3000/`)
+        expect(response.status()).toBe(200)
 
-        const text = await browserPage.property('content')
+        const text = await response.text()
         const $ = cheerio.load(text)
         const page = $('#__next')
         const html = pretty(page.html())
@@ -150,15 +151,15 @@ describe('news', () => {
     })
 
     it('displays changes to user data', async () => {
-        const browserPage = await browser.createPage()
+        const browserPage = await browser.newPage()
 
         await generateAndLogUser(browserPage)
         await setUserData(browserPage)
 
-        const status = await browserPage.open(`http://localhost:3000/`)
-        expect(status).toBe('success')
+        const response = await browserPage.goto(`http://localhost:3000/`)
+        expect(response.status()).toBe(200)
 
-        const text = await browserPage.property('content')
+        const text = await response.text()
         const $ = cheerio.load(text)
         const page = $('#__next')
         const html = pretty(page.html())
@@ -166,7 +167,7 @@ describe('news', () => {
     })
 
     it('limits results', async () => {
-        const browserPage = await browser.createPage()
+        const browserPage = await browser.newPage()
         
         await generateAndLogUser(browserPage)
         const goalIds = await getGoalIds(browserPage)
@@ -191,10 +192,10 @@ describe('news', () => {
             })    
         }
 
-        const status = await browserPage.open(`http://localhost:3000/`)
-        expect(status).toBe('success')
+        const response = await browserPage.goto(`http://localhost:3000/`)
+        expect(response.status()).toBe(200)
 
-        const text = await browserPage.property('content')
+        const text = await response.text()
         const $ = cheerio.load(text)
         const page = $('#__next')
         const html = pretty(page.html())

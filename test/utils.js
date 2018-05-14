@@ -3,21 +3,22 @@ import _pretty from 'pretty'
 export const sleep = async (millis) => new Promise((resolve) => setTimeout(resolve, millis))
 
 export const request = async (page, uri, operation, data) => {
-    const status = await page.open(
-        uri,
-        {
-            operation,
-            encoding: 'utf8',
+    await page.setRequestInterception(true)
+    page.once('request', interceptedRequest => {
+        interceptedRequest.continue({
+            method: operation,
+            postData: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
             },
-            data: JSON.stringify(data)
-        }
-    )
-    if (status !== 'success') {
-        throw new Error(`Couldn't open page: ${status}`)
+        })
+    })
+    const response = await page.goto(uri)
+    await page.setRequestInterception(false)
+    if (response.status() !== 200) {
+        throw new Error(`Couldn't open page ${uri}: ${response.status()}`)
     }
-    return JSON.parse(await page.property('plainText'))
+    return JSON.parse(await response.text())
 }
 
 export function pretty(str) {

@@ -1,4 +1,4 @@
-import {teaserAndInfo} from './text'
+import {teaserAndInfo} from '../utils/text'
 
 describe('text utils', () => {
     describe('teaserAndInfo', () => {

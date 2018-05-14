@@ -1,4 +1,4 @@
-import UserHeader from './user-header'
+import UserHeader from '../components/user-header'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'

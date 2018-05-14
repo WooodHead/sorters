@@ -1,6 +1,6 @@
 import {MongoClient, ObjectID} from 'mongodb'
 import {spawn} from 'child_process'
-import phantom from 'phantom'
+import puppeteer from 'puppeteer'
 
 export const setup = async () => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000
@@ -8,8 +8,8 @@ export const setup = async () => {
     const db = client.db('sorters_test')
     await db.dropDatabase()
     
-    const browser = await phantom.create([], { logLevel: 'error' })
-    
+    const browser = await puppeteer.launch()
+
     return {db, browser}
 }
 
