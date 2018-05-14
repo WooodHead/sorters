@@ -321,7 +321,7 @@ const start = async (app, settings) => {
             _id: ID!
             userId: ID!
             user: User!
-            title: String!
+            title: String
         }
         type Read implements Entity {
             type: String!
@@ -425,8 +425,11 @@ const start = async (app, settings) => {
             updatedAt: Date!
             comments: [Comment]!
         }
-        type Chat {
+        type Chat implements Entity {
+            type: String!
             _id: ID!
+            userId: ID!
+            user: User!
             userIds: [ID]!
             users: [User]!
             comments: [Comment]!
