@@ -13,8 +13,13 @@ async function find(Collection, ...args) {
     return (await Collection.find(...args).toArray()).map(prepare)
 }
 
+async function sleep (millis) {
+    return new Promise((resolve) => setTimeout(resolve, millis))
+}
+
 module.exports = {
     prepare,
     findOne,
     find,
+    sleep,
 }

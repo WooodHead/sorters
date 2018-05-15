@@ -15,7 +15,7 @@ const crypto = require('crypto-browserify')
 const {GraphQLScalarType} = require('graphql')
 const {objectMap} = require('../utils/objects')
 const {performMigrations} = require('./migrations')
-const {prepare, find, findOne} = require('./utils')
+const {prepare, find, findOne, sleep} = require('./utils')
 const {IGNORED_EVENTS} = require('../models/events')
 
 function set(o, key, value) {
@@ -204,8 +204,26 @@ async function softDeleteEntity(userId, _id, Collection, Events, type, update = 
     return await prepare(Collection.findOne(ObjectId(_id)))
 }
 
+async function doTry(op, sleepInterval, times) {
+    let attempts = 0;
+    while (true) {
+        try {
+            attempts++;
+            return await op()
+        } catch (e) {
+            if (attempts >= times) {
+                throw e;
+            }
+            console.info(`Failed, try again in ${sleepInterval / 1000}s.`)
+            await sleep(sleepInterval)
+        }
+    }
+}
+
 const start = async (app, settings) => {
-    const client = await MongoClient.connect(settings.mongoUrl)
+    console.log('Connect to db')
+    const client = await doTry(async () => await MongoClient.connect(settings.mongoUrl), 3000, 3)
+    console.info('Connected')
     const db = client.db(settings.mongoUrl.split('://')[1].split('/')[1])
 
     await performMigrations(db)
